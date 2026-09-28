@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../views/**/*.blade.php';
+
+@theme {
+    --font-sans: 'Plus Jakarta Sans', 'Instrument Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans Devanagari', sans-serif;
+    
+    --color-navy: #073B63;
+    --color-navy-dark: #04243D;
+    --color-navy-light: #0B4F84;
+    --color-ngo-green: #138A4B;
+    --color-ngo-green-dark: #0D6636;
+    --color-ngo-green-secondary: #2E9E58;
+    --color-ngo-orange: #F58220;
+    --color-ngo-orange-hover: #DC6F13;
+    --color-light-green: #EAF7EF;
+    --color-light-blue: #EEF6FB;
+    --color-dark-text: #17324D;
+    --color-body-text: #4B5563;
+    --color-light-gray: #F8FAFC;
+    --color-border-subtle: #E2E8F0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+}
+
+body {
+    color: var(--color-dark-text);
+    background-color: #FFFFFF;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Custom NGO UI Utility classes */
+.btn-primary-orange {
+    background-color: #F58220;
+    color: #FFFFFF;
+    transition: all 0.2s ease-in-out;
+}
+.btn-primary-orange:hover {
+    background-color: #DC6F13;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(245, 130, 32, 0.35);
+}
+
+.btn-primary-green {
+    background-color: #138A4B;
+    color: #FFFFFF;
+    transition: all 0.2s ease-in-out;
+}
+.btn-primary-green:hover {
+    background-color: #0D6636;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(19, 138, 75, 0.35);
+}
+
+.btn-outline-navy {
+    border: 2px solid #073B63;
+    color: #073B63;
+    transition: all 0.2s ease-in-out;
+}
+.btn-outline-navy:hover {
+    background-color: #073B63;
+    color: #FFFFFF;
+}
+
+.handwritten-font {
+    font-family: 'Caveat', 'Segoe Script', cursive, sans-serif;
+}
+
+/* Card hover elevations */
+.ngo-card {
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.ngo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 30px -10px rgba(7, 59, 99, 0.12);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}

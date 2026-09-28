@@ -8,14 +8,16 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('settings', function (Blueprint $table) {
-            $table->id();
-            $table->string('key')->unique();
-            $table->longText('value')->nullable();
-            $table->string('group')->default('general');
-            $table->boolean('is_json')->default(false);
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('settings')) {
+            Schema::create('settings', function (Blueprint $table) {
+                $table->id();
+                $table->string('key')->unique();
+                $table->longText('value')->nullable();
+                $table->string('group')->default('general');
+                $table->boolean('is_json')->default(false);
+                $table->timestamps();
+            });
+        }
     }
 
     public function down(): void

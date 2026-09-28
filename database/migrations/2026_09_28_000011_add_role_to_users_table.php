@@ -9,15 +9,28 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('admin')->after('password');
-            $table->boolean('is_active')->default(true)->after('role');
+            if (!Schema::hasColumn('users', 'role')) {
+                $table->string('role')->default('admin')->after('password');
+            }
+            if (!Schema::hasColumn('users', 'is_active')) {
+                $table->boolean('is_active')->default(true)->after('role');
+            }
         });
     }
 
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['role', 'is_active']);
+            $columnsToDrop = [];
+            if (Schema::hasColumn('users', 'role')) {
+                $columnsToDrop[] = 'role';
+            }
+            if (Schema::hasColumn('users', 'is_active')) {
+                $columnsToDrop[] = 'is_active';
+            }
+            if (!empty($columnsToDrop)) {
+                $table->dropColumn($columnsToDrop);
+            }
         });
     }
 };

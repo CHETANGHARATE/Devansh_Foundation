@@ -77,8 +77,8 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4">
-                                @if($donation->pan_number)
-                                    <span class="font-mono text-xs font-bold text-gray-700">{{ $donation->pan_number }}</span>
+                                @if($donation->donor_pan)
+                                    <span class="font-mono text-xs font-bold text-gray-700">{{ $donation->donor_pan }}</span>
                                     <div class="text-[10px] text-emerald-600 font-semibold">80G Required</div>
                                 @else
                                     <span class="text-gray-400 text-xs">No PAN</span>

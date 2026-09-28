@@ -42,11 +42,11 @@
                             </td>
                             <td class="px-6 py-4">
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#EEF6FB] text-[#073B63]">
-                                    {{ $item->organization_type }}
+                                    {{ $item->partnership_interest ?: 'General Partnership' }}
                                 </span>
                             </td>
                             <td class="px-6 py-4 max-w-sm">
-                                <p class="text-xs text-gray-600 line-clamp-2">{{ $item->proposal_summary }}</p>
+                                <p class="text-xs text-gray-600 line-clamp-2">{{ $item->message }}</p>
                             </td>
                             <td class="px-6 py-4 text-gray-500 font-mono text-[11px]">
                                 {{ $item->created_at->format('d M, Y') }}

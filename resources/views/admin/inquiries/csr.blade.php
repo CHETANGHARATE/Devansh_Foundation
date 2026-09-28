@@ -33,16 +33,16 @@
                                 <div class="text-[11px] text-gray-400 mt-0.5">Location: {{ $item->city ?? 'India' }}</div>
                             </td>
                             <td class="px-6 py-4">
-                                <div class="font-semibold text-gray-700">{{ $item->contact_person }} ({{ $item->designation }})</div>
+                                <div class="font-semibold text-gray-700">{{ $item->contact_person }}</div>
                                 <div class="text-[11px] text-gray-500">{{ $item->phone }} &bull; {{ $item->email }}</div>
                             </td>
                             <td class="px-6 py-4">
                                 <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#EAF7EF] text-[#138A4B]">
-                                    {{ $item->focus_area_interest }}
+                                    {{ $item->csr_area ?: 'CSR Initiative' }}
                                 </span>
                             </td>
                             <td class="px-6 py-4">
-                                <div class="font-bold text-[#073B63]">{{ $item->estimated_budget ?: 'To be discussed' }}</div>
+                                <div class="font-bold text-[#073B63]">{{ $item->budget_range ?: 'To be discussed' }}</div>
                             </td>
                             <td class="px-6 py-4 text-gray-500 font-mono text-[11px]">
                                 {{ $item->created_at->format('d M, Y') }}

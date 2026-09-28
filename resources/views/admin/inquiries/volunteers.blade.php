@@ -35,7 +35,7 @@
                     @forelse($volunteers as $item)
                         <tr class="hover:bg-gray-50/50 transition-colors">
                             <td class="px-6 py-4">
-                                <div class="font-bold text-gray-800 text-sm">{{ $item->full_name }}</div>
+                                <div class="font-bold text-gray-800 text-sm">{{ $item->name }}</div>
                                 <div class="text-[11px] text-gray-500">{{ $item->phone }} &bull; {{ $item->email }}</div>
                                 <div class="text-[10px] text-gray-400 mt-0.5">Applied {{ $item->created_at->format('d M, Y') }}</div>
                             </td>
@@ -44,8 +44,8 @@
                                 <div class="text-[11px] text-gray-500">{{ $item->availability }}</div>
                             </td>
                             <td class="px-6 py-4 max-w-xs">
-                                <div class="font-medium text-[#073B63]">{{ $item->areas_of_interest }}</div>
-                                <div class="text-[11px] text-gray-500 line-clamp-1 mt-0.5">{{ $item->skills_experience }}</div>
+                                <div class="font-medium text-[#073B63]">{{ $item->area_of_interest }}</div>
+                                <div class="text-[11px] text-gray-500 line-clamp-1 mt-0.5">{{ $item->skills }}</div>
                             </td>
                             <td class="px-6 py-4">
                                 @if($item->status === 'approved')

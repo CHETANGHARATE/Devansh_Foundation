@@ -8,75 +8,85 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('volunteer_applications', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('city')->nullable();
-            $table->string('age')->nullable();
-            $table->string('area_of_interest')->nullable();
-            $table->text('skills')->nullable();
-            $table->string('availability')->nullable();
-            $table->text('message')->nullable();
-            $table->string('status')->default('pending'); // pending, contacted, active, archived
-            $table->text('admin_notes')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('volunteer_applications')) {
+            Schema::create('volunteer_applications', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('email');
+                $table->string('phone');
+                $table->string('city')->nullable();
+                $table->string('age')->nullable();
+                $table->string('area_of_interest')->nullable();
+                $table->text('skills')->nullable();
+                $table->string('availability')->nullable();
+                $table->text('message')->nullable();
+                $table->string('status')->default('pending'); // pending, contacted, active, archived
+                $table->text('admin_notes')->nullable();
+                $table->timestamps();
+            });
+        }
 
-        Schema::create('partnership_requests', function (Blueprint $table) {
-            $table->id();
-            $table->string('organization_name');
-            $table->string('contact_person');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('website')->nullable();
-            $table->string('partnership_interest')->nullable();
-            $table->text('message')->nullable();
-            $table->string('status')->default('pending');
-            $table->text('admin_notes')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('partnership_requests')) {
+            Schema::create('partnership_requests', function (Blueprint $table) {
+                $table->id();
+                $table->string('organization_name');
+                $table->string('contact_person');
+                $table->string('email');
+                $table->string('phone');
+                $table->string('website')->nullable();
+                $table->string('partnership_interest')->nullable();
+                $table->text('message')->nullable();
+                $table->string('status')->default('pending');
+                $table->text('admin_notes')->nullable();
+                $table->timestamps();
+            });
+        }
 
-        Schema::create('csr_requests', function (Blueprint $table) {
-            $table->id();
-            $table->string('company_name');
-            $table->string('contact_person');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('csr_area')->nullable();
-            $table->string('budget_range')->nullable();
-            $table->text('message')->nullable();
-            $table->string('status')->default('pending');
-            $table->text('admin_notes')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('csr_requests')) {
+            Schema::create('csr_requests', function (Blueprint $table) {
+                $table->id();
+                $table->string('company_name');
+                $table->string('contact_person');
+                $table->string('email');
+                $table->string('phone');
+                $table->string('csr_area')->nullable();
+                $table->string('budget_range')->nullable();
+                $table->text('message')->nullable();
+                $table->string('status')->default('pending');
+                $table->text('admin_notes')->nullable();
+                $table->timestamps();
+            });
+        }
 
-        Schema::create('fundraising_requests', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->string('city')->nullable();
-            $table->string('campaign_idea')->nullable();
-            $table->string('target_amount')->nullable();
-            $table->text('message')->nullable();
-            $table->string('status')->default('pending');
-            $table->text('admin_notes')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('fundraising_requests')) {
+            Schema::create('fundraising_requests', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('email');
+                $table->string('phone');
+                $table->string('city')->nullable();
+                $table->string('campaign_idea')->nullable();
+                $table->string('target_amount')->nullable();
+                $table->text('message')->nullable();
+                $table->string('status')->default('pending');
+                $table->text('admin_notes')->nullable();
+                $table->timestamps();
+            });
+        }
 
-        Schema::create('contact_messages', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone')->nullable();
-            $table->string('subject')->nullable();
-            $table->text('message');
-            $table->boolean('is_read')->default(false);
-            $table->text('admin_notes')->nullable();
-            $table->timestamps();
-        });
+        if (!Schema::hasTable('contact_messages')) {
+            Schema::create('contact_messages', function (Blueprint $table) {
+                $table->id();
+                $table->string('name');
+                $table->string('email');
+                $table->string('phone')->nullable();
+                $table->string('subject')->nullable();
+                $table->text('message');
+                $table->boolean('is_read')->default(false);
+                $table->text('admin_notes')->nullable();
+                $table->timestamps();
+            });
+        }
     }
 
     public function down(): void

@@ -29,15 +29,15 @@
                     @forelse($fundraising as $item)
                         <tr class="hover:bg-gray-50/50 transition-colors">
                             <td class="px-6 py-4">
-                                <div class="font-bold text-gray-800 text-sm">{{ $item->organizer_name }}</div>
+                                <div class="font-bold text-gray-800 text-sm">{{ $item->name }}</div>
                                 <div class="text-[11px] text-gray-500">{{ $item->phone }} &bull; {{ $item->email }}</div>
                             </td>
                             <td class="px-6 py-4 max-w-sm">
-                                <div class="font-semibold text-gray-800">{{ $item->campaign_title }}</div>
-                                <div class="text-[11px] text-gray-500 line-clamp-2 mt-0.5">{{ $item->campaign_plan }}</div>
+                                <div class="font-semibold text-gray-800">{{ $item->campaign_idea }}</div>
+                                <div class="text-[11px] text-gray-500 line-clamp-2 mt-0.5">{{ $item->message }}</div>
                             </td>
                             <td class="px-6 py-4 font-bold text-[#F58220]">
-                                {{ $item->target_amount ? '₹' . number_format($item->target_amount) : 'Open goal' }}
+                                {{ $item->target_amount ? (is_numeric($item->target_amount) ? '₹' . number_format($item->target_amount) : $item->target_amount) : 'Open goal' }}
                             </td>
                             <td class="px-6 py-4 text-gray-600">
                                 {{ $item->city ?? 'Nashik' }}

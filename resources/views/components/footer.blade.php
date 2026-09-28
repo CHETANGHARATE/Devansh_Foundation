@@ -15,22 +15,7 @@
             <!-- Column 1: Logo & Tagline (lg:col-span-3) -->
             <div class="lg:col-span-3 space-y-4">
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
-                    <!-- White Emblem SVG -->
-                    <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center">
-                        <svg viewBox="0 0 100 100" class="w-12 h-12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M18 68 C 14 55, 22 42, 34 38 C 38 37, 43 40, 41 45 C 38 52, 36 60, 46 68 C 50 71, 50 76, 44 78 C 32 82, 22 78, 18 68 Z" fill="#FFFFFF"/>
-                            <path d="M82 68 C 86 55, 78 42, 66 38 C 62 37, 57 40, 59 45 C 62 52, 64 60, 54 68 C 50 71, 50 76, 56 78 C 68 82, 78 78, 82 68 Z" fill="#FFFFFF"/>
-                            <circle cx="50" cy="38" r="6" fill="#FFFFFF"/>
-                            <path d="M42 56 C 42 47, 58 47, 58 56 Z" fill="#FFFFFF"/>
-                            <circle cx="36" cy="32" r="5" fill="#FFFFFF"/>
-                            <path d="M30 48 C 30 41, 42 41, 42 48 Z" fill="#FFFFFF"/>
-                            <circle cx="64" cy="32" r="5" fill="#FFFFFF"/>
-                            <path d="M58 48 C 58 41, 70 41, 70 48 Z" fill="#FFFFFF"/>
-                            <circle cx="50" cy="20" r="3.5" fill="#FFFFFF"/>
-                            <circle cx="38" cy="18" r="2.5" fill="#FFFFFF"/>
-                            <circle cx="62" cy="18" r="2.5" fill="#FFFFFF"/>
-                        </svg>
-                    </div>
+                    <img src="{{ asset('images/logo.png') }}" alt="Devansh Foundation" class="h-14 w-auto object-contain rounded-full bg-white p-0.5 shadow">
                     <div class="flex flex-col">
                         <span class="text-xl sm:text-2xl font-black tracking-tight text-white leading-none">
                             DEVANSH

@@ -7,13 +7,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
             <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-emerald-300 border border-white/20 mb-4">
-                <span>पारदर्शकता / Governance</span>
+                <span>{{ site_t('nav_reports') }}</span>
             </div>
             <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
-                {{ site_t('reports_title', [], 'अहवाल आणि पारदर्शकता') }}
+                {{ site_t('reports_title') }}
             </h1>
             <p class="text-lg text-gray-200 leading-relaxed">
-                {{ site_t('reports_desc', [], 'देवांश फाउंडेशन सामाजिक कार्यात 100% पारदर्शकता राखण्यासाठी कटिबद्ध आहे. येथे आमचे वार्षिक आणि आर्थिक अहवाल उपलब्ध आहेत.') }}
+                {{ site_t('reports_desc') }}
             </p>
         </div>
     </div>
@@ -29,7 +29,7 @@
                 <div class="w-10 h-10 rounded-xl bg-[#EAF7EF] text-[#138A4B] flex items-center justify-center">
                     <i data-lucide="book-open" class="w-5 h-5"></i>
                 </div>
-                <h2 class="text-2xl font-bold text-[#073B63]">वार्षिक अहवाल / Annual Reports</h2>
+                <h2 class="text-2xl font-bold text-[#073B63]">{{ site_t('annual_reports') }}</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -47,7 +47,7 @@
 
                         <a href="{{ $rep->file_path ? asset($rep->file_path) : '#' }}" target="_blank" class="inline-flex items-center justify-center space-x-2 w-full py-2.5 rounded-xl bg-[#073B63] hover:bg-[#052a47] text-white text-xs font-bold transition">
                             <i data-lucide="download" class="w-3.5 h-3.5"></i>
-                            <span>PDF डाउनलोड करा</span>
+                            <span>{{ site_t('btn_download') }}</span>
                         </a>
                     </div>
                 @endforeach
@@ -60,7 +60,7 @@
                 <div class="w-10 h-10 rounded-xl bg-[#EEF6FB] text-[#073B63] flex items-center justify-center">
                     <i data-lucide="calculator" class="w-5 h-5"></i>
                 </div>
-                <h2 class="text-2xl font-bold text-[#073B63]">आर्थिक ऑडिट अहवाल / Financial Statements</h2>
+                <h2 class="text-2xl font-bold text-[#073B63]">{{ site_t('financial_reports') }}</h2>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -78,7 +78,7 @@
 
                         <a href="{{ $rep->file_path ? asset($rep->file_path) : '#' }}" target="_blank" class="inline-flex items-center justify-center space-x-2 w-full py-2.5 rounded-xl bg-[#138A4B] hover:bg-[#0e6b3a] text-white text-xs font-bold transition">
                             <i data-lucide="download" class="w-3.5 h-3.5"></i>
-                            <span>ऑडिट कॉपी डाउनलोड करा</span>
+                            <span>{{ site_t('btn_download') }}</span>
                         </a>
                     </div>
                 @endforeach
@@ -89,14 +89,14 @@
         <div class="bg-gradient-to-br from-[#073B63] to-[#04243D] text-white rounded-3xl p-8 sm:p-10 space-y-4">
             <h3 class="text-xl font-bold text-white flex items-center space-x-2">
                 <i data-lucide="shield-check" class="w-6 h-6 text-[#2E9E58]"></i>
-                <span>पारदर्शकतेची हमी / Our Commitment to Accountability</span>
+                <span>{{ site_t('audit_transparency') }}</span>
             </h3>
             <p class="text-sm text-gray-200 leading-relaxed max-w-3xl">
-                देवांश फाउंडेशन प्रत्येक देणगीदाराचा आणि नागरिकाचा विश्वास जपण्यासाठी कटिबद्ध आहे. अधिक तपशील किंवा नियामक कागदपत्रांच्या चौकशीसाठी थेट आमच्या मुख्य कार्यालयात किंवा ईमेलद्वारे संपर्क साधू शकता.
+                {{ site_t('reports_desc') }}
             </p>
             <div class="pt-2">
                 <a href="{{ route('contact') }}" class="inline-flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/20 transition">
-                    <span>प्रशासकीय संपर्क साधा</span>
+                    <span>{{ site_t('nav_contact') }}</span>
                     <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                 </a>
             </div>

@@ -15,7 +15,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
             <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/15 text-white mb-4">
-                <a href="{{ route('our-work.index') }}" class="hover:underline">कार्यक्षेत्रे</a>
+                <a href="{{ route('our-work.index') }}" class="hover:underline">{{ site_t('nav_our_work') }}</a>
                 <span>/</span>
                 <span>{{ $title }}</span>
             </div>
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="space-y-4">
-                    <h2 class="text-2xl font-bold text-[#073B63]">उद्दिष्ट आणि कार्यपद्धती / Overview & Strategy</h2>
+                    <h2 class="text-2xl font-bold text-[#073B63]">{{ site_t('project_details') }}</h2>
                     <p class="text-gray-600 text-base leading-relaxed">
                         {{ $desc }}
                     </p>
@@ -54,7 +54,7 @@
 
                 <!-- Projects under this Focus Area -->
                 <div class="pt-8 border-t border-gray-100">
-                    <h2 class="text-2xl font-bold text-[#073B63] mb-6">या कार्यक्षेत्रातील प्रकल्प / Related Projects</h2>
+                    <h2 class="text-2xl font-bold text-[#073B63] mb-6">{{ site_t('nav_projects') }}</h2>
                     @if($projects->count() > 0)
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             @foreach($projects as $proj)
@@ -63,7 +63,7 @@
                         </div>
                     @else
                         <div class="bg-gray-50 rounded-2xl p-8 text-center text-gray-500">
-                            सध्या या क्षेत्रातील नवीन प्रकल्प नियोजित आहेत. लवकरच अपडेट केले जातील.
+                            {{ site_t('no_records_found') }}
                         </div>
                     @endif
                 </div>
@@ -76,23 +76,23 @@
                     <div class="w-12 h-12 rounded-full bg-[#138A4B] text-white flex items-center justify-center mx-auto">
                         <i data-lucide="heart" class="w-6 h-6 fill-white"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-[#073B63]">या कार्याला सहाय्य करा</h3>
+                    <h3 class="text-xl font-bold text-[#073B63]">{{ site_t('donate_heading') }}</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        तुमची छोटीशी देणगी या उपक्रमातील गरजू लाभार्थ्यांपर्यंत पोहोचण्यास थेट मदत करते.
+                        {{ site_t('donate_subheading') }}
                     </p>
                     <a href="{{ route('donate') }}" class="w-full block py-3 rounded-xl bg-[#F58220] hover:bg-[#DC6F13] text-white font-bold text-sm shadow-md transition">
-                        देणगी द्या / Support Cause
+                        {{ site_t('btn_donate') }} →
                     </a>
                 </div>
 
                 <!-- Quick Volunteer CTA -->
                 <div class="bg-[#EEF6FB] rounded-3xl p-6 border border-[#073B63]/20 shadow-sm text-center space-y-4">
-                    <h3 class="text-lg font-bold text-[#073B63]">स्वयंसेवक म्हणून सामील व्हा</h3>
+                    <h3 class="text-lg font-bold text-[#073B63]">{{ site_t('involve_volunteer') }}</h3>
                     <p class="text-xs text-gray-600 leading-relaxed">
-                        या कार्यक्षेत्रात काम करण्यासाठी तुमचा वेळ आणि कौशल्य समाजासाठी द्या.
+                        {{ site_t('involve_volunteer_desc') }}
                     </p>
                     <a href="{{ route('volunteer') }}" class="w-full block py-2.5 rounded-xl border-2 border-[#073B63] text-[#073B63] hover:bg-[#073B63] hover:text-white font-bold text-sm transition">
-                        स्वयंसेवक अर्ज
+                        {{ site_t('btn_volunteer') }}
                     </a>
                 </div>
             </div>

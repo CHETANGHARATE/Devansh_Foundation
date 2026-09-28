@@ -1,7 +1,7 @@
 @php
     $phone = setting('contact_phone', '+91 98765 43210');
     $email = setting('contact_email', 'info@devanshfoundation.org');
-    $location = setting('contact_address', 'Nashik, Maharashtra, India');
+    $location = setting('contact_address', site_t('top_location'));
     $fb = setting('social_facebook', 'https://facebook.com/devanshfoundation');
     $insta = setting('social_instagram', 'https://instagram.com/devanshfoundation');
     $yt = setting('social_youtube', 'https://youtube.com/@devanshfoundation');

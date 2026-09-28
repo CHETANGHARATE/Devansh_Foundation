@@ -7,13 +7,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
             <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-emerald-300 border border-white/20 mb-4">
-                <span>क्षणचित्रे / Photo Gallery</span>
+                <span>{{ site_t('nav_gallery') }}</span>
             </div>
             <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
-                {{ site_t('gallery_heading', [], 'फोटो गॅलरी') }}
+                {{ site_t('gallery_heading') }}
             </h1>
             <p class="text-lg text-gray-200 leading-relaxed">
-                {{ site_t('gallery_subheading', [], 'आमच्या उपक्रमांचे, समाजातील कामाचे आणि हसऱ्या चेहऱ्यांचे काही क्षणचित्रे') }}
+                {{ site_t('gallery_subheading') }}
             </p>
         </div>
     </div>
@@ -26,7 +26,7 @@
             <!-- Category Tabs -->
             <div class="flex flex-wrap items-center gap-2">
                 <a href="{{ route('gallery') }}" class="px-4 py-2 rounded-xl text-xs font-bold transition {{ !request('category') && !request('album') ? 'bg-[#073B63] text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200' }}">
-                    {{ site_t('all_photos', [], 'सर्व फोटो') }}
+                    {{ site_t('all_photos') }}
                 </a>
                 @foreach($categories as $cat)
                     <a href="{{ route('gallery', ['category' => $cat]) }}" class="px-4 py-2 rounded-xl text-xs font-bold transition {{ request('category') === $cat ? 'bg-[#138A4B] text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200' }}">
@@ -39,7 +39,7 @@
             @if($albums->count() > 0)
                 <div>
                     <select onchange="window.location.href=this.value" class="px-4 py-2 rounded-xl border border-gray-200 text-xs font-semibold text-gray-700">
-                        <option value="{{ route('gallery') }}">सर्व अल्बम / All Albums</option>
+                        <option value="{{ route('gallery') }}">{{ site_t('all_photos') }}</option>
                         @foreach($albums as $alb)
                             <option value="{{ route('gallery', ['album' => $alb->slug]) }}" {{ request('album') === $alb->slug ? 'selected' : '' }}>
                                 {{ $alb->title }} ({{ $alb->images_count }})
@@ -66,7 +66,7 @@
                         <div>
                             <p class="text-xs font-semibold leading-snug line-clamp-2">{{ $image->caption }}</p>
                             <span class="text-[10px] text-gray-300 mt-1 flex items-center">
-                                <i data-lucide="zoom-in" class="w-3 h-3 mr-1"></i> क्लिक करून मोठे पहा
+                                <i data-lucide="zoom-in" class="w-3 h-3 mr-1"></i> {{ site_t('btn_view_gallery') }}
                             </span>
                         </div>
                     </div>

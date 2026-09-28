@@ -7,13 +7,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
             <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-emerald-300 border border-white/20 mb-4">
-                <span>संपर्क / Contact Us</span>
+                <span>{{ site_t('nav_contact') }}</span>
             </div>
             <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
-                {{ site_t('nav_contact', [], 'आमच्याशी संपर्क साधा') }}
+                {{ site_t('contact_title') }}
             </h1>
             <p class="text-lg text-gray-200 leading-relaxed">
-                कोणतीही विचारणा, देणगी विषयक माहिती किंवा स्वयंसेवक सहभागासाठी आम्ही सदैव तत्पर आहोत.
+                {{ site_t('contact_subtitle') }}
             </p>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <!-- Left 5 Columns: Official Contact Cards -->
             <div class="lg:col-span-5 space-y-6">
                 <div class="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm space-y-6">
-                    <h2 class="text-2xl font-bold text-[#073B63]">कार्यालय संपर्क तपशील</h2>
+                    <h2 class="text-2xl font-bold text-[#073B63]">{{ site_t('contact_info_title') }}</h2>
 
                     <div class="space-y-4 text-sm">
                         <!-- Address -->
@@ -36,7 +36,7 @@
                                 <i data-lucide="map-pin" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <div class="text-xs text-gray-400 font-semibold uppercase">पत्ता / Address</div>
+                                <div class="text-xs text-gray-400 font-semibold uppercase">{{ site_t('donor_address') }}</div>
                                 <div class="font-bold text-gray-900 mt-0.5">{{ $address }}</div>
                             </div>
                         </div>
@@ -47,7 +47,7 @@
                                 <i data-lucide="phone" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <div class="text-xs text-gray-400 font-semibold uppercase">फोन / Helpline</div>
+                                <div class="text-xs text-gray-400 font-semibold uppercase">{{ site_t('form_phone') }}</div>
                                 <a href="tel:{{ preg_replace('/\s+/', '', $phone) }}" class="font-bold text-gray-900 hover:text-[#138A4B] transition mt-0.5 block">
                                     {{ $phone }}
                                 </a>
@@ -60,7 +60,7 @@
                                 <i data-lucide="mail" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <div class="text-xs text-gray-400 font-semibold uppercase">ईमेल / Email</div>
+                                <div class="text-xs text-gray-400 font-semibold uppercase">{{ site_t('form_email') }}</div>
                                 <a href="mailto:{{ $email }}" class="font-bold text-gray-900 hover:text-[#073B63] transition mt-0.5 block">
                                     {{ $email }}
                                 </a>
@@ -79,8 +79,8 @@
             <!-- Right 7 Columns: Interactive Contact Form -->
             <div class="lg:col-span-7 bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-gray-100">
                 <div class="mb-8">
-                    <h2 class="text-2xl font-bold text-[#073B63] mb-2">संदेश पाठवा / Send a Message</h2>
-                    <p class="text-sm text-gray-600">खालील फॉर्म भरून आम्हाला संदेश पाठवा. आमचे प्रतिनिधी लवकरच आपल्याशी संपर्क करतील.</p>
+                    <h2 class="text-2xl font-bold text-[#073B63] mb-2">{{ site_t('contact_form_title') }}</h2>
+                    <p class="text-sm text-gray-600">{{ site_t('contact_subtitle') }}</p>
                 </div>
 
                 <form action="{{ route('contact.send') }}" method="POST" class="space-y-6">
@@ -93,35 +93,35 @@
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">नाव / Full Name *</label>
-                            <input type="text" name="name" required value="{{ old('name') }}" placeholder="उदा. विशाल तांबोळी" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#138A4B] text-sm text-gray-800">
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">{{ site_t('form_name') }} *</label>
+                            <input type="text" name="name" required value="{{ old('name') }}" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#138A4B] text-sm text-gray-800">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">ईमेल / Email *</label>
-                            <input type="email" name="email" required value="{{ old('email') }}" placeholder="name@example.com" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#138A4B] text-sm text-gray-800">
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">{{ site_t('form_email') }} *</label>
+                            <input type="email" name="email" required value="{{ old('email') }}" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#138A4B] text-sm text-gray-800">
                         </div>
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">मोबाईल / Phone</label>
-                            <input type="tel" name="phone" value="{{ old('phone') }}" placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#138A4B] text-sm text-gray-800">
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">{{ site_t('form_phone') }}</label>
+                            <input type="tel" name="phone" value="{{ old('phone') }}" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#138A4B] text-sm text-gray-800">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">विषय / Subject</label>
-                            <input type="text" name="subject" value="{{ old('subject') }}" placeholder="उदा. आरोग्य शिबिराविषयी विचारणा" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#138A4B] text-sm text-gray-800">
+                            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">{{ site_t('form_subject') }}</label>
+                            <input type="text" name="subject" value="{{ old('subject') }}" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#138A4B] text-sm text-gray-800">
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">संदेश / Message *</label>
-                        <textarea name="message" rows="5" required placeholder="आपला संदेश येथे लिहा..." class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#138A4B] text-sm text-gray-800">{{ old('message') }}</textarea>
+                        <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">{{ site_t('form_message') }} *</label>
+                        <textarea name="message" rows="5" required class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#138A4B] text-sm text-gray-800">{{ old('message') }}</textarea>
                     </div>
 
                     <div>
                         <button type="submit" class="w-full py-4 rounded-xl text-white font-bold bg-[#138A4B] hover:bg-[#0e6b3a] shadow-lg shadow-emerald-600/20 text-base transition flex items-center justify-center space-x-2">
                             <i data-lucide="send" class="w-5 h-5"></i>
-                            <span>संदेश पाठवा / Send Message</span>
+                            <span>{{ site_t('form_submit') }}</span>
                         </button>
                     </div>
                 </form>

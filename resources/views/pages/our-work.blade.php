@@ -7,13 +7,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
             <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/15 text-white border border-white/20 mb-4">
-                <span>आमची कार्यक्षेत्रे / Our Focus Areas</span>
+                <span>{{ site_t('nav_our_work') }}</span>
             </div>
             <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
-                {{ site_t('focus_heading', [], 'आमची कार्यक्षेत्रे') }}
+                {{ site_t('focus_heading') }}
             </h1>
             <p class="text-lg text-emerald-50 leading-relaxed">
-                {{ site_t('focus_subheading', [], 'गरजू व वंचित घटकांच्या सर्वांगीण विकासासाठी विविध क्षेत्रांत समर्पित सामाजिक कार्य') }}
+                {{ site_t('focus_subheading') }}
             </p>
         </div>
     </div>
@@ -41,7 +41,7 @@
                             <div class="w-12 h-12 rounded-xl bg-[#EAF7EF] text-[#138A4B] flex items-center justify-center">
                                 <i data-lucide="{{ $icon }}" class="w-6 h-6"></i>
                             </div>
-                            <span class="text-xs font-bold uppercase tracking-wider text-gray-400">कार्यक्षेत्र #{{ $index + 1 }}</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-gray-400">{{ site_t('nav_our_work') }} #{{ $index + 1 }}</span>
                         </div>
 
                         <h2 class="text-2xl sm:text-3xl font-extrabold text-[#073B63]">
@@ -54,20 +54,20 @@
 
                         <!-- Key Pillars / Badges -->
                         <div class="flex flex-wrap gap-2 pt-2">
-                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-semibold">नियोजित कार्य</span>
-                            <span class="px-3 py-1 bg-[#EAF7EF] text-[#138A4B] rounded-full text-xs font-semibold">तळागाळातील प्रभाव</span>
-                            <span class="px-3 py-1 bg-[#EEF6FB] text-[#073B63] rounded-full text-xs font-semibold">स्वयंसेवक सहभाग</span>
+                            <span class="px-3 py-1 bg-[#EAF7EF] text-[#138A4B] rounded-full text-xs font-semibold">{{ site_t('about_trust_badge') }}</span>
+                            <span class="px-3 py-1 bg-[#EEF6FB] text-[#073B63] rounded-full text-xs font-semibold">{{ site_t('nav_impact') }}</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-semibold">{{ site_t('involve_volunteer') }}</span>
                         </div>
 
                         <!-- Actions -->
                         <div class="pt-4 flex flex-wrap items-center gap-4">
                             <a href="{{ route('our-work.show', $area->slug) }}" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-[#073B63] hover:bg-[#052a47] text-white font-bold text-sm shadow-sm transition">
-                                <span>सविस्तर माहिती व उपक्रम</span>
+                                <span>{{ site_t('btn_learn_more') }}</span>
                                 <i data-lucide="arrow-right" class="w-4 h-4"></i>
                             </a>
                             <a href="{{ route('donate') }}" class="inline-flex items-center space-x-1.5 px-5 py-3 rounded-xl bg-[#F58220] hover:bg-[#DC6F13] text-white font-bold text-sm transition">
                                 <i data-lucide="heart" class="w-4 h-4"></i>
-                                <span>या कार्यास देणगी द्या</span>
+                                <span>{{ site_t('btn_donate') }}</span>
                             </a>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 @php
     $phone = setting('contact_phone', '+91 98765 43210');
     $email = setting('contact_email', 'info@devanshfoundation.org');
-    $address = setting('contact_address', 'Devansh Foundation, Nashik, Maharashtra, India - 4220xx');
+    $address = setting('contact_address', site_t('top_location') . ' - 4220xx');
     $fb = setting('social_facebook', 'https://facebook.com/devanshfoundation');
     $insta = setting('social_instagram', 'https://instagram.com/devanshfoundation');
     $yt = setting('social_youtube', 'https://youtube.com/@devanshfoundation');
@@ -18,23 +18,23 @@
                     <img src="{{ asset('images/logo.png') }}" alt="Devansh Foundation" class="h-14 w-auto object-contain rounded-full bg-white p-0.5 shadow">
                     <div class="flex flex-col">
                         <span class="text-xl sm:text-2xl font-black tracking-tight text-white leading-none">
-                            DEVANSH
+                            {{ site_t('org_name_first') }}
                         </span>
                         <span class="text-xs sm:text-sm font-bold tracking-wider text-white leading-tight">
-                            FOUNDATION
+                            {{ site_t('org_name_second') }}
                         </span>
                         <span class="text-[10px] font-semibold text-gray-400 tracking-wide mt-0.5">
-                            Together for a Better Tomorrow
+                            {{ site_t('tagline') }}
                         </span>
                     </div>
                 </a>
                 <p class="text-xs text-gray-400 leading-relaxed pr-4">
-                    {{ site_t('footer_about', [], 'देवांश फाउंडेशन ही नाशिक, महाराष्ट्र येथे कार्यरत असलेली सामाजिक संस्था असून ती शिक्षण, आरोग्य आणि ग्रामीण विकासासाठी समर्पित आहे.') }}
+                    {{ site_t('footer_about') }}
                 </p>
                 <div class="pt-1">
                     <a href="{{ route('admin.login') }}" class="inline-flex items-center space-x-1.5 text-[11px] text-gray-500 hover:text-gray-300 transition">
                         <i data-lucide="lock" class="w-3 h-3"></i>
-                        <span>Admin Access</span>
+                        <span>{{ site_t('admin_access') }}</span>
                     </a>
                 </div>
             </div>
@@ -42,28 +42,28 @@
             <!-- Column 2: Quick Links (lg:col-span-3) -->
             <div class="lg:col-span-3">
                 <div class="text-sm font-bold text-white mb-4">
-                    Quick Links
+                    {{ site_t('quick_links') }}
                 </div>
                 <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-xs text-gray-300">
-                    <a href="{{ route('home') }}" class="hover:text-white transition">Home</a>
-                    <a href="{{ route('impact') }}" class="hover:text-white transition">Impact</a>
-                    <a href="{{ route('about') }}" class="hover:text-white transition">About Us</a>
-                    <a href="{{ route('stories.index') }}" class="hover:text-white transition">Stories</a>
-                    <a href="{{ route('our-work.index') }}" class="hover:text-white transition">Our Work</a>
-                    <a href="{{ route('gallery') }}" class="hover:text-white transition">Gallery</a>
-                    <a href="{{ route('projects.index') }}" class="hover:text-white transition">Projects</a>
-                    <a href="{{ route('reports') }}" class="hover:text-white transition">Reports</a>
-                    <a href="{{ route('volunteer') }}" class="hover:text-white transition">Get Involved</a>
-                    <a href="{{ route('donate') }}" class="hover:text-[#F58220] transition font-semibold">Donate</a>
-                    <a href="{{ route('contact') }}" class="hover:text-white transition">Contact</a>
-                    <a href="{{ route('about') }}#faq" class="hover:text-white transition">FAQ</a>
+                    <a href="{{ route('home') }}" class="hover:text-white transition">{{ site_t('nav_home') }}</a>
+                    <a href="{{ route('impact') }}" class="hover:text-white transition">{{ site_t('nav_impact') }}</a>
+                    <a href="{{ route('about') }}" class="hover:text-white transition">{{ site_t('nav_about') }}</a>
+                    <a href="{{ route('stories.index') }}" class="hover:text-white transition">{{ site_t('nav_stories') }}</a>
+                    <a href="{{ route('our-work.index') }}" class="hover:text-white transition">{{ site_t('nav_our_work') }}</a>
+                    <a href="{{ route('gallery') }}" class="hover:text-white transition">{{ site_t('nav_gallery') }}</a>
+                    <a href="{{ route('projects.index') }}" class="hover:text-white transition">{{ site_t('nav_projects') }}</a>
+                    <a href="{{ route('reports') }}" class="hover:text-white transition">{{ site_t('nav_reports') }}</a>
+                    <a href="{{ route('volunteer') }}" class="hover:text-white transition">{{ site_t('nav_get_involved') }}</a>
+                    <a href="{{ route('donate') }}" class="hover:text-[#F58220] transition font-semibold">{{ site_t('btn_donate') }}</a>
+                    <a href="{{ route('contact') }}" class="hover:text-white transition">{{ site_t('nav_contact') }}</a>
+                    <a href="{{ route('about') }}#faq" class="hover:text-white transition">{{ site_t('faq') }}</a>
                 </div>
             </div>
 
             <!-- Column 3: Contact Us (lg:col-span-3) -->
             <div class="lg:col-span-3 space-y-3">
                 <div class="text-sm font-bold text-white mb-4">
-                    Contact Us
+                    {{ site_t('contact_us') }}
                 </div>
                 <div class="space-y-2.5 text-xs text-gray-300">
                     <div class="flex items-start space-x-2.5">
@@ -84,7 +84,7 @@
             <!-- Column 4: Follow Us & Legal (lg:col-span-3) -->
             <div class="lg:col-span-3 space-y-4">
                 <div class="text-sm font-bold text-white mb-4">
-                    Follow Us
+                    {{ site_t('follow_us') }}
                 </div>
                 <!-- Colorful Social Icons matching reference -->
                 <div class="flex items-center space-x-2.5">
@@ -111,15 +111,15 @@
                 </div>
 
                 <div class="pt-2 flex flex-wrap gap-2 text-[11px] text-gray-400">
-                    <a href="{{ route('privacy-policy') }}" class="hover:text-white transition">Privacy Policy</a>
+                    <a href="{{ route('privacy-policy') }}" class="hover:text-white transition">{{ site_t('privacy_policy') }}</a>
                     <span>|</span>
-                    <a href="{{ route('terms') }}" class="hover:text-white transition">Terms & Conditions</a>
+                    <a href="{{ route('terms') }}" class="hover:text-white transition">{{ site_t('terms_conditions') }}</a>
                     <span>|</span>
-                    <a href="{{ route('sitemap') }}" class="hover:text-white transition">Sitemap</a>
+                    <a href="{{ route('sitemap') }}" class="hover:text-white transition">{{ site_t('sitemap') }}</a>
                 </div>
 
                 <div class="text-[11px] text-gray-400 pt-1">
-                    © {{ date('Y') }} Devansh Foundation. All Rights Reserved.
+                    {{ site_t('copyright', ['year' => date('Y')]) }}
                 </div>
             </div>
 

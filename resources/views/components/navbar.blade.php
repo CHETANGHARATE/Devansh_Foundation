@@ -13,13 +13,13 @@
                      class="h-14 sm:h-[60px] w-auto object-contain drop-shadow-sm group-hover:scale-105 transition duration-300">
                 <div class="hidden sm:flex flex-col text-left">
                     <span class="text-lg xl:text-xl font-black tracking-tight text-[#073B63] leading-none">
-                        DEVANSH
+                        {{ site_t('org_name_first') }}
                     </span>
                     <span class="text-xs xl:text-sm font-bold tracking-wider text-[#073B63] leading-tight">
-                        FOUNDATION
+                        {{ site_t('org_name_second') }}
                     </span>
                     <span class="text-[9px] xl:text-[10px] font-semibold text-[#138A4B] leading-none mt-0.5">
-                        Together for a Better Tomorrow
+                        {{ site_t('tagline') }}
                     </span>
                 </div>
             </a>
@@ -29,7 +29,7 @@
                 
                 <a href="{{ route('home') }}" 
                    class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('home') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                    Home
+                    {{ site_t('nav_home') }}
                     @if(request()->routeIs('home'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
                     @endif
@@ -37,7 +37,7 @@
 
                 <a href="{{ route('about') }}" 
                    class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('about') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                    About Us
+                    {{ site_t('nav_about') }}
                     @if(request()->routeIs('about'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
                     @endif
@@ -45,7 +45,7 @@
 
                 <a href="{{ route('our-work.index') }}" 
                    class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('our-work.*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                    Our Work
+                    {{ site_t('nav_our_work') }}
                     @if(request()->routeIs('our-work.*'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
                     @endif
@@ -53,7 +53,7 @@
 
                 <a href="{{ route('projects.index') }}" 
                    class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('projects.*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                    Projects
+                    {{ site_t('nav_projects') }}
                     @if(request()->routeIs('projects.*'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
                     @endif
@@ -61,7 +61,7 @@
 
                 <a href="{{ route('impact') }}" 
                    class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('impact') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                    Impact
+                    {{ site_t('nav_impact') }}
                     @if(request()->routeIs('impact'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
                     @endif
@@ -69,7 +69,7 @@
 
                 <a href="{{ route('stories.index') }}" 
                    class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('stories.*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                    Stories
+                    {{ site_t('nav_stories') }}
                     @if(request()->routeIs('stories.*'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
                     @endif
@@ -77,7 +77,7 @@
 
                 <a href="{{ route('gallery') }}" 
                    class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('gallery') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                    Gallery
+                    {{ site_t('nav_gallery') }}
                     @if(request()->routeIs('gallery'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
                     @endif
@@ -85,7 +85,7 @@
 
                 <a href="{{ route('reports') }}" 
                    class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('reports') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                    Reports
+                    {{ site_t('nav_reports') }}
                     @if(request()->routeIs('reports'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
                     @endif
@@ -96,7 +96,7 @@
                     <button @click="open = !open" 
                             @mouseover="open = true" 
                             class="whitespace-nowrap inline-flex items-center space-x-1 px-2 xl:px-2.5 py-1.5 transition {{ request()->routeIs('get-involved*') || request()->routeIs('volunteer') || request()->routeIs('partner') || request()->routeIs('csr') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                        <span>Get Involved</span>
+                        <span>{{ site_t('nav_get_involved') }}</span>
                         <svg class="w-3 h-3 transition-transform duration-200" :class="{ 'rotate-180': open }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <polyline points="6 9 12 15 18 9"></polyline>
                         </svg>
@@ -111,26 +111,26 @@
                          class="absolute left-0 mt-1 w-52 bg-white rounded-lg shadow-xl border border-gray-100 py-1.5 z-50"
                          style="display: none;">
                         <a href="{{ route('volunteer') }}" class="flex items-center px-4 py-2 text-xs font-medium text-gray-700 hover:bg-[#EAF7EF] hover:text-[#138A4B]">
-                            Volunteer
+                            {{ site_t('involve_volunteer') }}
                         </a>
                         <a href="{{ route('partner') }}" class="flex items-center px-4 py-2 text-xs font-medium text-gray-700 hover:bg-[#EAF7EF] hover:text-[#138A4B]">
-                            Partner With Us
+                            {{ site_t('involve_partner') }}
                         </a>
                         <a href="{{ route('csr') }}" class="flex items-center px-4 py-2 text-xs font-medium text-gray-700 hover:bg-[#EAF7EF] hover:text-[#138A4B]">
-                            CSR Partnership
+                            {{ site_t('involve_csr') }}
                         </a>
                         <a href="{{ route('sponsor') }}" class="flex items-center px-4 py-2 text-xs font-medium text-gray-700 hover:bg-[#EAF7EF] hover:text-[#138A4B]">
-                            Sponsor a Project
+                            {{ site_t('involve_sponsor') }}
                         </a>
                         <a href="{{ route('fundraise') }}" class="flex items-center px-4 py-2 text-xs font-medium text-gray-700 hover:bg-[#EAF7EF] hover:text-[#138A4B]">
-                            Fundraise With Us
+                            {{ site_t('involve_fundraise') }}
                         </a>
                     </div>
                 </div>
 
                 <a href="{{ route('contact') }}" 
                    class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('contact') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                    Contact
+                    {{ site_t('nav_contact') }}
                     @if(request()->routeIs('contact'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
                     @endif
@@ -144,7 +144,7 @@
                     <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                     </svg>
-                    <span>Donate Now →</span>
+                    <span>{{ site_t('btn_donate') }} →</span>
                 </a>
 
                 <!-- Mobile menu button -->
@@ -177,7 +177,7 @@
         
         <!-- Mobile Language Switcher -->
         <div class="flex items-center justify-between py-2 border-b border-gray-100 text-xs font-semibold">
-            <span class="text-gray-500">Language / भाषा:</span>
+            <span class="text-gray-500">{{ site_t('language_switcher_label') }}</span>
             <div class="flex items-center space-x-2">
                 <a href="{{ route('locale.switch', 'mr') }}" class="px-2.5 py-1 rounded {{ $currLocale === 'mr' ? 'bg-[#F58220] text-white font-bold' : 'bg-gray-100 text-gray-700' }}">मराठी</a>
                 <a href="{{ route('locale.switch', 'hi') }}" class="px-2.5 py-1 rounded {{ $currLocale === 'hi' ? 'bg-[#F58220] text-white font-bold' : 'bg-gray-100 text-gray-700' }}">हिंदी</a>
@@ -185,20 +185,20 @@
             </div>
         </div>
 
-        <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('home') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">Home</a>
-        <a href="{{ route('about') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('about') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">About Us</a>
-        <a href="{{ route('our-work.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('our-work.*') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">Our Work</a>
-        <a href="{{ route('projects.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('projects.*') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">Projects</a>
-        <a href="{{ route('impact') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('impact') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">Impact</a>
-        <a href="{{ route('stories.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('stories.*') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">Stories</a>
-        <a href="{{ route('gallery') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('gallery') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">Gallery</a>
-        <a href="{{ route('reports') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('reports') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">Reports</a>
-        <a href="{{ route('volunteer') }}" class="block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gray-50">Get Involved</a>
-        <a href="{{ route('contact') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('contact') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">Contact</a>
+        <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('home') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_home') }}</a>
+        <a href="{{ route('about') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('about') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_about') }}</a>
+        <a href="{{ route('our-work.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('our-work.*') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_our_work') }}</a>
+        <a href="{{ route('projects.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('projects.*') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_projects') }}</a>
+        <a href="{{ route('impact') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('impact') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_impact') }}</a>
+        <a href="{{ route('stories.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('stories.*') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_stories') }}</a>
+        <a href="{{ route('gallery') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('gallery') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_gallery') }}</a>
+        <a href="{{ route('reports') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('reports') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_reports') }}</a>
+        <a href="{{ route('volunteer') }}" class="block px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gray-50">{{ site_t('nav_get_involved') }}</a>
+        <a href="{{ route('contact') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('contact') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_contact') }}</a>
 
         <div class="pt-3 border-t border-gray-100 flex flex-col space-y-2">
             <a href="{{ route('donate') }}" class="w-full text-center py-2.5 rounded-md font-bold text-white bg-[#F58220] shadow">
-                Donate Now →
+                {{ site_t('btn_donate') }} →
             </a>
         </div>
     </div>

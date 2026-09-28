@@ -25,7 +25,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
             <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-emerald-300 border border-white/20 mb-4">
-                <a href="{{ route('projects.index') }}" class="hover:underline">प्रकल्प</a>
+                <a href="{{ route('projects.index') }}" class="hover:underline">{{ site_t('nav_projects') }}</a>
                 <span>/</span>
                 <span>{{ $areaTitle }}</span>
             </div>
@@ -40,7 +40,7 @@
                 @if($project->beneficiaries_count)
                     <span class="flex items-center space-x-1.5 text-emerald-300 font-semibold"><i data-lucide="users" class="w-4 h-4"></i><span>{{ $project->beneficiaries_count }}</span></span>
                 @endif
-                <span class="flex items-center space-x-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-[#2E9E58]"></i><span class="capitalize">{{ $project->status }}</span></span>
+                <span class="flex items-center space-x-1.5"><i data-lucide="check-circle" class="w-4 h-4 text-[#2E9E58]"></i><span class="capitalize">{{ site_t("status_{$project->status}") }}</span></span>
             </div>
         </div>
     </div>
@@ -61,7 +61,7 @@
 
                 <!-- Description -->
                 <div class="space-y-4">
-                    <h2 class="text-2xl font-bold text-[#073B63]">प्रकल्पाची पार्श्वभूमी व उद्दिष्ट</h2>
+                    <h2 class="text-2xl font-bold text-[#073B63]">{{ site_t('project_details') }}</h2>
                     <div class="prose text-gray-600 text-base leading-relaxed space-y-4">
                         <p>{{ $desc }}</p>
                     </div>
@@ -74,7 +74,7 @@
                             <div class="bg-red-50/60 rounded-2xl p-6 border border-red-100 space-y-3">
                                 <div class="flex items-center space-x-2 text-red-700 font-bold text-sm uppercase">
                                     <i data-lucide="alert-circle" class="w-4 h-4"></i>
-                                    <span>समस्या / The Challenge</span>
+                                    <span>{{ site_t('project_challenge') }}</span>
                                 </div>
                                 <p class="text-sm text-gray-700 leading-relaxed">{{ $problem }}</p>
                             </div>
@@ -84,7 +84,7 @@
                             <div class="bg-[#EAF7EF] rounded-2xl p-6 border border-[#138A4B]/20 space-y-3">
                                 <div class="flex items-center space-x-2 text-[#138A4B] font-bold text-sm uppercase">
                                     <i data-lucide="lightbulb" class="w-4 h-4"></i>
-                                    <span>आमचा उपाय / The Solution</span>
+                                    <span>{{ site_t('project_solution') }}</span>
                                 </div>
                                 <p class="text-sm text-gray-700 leading-relaxed">{{ $solution }}</p>
                             </div>
@@ -97,7 +97,7 @@
                     <div class="space-y-3">
                         <h3 class="text-xl font-bold text-[#073B63] flex items-center space-x-2">
                             <i data-lucide="check-square" class="w-5 h-5 text-[#138A4B]"></i>
-                            <span>महत्त्वाचे उपक्रम व कृती / Key Activities</span>
+                            <span>{{ site_t('project_activities') }}</span>
                         </h3>
                         <div class="bg-gray-50 rounded-2xl p-6 border border-gray-100 text-sm text-gray-700 leading-relaxed">
                             {{ $activities }}
@@ -110,7 +110,7 @@
                     <div class="space-y-3">
                         <h3 class="text-xl font-bold text-[#073B63] flex items-center space-x-2">
                             <i data-lucide="trending-up" class="w-5 h-5 text-[#2E9E58]"></i>
-                            <span>साध्य झालेला प्रभाव / Achieved Social Impact</span>
+                            <span>{{ site_t('project_impact') }}</span>
                         </h3>
                         <div class="bg-[#EEF6FB] rounded-2xl p-6 border border-[#073B63]/10 text-sm text-gray-800 leading-relaxed font-medium">
                             {{ $impact }}
@@ -127,51 +127,51 @@
                 <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-md space-y-5">
                     <div class="text-center space-y-2">
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EAF7EF] text-[#138A4B]">
-                            या उपक्रमास हातभार लावा
+                            {{ site_t('hero_badge') }}
                         </span>
-                        <h3 class="text-xl font-extrabold text-[#073B63]">देणगी द्या / Support Cause</h3>
+                        <h3 class="text-xl font-extrabold text-[#073B63]">{{ site_t('donate_heading') }}</h3>
                     </div>
 
                     @if($target > 0)
                         <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100 space-y-2">
                             <div class="flex justify-between items-center text-xs font-semibold">
-                                <span class="text-gray-500">उद्दिष्ट / Target</span>
+                                <span class="text-gray-500">{{ site_t('fund_goal') }}</span>
                                 <span class="text-[#073B63] font-bold">₹{{ number_format($raised) }} / ₹{{ number_format($target) }}</span>
                             </div>
                             <div class="w-full bg-gray-200 h-2.5 rounded-full overflow-hidden">
                                 <div class="bg-gradient-to-r from-[#138A4B] to-[#2E9E58] h-full rounded-full" style="width: {{ $pct }}%"></div>
                             </div>
                             <div class="flex justify-between items-center text-[11px] text-gray-500">
-                                <span>{{ $pct }}% निधी संकलित</span>
+                                <span>{{ site_t('completed_pct', ['pct' => $pct]) }}</span>
                             </div>
                         </div>
                     @endif
 
                     <!-- UPI Quick Information -->
                     <div class="bg-[#EEF6FB] p-4 rounded-xl text-center space-y-2 text-xs">
-                        <div class="text-gray-500">थेट UPI द्वारे देणगी:</div>
+                        <div class="text-gray-500">{{ site_t('donate_upi_title') }}:</div>
                         <div class="font-mono font-bold text-[#073B63] text-sm bg-white p-1 rounded border border-[#073B63]/20">
                             {{ setting('donation_upi_id', 'devanshfoundation@upi') }}
                         </div>
                     </div>
 
                     <a href="{{ route('donate', ['project_id' => $project->id]) }}" class="w-full block text-center py-3.5 rounded-xl bg-[#F58220] hover:bg-[#DC6F13] text-white font-bold text-sm shadow-md transition">
-                        आताच देणगी द्या / Donate Now
+                        {{ site_t('btn_donate') }} →
                     </a>
 
                     <div class="text-center text-[11px] text-gray-400">
-                        80G कर सवलत पावती उपलब्ध केली जाईल.
+                        {{ site_t('donate_tax_benefit') }}
                     </div>
                 </div>
 
                 <!-- Volunteer Sidebar CTA -->
                 <div class="bg-[#073B63] text-white rounded-3xl p-6 text-center space-y-3">
-                    <h4 class="text-lg font-bold">या प्रकल्पात स्वयंसेवक बना</h4>
+                    <h4 class="text-lg font-bold">{{ site_t('involve_volunteer') }}</h4>
                     <p class="text-xs text-gray-300 leading-relaxed">
-                        नाशिक आणि परिसरातील उपक्रमांमध्ये प्रत्यक्ष सहभागी होऊन समाजाची सेवा करा.
+                        {{ site_t('involve_volunteer_desc') }}
                     </p>
                     <a href="{{ route('volunteer') }}" class="w-full block py-2.5 rounded-xl bg-[#138A4B] hover:bg-[#0e6b3a] text-white font-semibold text-xs transition">
-                        स्वयंसेवक अर्ज भरा
+                        {{ site_t('btn_volunteer') }} →
                     </a>
                 </div>
 

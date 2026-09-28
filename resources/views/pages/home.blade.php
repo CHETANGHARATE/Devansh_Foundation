@@ -15,22 +15,22 @@
         <div class="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-transparent sm:via-white/75 lg:via-white/60 w-full sm:w-[80%] lg:w-[58%]"></div>
     </div>
 
-    <!-- Handwritten Chalk Message: "Small Steps Big Changes" positioned above the child -->
+    <!-- Handwritten Chalk Message positioned above the child -->
     <div class="absolute top-8 right-[24%] sm:right-[26%] lg:right-[25%] z-10 pointer-events-none transform -rotate-3 text-center hidden md:block">
-        <div class="handwritten-font text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight tracking-wide">
-            Small<br>Steps<br>Big<br>Changes
+        <div class="handwritten-font text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight tracking-wide whitespace-pre-line">
+            {{ site_t('hero_handwritten') }}
         </div>
     </div>
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 relative z-10 w-full">
         <div class="max-w-xl lg:max-w-lg space-y-5 text-left">
             
-            <!-- Main Marathi Headline -->
+            <!-- Main Headline -->
             <h1 class="text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.12]">
-                <span class="block text-[#073B63]">समाजाच्या</span>
-                <span class="block text-[#138A4B]">उज्ज्वल भविष्यासाठी</span>
+                <span class="block text-[#073B63]">{{ site_t('hero_title_line1') }}</span>
+                <span class="block text-[#138A4B]">{{ site_t('hero_title_line2') }}</span>
                 <span class="inline-flex items-center text-[#F58220]">
-                    एकत्र !
+                    {{ site_t('hero_title_line3') }}
                     <!-- Small Green Leaf SVG Icon -->
                     <svg class="w-8 h-8 ml-2 inline-block text-[#138A4B] fill-current" viewBox="0 0 24 24">
                         <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
@@ -40,26 +40,26 @@
 
             <!-- Supporting Description -->
             <div class="space-y-1 text-sm sm:text-base text-gray-800 leading-relaxed font-semibold">
-                <p>शिक्षण, आरोग्य, महिला सक्षमीकरण,</p>
-                <p>बालकल्याण, पर्यावरण आणि ग्रामीण विकासासाठी</p>
-                <p>आमचे सतत प्रयत्न...</p>
+                <p>{{ site_t('hero_subtitle_1') }}</p>
+                <p>{{ site_t('hero_subtitle_2') }}</p>
+                <p>{{ site_t('hero_subtitle_3') }}</p>
             </div>
 
             <!-- Tagline -->
             <div class="text-xs sm:text-sm font-bold text-[#073B63] tracking-wide pt-1">
-                Together for a Better Tomorrow
+                {{ site_t('tagline') }}
             </div>
 
             <!-- CTA Buttons -->
             <div class="pt-2 flex flex-wrap items-center gap-3.5">
                 <a href="{{ route('donate') }}" class="inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-md text-white font-bold bg-[#F58220] hover:bg-[#DC6F13] shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 text-sm">
                     <i data-lucide="heart" class="w-4 h-4 fill-white"></i>
-                    <span>Donate Now →</span>
+                    <span>{{ site_t('btn_donate') }} →</span>
                 </a>
 
                 <a href="{{ route('volunteer') }}" class="inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-md text-white font-bold bg-[#0D5C3A] hover:bg-[#09452B] shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 text-sm">
                     <i data-lucide="users" class="w-4 h-4"></i>
-                    <span>Become a Volunteer →</span>
+                    <span>{{ site_t('btn_volunteer') }} →</span>
                 </a>
             </div>
 
@@ -69,7 +69,7 @@
 
 
 <!-- ==========================================
-     2. OUR FOCUS AREAS (आमची कार्यक्षेत्रे)
+     2. OUR FOCUS AREAS
 =========================================== -->
 <section class="py-10 bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -79,90 +79,119 @@
             <div class="flex items-center space-x-2.5">
                 <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
                 <h2 class="text-xl sm:text-2xl font-black text-[#073B63] tracking-tight">
-                    आमची कार्यक्षेत्रे
+                    {{ site_t('focus_heading') }}
                 </h2>
-                <span class="text-xs sm:text-sm font-semibold text-gray-500 ml-1">
-                    Our Focus Areas
-                </span>
             </div>
             <div class="text-xs sm:text-sm font-bold text-[#073B63] tracking-wide">
-                एक चांगला समाज, एक सुंदर भविष्य
+                {{ site_t('focus_tagline') }}
             </div>
         </div>
 
         <!-- 8 Focus Areas in a row on desktop -->
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
             
-            <!-- 1. शिक्षण (Education) - Pink -->
+            <!-- 1. Education - Pink -->
             <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
                 <div class="w-12 h-12 rounded-full bg-[#E91E63] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="book-open" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">शिक्षण</span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">Education</span>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_education') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_education_sub') }}
+                </span>
             </a>
 
-            <!-- 2. आरोग्य (Healthcare) - Teal -->
+            <!-- 2. Healthcare - Teal -->
             <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
                 <div class="w-12 h-12 rounded-full bg-[#00BFA5] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="activity" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">आरोग्य</span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">Healthcare</span>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_healthcare') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_healthcare_sub') }}
+                </span>
             </a>
 
-            <!-- 3. महिला सक्षमीकरण (Women Empowerment) - Orange -->
+            <!-- 3. Women Empowerment - Orange -->
             <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
                 <div class="w-12 h-12 rounded-full bg-[#FF6D00] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="users" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">महिला सक्षमीकरण</span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">Women Empowerment</span>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_women') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_women_sub') }}
+                </span>
             </a>
 
-            <!-- 4. बालकल्याण (Child Welfare) - Purple -->
+            <!-- 4. Child Welfare - Purple -->
             <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
                 <div class="w-12 h-12 rounded-full bg-[#8E24AA] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="smile" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">बालकल्याण</span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">Child Welfare</span>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_child') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_child_sub') }}
+                </span>
             </a>
 
-            <!-- 5. पर्यावरण (Environment) - Fresh Green -->
+            <!-- 5. Environment - Fresh Green -->
             <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
                 <div class="w-12 h-12 rounded-full bg-[#43A047] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="sprout" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">पर्यावरण</span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">Environment</span>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_environment') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_environment_sub') }}
+                </span>
             </a>
 
-            <!-- 6. कौशल्य विकास (Skill Development) - Sky Blue -->
+            <!-- 6. Skill Development - Sky Blue -->
             <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
                 <div class="w-12 h-12 rounded-full bg-[#1E88E5] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="settings" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">कौशल्य विकास</span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">Skill Development</span>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_skills') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_skills_sub') }}
+                </span>
             </a>
 
-            <!-- 7. ग्रामीण विकास (Rural Development) - Gold/Amber -->
+            <!-- 7. Rural Development - Gold/Amber -->
             <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
                 <div class="w-12 h-12 rounded-full bg-[#FFA000] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="home" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">ग्रामीण विकास</span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">Rural Development</span>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_rural') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_rural_sub') }}
+                </span>
             </a>
 
-            <!-- 8. सामाजिक कल्याण (Social Welfare) - Rose/Red -->
+            <!-- 8. Social Welfare - Rose/Red -->
             <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
                 <div class="w-12 h-12 rounded-full bg-[#D81B60] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="heart-handshake" class="w-6 h-6"></i>
                 </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">सामाजिक कल्याण</span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">Social Welfare</span>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_social') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_social_sub') }}
+                </span>
             </a>
 
         </div>
@@ -171,7 +200,7 @@
 
 
 <!-- ==========================================
-     3. OUR IMPACT (आमच्या कार्याचा परिणाम)
+     3. OUR IMPACT
 =========================================== -->
 <section class="relative py-12 bg-cover bg-center overflow-hidden" style="background-image: url('{{ asset('images/impact/landscape-bg.jpg') }}');">
     <!-- Gradient overlay for high legibility -->
@@ -184,10 +213,10 @@
             <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
             <div>
                 <h2 class="text-xl sm:text-2xl font-black text-[#073B63] tracking-tight leading-tight">
-                    आमच्या कार्याचा परिणाम
+                    {{ site_t('impact_heading') }}
                 </h2>
                 <div class="text-xs sm:text-sm font-bold text-gray-600">
-                    Our Impact
+                    {{ site_t('impact_subheading') }}
                 </div>
             </div>
         </div>
@@ -204,8 +233,8 @@
                     </div>
                     <div>
                         <div class="text-xl sm:text-2xl font-black text-[#073B63] leading-none">10,000+</div>
-                        <div class="text-xs font-bold text-gray-800 mt-1 leading-none">लाभार्थी</div>
-                        <div class="text-[10px] text-gray-500 font-semibold mt-0.5">Beneficiaries)</div>
+                        <div class="text-xs font-bold text-gray-800 mt-1 leading-none">{{ site_t('stat_beneficiaries') }}</div>
+                        <div class="text-[10px] text-gray-500 font-semibold mt-0.5">{{ site_t('stat_beneficiaries_sub') }}</div>
                     </div>
                 </div>
 
@@ -216,8 +245,8 @@
                     </div>
                     <div>
                         <div class="text-xl sm:text-2xl font-black text-[#073B63] leading-none">100+</div>
-                        <div class="text-xs font-bold text-gray-800 mt-1 leading-none">पूर्ण प्रकल्प</div>
-                        <div class="text-[10px] text-gray-500 font-semibold mt-0.5">Projects Completed</div>
+                        <div class="text-xs font-bold text-gray-800 mt-1 leading-none">{{ site_t('stat_projects') }}</div>
+                        <div class="text-[10px] text-gray-500 font-semibold mt-0.5">{{ site_t('stat_projects_sub') }}</div>
                     </div>
                 </div>
 
@@ -228,8 +257,8 @@
                     </div>
                     <div>
                         <div class="text-xl sm:text-2xl font-black text-[#073B63] leading-none">500+</div>
-                        <div class="text-xs font-bold text-gray-800 mt-1 leading-none">स्वयंसेवक</div>
-                        <div class="text-[10px] text-gray-500 font-semibold mt-0.5">(Volunteers)</div>
+                        <div class="text-xs font-bold text-gray-800 mt-1 leading-none">{{ site_t('stat_volunteers') }}</div>
+                        <div class="text-[10px] text-gray-500 font-semibold mt-0.5">{{ site_t('stat_volunteers_sub') }}</div>
                     </div>
                 </div>
 
@@ -240,8 +269,8 @@
                     </div>
                     <div>
                         <div class="text-xl sm:text-2xl font-black text-[#073B63] leading-none">50+</div>
-                        <div class="text-xs font-bold text-gray-800 mt-1 leading-none">गावं/भाग</div>
-                        <div class="text-[10px] text-gray-500 font-semibold mt-0.5">(Villages/Areas Reached)</div>
+                        <div class="text-xs font-bold text-gray-800 mt-1 leading-none">{{ site_t('stat_villages') }}</div>
+                        <div class="text-[10px] text-gray-500 font-semibold mt-0.5">{{ site_t('stat_villages_sub') }}</div>
                     </div>
                 </div>
 
@@ -249,8 +278,8 @@
 
             <!-- Right Silhouette & Slogan (lg:col-span-3) -->
             <div class="lg:col-span-3 flex flex-col items-center lg:items-end justify-center text-center lg:text-right">
-                <div class="handwritten-font text-2xl sm:text-3xl font-extrabold text-[#073B63] drop-shadow-sm">
-                    People<br>Brighter<br>Tomorrow
+                <div class="handwritten-font text-2xl sm:text-3xl font-extrabold text-[#073B63] drop-shadow-sm whitespace-pre-line">
+                    {{ site_t('impact_handwritten') }}
                 </div>
                 <!-- Silhouetted figures icon/artwork -->
                 <div class="flex items-center space-x-1.5 mt-2 opacity-80 text-[#073B63]">
@@ -266,7 +295,7 @@
 
 
 <!-- ==========================================
-     4. FEATURED PROJECTS (मुख्य प्रकल्प)
+     4. FEATURED PROJECTS
 =========================================== -->
 <section class="py-10 bg-white border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -276,119 +305,141 @@
             <div class="flex items-center space-x-2.5">
                 <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
                 <h2 class="text-xl sm:text-2xl font-black text-[#073B63] tracking-tight">
-                    मुख्य प्रकल्प
+                    {{ site_t('projects_heading') }}
                 </h2>
-                <span class="text-xs sm:text-sm font-semibold text-gray-500 ml-1">
-                    Featured Projects
-                </span>
             </div>
             <a href="{{ route('projects.index') }}" class="text-xs sm:text-sm font-bold text-[#1E88E5] hover:text-[#073B63] border border-[#1E88E5]/30 hover:border-[#1E88E5] px-3.5 py-1.5 rounded-full transition">
-                View All Projects →
+                {{ site_t('btn_view_all_projects') }} →
             </a>
         </div>
 
         <!-- 5 Project Cards in a row on desktop matching reference -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             
-            <!-- Project 1: Educational Support -->
-            <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
-                <div class="aspect-[4/3] overflow-hidden bg-gray-100">
-                    <img src="{{ asset('images/projects/education.jpg') }}" alt="Educational Support" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="p-3.5 flex flex-col flex-grow">
-                    <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition">
-                        शैक्षणिक मदत
-                    </h3>
-                    <div class="text-[11px] text-gray-500 font-medium mb-3">
-                        Educational Support
+            @if(isset($featuredProjects) && $featuredProjects->count() > 0)
+                @foreach($featuredProjects as $project)
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                    <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                        <img src="{{ $project->featured_image ? asset($project->featured_image) : asset('images/projects/education.jpg') }}" 
+                             alt="{{ $project->title }}" 
+                             class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <div class="mt-auto">
-                        <a href="{{ route('projects.index') }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
-                            Learn More →
-                        </a>
+                    <div class="p-3.5 flex flex-col flex-grow">
+                        <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition line-clamp-1">
+                            {{ $project->title }}
+                        </h3>
+                        <div class="text-[11px] text-gray-500 font-medium mb-3 line-clamp-2">
+                            {{ $project->short_description ?: ($project->focusArea ? $project->focusArea->title : '') }}
+                        </div>
+                        <div class="mt-auto">
+                            <a href="{{ route('projects.show', $project->slug) }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
+                                {{ site_t('btn_learn_more') }} →
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+                @endforeach
+            @else
+                <!-- Project 1: Educational Support -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                    <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                        <img src="{{ asset('images/projects/education.jpg') }}" alt="Educational Support" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                    </div>
+                    <div class="p-3.5 flex flex-col flex-grow">
+                        <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition">
+                            {{ site_t('project_education_title') }}
+                        </h3>
+                        <div class="text-[11px] text-gray-500 font-medium mb-3">
+                            {{ site_t('project_education_sub') }}
+                        </div>
+                        <div class="mt-auto">
+                            <a href="{{ route('projects.index') }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
+                                {{ site_t('btn_learn_more') }} →
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-            <!-- Project 2: Health Camps -->
-            <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
-                <div class="aspect-[4/3] overflow-hidden bg-gray-100">
-                    <img src="{{ asset('images/projects/health.jpg') }}" alt="Health Camps" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="p-3.5 flex flex-col flex-grow">
-                    <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition">
-                        आरोग्य शिबिरे
-                    </h3>
-                    <div class="text-[11px] text-gray-500 font-medium mb-3">
-                        Health Camps
+                <!-- Project 2: Health Camps -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                    <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                        <img src="{{ asset('images/projects/health.jpg') }}" alt="Health Camps" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <div class="mt-auto">
-                        <a href="{{ route('projects.index') }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
-                            Learn More →
-                        </a>
+                    <div class="p-3.5 flex flex-col flex-grow">
+                        <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition">
+                            {{ site_t('project_health_title') }}
+                        </h3>
+                        <div class="text-[11px] text-gray-500 font-medium mb-3">
+                            {{ site_t('project_health_sub') }}
+                        </div>
+                        <div class="mt-auto">
+                            <a href="{{ route('projects.index') }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
+                                {{ site_t('btn_learn_more') }} →
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Project 3: Women Empowerment -->
-            <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
-                <div class="aspect-[4/3] overflow-hidden bg-gray-100">
-                    <img src="{{ asset('images/projects/women.jpg') }}" alt="Women Empowerment" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="p-3.5 flex flex-col flex-grow">
-                    <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition">
-                        महिला सक्षमीकरण
-                    </h3>
-                    <div class="text-[11px] text-gray-500 font-medium mb-3">
-                        Women Empowerment
+                <!-- Project 3: Women Empowerment -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                    <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                        <img src="{{ asset('images/projects/women.jpg') }}" alt="Women Empowerment" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <div class="mt-auto">
-                        <a href="{{ route('projects.index') }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
-                            Learn More →
-                        </a>
+                    <div class="p-3.5 flex flex-col flex-grow">
+                        <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition">
+                            {{ site_t('project_women_title') }}
+                        </h3>
+                        <div class="text-[11px] text-gray-500 font-medium mb-3">
+                            {{ site_t('project_women_sub') }}
+                        </div>
+                        <div class="mt-auto">
+                            <a href="{{ route('projects.index') }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
+                                {{ site_t('btn_learn_more') }} →
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Project 4: Tree Plantation -->
-            <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
-                <div class="aspect-[4/3] overflow-hidden bg-gray-100">
-                    <img src="{{ asset('images/projects/tree.jpg') }}" alt="Tree Plantation" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="p-3.5 flex flex-col flex-grow">
-                    <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition">
-                        वृक्षारोपण उपक्रम
-                    </h3>
-                    <div class="text-[11px] text-gray-500 font-medium mb-3">
-                        Tree Plantation
+                <!-- Project 4: Tree Plantation -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                    <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                        <img src="{{ asset('images/projects/tree.jpg') }}" alt="Tree Plantation" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <div class="mt-auto">
-                        <a href="{{ route('projects.index') }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
-                            Learn More →
-                        </a>
+                    <div class="p-3.5 flex flex-col flex-grow">
+                        <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition">
+                            {{ site_t('project_tree_title') }}
+                        </h3>
+                        <div class="text-[11px] text-gray-500 font-medium mb-3">
+                            {{ site_t('project_tree_sub') }}
+                        </div>
+                        <div class="mt-auto">
+                            <a href="{{ route('projects.index') }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
+                                {{ site_t('btn_learn_more') }} →
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Project 5: Rural Development -->
-            <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
-                <div class="aspect-[4/3] overflow-hidden bg-gray-100">
-                    <img src="{{ asset('images/projects/rural.jpg') }}" alt="Rural Development" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                </div>
-                <div class="p-3.5 flex flex-col flex-grow">
-                    <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition">
-                        ग्रामीण विकास
-                    </h3>
-                    <div class="text-[11px] text-gray-500 font-medium mb-3">
-                        Rural Development
+                <!-- Project 5: Rural Development -->
+                <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition group flex flex-col">
+                    <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                        <img src="{{ asset('images/projects/rural.jpg') }}" alt="Rural Development" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
                     </div>
-                    <div class="mt-auto">
-                        <a href="{{ route('projects.index') }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
-                            Learn More →
-                        </a>
+                    <div class="p-3.5 flex flex-col flex-grow">
+                        <h3 class="text-sm font-bold text-[#073B63] leading-snug group-hover:text-[#138A4B] transition">
+                            {{ site_t('project_rural_title') }}
+                        </h3>
+                        <div class="text-[11px] text-gray-500 font-medium mb-3">
+                            {{ site_t('project_rural_sub') }}
+                        </div>
+                        <div class="mt-auto">
+                            <a href="{{ route('projects.index') }}" class="text-xs font-bold text-[#1E88E5] hover:underline flex items-center">
+                                {{ site_t('btn_learn_more') }} →
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @endif
 
         </div>
 
@@ -409,11 +460,8 @@
                 <div class="flex items-center space-x-2.5">
                     <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
                     <h2 class="text-xl sm:text-2xl font-black text-[#073B63] tracking-tight">
-                        यशोगाथा
+                        {{ site_t('stories_heading') }}
                     </h2>
-                    <span class="text-xs sm:text-sm font-semibold text-gray-500 ml-1">
-                        Success Stories
-                    </span>
                 </div>
 
                 <!-- Featured Story Card matching reference -->
@@ -423,22 +471,22 @@
                         <i data-lucide="chevron-left" class="w-4 h-4"></i>
                     </button>
 
-                    <!-- Schoolgirl Portrait with Circular/Rounded Framing -->
+                    <!-- Portrait with Circular/Rounded Framing -->
                     <div class="w-36 h-36 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-100 shrink-0">
-                        <img src="{{ asset('images/stories/arya-patil.jpg') }}" alt="Arya Patil - Devansh Foundation" class="w-full h-full object-cover">
+                        <img src="{{ asset('images/stories/arya-patil.jpg') }}" alt="Devansh Foundation Success Story" class="w-full h-full object-cover">
                     </div>
 
                     <!-- Testimonial Content -->
                     <div class="space-y-3 text-left">
                         <div class="text-xs sm:text-sm text-gray-700 leading-relaxed italic font-medium">
-                            “देवांश फाउंडेशनच्या मदतीने मला शिक्षणाची नवी दिशा मिळाली. आज मी माझ्या स्वप्नांकडे आत्मविश्वासाने वाटचाल करत आहे.”
+                            {{ site_t('story_quote_sample') }}
                         </div>
                         <div class="text-xs sm:text-sm font-bold text-[#073B63]">
-                            — आर्या पाटील, लाभार्थी
+                            {{ site_t('story_author_sample') }}
                         </div>
                         <div class="pt-1">
                             <a href="{{ route('stories.index') }}" class="inline-flex items-center space-x-1 px-4 py-2 rounded-md bg-[#F58220] hover:bg-[#DC6F13] text-white text-xs font-bold shadow-sm transition">
-                                <span>Read Full Story →</span>
+                                <span>{{ site_t('btn_read_story') }} →</span>
                             </a>
                         </div>
                     </div>
@@ -464,15 +512,12 @@
                 <div class="flex items-center space-x-2.5">
                     <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
                     <h2 class="text-xl sm:text-2xl font-black text-[#073B63] tracking-tight">
-                        देणगी द्या
+                        {{ site_t('donate_heading') }}
                     </h2>
-                    <span class="text-xs sm:text-sm font-semibold text-gray-500 ml-1">
-                        Support Our Cause
-                    </span>
                 </div>
 
                 <div class="text-xs sm:text-sm text-gray-600 font-medium">
-                    तुमची छोटी मदत, एखाद्याच्या आयुष्यात मोठा बदल घडवू शकते.
+                    {{ site_t('donate_subheading') }}
                 </div>
 
                 <!-- Donation Card with Tabs & QR Code Area matching reference -->
@@ -483,49 +528,56 @@
                         <!-- Frequency Tabs -->
                         <div class="flex items-center space-x-2">
                             <button @click="donationType = 'one-time'" 
-                                    class="px-3.5 py-1.5 rounded-full text-xs font-bold transition"
-                                    :class="donationType === 'one-time' ? 'bg-[#F58220] text-white shadow-sm' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'">
-                                एकदाच देणगी (One-Time)
+                                     type="button"
+                                     class="px-3.5 py-1.5 rounded-full text-xs font-bold transition"
+                                     :class="donationType === 'one-time' ? 'bg-[#F58220] text-white shadow-sm' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'">
+                                {{ site_t('donate_onetime') }}
                             </button>
                             <button @click="donationType = 'monthly'" 
-                                    class="px-3.5 py-1.5 rounded-full text-xs font-bold transition"
-                                    :class="donationType === 'monthly' ? 'bg-[#F58220] text-white shadow-sm' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'">
-                                नियमित देणगी (Monthly)
+                                     type="button"
+                                     class="px-3.5 py-1.5 rounded-full text-xs font-bold transition"
+                                     :class="donationType === 'monthly' ? 'bg-[#F58220] text-white shadow-sm' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'">
+                                {{ site_t('donate_monthly') }}
                             </button>
                         </div>
 
                         <!-- Amount Selector Pills -->
                         <div class="grid grid-cols-3 sm:grid-cols-5 gap-2">
                             <button @click="amount = '500'; customAmount = ''" 
+                                    type="button"
                                     class="py-1.5 px-2 rounded-lg border text-xs font-bold transition"
                                     :class="amount === '500' ? 'border-[#F58220] bg-orange-50 text-[#F58220]' : 'border-gray-200 text-gray-700 hover:bg-gray-50'">
                                 ₹ 500
                             </button>
                             <button @click="amount = '1000'; customAmount = ''" 
+                                    type="button"
                                     class="py-1.5 px-2 rounded-lg border text-xs font-bold transition"
                                     :class="amount === '1000' ? 'border-[#F58220] bg-orange-50 text-[#F58220]' : 'border-gray-200 text-gray-700 hover:bg-gray-50'">
                                 ₹ 1,000
                             </button>
                             <button @click="amount = '2500'; customAmount = ''" 
+                                    type="button"
                                     class="py-1.5 px-2 rounded-lg border text-xs font-bold transition"
                                     :class="amount === '2500' ? 'border-[#F58220] bg-orange-50 text-[#F58220]' : 'border-gray-200 text-gray-700 hover:bg-gray-50'">
                                 ₹ 2,500
                             </button>
                             <button @click="amount = '5000'; customAmount = ''" 
+                                    type="button"
                                     class="py-1.5 px-2 rounded-lg border text-xs font-bold transition"
                                     :class="amount === '5000' ? 'border-[#F58220] bg-orange-50 text-[#F58220]' : 'border-gray-200 text-gray-700 hover:bg-gray-50'">
                                 ₹ 5,000
                             </button>
                             <button @click="amount = 'custom'" 
+                                    type="button"
                                     class="py-1.5 px-2 rounded-lg border text-xs font-bold transition"
                                     :class="amount === 'custom' ? 'border-[#F58220] bg-orange-50 text-[#F58220]' : 'border-gray-200 text-gray-700 hover:bg-gray-50'">
-                                इतर रक्कम
+                                {{ site_t('donate_custom_label') }}
                             </button>
                         </div>
 
                         <!-- Big Orange Donate Button -->
                         <a href="{{ route('donate') }}" class="w-full inline-flex items-center justify-center space-x-2 py-3 rounded-lg text-white font-bold bg-[#F58220] hover:bg-[#DC6F13] shadow-md transition text-sm">
-                            <span>Donate Now →</span>
+                            <span>{{ site_t('btn_donate') }} →</span>
                         </a>
 
                         <!-- Payment Brand Icons -->
@@ -540,7 +592,7 @@
 
                     <!-- Right: UPI QR Code & Trust Information (md:col-span-4) -->
                     <div class="md:col-span-4 flex flex-col items-center justify-center border-t md:border-t-0 md:border-l border-gray-100 pt-4 md:pt-0 md:pl-4 text-center">
-                        <div class="text-[11px] font-bold text-gray-700 mb-1.5">UPI QR Code</div>
+                        <div class="text-[11px] font-bold text-gray-700 mb-1.5">{{ site_t('donate_upi_qr') }}</div>
                         
                         <!-- Real QR Code SVG Graphic -->
                         <div class="w-24 h-24 p-1 bg-white border border-gray-200 rounded-lg shadow-sm">
@@ -557,15 +609,15 @@
                         <div class="space-y-1 mt-2 text-[10px] text-gray-600 font-medium text-left w-full pl-2">
                             <div class="flex items-center space-x-1 text-[#138A4B]">
                                 <i data-lucide="shield-check" class="w-3.5 h-3.5 shrink-0"></i>
-                                <span>80G / 12A पात्र संस्था</span>
+                                <span>{{ site_t('donate_badge_80g') }}</span>
                             </div>
                             <div class="flex items-center space-x-1 text-[#138A4B]">
                                 <i data-lucide="lock" class="w-3.5 h-3.5 shrink-0"></i>
-                                <span>Secure Donation</span>
+                                <span>{{ site_t('donate_badge_secure') }}</span>
                             </div>
                             <div class="flex items-center space-x-1 text-[#138A4B]">
                                 <i data-lucide="file-text" class="w-3.5 h-3.5 shrink-0"></i>
-                                <span>Donation Receipt</span>
+                                <span>{{ site_t('donate_badge_receipt') }}</span>
                             </div>
                         </div>
                     </div>
@@ -592,14 +644,11 @@
                     <div class="flex items-center space-x-2.5">
                         <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
                         <h2 class="text-xl sm:text-2xl font-black text-[#073B63] tracking-tight">
-                            फोटो गॅलरी
+                            {{ site_t('gallery_heading') }}
                         </h2>
-                        <span class="text-xs sm:text-sm font-semibold text-gray-500 ml-1">
-                            Photo Gallery
-                        </span>
                     </div>
                     <a href="{{ route('gallery') }}" class="text-xs font-bold text-[#1E88E5] hover:text-[#073B63] border border-[#1E88E5]/30 hover:border-[#1E88E5] px-3 py-1 rounded-full transition">
-                        View Gallery →
+                        {{ site_t('btn_view_gallery') }} →
                     </a>
                 </div>
 
@@ -642,70 +691,85 @@
                 </div>
             </div>
 
-            <!-- RIGHT COLUMN: News & Updates (नवीन अपडेट्स) (lg:col-span-6) -->
+            <!-- RIGHT COLUMN: News & Updates (lg:col-span-6) -->
             <div class="lg:col-span-6 space-y-4">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center space-x-2.5">
                         <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
                         <h2 class="text-xl sm:text-2xl font-black text-[#073B63] tracking-tight">
-                            नवीन अपडेट्स
+                            {{ site_t('news_heading') }}
                         </h2>
-                        <span class="text-xs sm:text-sm font-semibold text-gray-500 ml-1">
-                            News & Updates
-                        </span>
                     </div>
                     <a href="{{ route('about') }}" class="text-xs font-bold text-[#1E88E5] hover:text-[#073B63] border border-[#1E88E5]/30 hover:border-[#1E88E5] px-3 py-1 rounded-full transition">
-                        View All News →
+                        {{ site_t('btn_view_all_news') }} →
                     </a>
                 </div>
 
                 <!-- 3 News Cards matching reference -->
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                     
-                    <!-- News 1 -->
-                    <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition flex flex-col">
-                        <div class="aspect-[4/3] overflow-hidden bg-gray-100">
-                            <img src="{{ asset('images/news/news-1.jpg') }}" alt="News 1" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-2.5 flex flex-col flex-grow">
-                            <div class="text-[10px] font-semibold text-gray-500 mb-1">
-                                15 Sep 2026
+                    @if(isset($latestNews) && $latestNews->count() > 0)
+                        @foreach($latestNews as $news)
+                        <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition flex flex-col">
+                            <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                                <img src="{{ $news->featured_image ? asset($news->featured_image) : asset('images/news/news-1.jpg') }}" 
+                                     alt="{{ $news->title }}" 
+                                     class="w-full h-full object-cover">
                             </div>
-                            <h3 class="text-xs font-bold text-[#073B63] leading-snug hover:text-[#138A4B] transition line-clamp-2">
-                                वृक्षारोपण अभियान यशस्वीरित्या संपन्न
-                            </h3>
+                            <div class="p-2.5 flex flex-col flex-grow">
+                                <div class="text-[10px] font-semibold text-gray-500 mb-1">
+                                    {{ $news->published_at ? $news->published_at->format('d M Y') : date('d M Y') }}
+                                </div>
+                                <h3 class="text-xs font-bold text-[#073B63] leading-snug hover:text-[#138A4B] transition line-clamp-2">
+                                    {{ $news->title }}
+                                </h3>
+                            </div>
                         </div>
-                    </div>
+                        @endforeach
+                    @else
+                        <!-- Fallback 3 cards -->
+                        <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition flex flex-col">
+                            <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                                <img src="{{ asset('images/news/news-1.jpg') }}" alt="News 1" class="w-full h-full object-cover">
+                            </div>
+                            <div class="p-2.5 flex flex-col flex-grow">
+                                <div class="text-[10px] font-semibold text-gray-500 mb-1">
+                                    15 Sep 2026
+                                </div>
+                                <h3 class="text-xs font-bold text-[#073B63] leading-snug hover:text-[#138A4B] transition line-clamp-2">
+                                    {{ site_t('project_tree_title') }}
+                                </h3>
+                            </div>
+                        </div>
 
-                    <!-- News 2 -->
-                    <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition flex flex-col">
-                        <div class="aspect-[4/3] overflow-hidden bg-gray-100">
-                            <img src="{{ asset('images/news/news-2.jpg') }}" alt="News 2" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-2.5 flex flex-col flex-grow">
-                            <div class="text-[10px] font-semibold text-gray-500 mb-1">
-                                10 Sep 2026
+                        <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition flex flex-col">
+                            <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                                <img src="{{ asset('images/news/news-2.jpg') }}" alt="News 2" class="w-full h-full object-cover">
                             </div>
-                            <h3 class="text-xs font-bold text-[#073B63] leading-snug hover:text-[#138A4B] transition line-clamp-2">
-                                ग्रामीण भागात मोफत आरोग्य तपासणी शिबिर
-                            </h3>
+                            <div class="p-2.5 flex flex-col flex-grow">
+                                <div class="text-[10px] font-semibold text-gray-500 mb-1">
+                                    10 Sep 2026
+                                </div>
+                                <h3 class="text-xs font-bold text-[#073B63] leading-snug hover:text-[#138A4B] transition line-clamp-2">
+                                    {{ site_t('project_health_title') }}
+                                </h3>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- News 3 -->
-                    <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition flex flex-col">
-                        <div class="aspect-[4/3] overflow-hidden bg-gray-100">
-                            <img src="{{ asset('images/news/news-3.jpg') }}" alt="News 3" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-2.5 flex flex-col flex-grow">
-                            <div class="text-[10px] font-semibold text-gray-500 mb-1">
-                                05 Sep 2026
+                        <div class="bg-white rounded-xl overflow-hidden border border-gray-200/80 shadow-sm hover:shadow-md transition flex flex-col">
+                            <div class="aspect-[4/3] overflow-hidden bg-gray-100">
+                                <img src="{{ asset('images/news/news-3.jpg') }}" alt="News 3" class="w-full h-full object-cover">
                             </div>
-                            <h3 class="text-xs font-bold text-[#073B63] leading-snug hover:text-[#138A4B] transition line-clamp-2">
-                                गरजू विद्यार्थ्यांना शैक्षणिक साहित्य वितरण
-                            </h3>
+                            <div class="p-2.5 flex flex-col flex-grow">
+                                <div class="text-[10px] font-semibold text-gray-500 mb-1">
+                                    05 Sep 2026
+                                </div>
+                                <h3 class="text-xs font-bold text-[#073B63] leading-snug hover:text-[#138A4B] transition line-clamp-2">
+                                    {{ site_t('project_education_title') }}
+                                </h3>
+                            </div>
                         </div>
-                    </div>
+                    @endif
 
                 </div>
             </div>
@@ -725,49 +789,49 @@
             <!-- Left 5 Action Options (lg:col-span-8) -->
             <div class="lg:col-span-8 py-6 grid grid-cols-2 sm:grid-cols-5 gap-4">
                 
-                <!-- 1. स्वयंसेवक बना / Volunteer -->
+                <!-- 1. Volunteer -->
                 <a href="{{ route('volunteer') }}" class="flex flex-col items-center text-center p-2 rounded-lg hover:bg-white/10 transition group">
                     <div class="w-10 h-10 rounded-full bg-white/10 group-hover:bg-[#138A4B] flex items-center justify-center mb-2 transition">
                         <i data-lucide="heart-handshake" class="w-5 h-5 text-white"></i>
                     </div>
-                    <div class="text-xs font-bold leading-tight">स्वयंसेवक बना</div>
-                    <div class="text-[10px] text-gray-300 mt-0.5">Volunteer</div>
+                    <div class="text-xs font-bold leading-tight">{{ site_t('involve_volunteer') }}</div>
+                    <div class="text-[10px] text-gray-300 mt-0.5">{{ site_t('focus_tagline') }}</div>
                 </a>
 
-                <!-- 2. आमच्यासोबत भागीदारी / Partner With Us -->
+                <!-- 2. Partner With Us -->
                 <a href="{{ route('partner') }}" class="flex flex-col items-center text-center p-2 rounded-lg hover:bg-white/10 transition group">
                     <div class="w-10 h-10 rounded-full bg-white/10 group-hover:bg-[#138A4B] flex items-center justify-center mb-2 transition">
                         <i data-lucide="users" class="w-5 h-5 text-white"></i>
                     </div>
-                    <div class="text-xs font-bold leading-tight">आमच्यासोबत भागीदारी</div>
-                    <div class="text-[10px] text-gray-300 mt-0.5">Partner With Us</div>
+                    <div class="text-xs font-bold leading-tight">{{ site_t('involve_partner') }}</div>
+                    <div class="text-[10px] text-gray-300 mt-0.5">{{ site_t('org_name_first') }}</div>
                 </a>
 
-                <!-- 3. CSR भागीदारी / CSR Partnership -->
+                <!-- 3. CSR Partnership -->
                 <a href="{{ route('csr') }}" class="flex flex-col items-center text-center p-2 rounded-lg hover:bg-white/10 transition group">
                     <div class="w-10 h-10 rounded-full bg-white/10 group-hover:bg-[#138A4B] flex items-center justify-center mb-2 transition">
                         <i data-lucide="briefcase" class="w-5 h-5 text-white"></i>
                     </div>
-                    <div class="text-xs font-bold leading-tight">CSR भागीदारी</div>
-                    <div class="text-[10px] text-gray-300 mt-0.5">CSR Partnership</div>
+                    <div class="text-xs font-bold leading-tight">{{ site_t('involve_csr') }}</div>
+                    <div class="text-[10px] text-gray-300 mt-0.5">{{ site_t('donate_badge_80g') }}</div>
                 </a>
 
-                <!-- 4. प्रकल्पाला सहाय्य करा / Sponsor a Project -->
+                <!-- 4. Sponsor a Project -->
                 <a href="{{ route('sponsor') }}" class="flex flex-col items-center text-center p-2 rounded-lg hover:bg-white/10 transition group">
                     <div class="w-10 h-10 rounded-full bg-white/10 group-hover:bg-[#138A4B] flex items-center justify-center mb-2 transition">
                         <i data-lucide="gift" class="w-5 h-5 text-white"></i>
                     </div>
-                    <div class="text-xs font-bold leading-tight">प्रकल्पाला सहाय्य करा</div>
-                    <div class="text-[10px] text-gray-300 mt-0.5">Sponsor a Project</div>
+                    <div class="text-xs font-bold leading-tight">{{ site_t('involve_sponsor') }}</div>
+                    <div class="text-[10px] text-gray-300 mt-0.5">{{ site_t('hero_badge') }}</div>
                 </a>
 
-                <!-- 5. आमच्यासोबत अभियान / Fundraise With Us -->
+                <!-- 5. Fundraise With Us -->
                 <a href="{{ route('fundraise') }}" class="flex flex-col items-center text-center p-2 rounded-lg hover:bg-white/10 transition group">
                     <div class="w-10 h-10 rounded-full bg-white/10 group-hover:bg-[#138A4B] flex items-center justify-center mb-2 transition">
                         <i data-lucide="megaphone" class="w-5 h-5 text-white"></i>
                     </div>
-                    <div class="text-xs font-bold leading-tight">आमच्यासोबत अभियान</div>
-                    <div class="text-[10px] text-gray-300 mt-0.5">Fundraise With Us</div>
+                    <div class="text-xs font-bold leading-tight">{{ site_t('involve_fundraise') }}</div>
+                    <div class="text-[10px] text-gray-300 mt-0.5">{{ site_t('tagline') }}</div>
                 </a>
 
             </div>
@@ -780,12 +844,12 @@
                         <i data-lucide="users" class="w-6 h-6"></i>
                     </div>
                     <div class="handwritten-font text-white text-2xl sm:text-3xl font-extrabold leading-none drop-shadow">
-                        Change Begins With You!
+                        {{ site_t('final_cta_title') }}
                     </div>
                 </div>
 
                 <a href="{{ route('volunteer') }}" class="inline-flex items-center justify-center px-6 py-2.5 rounded-full bg-white text-[#F58220] hover:bg-gray-100 font-extrabold text-xs shadow-md transition transform hover:scale-105">
-                    Join Us Today →
+                    {{ site_t('btn_join_us') }} →
                 </a>
             </div>
 

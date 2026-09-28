@@ -7,13 +7,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
             <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-emerald-300 border border-white/20 mb-4">
-                <span>उपक्रम व प्रकल्प / Our Projects</span>
+                <span>{{ site_t('nav_projects') }}</span>
             </div>
             <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
-                {{ site_t('projects_heading', [], 'मुख्य प्रकल्प') }}
+                {{ site_t('projects_heading') }}
             </h1>
             <p class="text-lg text-gray-200 leading-relaxed">
-                {{ site_t('projects_subheading', [], 'समाजात सकारात्मक बदल घडवणारे आमचे चालू आणि पूर्ण झालेले उपक्रम') }}
+                {{ site_t('projects_subheading') }}
             </p>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <!-- Focus Area Filter -->
             <div>
                 <select name="focus_area" onchange="this.form.submit()" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-700 focus:border-[#138A4B]">
-                    <option value="">सर्व कार्यक्षेत्रे / All Categories</option>
+                    <option value="">{{ site_t('all_categories') }}</option>
                     @foreach($focusAreas as $fa)
                         <option value="{{ $fa->slug }}" {{ request('focus_area') === $fa->slug ? 'selected' : '' }}>
                             {{ $fa->translation()?->title }}
@@ -39,22 +39,22 @@
             <!-- Status Filter -->
             <div>
                 <select name="status" onchange="this.form.submit()" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-700 focus:border-[#138A4B]">
-                    <option value="">सर्व स्थिती / All Status</option>
-                    <option value="ongoing" {{ request('status') === 'ongoing' ? 'selected' : '' }}>चालू / Ongoing</option>
-                    <option value="completed" {{ request('status') === 'completed' ? 'selected' : '' }}>पूर्ण झालेले / Completed</option>
-                    <option value="upcoming" {{ request('status') === 'upcoming' ? 'selected' : '' }}>नियोजित / Upcoming</option>
+                    <option value="">{{ site_t('all_status') }}</option>
+                    <option value="ongoing" {{ request('status') === 'ongoing' ? 'selected' : '' }}>{{ site_t('status_ongoing') }}</option>
+                    <option value="completed" {{ request('status') === 'completed' ? 'selected' : '' }}>{{ site_t('status_completed') }}</option>
+                    <option value="upcoming" {{ request('status') === 'upcoming' ? 'selected' : '' }}>{{ site_t('status_upcoming') }}</option>
                 </select>
             </div>
 
             <!-- Search Term -->
             <div>
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="प्रकल्प शोधा / Search..." class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-700 focus:border-[#138A4B]">
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="{{ site_t('search_placeholder') }}" class="w-full px-4 py-2.5 rounded-xl border border-gray-200 text-sm text-gray-700 focus:border-[#138A4B]">
             </div>
 
             <!-- Submit / Reset buttons -->
             <div class="flex items-center space-x-2">
                 <button type="submit" class="w-full py-2.5 rounded-xl bg-[#073B63] hover:bg-[#052a47] text-white font-bold text-sm transition">
-                    फिल्टर लागू करा
+                    {{ site_t('apply_filter') }}
                 </button>
                 @if(request()->hasAny(['focus_area', 'status', 'search']))
                     <a href="{{ route('projects.index') }}" class="px-3 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-600 text-sm font-semibold transition" title="Reset Filters">
@@ -86,10 +86,9 @@
                 <div class="w-16 h-16 rounded-full bg-gray-100 text-gray-400 flex items-center justify-center mx-auto">
                     <i data-lucide="search-x" class="w-8 h-8"></i>
                 </div>
-                <h3 class="text-xl font-bold text-[#073B63]">कोणतेही प्रकल्प सापडले नाहीत</h3>
-                <p class="text-sm text-gray-500">कृपया इतर निकष निवडून किंवा शोध संज्ञा बदलून पुन्हा प्रयत्न करा.</p>
+                <h3 class="text-xl font-bold text-[#073B63]">{{ site_t('no_records_found') }}</h3>
                 <a href="{{ route('projects.index') }}" class="inline-flex items-center px-5 py-2.5 rounded-xl bg-[#138A4B] text-white font-semibold text-sm">
-                    सर्व प्रकल्प रीसेट करा
+                    {{ site_t('reset_filter') }}
                 </a>
             </div>
         @endif

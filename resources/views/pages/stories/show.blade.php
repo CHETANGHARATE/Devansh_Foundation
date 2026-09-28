@@ -18,7 +18,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
             <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/10 text-emerald-300 border border-white/20 mb-4">
-                <a href="{{ route('stories.index') }}" class="hover:underline">यशोगाथा</a>
+                <a href="{{ route('stories.index') }}" class="hover:underline">{{ site_t('nav_stories') }}</a>
                 <span>/</span>
                 <span>{{ $story->person_name }}</span>
             </div>
@@ -53,7 +53,7 @@
 
                 <!-- Full Story Narrative -->
                 <div class="space-y-4">
-                    <h2 class="text-2xl font-bold text-[#073B63]">सविस्तर अनुभव / Full Journey</h2>
+                    <h2 class="text-2xl font-bold text-[#073B63]">{{ site_t('btn_read_story') }}</h2>
                     <div class="prose text-gray-700 text-base leading-relaxed space-y-4">
                         <p>{{ $narrative }}</p>
                     </div>
@@ -65,7 +65,7 @@
                         <div class="bg-red-50 p-5 rounded-2xl border border-red-100">
                             <div class="text-xs font-bold uppercase text-red-700 mb-1 flex items-center">
                                 <i data-lucide="alert-circle" class="w-3.5 h-3.5 mr-1"></i>
-                                <span>समोरील अडचण</span>
+                                <span>{{ site_t('project_challenge') }}</span>
                             </div>
                             <p class="text-xs text-gray-700 leading-relaxed">{{ $challenge }}</p>
                         </div>
@@ -75,7 +75,7 @@
                         <div class="bg-[#EEF6FB] p-5 rounded-2xl border border-[#073B63]/15">
                             <div class="text-xs font-bold uppercase text-[#073B63] mb-1 flex items-center">
                                 <i data-lucide="heart" class="w-3.5 h-3.5 mr-1 text-[#138A4B]"></i>
-                                <span>फाउंडेशनचे सहाय्य</span>
+                                <span>{{ site_t('project_solution') }}</span>
                             </div>
                             <p class="text-xs text-gray-700 leading-relaxed">{{ $support }}</p>
                         </div>
@@ -85,7 +85,7 @@
                         <div class="bg-[#EAF7EF] p-5 rounded-2xl border border-[#138A4B]/20">
                             <div class="text-xs font-bold uppercase text-[#138A4B] mb-1 flex items-center">
                                 <i data-lucide="check-circle-2" class="w-3.5 h-3.5 mr-1"></i>
-                                <span>सकारात्मक निष्पत्ती</span>
+                                <span>{{ site_t('project_impact') }}</span>
                             </div>
                             <p class="text-xs text-gray-700 leading-relaxed">{{ $outcome }}</p>
                         </div>
@@ -98,21 +98,21 @@
             <div class="lg:col-span-4 space-y-6">
                 @if($story->project)
                     <div class="bg-white rounded-3xl p-6 border border-gray-200 shadow-sm space-y-3">
-                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">संबंधित उपक्रम</span>
+                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">{{ site_t('nav_projects') }}</span>
                         <h4 class="text-lg font-bold text-[#073B63]">{{ $story->project->translation()?->title }}</h4>
                         <p class="text-xs text-gray-600 line-clamp-3">{{ $story->project->translation()?->short_description }}</p>
                         <a href="{{ route('projects.show', $story->project->slug) }}" class="inline-flex items-center text-xs font-bold text-[#138A4B] hover:underline">
-                            <span>प्रकल्प सविस्तर पहा</span>
+                            <span>{{ site_t('btn_learn_more') }}</span>
                             <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
                         </a>
                     </div>
                 @endif
 
                 <div class="bg-[#EAF7EF] rounded-3xl p-6 border border-[#138A4B]/20 shadow-sm text-center space-y-3">
-                    <h4 class="text-lg font-bold text-[#073B63]">अशा अनेक स्वप्नांना बळ द्या</h4>
-                    <p class="text-xs text-gray-600">तुमच्या एका देणगीमुळे आणखी एका गरजू बालकाचे किंवा भगिनीचे आयुष्य बदलू शकते.</p>
+                    <h4 class="text-lg font-bold text-[#073B63]">{{ site_t('donate_heading') }}</h4>
+                    <p class="text-xs text-gray-600">{{ site_t('donate_subheading') }}</p>
                     <a href="{{ route('donate') }}" class="w-full block py-3 rounded-xl bg-[#F58220] hover:bg-[#DC6F13] text-white font-bold text-sm shadow-md transition">
-                        आताच देणगी द्या
+                        {{ site_t('btn_donate') }} →
                     </a>
                 </div>
             </div>

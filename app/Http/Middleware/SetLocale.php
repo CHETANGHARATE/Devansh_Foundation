@@ -14,19 +14,29 @@ class SetLocale
 
     public function handle(Request $request, Closure $next): Response
     {
-        // Check query parameter
-        if ($request->has('lang') && in_array($request->query('lang'), $this->supportedLocales)) {
-            session(['locale' => $request->query('lang')]);
+        // 1. Determine requested locale from query, session, cookie, or default
+        $requestedLocale = $request->query('lang') 
+            ?? $request->query('locale') 
+            ?? session('locale') 
+            ?? $request->cookie('locale') 
+            ?? config('app.locale', 'mr');
+
+        if (!in_array($requestedLocale, $this->supportedLocales)) {
+            $requestedLocale = 'mr';
         }
 
-        $locale = session('locale', config('app.locale', 'mr'));
-
-        if (!in_array($locale, $this->supportedLocales)) {
-            $locale = 'mr';
+        // 2. Synchronize session
+        if (session('locale') !== $requestedLocale) {
+            session(['locale' => $requestedLocale]);
         }
 
-        App::setLocale($locale);
-        View::share('currentLocale', $locale);
+        // 3. Queue 1-year cookie if not set or different
+        if ($request->cookie('locale') !== $requestedLocale) {
+            \Illuminate\Support\Facades\Cookie::queue(\Illuminate\Support\Facades\Cookie::make('locale', $requestedLocale, 60 * 24 * 365, '/', null, false, false));
+        }
+
+        App::setLocale($requestedLocale);
+        View::share('currentLocale', $requestedLocale);
         View::share('supportedLocales', [
             'mr' => 'मराठी',
             'hi' => 'हिंदी',

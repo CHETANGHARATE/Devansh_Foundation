@@ -1,106 +1,86 @@
 @php
     $phone = setting('contact_phone', '+91 98765 43210');
     $email = setting('contact_email', 'info@devanshfoundation.org');
-    $address = setting('contact_address', 'Devansh Foundation, Nashik, Maharashtra, India');
+    $address = setting('contact_address', 'Devansh Foundation, Nashik, Maharashtra, India - 4220xx');
     $fb = setting('social_facebook', 'https://facebook.com/devanshfoundation');
     $insta = setting('social_instagram', 'https://instagram.com/devanshfoundation');
     $yt = setting('social_youtube', 'https://youtube.com/@devanshfoundation');
     $li = setting('social_linkedin', 'https://linkedin.com/company/devanshfoundation');
 @endphp
 
-<footer class="bg-[#073B63] text-gray-300 pt-16 pb-8 border-t border-[#0d548b]">
+<footer class="bg-[#061A2B] text-gray-300 pt-14 pb-8 border-t border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-white/10">
-            <!-- Brand Column -->
-            <div class="lg:col-span-2 space-y-4">
-                <div class="flex items-center space-x-3">
-                    <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[#138A4B] to-[#2E9E58] flex items-center justify-center text-white shadow-md">
-                        <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M12 21a9 9 0 0 0 9-9c0-4.97-4.03-9-9-9s-9 4.03-9 9a9 9 0 0 0 9 9z"/>
-                            <path d="M12 12c-2 0-3-1-3-3s1-3 3-3 3 1 3 3-1 3-3 3z"/>
-                            <path d="M12 12v6"/>
-                            <path d="M9 15l3 3 3-3"/>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 pb-10 border-b border-white/10">
+            
+            <!-- Column 1: Logo & Tagline (lg:col-span-3) -->
+            <div class="lg:col-span-3 space-y-4">
+                <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
+                    <!-- White Emblem SVG -->
+                    <div class="w-12 h-12 flex-shrink-0 flex items-center justify-center">
+                        <svg viewBox="0 0 100 100" class="w-12 h-12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 68 C 14 55, 22 42, 34 38 C 38 37, 43 40, 41 45 C 38 52, 36 60, 46 68 C 50 71, 50 76, 44 78 C 32 82, 22 78, 18 68 Z" fill="#FFFFFF"/>
+                            <path d="M82 68 C 86 55, 78 42, 66 38 C 62 37, 57 40, 59 45 C 62 52, 64 60, 54 68 C 50 71, 50 76, 56 78 C 68 82, 78 78, 82 68 Z" fill="#FFFFFF"/>
+                            <circle cx="50" cy="38" r="6" fill="#FFFFFF"/>
+                            <path d="M42 56 C 42 47, 58 47, 58 56 Z" fill="#FFFFFF"/>
+                            <circle cx="36" cy="32" r="5" fill="#FFFFFF"/>
+                            <path d="M30 48 C 30 41, 42 41, 42 48 Z" fill="#FFFFFF"/>
+                            <circle cx="64" cy="32" r="5" fill="#FFFFFF"/>
+                            <path d="M58 48 C 58 41, 70 41, 70 48 Z" fill="#FFFFFF"/>
+                            <circle cx="50" cy="20" r="3.5" fill="#FFFFFF"/>
+                            <circle cx="38" cy="18" r="2.5" fill="#FFFFFF"/>
+                            <circle cx="62" cy="18" r="2.5" fill="#FFFFFF"/>
                         </svg>
                     </div>
-                    <div>
-                        <div class="text-xl font-extrabold text-white tracking-tight">
-                            {{ site_t('org_name', [], 'देवांश फाउंडेशन') }}
-                        </div>
-                        <div class="text-xs font-semibold text-[#2E9E58] uppercase tracking-wider">
-                            {{ site_t('tagline', [], 'Together for a Better Tomorrow') }}
-                        </div>
+                    <div class="flex flex-col">
+                        <span class="text-xl sm:text-2xl font-black tracking-tight text-white leading-none">
+                            DEVANSH
+                        </span>
+                        <span class="text-xs sm:text-sm font-bold tracking-wider text-white leading-tight">
+                            FOUNDATION
+                        </span>
+                        <span class="text-[10px] font-semibold text-gray-400 tracking-wide mt-0.5">
+                            Together for a Better Tomorrow
+                        </span>
                     </div>
-                </div>
-
-                <p class="text-sm text-gray-300 leading-relaxed max-w-sm">
+                </a>
+                <p class="text-xs text-gray-400 leading-relaxed pr-4">
                     {{ site_t('footer_about', [], 'देवांश फाउंडेशन ही नाशिक, महाराष्ट्र येथे कार्यरत असलेली सामाजिक संस्था असून ती शिक्षण, आरोग्य आणि ग्रामीण विकासासाठी समर्पित आहे.') }}
                 </p>
-
-                <div class="pt-2">
-                    <div class="text-xs font-semibold uppercase tracking-wider text-gray-400 mb-3">फॉलो करा / Follow Us</div>
-                    <div class="flex space-x-3">
-                        @if($fb)
-                        <a href="{{ $fb }}" target="_blank" rel="noopener" aria-label="Facebook" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#138A4B] text-white flex items-center justify-center transition">
-                            <i data-lucide="facebook" class="w-4 h-4"></i>
-                        </a>
-                        @endif
-                        @if($insta)
-                        <a href="{{ $insta }}" target="_blank" rel="noopener" aria-label="Instagram" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#138A4B] text-white flex items-center justify-center transition">
-                            <i data-lucide="instagram" class="w-4 h-4"></i>
-                        </a>
-                        @endif
-                        @if($yt)
-                        <a href="{{ $yt }}" target="_blank" rel="noopener" aria-label="YouTube" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#F58220] text-white flex items-center justify-center transition">
-                            <i data-lucide="youtube" class="w-4 h-4"></i>
-                        </a>
-                        @endif
-                        @if($li)
-                        <a href="{{ $li }}" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-9 h-9 rounded-lg bg-white/10 hover:bg-[#138A4B] text-white flex items-center justify-center transition">
-                            <i data-lucide="linkedin" class="w-4 h-4"></i>
-                        </a>
-                        @endif
-                    </div>
+                <div class="pt-1">
+                    <a href="{{ route('admin.login') }}" class="inline-flex items-center space-x-1.5 text-[11px] text-gray-500 hover:text-gray-300 transition">
+                        <i data-lucide="lock" class="w-3 h-3"></i>
+                        <span>Admin Access</span>
+                    </a>
                 </div>
             </div>
 
-            <!-- Quick Links -->
-            <div class="space-y-4">
-                <div class="text-sm font-bold uppercase tracking-wider text-white border-l-2 border-[#F58220] pl-2">
-                    {{ site_t('quick_links', [], 'महत्त्वाच्या लिंक्स') }}
+            <!-- Column 2: Quick Links (lg:col-span-3) -->
+            <div class="lg:col-span-3">
+                <div class="text-sm font-bold text-white mb-4">
+                    Quick Links
                 </div>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="{{ route('home') }}" class="hover:text-white hover:underline transition">{{ site_t('nav_home', [], 'मुख्यपृष्ठ') }}</a></li>
-                    <li><a href="{{ route('about') }}" class="hover:text-white hover:underline transition">{{ site_t('nav_about', [], 'आमच्याबद्दल') }}</a></li>
-                    <li><a href="{{ route('our-work.index') }}" class="hover:text-white hover:underline transition">{{ site_t('nav_our_work', [], 'कार्यक्षेत्रे') }}</a></li>
-                    <li><a href="{{ route('projects.index') }}" class="hover:text-white hover:underline transition">{{ site_t('nav_projects', [], 'प्रकल्प') }}</a></li>
-                    <li><a href="{{ route('impact') }}" class="hover:text-white hover:underline transition">{{ site_t('nav_impact', [], 'प्रभाव') }}</a></li>
-                    <li><a href="{{ route('stories.index') }}" class="hover:text-white hover:underline transition">{{ site_t('nav_stories', [], 'यशोगाथा') }}</a></li>
-                    <li><a href="{{ route('gallery') }}" class="hover:text-white hover:underline transition">{{ site_t('nav_gallery', [], 'गॅलरी') }}</a></li>
-                    <li><a href="{{ route('reports') }}" class="hover:text-white hover:underline transition">{{ site_t('nav_reports', [], 'अहवाल') }}</a></li>
-                </ul>
+                <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-xs text-gray-300">
+                    <a href="{{ route('home') }}" class="hover:text-white transition">Home</a>
+                    <a href="{{ route('impact') }}" class="hover:text-white transition">Impact</a>
+                    <a href="{{ route('about') }}" class="hover:text-white transition">About Us</a>
+                    <a href="{{ route('stories.index') }}" class="hover:text-white transition">Stories</a>
+                    <a href="{{ route('our-work.index') }}" class="hover:text-white transition">Our Work</a>
+                    <a href="{{ route('gallery') }}" class="hover:text-white transition">Gallery</a>
+                    <a href="{{ route('projects.index') }}" class="hover:text-white transition">Projects</a>
+                    <a href="{{ route('reports') }}" class="hover:text-white transition">Reports</a>
+                    <a href="{{ route('volunteer') }}" class="hover:text-white transition">Get Involved</a>
+                    <a href="{{ route('donate') }}" class="hover:text-[#F58220] transition font-semibold">Donate</a>
+                    <a href="{{ route('contact') }}" class="hover:text-white transition">Contact</a>
+                    <a href="{{ route('about') }}#faq" class="hover:text-white transition">FAQ</a>
+                </div>
             </div>
 
-            <!-- Get Involved -->
-            <div class="space-y-4">
-                <div class="text-sm font-bold uppercase tracking-wider text-white border-l-2 border-[#138A4B] pl-2">
-                    {{ site_t('nav_get_involved', [], 'सहभागी व्हा') }}
+            <!-- Column 3: Contact Us (lg:col-span-3) -->
+            <div class="lg:col-span-3 space-y-3">
+                <div class="text-sm font-bold text-white mb-4">
+                    Contact Us
                 </div>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="{{ route('donate') }}" class="hover:text-[#F58220] transition font-semibold text-white flex items-center"><i data-lucide="heart" class="w-3.5 h-3.5 mr-1.5 text-[#F58220]"></i> {{ site_t('btn_donate', [], 'देणगी द्या') }}</a></li>
-                    <li><a href="{{ route('volunteer') }}" class="hover:text-white hover:underline transition">{{ site_t('involve_volunteer', [], 'स्वयंसेवक बना') }}</a></li>
-                    <li><a href="{{ route('partner') }}" class="hover:text-white hover:underline transition">{{ site_t('involve_partner', [], 'भागीदारी करा') }}</a></li>
-                    <li><a href="{{ route('csr') }}" class="hover:text-white hover:underline transition">{{ site_t('involve_csr', [], 'CSR भागीदारी') }}</a></li>
-                    <li><a href="{{ route('sponsor') }}" class="hover:text-white hover:underline transition">{{ site_t('involve_sponsor', [], 'प्रकल्पास प्रायोजकत्व') }}</a></li>
-                    <li><a href="{{ route('fundraise') }}" class="hover:text-white hover:underline transition">{{ site_t('involve_fundraise', [], 'निधी संकलन मोहीम') }}</a></li>
-                </ul>
-            </div>
-
-            <!-- Contact Information -->
-            <div class="space-y-4">
-                <div class="text-sm font-bold uppercase tracking-wider text-white border-l-2 border-[#2E9E58] pl-2">
-                    {{ site_t('nav_contact', [], 'संपर्क') }}
-                </div>
-                <div class="space-y-3 text-sm">
+                <div class="space-y-2.5 text-xs text-gray-300">
                     <div class="flex items-start space-x-2.5">
                         <i data-lucide="map-pin" class="w-4 h-4 text-[#F58220] shrink-0 mt-0.5"></i>
                         <span>{{ $address }}</span>
@@ -114,35 +94,50 @@
                         <a href="mailto:{{ $email }}" class="hover:text-white transition">{{ $email }}</a>
                     </div>
                 </div>
+            </div>
 
-                <div class="pt-2">
-                    <a href="{{ route('admin.login') }}" class="inline-flex items-center space-x-1 text-xs text-gray-400 hover:text-white">
-                        <i data-lucide="lock" class="w-3 h-3"></i>
-                        <span>Admin Login</span>
+            <!-- Column 4: Follow Us & Legal (lg:col-span-3) -->
+            <div class="lg:col-span-3 space-y-4">
+                <div class="text-sm font-bold text-white mb-4">
+                    Follow Us
+                </div>
+                <!-- Colorful Social Icons matching reference -->
+                <div class="flex items-center space-x-2.5">
+                    @if($fb)
+                    <a href="{{ $fb }}" target="_blank" rel="noopener" aria-label="Facebook" class="w-7 h-7 rounded bg-[#1877F2] hover:opacity-90 flex items-center justify-center text-white transition">
+                        <i data-lucide="facebook" class="w-4 h-4"></i>
                     </a>
+                    @endif
+                    @if($insta)
+                    <a href="{{ $insta }}" target="_blank" rel="noopener" aria-label="Instagram" class="w-7 h-7 rounded bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:opacity-90 flex items-center justify-center text-white transition">
+                        <i data-lucide="instagram" class="w-4 h-4"></i>
+                    </a>
+                    @endif
+                    @if($yt)
+                    <a href="{{ $yt }}" target="_blank" rel="noopener" aria-label="YouTube" class="w-7 h-7 rounded bg-[#FF0000] hover:opacity-90 flex items-center justify-center text-white transition">
+                        <i data-lucide="youtube" class="w-4 h-4"></i>
+                    </a>
+                    @endif
+                    @if($li)
+                    <a href="{{ $li }}" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-7 h-7 rounded bg-[#0A66C2] hover:opacity-90 flex items-center justify-center text-white transition">
+                        <i data-lucide="linkedin" class="w-4 h-4"></i>
+                    </a>
+                    @endif
+                </div>
+
+                <div class="pt-2 flex flex-wrap gap-2 text-[11px] text-gray-400">
+                    <a href="{{ route('privacy-policy') }}" class="hover:text-white transition">Privacy Policy</a>
+                    <span>|</span>
+                    <a href="{{ route('terms') }}" class="hover:text-white transition">Terms & Conditions</a>
+                    <span>|</span>
+                    <a href="{{ route('sitemap') }}" class="hover:text-white transition">Sitemap</a>
+                </div>
+
+                <div class="text-[11px] text-gray-400 pt-1">
+                    © {{ date('Y') }} Devansh Foundation. All Rights Reserved.
                 </div>
             </div>
-        </div>
 
-        <!-- Bottom bar with Legal policies & copyright -->
-        <div class="pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-gray-400 gap-4">
-            <div class="flex flex-wrap gap-4">
-                <a href="{{ route('privacy-policy') }}" class="hover:text-white transition">{{ site_t('privacy_policy', [], 'गोपनीयता धोरण') }}</a>
-                <span>•</span>
-                <a href="{{ route('terms') }}" class="hover:text-white transition">{{ site_t('terms_conditions', [], 'अटी व शर्ती') }}</a>
-                <span>•</span>
-                <a href="{{ route('donation-policy') }}" class="hover:text-white transition">{{ site_t('donation_policy', [], 'देणगी धोरण') }}</a>
-                <span>•</span>
-                <a href="{{ route('refund-policy') }}" class="hover:text-white transition">{{ site_t('refund_policy', [], 'परतावा धोरण') }}</a>
-                <span>•</span>
-                <a href="{{ route('disclaimer') }}" class="hover:text-white transition">{{ site_t('disclaimer', [], 'अस्वीकरण') }}</a>
-                <span>•</span>
-                <a href="{{ url('/sitemap.xml') }}" class="hover:text-white transition">Sitemap</a>
-            </div>
-
-            <div>
-                {{ site_t('copyright', ['year' => date('Y')], '© ' . date('Y') . ' Devansh Foundation. All Rights Reserved.') }}
-            </div>
         </div>
     </div>
 </footer>

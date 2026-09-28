@@ -9,15 +9,15 @@
     $currLocale = current_locale();
 @endphp
 
-<div class="bg-[#04243D] text-white text-xs py-2 px-4 border-b border-white/10 hidden md:block">
+<div class="bg-[#061A2B] text-white text-xs py-2 px-4 border-b border-white/10 hidden md:block">
     <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
         <!-- Contact & Location Info -->
-        <div class="flex items-center space-x-6">
-            <a href="tel:{{ preg_replace('/\s+/', '', $phone) }}" class="flex items-center space-x-1.5 text-gray-300 hover:text-white transition">
+        <div class="flex items-center space-x-6 text-gray-200">
+            <a href="tel:{{ preg_replace('/\s+/', '', $phone) }}" class="flex items-center space-x-1.5 hover:text-white transition">
                 <i data-lucide="phone" class="w-3.5 h-3.5 text-[#2E9E58]"></i>
                 <span>{{ $phone }}</span>
             </a>
-            <a href="mailto:{{ $email }}" class="flex items-center space-x-1.5 text-gray-300 hover:text-white transition">
+            <a href="mailto:{{ $email }}" class="flex items-center space-x-1.5 hover:text-white transition">
                 <i data-lucide="mail" class="w-3.5 h-3.5 text-[#2E9E58]"></i>
                 <span>{{ $email }}</span>
             </a>
@@ -28,28 +28,51 @@
         </div>
 
         <!-- Language Switcher & Social Links -->
-        <div class="flex items-center space-x-5">
+        <div class="flex items-center space-x-4">
             <!-- Language switcher -->
-            <div class="flex items-center space-x-1.5 bg-white/10 rounded-full px-3 py-1 font-medium">
-                <a href="{{ route('locale.switch', 'mr') }}" class="px-1.5 py-0.5 rounded transition {{ $currLocale === 'mr' ? 'bg-[#138A4B] text-white font-bold' : 'text-gray-300 hover:text-white' }}">मराठी</a>
-                <span class="text-white/30">|</span>
-                <a href="{{ route('locale.switch', 'hi') }}" class="px-1.5 py-0.5 rounded transition {{ $currLocale === 'hi' ? 'bg-[#138A4B] text-white font-bold' : 'text-gray-300 hover:text-white' }}">हिंदी</a>
-                <span class="text-white/30">|</span>
-                <a href="{{ route('locale.switch', 'en') }}" class="px-1.5 py-0.5 rounded transition {{ $currLocale === 'en' ? 'bg-[#138A4B] text-white font-bold' : 'text-gray-300 hover:text-white' }}">English</a>
+            <div class="flex items-center space-x-1.5 text-xs">
+                <a href="{{ route('locale.switch', 'mr') }}" 
+                   class="px-2.5 py-0.5 rounded transition font-medium {{ $currLocale === 'mr' ? 'bg-[#F58220] text-white font-bold shadow-sm' : 'border border-white/20 text-gray-200 hover:text-white hover:border-white/40' }}">
+                   मराठी
+                </a>
+                <a href="{{ route('locale.switch', 'hi') }}" 
+                   class="px-2.5 py-0.5 rounded transition font-medium {{ $currLocale === 'hi' ? 'bg-[#F58220] text-white font-bold shadow-sm' : 'border border-white/20 text-gray-200 hover:text-white hover:border-white/40' }}">
+                   हिंदी
+                </a>
+                <a href="{{ route('locale.switch', 'en') }}" 
+                   class="px-2.5 py-0.5 rounded transition font-medium {{ $currLocale === 'en' ? 'bg-[#F58220] text-white font-bold shadow-sm' : 'border border-white/20 text-gray-200 hover:text-white hover:border-white/40' }}">
+                   English
+                </a>
             </div>
 
-            <!-- Social links -->
-            <div class="flex items-center space-x-3 text-gray-300">
-                @if($fb)<a href="{{ $fb }}" target="_blank" rel="noopener" aria-label="Facebook" class="hover:text-[#2E9E58] transition"><i data-lucide="facebook" class="w-3.5 h-3.5"></i></a>@endif
-                @if($insta)<a href="{{ $insta }}" target="_blank" rel="noopener" aria-label="Instagram" class="hover:text-[#2E9E58] transition"><i data-lucide="instagram" class="w-3.5 h-3.5"></i></a>@endif
-                @if($yt)<a href="{{ $yt }}" target="_blank" rel="noopener" aria-label="YouTube" class="hover:text-[#F58220] transition"><i data-lucide="youtube" class="w-3.5 h-3.5"></i></a>@endif
-                @if($li)<a href="{{ $li }}" target="_blank" rel="noopener" aria-label="LinkedIn" class="hover:text-[#2E9E58] transition"><i data-lucide="linkedin" class="w-3.5 h-3.5"></i></a>@endif
-            </div>
+            <!-- Social links with solid colored backgrounds matching reference -->
+            <div class="flex items-center space-x-2 text-white">
+                @if($fb)
+                <a href="{{ $fb }}" target="_blank" rel="noopener" aria-label="Facebook" class="w-6 h-6 rounded bg-[#1877F2] hover:opacity-90 flex items-center justify-center transition">
+                    <i data-lucide="facebook" class="w-3.5 h-3.5"></i>
+                </a>
+                @endif
+                @if($insta)
+                <a href="{{ $insta }}" target="_blank" rel="noopener" aria-label="Instagram" class="w-6 h-6 rounded bg-gradient-to-tr from-[#F58529] via-[#DD2A7B] to-[#8134AF] hover:opacity-90 flex items-center justify-center transition">
+                    <i data-lucide="instagram" class="w-3.5 h-3.5"></i>
+                </a>
+                @endif
+                @if($yt)
+                <a href="{{ $yt }}" target="_blank" rel="noopener" aria-label="YouTube" class="w-6 h-6 rounded bg-[#FF0000] hover:opacity-90 flex items-center justify-center transition">
+                    <i data-lucide="youtube" class="w-3.5 h-3.5"></i>
+                </a>
+                @endif
+                @if($li)
+                <a href="{{ $li }}" target="_blank" rel="noopener" aria-label="LinkedIn" class="w-6 h-6 rounded bg-[#0A66C2] hover:opacity-90 flex items-center justify-center transition">
+                    <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
+                </a>
+                @endif
 
-            <!-- Quick search icon -->
-            <a href="{{ route('search') }}" aria-label="Search" class="text-gray-300 hover:text-white transition">
-                <i data-lucide="search" class="w-3.5 h-3.5"></i>
-            </a>
+                <!-- Search Icon -->
+                <a href="{{ route('search') }}" aria-label="Search" class="w-6 h-6 flex items-center justify-center text-gray-300 hover:text-white transition">
+                    <i data-lucide="search" class="w-3.5 h-3.5"></i>
+                </a>
+            </div>
         </div>
     </div>
 </div>

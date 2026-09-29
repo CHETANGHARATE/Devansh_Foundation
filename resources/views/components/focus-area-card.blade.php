@@ -4,355 +4,250 @@
     $locale = app()->getLocale();
     $trans = $area->translation($locale) ?? $area->translation('mr') ?? $area->translation('en');
 
-    // Canonical English subtitles matching reference image
+    // Canonical English subtitles
     $canonicalSubtitles = [
-        'education' => 'Education',
-        'healthcare' => 'Healthcare',
+        'education'         => 'Education',
+        'healthcare'        => 'Healthcare',
         'women-empowerment' => 'Women Empowerment',
-        'child-welfare' => 'Child Welfare',
-        'environment' => 'Environment',
-        'social-welfare' => 'Social Welfare',
-        'divyang-senior' => 'Divyang & Senior Welfare',
-        'youth-employment' => 'Youth & Employment',
+        'child-welfare'     => 'Child Welfare',
+        'environment'       => 'Environment',
+        'social-welfare'    => 'Social Welfare',
+        'divyang-senior'    => 'Divyang & Senior Welfare',
+        'youth-employment'  => 'Youth & Employment',
         'rural-development' => 'Rural Development',
     ];
 
-    // Canonical Marathi titles matching prompt verbatim
+    // Canonical Marathi titles
     $canonicalMarathiTitles = [
-        'education' => 'शिक्षण क्षेत्रातील उपक्रम',
-        'healthcare' => 'आरोग्य क्षेत्रातील उपक्रम',
+        'education'         => 'शिक्षण क्षेत्रातील उपक्रम',
+        'healthcare'        => 'आरोग्य क्षेत्रातील उपक्रम',
         'women-empowerment' => 'महिला सक्षमीकरण',
-        'child-welfare' => 'बालकल्याण',
-        'environment' => 'पर्यावरण',
-        'social-welfare' => 'सामाजिक सेवा',
-        'divyang-senior' => 'दिव्यांग व वृद्ध कल्याण',
-        'youth-employment' => 'युवक व रोजगार',
+        'child-welfare'     => 'बालकल्याण',
+        'environment'       => 'पर्यावरण',
+        'social-welfare'    => 'सामाजिक सेवा',
+        'divyang-senior'    => 'दिव्यांग व वृद्ध कल्याण',
+        'youth-employment'  => 'युवक व रोजगार',
         'rural-development' => 'ग्रामीण विकास',
     ];
 
     // Canonical Hindi titles
     $canonicalHindiTitles = [
-        'education' => 'शिक्षा क्षेत्र के उपक्रम',
-        'healthcare' => 'स्वास्थ्य क्षेत्र के उपक्रम',
+        'education'         => 'शिक्षा क्षेत्र के उपक्रम',
+        'healthcare'        => 'स्वास्थ्य क्षेत्र के उपक्रम',
         'women-empowerment' => 'महिला सशक्तिकरण',
-        'child-welfare' => 'बाल कल्याण',
-        'environment' => 'पर्यावरण संरक्षण',
-        'social-welfare' => 'सामाजिक सेवा',
-        'divyang-senior' => 'दिव्यांग एवं वरिष्ठ कल्याण',
-        'youth-employment' => 'युवा एवं रोजगार',
+        'child-welfare'     => 'बाल कल्याण',
+        'environment'       => 'पर्यावरण संरक्षण',
+        'social-welfare'    => 'सामाजिक सेवा',
+        'divyang-senior'    => 'दिव्यांग एवं वरिष्ठ कल्याण',
+        'youth-employment'  => 'युवा एवं रोजगार',
         'rural-development' => 'ग्रामीण विकास',
     ];
 
-    if ($locale === 'mr') {
-        $title = $trans?->title ?: ($canonicalMarathiTitles[$area->slug] ?? $area->name);
+    if ($locale === 'hi') {
+        $title    = $canonicalHindiTitles[$area->slug] ?? ($trans?->title ?: $area->name);
         $subtitle = $canonicalSubtitles[$area->slug] ?? '';
-    } elseif ($locale === 'hi') {
-        $title = $trans?->title ?: ($canonicalHindiTitles[$area->slug] ?? $area->name);
-        $subtitle = $canonicalSubtitles[$area->slug] ?? '';
+    } elseif ($locale === 'en') {
+        $title    = $canonicalSubtitles[$area->slug] ?? ($trans?->title ?: $area->name);
+        $subtitle = '';
     } else {
-        // English
-        $title = $canonicalSubtitles[$area->slug] ?? ($trans?->title ?: $area->name);
-        $subtitle = ''; // Do not repeat title in English
+        // Marathi (default)
+        $title    = $canonicalMarathiTitles[$area->slug] ?? ($trans?->title ?: $area->name);
+        $subtitle = $canonicalSubtitles[$area->slug] ?? '';
     }
 
     $color = $area->color ?: 'teal';
-    
-    // Exact theme styling mapped from reference image with soft pastel backgrounds
-    $themeMap = [
-        'pink' => [
-            'card_bg' => 'bg-[#FFF5F7]',
-            'card_border' => 'border-[#FFE4E6]',
-            'circle' => 'bg-[#E11D48] text-white',
-            'num_bg' => 'bg-[#FFE4E6] text-[#BE123C]',
-            'cta_bg' => 'bg-[#FFE4E6] text-[#BE123C] hover:bg-[#FECDD3]',
-            'border_hover' => 'hover:border-[#E11D48]/40',
-        ],
-        'teal' => [
-            'card_bg' => 'bg-[#F0FDF4]',
-            'card_border' => 'border-[#DCFCE7]',
-            'circle' => 'bg-[#10B981] text-white',
-            'num_bg' => 'bg-[#DCFCE7] text-[#15803D]',
-            'cta_bg' => 'bg-[#DCFCE7] text-[#15803D] hover:bg-[#BBF7D0]',
-            'border_hover' => 'hover:border-[#10B981]/40',
-        ],
-        'green' => [
-            'card_bg' => 'bg-[#F0FDF4]',
-            'card_border' => 'border-[#DCFCE7]',
-            'circle' => 'bg-[#10B981] text-white',
-            'num_bg' => 'bg-[#DCFCE7] text-[#15803D]',
-            'cta_bg' => 'bg-[#DCFCE7] text-[#15803D] hover:bg-[#BBF7D0]',
-            'border_hover' => 'hover:border-[#10B981]/40',
-        ],
-        'emerald' => [
-            'card_bg' => 'bg-[#F0FDF4]',
-            'card_border' => 'border-[#DCFCE7]',
-            'circle' => 'bg-[#16A34A] text-white',
-            'num_bg' => 'bg-[#DCFCE7] text-[#15803D]',
-            'cta_bg' => 'bg-[#DCFCE7] text-[#15803D] hover:bg-[#BBF7D0]',
-            'border_hover' => 'hover:border-[#16A34A]/40',
-        ],
-        'orange' => [
-            'card_bg' => 'bg-[#FFF7ED]',
-            'card_border' => 'border-[#FFEDD5]',
-            'circle' => 'bg-[#F97316] text-white',
-            'num_bg' => 'bg-[#FFEDD5] text-[#C2410C]',
-            'cta_bg' => 'bg-[#FFEDD5] text-[#C2410C] hover:bg-[#FED7AA]',
-            'border_hover' => 'hover:border-[#F97316]/40',
-        ],
-        'purple' => [
-            'card_bg' => 'bg-[#FAF5FF]',
-            'card_border' => 'border-[#EDE9FE]',
-            'circle' => 'bg-[#8B5CF6] text-white',
-            'num_bg' => 'bg-[#EDE9FE] text-[#6D28D9]',
-            'cta_bg' => 'bg-[#EDE9FE] text-[#6D28D9] hover:bg-[#DDD6FE]',
-            'border_hover' => 'hover:border-[#8B5CF6]/40',
-        ],
-        'rose' => [
-            'card_bg' => 'bg-[#FFF5F7]',
-            'card_border' => 'border-[#FFE4E6]',
-            'circle' => 'bg-[#E11D48] text-white',
-            'num_bg' => 'bg-[#FFE4E6] text-[#BE123C]',
-            'cta_bg' => 'bg-[#FFE4E6] text-[#BE123C] hover:bg-[#FECDD3]',
-            'border_hover' => 'hover:border-[#E11D48]/40',
-        ],
-        'blue' => [
-            'card_bg' => 'bg-[#EFF6FF]',
-            'card_border' => 'border-[#DBEAFE]',
-            'circle' => 'bg-[#2563EB] text-white',
-            'num_bg' => 'bg-[#DBEAFE] text-[#1D4ED8]',
-            'cta_bg' => 'bg-[#DBEAFE] text-[#1D4ED8] hover:bg-[#BFDBFE]',
-            'border_hover' => 'hover:border-[#2563EB]/40',
-        ],
-        'amber' => [
-            'card_bg' => 'bg-[#FFF7ED]',
-            'card_border' => 'border-[#FFEDD5]',
-            'circle' => 'bg-[#EA580C] text-white',
-            'num_bg' => 'bg-[#FFEDD5] text-[#C2410C]',
-            'cta_bg' => 'bg-[#FFEDD5] text-[#C2410C] hover:bg-[#FED7AA]',
-            'border_hover' => 'hover:border-[#EA580C]/40',
-        ],
-        'yellow' => [
-            'card_bg' => 'bg-[#FEFCE8]',
-            'card_border' => 'border-[#FEF3C7]',
-            'circle' => 'bg-[#D97706] text-white',
-            'num_bg' => 'bg-[#FEF3C7] text-[#B45309]',
-            'cta_bg' => 'bg-[#FEF3C7] text-[#B45309] hover:bg-[#FDE68A]',
-            'border_hover' => 'hover:border-[#D97706]/40',
-        ],
-    ];
 
+    // Theme map — pastel card background + icon colors matching reference
+    $themeMap = [
+        'pink'   => ['card_bg' => 'bg-[#FFF5F7]', 'card_border' => 'border-[#FFD6DC]', 'circle' => 'bg-[#E11D48] text-white', 'num_bg' => 'bg-[#FFE4E6] text-[#BE123C]', 'cta_bg' => 'bg-[#FFE4E6] text-[#BE123C] hover:bg-[#FECDD3]'],
+        'teal'   => ['card_bg' => 'bg-[#F0FFFE]', 'card_border' => 'border-[#CCFBF1]', 'circle' => 'bg-[#0D9488] text-white', 'num_bg' => 'bg-[#CCFBF1] text-[#0F766E]', 'cta_bg' => 'bg-[#CCFBF1] text-[#0F766E] hover:bg-[#99F6E4]'],
+        'green'  => ['card_bg' => 'bg-[#F0FDF4]', 'card_border' => 'border-[#BBFCD9]', 'circle' => 'bg-[#16A34A] text-white', 'num_bg' => 'bg-[#DCFCE7] text-[#15803D]', 'cta_bg' => 'bg-[#DCFCE7] text-[#15803D] hover:bg-[#BBF7D0]'],
+        'emerald'=> ['card_bg' => 'bg-[#ECFDF5]', 'card_border' => 'border-[#A7F3D0]', 'circle' => 'bg-[#059669] text-white', 'num_bg' => 'bg-[#D1FAE5] text-[#065F46]', 'cta_bg' => 'bg-[#D1FAE5] text-[#065F46] hover:bg-[#A7F3D0]'],
+        'orange' => ['card_bg' => 'bg-[#FFF7ED]', 'card_border' => 'border-[#FED7AA]', 'circle' => 'bg-[#EA580C] text-white', 'num_bg' => 'bg-[#FFEDD5] text-[#C2410C]', 'cta_bg' => 'bg-[#FFEDD5] text-[#C2410C] hover:bg-[#FED7AA]'],
+        'purple' => ['card_bg' => 'bg-[#FAF5FF]', 'card_border' => 'border-[#DDD6FE]', 'circle' => 'bg-[#7C3AED] text-white', 'num_bg' => 'bg-[#EDE9FE] text-[#6D28D9]', 'cta_bg' => 'bg-[#EDE9FE] text-[#6D28D9] hover:bg-[#DDD6FE]'],
+        'rose'   => ['card_bg' => 'bg-[#FFF1F2]', 'card_border' => 'border-[#FECDD3]', 'circle' => 'bg-[#E11D48] text-white', 'num_bg' => 'bg-[#FFE4E6] text-[#BE123C]', 'cta_bg' => 'bg-[#FFE4E6] text-[#BE123C] hover:bg-[#FECDD3]'],
+        'blue'   => ['card_bg' => 'bg-[#EFF6FF]', 'card_border' => 'border-[#BFDBFE]', 'circle' => 'bg-[#2563EB] text-white', 'num_bg' => 'bg-[#DBEAFE] text-[#1D4ED8]', 'cta_bg' => 'bg-[#DBEAFE] text-[#1D4ED8] hover:bg-[#BFDBFE]'],
+        'amber'  => ['card_bg' => 'bg-[#FFFBEB]', 'card_border' => 'border-[#FDE68A]', 'circle' => 'bg-[#D97706] text-white', 'num_bg' => 'bg-[#FEF3C7] text-[#92400E]', 'cta_bg' => 'bg-[#FEF3C7] text-[#92400E] hover:bg-[#FDE68A]'],
+        'yellow' => ['card_bg' => 'bg-[#FEFCE8]', 'card_border' => 'border-[#FEF08A]', 'circle' => 'bg-[#CA8A04] text-white', 'num_bg' => 'bg-[#FEF9C3] text-[#854D0E]', 'cta_bg' => 'bg-[#FEF9C3] text-[#854D0E] hover:bg-[#FEF08A]'],
+    ];
     $theme = $themeMap[$color] ?? $themeMap['teal'];
 
-    // Icon mapping matching reference image
+    // Icon mapping
     $iconMap = [
-        'education' => 'book-open',
-        'healthcare' => 'activity',
+        'education'         => 'book-open',
+        'healthcare'        => 'activity',
         'women-empowerment' => 'users',
-        'child-welfare' => 'smile',
-        'environment' => 'sprout',
-        'social-welfare' => 'heart-handshake',
-        'divyang-senior' => 'accessibility',
-        'youth-employment' => 'user-check',
+        'child-welfare'     => 'smile',
+        'environment'       => 'sprout',
+        'social-welfare'    => 'heart-handshake',
+        'divyang-senior'    => 'accessibility',
+        'youth-employment'  => 'user-check',
         'rural-development' => 'home',
     ];
     $icon = $iconMap[$area->slug] ?? ($area->icon ?: 'heart');
 
-    // Initiatives list with resilient fallback from canonical prompt initiatives
+    // All canonical initiative data — full text, NO TRUNCATION
+    $fallbackData = [
+        'education' => [
+            'mr' => ['शालेय साहित्य वितरण','गरजू विद्यार्थ्यांना शैक्षणिक मदत','शिष्यवृत्ती सहाय्य','डिजिटल शिक्षण','करिअर मार्गदर्शन शिबिरे','स्पर्धा परीक्षा मार्गदर्शन','वाचनालय व अभ्यासिका सुविधा','गुणवंत विद्यार्थ्यांचा सत्कार','शाळाबाह्य मुलांना शिक्षणाशी जोडणे','डिजिटल साक्षरता अभियान'],
+            'hi' => ['स्कूली सामग्री वितरण','जरूरतमंद विद्यार्थियों को सहायता','छात्रवृत्ति सहायता','डिजिटल शिक्षा','करियर मार्गदर्शन शिविर','प्रतियोगी परीक्षा मार्गदर्शन','पुस्तकालय एवं अध्ययन कक्ष','प्रतिभाशाली विद्यार्थियों का सम्मान','वंचित बच्चों को शिक्षा से जोड़ना','डिजिटल साक्षरता अभियान'],
+            'en' => ['Distribution of Educational Kits','Financial Aid for Students','Merit Scholarships','Smart Digital Classes','Career Guidance Seminars','Competitive Exam Coaching','Library & Study Rooms','Merit Student Felicitation','Enrolling Out-of-School Children','Digital Literacy Drives'],
+        ],
+        'healthcare' => [
+            'mr' => ['मोफत आरोग्य तपासणी शिबिरे','रक्तदान शिबिरे','नेत्र तपासणी शिबिरे','दंत तपासणी शिबिरे','महिला आरोग्य जनजागृती','बाल आरोग्य व पोषण कार्यक्रम','मधुमेह व रक्तदाब तपासणी','औषध वितरण','आरोग्य जनजागृती अभियान','ग्रामीण भागातील आरोग्य सेवा'],
+            'hi' => ['निःशुल्क स्वास्थ्य जांच शिविर','रक्तदान शिविर','नेत्र जांच शिविर','दंत चिकित्सा शिविर','महिला स्वास्थ्य जागरूकता','बाल स्वास्थ्य एवं पोषण','मधुमेह व रक्तचाप जांच','निःशुल्क दवा वितरण','स्वास्थ्य जागरूकता अभियान','ग्रामीण प्राथमिक स्वास्थ्य सेवा'],
+            'en' => ['Free Health Checkup Camps','Blood Donation Drives','Eye Care Camps','Dental Care Camps',"Women's Health Awareness",'Child Health & Nutrition','Diabetes & BP Screenings','Free Medicine Distribution','Health Awareness Campaigns','Rural Healthcare Services'],
+        ],
+        'women-empowerment' => [
+            'mr' => ['महिला बचत गट निर्मिती','कौशल्य विकास प्रशिक्षण','शिवणकाम व लघुउद्योग प्रशिक्षण','स्वयंरोजगार मार्गदर्शन','महिला उद्योजकता विकास','आर्थिक साक्षरता','महिला आरोग्य व स्वच्छता जनजागृती','कायदेविषयक मार्गदर्शन','महिला सुरक्षा जनजागृती'],
+            'hi' => ['महिला स्वयं सहायता समूह गठन','कौशल विकास प्रशिक्षण','सिलाई एवं लघु उद्योग प्रशिक्षण','स्वरोजगार मार्गदर्शन','महिला उद्यमिता विकास','वित्तीय साक्षरता','स्वास्थ्य एवं स्वच्छता जागरूकता','कानूनी अधिकार मार्गदर्शन','महिला सुरक्षा जागरूकता'],
+            'en' => ['Self-Help Group Formation','Skill Development Training','Tailoring & Small Enterprise','Self-Employment Guidance','Women Entrepreneurship','Financial Literacy','Health & Hygiene Awareness','Legal Rights Awareness','Women Safety Drives'],
+        ],
+        'child-welfare' => [
+            'mr' => ['बालशिक्षण कार्यक्रम','शालेय साहित्य मदत','पोषण आहार वितरण','बाल आरोग्य तपासणी','अनाथ व गरजू मुलांना सहाय्य','क्रीडा व सांस्कृतिक उपक्रम','बालहक्क जनजागृती','व्यक्तिमत्त्व विकास कार्यक्रम'],
+            'hi' => ['प्रारंभिक बाल शिक्षा कार्यक्रम','स्कूली सामग्री सहायता','पौष्टिक आहार वितरण','बाल स्वास्थ्य जांच','अनाथ व जरूरतमंद बच्चों को सहायता','खेलकूद एवं सांस्कृतिक कार्यक्रम','बाल अधिकार जागरूकता','व्यक्तित्व विकास कार्यक्रम'],
+            'en' => ['Early Child Education','School Kit Assistance','Nutritional Meal Drives','Pediatric Health Checkups','Support for Underprivileged Children','Sports & Cultural Events','Child Rights Advocacy','Personality Development'],
+        ],
+        'environment' => [
+            'mr' => ['वृक्षारोपण अभियान','वृक्षसंवर्धन','स्वच्छता अभियान','प्लास्टिकमुक्त अभियान','पाणी संवर्धन','जलसंधारण','पर्यावरण जनजागृती','कचरा व्यवस्थापन','हरित गाव अभियान'],
+            'hi' => ['वृक्षारोपण अभियान','वृक्ष संरक्षण','स्वच्छता अभियान','प्लास्टिक मुक्त अभियान','जल संरक्षण','जल संचयन प्रबंधन','पर्यावरण जागरूकता','ठोस कचरा प्रबंधन','हरित ग्राम अभियान'],
+            'en' => ['Tree Plantation Drives','Plant Care & Conservation','Cleanliness Drives','Plastic-Free Campaigns','Water Conservation','Watershed Management','Eco Awareness Programs','Waste Management','Green Village Projects'],
+        ],
+        'social-welfare' => [
+            'mr' => ['अन्नदान','वस्त्रदान','गरीब व गरजू कुटुंबांना मदत','आपत्तीग्रस्तांना सहाय्य','वृद्धांना मदत','निराधार व्यक्तींना मदत','सणासुदीला गरजूंसाठी विशेष उपक्रम','सामाजिक जनजागृती कार्यक्रम'],
+            'hi' => ['अन्न दान सेवा','वस्त्र दान अभियान','निर्धन परिवारों को सहायता','आपदा राहत सहायता','वृद्धजनों को सहायता','निराश्रितों को संबल','त्योहारों पर विशेष सहायता','सामाजिक जागरूकता कार्यक्रम'],
+            'en' => ['Food Relief Distribution','Clothes Donation Drives','Aid for Impoverished Families','Disaster Relief Support','Elderly Care Assistance','Destitute Care Support','Festive Joy for the Needy','Social Literacy Campaigns'],
+        ],
+        'divyang-senior' => [
+            'mr' => ['दिव्यांग व्यक्तींना आवश्यक साहित्य','व्हीलचेअर व सहाय्यक उपकरणांचे वितरण','आरोग्य तपासणी','सरकारी योजनांची माहिती','प्रमाणपत्र व कागदपत्र मार्गदर्शन','वृद्धांसाठी आरोग्य सहाय्य','वृद्धाश्रमांना मदत','सामाजिक व भावनिक आधार कार्यक्रम'],
+            'hi' => ['दिव्यांगजनों को सहायक उपकरण','व्हीलचेयर वितरण','नियमित स्वास्थ्य जांच','सरकारी योजनाओं की जानकारी','प्रमाण पत्र एवं दस्तावेज सहायता','वरिष्ठजनों के लिए स्वास्थ्य सहायता','वृद्धाश्रमों को सहायता','सामाजिक एवं भावनात्मक संबल'],
+            'en' => ['Assistive Aids for Divyang','Wheelchair & Crutches Distribution','Special Health Checkups','Government Schemes Guidance','Disability Certificate Aid','Elderly Medical Care','Support for Old Age Homes','Emotional & Social Counseling'],
+        ],
+        'youth-employment' => [
+            'mr' => ['करिअर मार्गदर्शन','रोजगार मेळावे','कौशल्य विकास प्रशिक्षण','स्पर्धा परीक्षा मार्गदर्शन','उद्योजकता प्रशिक्षण','डिजिटल कौशल्य प्रशिक्षण','मुलाखत व व्यक्तिमत्त्व विकास','स्टार्टअप व स्वयंरोजगार मार्गदर्शन'],
+            'hi' => ['करियर काउंसलिंग','रोजगार मेला आयोजन','कौशल संवर्धन प्रशिक्षण','प्रतियोगी परीक्षा मार्गदर्शन','उद्यमिता विकास प्रशिक्षण','डिजिटल कौशल प्रशिक्षण','साक्षात्कार व व्यक्तित्व विकास','स्टार्टअप एवं स्वरोजगार संबल'],
+            'en' => ['Career Guidance & Counseling','Job Fairs & Recruitment Drives','Skill Development Training','Competitive Exam Coaching','Entrepreneurship Training','Digital Skills & IT Training','Interview Prep & Personality','Startup & Self-Employment Guidance'],
+        ],
+        'rural-development' => [
+            'mr' => ['ग्रामस्वच्छता','पाणी व स्वच्छता जनजागृती','आरोग्य व शिक्षण उपक्रम','महिला बचत गट','शेतकरी मार्गदर्शन','कौशल्य विकास','डिजिटल साक्षरता','सरकारी योजनांची माहिती','ग्रामविकास व सामाजिक जनजागृती'],
+            'hi' => ['ग्राम स्वच्छता अभियान','स्वच्छ पेयजल व स्वच्छता जागरूकता','स्वास्थ्य एवं शिक्षा कार्यक्रम','महिला बचत समूह','किसान मार्गदर्शन एवं प्रशिक्षण','ग्रामीण कौशल विकास','डिजिटल ग्राम साक्षरता','ग्रामीण कल्याणकारी योजनाएं','समग्र ग्राम विकास जागरूकता'],
+            'en' => ['Village Sanitation Drives','Clean Water Awareness','Rural Health & Education','Rural Self-Help Groups','Farmer Support & Guidance','Rural Skills Training','Village Digital Literacy','Government Rural Schemes','Holistic Village Development'],
+        ],
+    ];
+
+    // Build initiatives list from DB first, fallback to canonical data
     $initiativesList = [];
     if (!empty($area->initiatives) && $area->initiatives->count() > 0) {
         foreach ($area->initiatives as $init) {
             $iTrans = $init->translation($locale) ?? $init->translation('mr') ?? $init->translation('en');
-            $initiativesList[] = [
-                'number' => $init->number ?: $init->order,
-                'title' => $iTrans?->title ?? '',
-            ];
+            if ($iTrans && $iTrans->title) {
+                $initiativesList[] = [
+                    'number' => $init->order ?: (count($initiativesList) + 1),
+                    'title'  => $iTrans->title,
+                ];
+            }
         }
-    } else {
-        // Fallback canonical initiatives directly from prompt specification
-        $fallbackData = [
-            'education' => [
-                ['mr' => 'शालेय साहित्य वितरण', 'hi' => 'स्कूली सामग्री वितरण', 'en' => 'Distribution of Educational Kits'],
-                ['mr' => 'गरजू विद्यार्थ्यांना शैक्षणिक मदत', 'hi' => 'जरूरतमंद विद्यार्थियों को शैक्षणिक सहायता', 'en' => 'Financial Aid for Students'],
-                ['mr' => 'शिष्यवृत्ती सहाय्य', 'hi' => 'छात्रवृत्ति सहायता', 'en' => 'Merit Scholarships'],
-                ['mr' => 'डिजिटल शिक्षण', 'hi' => 'डिजिटल शिक्षा', 'en' => 'Smart Digital Classes'],
-                ['mr' => 'करिअर मार्गदर्शन शिबिरे', 'hi' => 'करियर मार्गदर्शन शिविर', 'en' => 'Career Guidance Seminars'],
-                ['mr' => 'स्पर्धा परीक्षा मार्गदर्शन', 'hi' => 'प्रतियोगी परीक्षा मार्गदर्शन', 'en' => 'Competitive Exam Coaching'],
-                ['mr' => 'वाचनालय व अभ्यासिका सुविधा', 'hi' => 'पुस्तकालय एवं अध्ययन कक्ष', 'en' => 'Library & Study Rooms'],
-                ['mr' => 'गुणवंत विद्यार्थ्यांचा सत्कार', 'hi' => 'प्रतिभाशाली विद्यार्थियों का सम्मान', 'en' => 'Merit Student Felicitation'],
-                ['mr' => 'शाळाबाह्य मुलांना शिक्षणाशी जोडणे', 'hi' => 'वंचित बच्चों को शिक्षा से जोड़ना', 'en' => 'Enrolling Out-of-School Children'],
-                ['mr' => 'डिजिटल साक्षरता अभियान', 'hi' => 'डिजिटल साक्षरता अभियान', 'en' => 'Digital Literacy Drives'],
-            ],
-            'healthcare' => [
-                ['mr' => 'मोफत आरोग्य तपासणी शिबिरे', 'hi' => 'निःशुल्क स्वास्थ्य जांच शिविर', 'en' => 'Free Health Checkup Camps'],
-                ['mr' => 'रक्तदान शिबिरे', 'hi' => 'रक्तदान शिविर', 'en' => 'Blood Donation Drives'],
-                ['mr' => 'नेत्र तपासणी शिबिरे', 'hi' => 'नेत्र जांच शिविर', 'en' => 'Eye Care Camps'],
-                ['mr' => 'दंत तपासणी शिबिरे', 'hi' => 'दंत चिकित्सा शिविर', 'en' => 'Dental Care Camps'],
-                ['mr' => 'महिला आरोग्य जनजागृती', 'hi' => 'महिला स्वास्थ्य जागरूकता', 'en' => "Women's Health Awareness"],
-                ['mr' => 'बाल आरोग्य व पोषण कार्यक्रम', 'hi' => 'बाल स्वास्थ्य एवं पोषण', 'en' => 'Child Health & Nutrition'],
-                ['mr' => 'मधुमेह व रक्तदाब तपासणी', 'hi' => 'मधुमेह व रक्तचाप जांच', 'en' => 'Diabetes & BP Screenings'],
-                ['mr' => 'औषध वितरण', 'hi' => 'निःशुल्क दवा वितरण', 'en' => 'Free Medicine Distribution'],
-                ['mr' => 'आरोग्य जनजागृती अभियान', 'hi' => 'स्वास्थ्य जागरूकता अभियान', 'en' => 'Health Awareness Campaigns'],
-                ['mr' => 'ग्रामीण भागातील आरोग्य सेवा', 'hi' => 'ग्रामीण प्राथमिक स्वास्थ्य सेवा', 'en' => 'Rural Healthcare Services'],
-            ],
-            'women-empowerment' => [
-                ['mr' => 'महिला बचत गट निर्मिती', 'hi' => 'महिला स्वयं सहायता समूह गठन', 'en' => 'Self-Help Group Formation'],
-                ['mr' => 'कौशल्य विकास प्रशिक्षण', 'hi' => 'कौशल विकास प्रशिक्षण', 'en' => 'Skill Development Training'],
-                ['mr' => 'शिवणकाम व लघुउद्योग प्रशिक्षण', 'hi' => 'सिलाई एवं लघु उद्योग प्रशिक्षण', 'en' => 'Tailoring & Small Enterprise'],
-                ['mr' => 'स्वयंरोजगार मार्गदर्शन', 'hi' => 'स्वरोजगार मार्गदर्शन', 'en' => 'Self-Employment Guidance'],
-                ['mr' => 'महिला उद्योजकता विकास', 'hi' => 'महिला उद्यमिता विकास', 'en' => 'Women Entrepreneurship'],
-                ['mr' => 'आर्थिक साक्षरता', 'hi' => 'वित्तीय साक्षरता', 'en' => 'Financial Literacy'],
-                ['mr' => 'महिला आरोग्य व स्वच्छता जनजागृती', 'hi' => 'स्वास्थ्य एवं स्वच्छता जागरूकता', 'en' => 'Health & Hygiene Awareness'],
-                ['mr' => 'कायदेविषयक मार्गदर्शन', 'hi' => 'कानूनी अधिकार मार्गदर्शन', 'en' => 'Legal Rights Awareness'],
-                ['mr' => 'महिला सुरक्षा जनजागृती', 'hi' => 'महिला सुरक्षा जागरूकता', 'en' => 'Women Safety Drives'],
-            ],
-            'child-welfare' => [
-                ['mr' => 'बालशिक्षण कार्यक्रम', 'hi' => 'प्रारंभिक बाल शिक्षा कार्यक्रम', 'en' => 'Early Child Education'],
-                ['mr' => 'शालेय साहित्य मदत', 'hi' => 'स्कूली सामग्री सहायता', 'en' => 'School Kit Assistance'],
-                ['mr' => 'पोषण आहार वितरण', 'hi' => 'पौष्टिक आहार वितरण', 'en' => 'Nutritional Meal Drives'],
-                ['mr' => 'बाल आरोग्य तपासणी', 'hi' => 'बाल स्वास्थ्य जांच', 'en' => 'Pediatric Health Checkups'],
-                ['mr' => 'अनाथ व गरजू मुलांना सहाय्य', 'hi' => 'अनाथ व जरूरतमंद बच्चों को सहायता', 'en' => 'Support for Underprivileged Children'],
-                ['mr' => 'क्रीडा व सांस्कृतिक उपक्रम', 'hi' => 'खेलकूद एवं सांस्कृतिक कार्यक्रम', 'en' => 'Sports & Cultural Events'],
-                ['mr' => 'बालहक्क जनजागृती', 'hi' => 'बाल अधिकार जागरूकता', 'en' => 'Child Rights Advocacy'],
-                ['mr' => 'व्यक्तिमत्त्व विकास कार्यक्रम', 'hi' => 'व्यक्तित्व विकास कार्यक्रम', 'en' => 'Personality Development'],
-            ],
-            'environment' => [
-                ['mr' => 'वृक्षारोपण अभियान', 'hi' => 'वृक्षारोपण अभियान', 'en' => 'Tree Plantation Drives'],
-                ['mr' => 'वृक्षसंवर्धन', 'hi' => 'वृक्ष संरक्षण', 'en' => 'Plant Care & Conservation'],
-                ['mr' => 'स्वच्छता अभियान', 'hi' => 'स्वच्छता अभियान', 'en' => 'Cleanliness Drives'],
-                ['mr' => 'प्लास्टिकमुक्त अभियान', 'hi' => 'प्लास्टिक मुक्त अभियान', 'en' => 'Plastic-Free Campaigns'],
-                ['mr' => 'पाणी संवर्धन', 'hi' => 'जल संरक्षण', 'en' => 'Water Conservation'],
-                ['mr' => 'जलसंधारण', 'hi' => 'जल संचयन प्रबंधन', 'en' => 'Watershed Management'],
-                ['mr' => 'पर्यावरण जनजागृती', 'hi' => 'पर्यावरण जागरूकता', 'en' => 'Eco Awareness Programs'],
-                ['mr' => 'कचरा व्यवस्थापन', 'hi' => 'ठोस कचरा प्रबंधन', 'en' => 'Waste Management'],
-                ['mr' => 'हरित गाव अभियान', 'hi' => 'हरित ग्राम अभियान', 'en' => 'Green Village Projects'],
-            ],
-            'social-welfare' => [
-                ['mr' => 'अन्नदान', 'hi' => 'अन्न दान सेवा', 'en' => 'Food Relief Distribution'],
-                ['mr' => 'वस्त्रदान', 'hi' => 'वस्त्र दान अभियान', 'en' => 'Clothes Donation Drives'],
-                ['mr' => 'गरीब व गरजू कुटुंबांना मदत', 'hi' => 'निर्धन परिवारों को सहायता', 'en' => 'Aid for Impoverished Families'],
-                ['mr' => 'आपत्तीग्रस्तांना सहाय्य', 'hi' => 'आपदा राहत सहायता', 'en' => 'Disaster Relief Support'],
-                ['mr' => 'वृद्धांना मदत', 'hi' => 'वृद्धजनों को सहायता', 'en' => 'Elderly Care Assistance'],
-                ['mr' => 'निराधार व्यक्तींना मदत', 'hi' => 'निराश्रितों को संबल', 'en' => 'Destitute Care Support'],
-                ['mr' => 'सणासुदीला गरजूंसाठी विशेष उपक्रम', 'hi' => 'त्योहारों पर विशेष सहायता', 'en' => 'Festive Joy for the Needy'],
-                ['mr' => 'सामाजिक जनजागृती कार्यक्रम', 'hi' => 'सामाजिक जागरूकता कार्यक्रम', 'en' => 'Social Literacy Campaigns'],
-            ],
-            'divyang-senior' => [
-                ['mr' => 'दिव्यांग व्यक्तींना आवश्यक साहित्य', 'hi' => 'दिव्यांगजनों को सहायक उपकरण', 'en' => 'Assistive Aids for Divyang'],
-                ['mr' => 'व्हीलचेअर व सहाय्यक उपकरणांचे वितरण', 'hi' => 'व्हीलचेयर वितरण', 'en' => 'Wheelchair & Crutches Distribution'],
-                ['mr' => 'आरोग्य तपासणी', 'hi' => 'नियमित स्वास्थ्य जांच', 'en' => 'Special Health Checkups'],
-                ['mr' => 'सरकारी योजनांची माहिती', 'hi' => 'सरकारी योजनाओं की जानकारी', 'en' => 'Government Schemes Guidance'],
-                ['mr' => 'प्रमाणपत्र व कागदपत्र मार्गदर्शन', 'hi' => 'प्रमाण पत्र एवं दस्तावेज सहायता', 'en' => 'Disability Certificate Aid'],
-                ['mr' => 'वृद्धांसाठी आरोग्य सहाय्य', 'hi' => 'वरिष्ठजनों के लिए स्वास्थ्य सहायता', 'en' => 'Elderly Medical Care'],
-                ['mr' => 'वृद्धाश्रमांना मदत', 'hi' => 'वृद्धाश्रमों को सहायता', 'en' => 'Support for Old Age Homes'],
-                ['mr' => 'सामाजिक व भावनिक आधार कार्यक्रम', 'hi' => 'सामाजिक एवं भावनात्मक संबल', 'en' => 'Emotional & Social Counseling'],
-            ],
-            'youth-employment' => [
-                ['mr' => 'करिअर मार्गदर्शन', 'hi' => 'करियर काउंसलिंग', 'en' => 'Career Guidance & Counseling'],
-                ['mr' => 'रोजगार मेळावे', 'hi' => 'रोजगार मेला आयोजन', 'en' => 'Job Fairs & Recruitment Drives'],
-                ['mr' => 'कौशल्य विकास प्रशिक्षण', 'hi' => 'कौशल संवर्धन प्रशिक्षण', 'en' => 'Skill Development Training'],
-                ['mr' => 'स्पर्धा परीक्षा मार्गदर्शन', 'hi' => 'प्रतियोगी परीक्षा मार्गदर्शन', 'en' => 'Competitive Exam Coaching'],
-                ['mr' => 'उद्योजकता प्रशिक्षण', 'hi' => 'उद्यमिता विकास प्रशिक्षण', 'en' => 'Entrepreneurship Training'],
-                ['mr' => 'डिजिटल कौशल्य प्रशिक्षण', 'hi' => 'डिजिटल कौशल प्रशिक्षण', 'en' => 'Digital Skills & IT Training'],
-                ['mr' => 'मुलाखत व व्यक्तिमत्त्व विकास', 'hi' => 'साक्षात्कार व व्यक्तित्व विकास', 'en' => 'Interview Prep & Personality'],
-                ['mr' => 'स्टार्टअप व स्वयंरोजगार मार्गदर्शन', 'hi' => 'स्टार्टअप एवं स्वरोजगार संबल', 'en' => 'Startup & Self-Employment Guidance'],
-            ],
-            'rural-development' => [
-                ['mr' => 'ग्रामस्वच्छता', 'hi' => 'ग्राम स्वच्छता अभियान', 'en' => 'Village Sanitation Drives'],
-                ['mr' => 'पाणी व स्वच्छता जनजागृती', 'hi' => 'स्वच्छ पेयजल व स्वच्छता जागरूकता', 'en' => 'Clean Water Awareness'],
-                ['mr' => 'आरोग्य व शिक्षण उपक्रम', 'hi' => 'स्वास्थ्य एवं शिक्षा कार्यक्रम', 'en' => 'Rural Health & Education'],
-                ['mr' => 'महिला बचत गट', 'hi' => 'महिला बचत समूह', 'en' => 'Rural Self-Help Groups'],
-                ['mr' => 'शेतकरी मार्गदर्शन', 'hi' => 'किसान मार्गदर्शन एवं प्रशिक्षण', 'en' => 'Farmer Support & Guidance'],
-                ['mr' => 'कौशल्य विकास', 'hi' => 'ग्रामीण कौशल विकास', 'en' => 'Rural Skills Training'],
-                ['mr' => 'डिजिटल साक्षरता', 'hi' => 'डिजिटल ग्राम साक्षरता', 'en' => 'Village Digital Literacy'],
-                ['mr' => 'सरकारी योजनांची माहिती', 'hi' => 'ग्रामीण कल्याणकारी योजनाएं', 'en' => 'Government Rural Schemes'],
-                ['mr' => 'ग्रामविकास व सामाजिक जनजागृती', 'hi' => 'समग्र ग्राम विकास जागरूकता', 'en' => 'Holistic Village Development'],
-            ],
-        ];
+    }
 
-        $rawList = $fallbackData[$area->slug] ?? [];
-        foreach ($rawList as $idx => $item) {
+    // If DB gave us nothing, use canonical fallback
+    if (empty($initiativesList)) {
+        $langKey = in_array($locale, ['mr','hi','en']) ? $locale : 'mr';
+        $rawList = $fallbackData[$area->slug][$langKey] ?? $fallbackData[$area->slug]['mr'] ?? [];
+        foreach ($rawList as $idx => $text) {
             $initiativesList[] = [
                 'number' => $idx + 1,
-                'title' => $item[$locale] ?? $item['mr'] ?? $item['en'],
+                'title'  => $text,
             ];
         }
     }
 
     $total = count($initiativesList);
-    $half = (int) ceil($total / 2);
-    $col1 = array_slice($initiativesList, 0, $half);
-    $col2 = array_slice($initiativesList, $half);
+    $half  = (int) ceil($total / 2);
+    $col1  = array_slice($initiativesList, 0, $half);
+    $col2  = array_slice($initiativesList, $half);
 
-    // Prioritize our newly created documentary images matching the reference exactly
+    // Image: prefer local file
     $localImagePath = 'images/focus-areas/' . $area->slug . '.jpg';
-    if (file_exists(public_path($localImagePath))) {
-        $imgUrl = asset($localImagePath);
-    } else {
-        $imgUrl = $area->image && !str_starts_with($area->image, 'http') ? asset($area->image) : asset($localImagePath);
-    }
+    $imgUrl = file_exists(public_path($localImagePath))
+        ? asset($localImagePath)
+        : (($area->image && !str_starts_with($area->image, 'http')) ? asset($area->image) : 'https://images.unsplash.com/photo-1509099652299-30938b0aeb63?auto=format&fit=crop&w=800&q=80');
 @endphp
 
-<div class="{{ $theme['card_bg'] }} rounded-[22px] border {{ $theme['card_border'] }} shadow-sm {{ $theme['border_hover'] }} hover:shadow-lg transition-all duration-300 p-3 sm:p-3.5 flex flex-col justify-between group">
-    
-    <div class="flex flex-col sm:flex-row gap-3 sm:gap-3.5">
-        <!-- Left Photo Container with Floating Icon (matches reference ~38% width) -->
-        <div class="relative w-full sm:w-[38%] min-h-[160px] sm:min-h-[220px] rounded-2xl overflow-hidden flex-shrink-0 bg-gray-100 shadow-sm">
-            <img 
-                src="{{ $imgUrl }}" 
-                alt="{{ $title }}" 
-                loading="lazy" 
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=600&q=80';"
+{{-- ============================================================
+     FOCUS AREA CARD — Matches reference IMAGE 2 exactly
+     White card, image LEFT (~40%), icon badge top-left,
+     title + numbered 2-col list RIGHT, CTA pill bottom
+     NO line-clamp — all initiative text fully visible
+     ============================================================ --}}
+<div class="bg-white rounded-2xl border {{ $theme['card_border'] }} shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col">
+
+    {{-- TOP: Image (full width on mobile, left 40% on md+) + Content --}}
+    <div class="flex flex-col sm:flex-row flex-1">
+
+        {{-- LEFT — Documentary Photo with floating icon --}}
+        <div class="relative w-full sm:w-[42%] lg:w-[40%] min-h-[200px] sm:min-h-[260px] flex-shrink-0 overflow-hidden bg-gray-100">
+            <img
+                src="{{ $imgUrl }}"
+                alt="{{ $title }}"
+                loading="lazy"
+                class="w-full h-full object-cover object-center group-hover:scale-[1.04] transition-transform duration-500"
+                onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509099652299-30938b0aeb63?auto=format&fit=crop&w=800&q=80';"
             />
-            
-            <!-- Floating Category Icon Badge (matches top-right of image as in reference) -->
-            <div class="absolute top-2.5 right-2.5 sm:-right-2 sm:top-2 w-11 h-11 sm:w-12 sm:h-12 rounded-full {{ $theme['circle'] }} flex items-center justify-center shadow-lg ring-4 ring-white z-10">
-                <i data-lucide="{{ $icon }}" class="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.2]" aria-hidden="true"></i>
+
+            {{-- Gradient overlay at bottom of image for depth --}}
+            <div class="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none"></div>
+
+            {{-- Floating Icon Badge — top-left corner matching reference --}}
+            <div class="absolute top-3 left-3 w-12 h-12 rounded-full {{ $theme['circle'] }} flex items-center justify-center shadow-lg ring-4 ring-white/80 z-10" aria-hidden="true">
+                <i data-lucide="{{ $icon }}" class="w-6 h-6 stroke-[2]"></i>
             </div>
         </div>
 
-        <!-- Right Content: Title, Subtitle, 2-Column Numbered Initiatives -->
-        <div class="flex-1 flex flex-col justify-between pt-1 sm:pt-0 sm:pl-1">
+        {{-- RIGHT — Content: Title, Subtitle, Numbered Initiatives --}}
+        <div class="flex-1 flex flex-col justify-between p-4 sm:p-5 {{ $theme['card_bg'] }}">
+
+            {{-- Title + Subtitle --}}
             <div>
-                <!-- Heading & Subtitle -->
-                <div class="mb-2 pr-2">
-                    <h3 class="text-base sm:text-[17px] font-bold text-gray-900 leading-snug group-hover:text-[#073B63] transition-colors">
-                        <a href="{{ route('our-work.show', $area->slug) }}">
+                <div class="mb-3">
+                    <h3 class="text-base sm:text-[17px] lg:text-lg font-extrabold text-[#0B2545] leading-snug tracking-tight group-hover:text-[#073B63] transition-colors">
+                        <a href="{{ route('our-work.show', $area->slug) }}" class="hover:underline underline-offset-2">
                             {{ $title }}
                         </a>
                     </h3>
                     @if($subtitle)
-                        <div class="text-[12px] font-semibold text-gray-500 tracking-wide mt-0.5">
+                        <div class="text-[11px] sm:text-xs font-bold text-gray-400 tracking-widest uppercase mt-1">
                             {{ $subtitle }}
                         </div>
                     @endif
+                    {{-- Thin accent underline --}}
+                    <div class="mt-2 w-10 h-[3px] {{ str_replace('text-white','',$theme['circle']) }} rounded-full opacity-60"></div>
                 </div>
 
-                <!-- 2-Column Numbered Initiative List -->
+                {{-- 2-Column Numbered Initiative List — NO line-clamp, full text visible --}}
                 @if($total > 0)
-                    <div class="grid grid-cols-2 gap-x-2 gap-y-1.5 my-2">
-                        <!-- Column 1 -->
+                    <div class="grid grid-cols-2 gap-x-2.5 gap-y-1.5">
+                        {{-- Column 1 --}}
                         <div class="space-y-1.5">
                             @foreach($col1 as $init)
-                                <div class="flex items-start space-x-1.5 min-w-0" title="{{ $init['title'] }}">
-                                    <span class="w-4 h-4 rounded-full {{ $theme['num_bg'] }} flex-shrink-0 flex items-center justify-center text-[10px] font-bold mt-0.5">
+                                <div class="flex items-start gap-1.5">
+                                    <span class="w-[18px] h-[18px] min-w-[18px] rounded-full {{ $theme['num_bg'] }} flex items-center justify-center text-[9px] font-black mt-0.5 leading-none flex-shrink-0">
                                         {{ $init['number'] }}
                                     </span>
-                                    <span class="text-[11px] sm:text-[11.5px] font-medium text-gray-800 leading-tight line-clamp-2">
+                                    <span class="text-[11px] sm:text-[11.5px] font-medium text-gray-700 leading-snug">
                                         {{ $init['title'] }}
                                     </span>
                                 </div>
                             @endforeach
                         </div>
 
-                        <!-- Column 2 -->
+                        {{-- Column 2 --}}
                         <div class="space-y-1.5">
                             @foreach($col2 as $init)
-                                <div class="flex items-start space-x-1.5 min-w-0" title="{{ $init['title'] }}">
-                                    <span class="w-4 h-4 rounded-full {{ $theme['num_bg'] }} flex-shrink-0 flex items-center justify-center text-[10px] font-bold mt-0.5">
+                                <div class="flex items-start gap-1.5">
+                                    <span class="w-[18px] h-[18px] min-w-[18px] rounded-full {{ $theme['num_bg'] }} flex items-center justify-center text-[9px] font-black mt-0.5 leading-none flex-shrink-0">
                                         {{ $init['number'] }}
                                     </span>
-                                    <span class="text-[11px] sm:text-[11.5px] font-medium text-gray-800 leading-tight line-clamp-2">
+                                    <span class="text-[11px] sm:text-[11.5px] font-medium text-gray-700 leading-snug">
                                         {{ $init['title'] }}
                                     </span>
                                 </div>
@@ -362,17 +257,17 @@
                 @endif
             </div>
 
-            <!-- Soft Tinted CTA Pill Button (matches reference) -->
-            <div class="pt-2 sm:pt-3">
-                <a 
-                    href="{{ route('our-work.show', $area->slug) }}" 
-                    class="w-full py-1.5 sm:py-2 px-3 rounded-full text-center text-xs font-bold {{ $theme['cta_bg'] }} transition-all flex items-center justify-center space-x-1.5 shadow-sm hover:shadow"
+            {{-- CTA Pill Button matching reference --}}
+            <div class="mt-4 pt-3 border-t border-gray-100">
+                <a
+                    href="{{ route('our-work.show', $area->slug) }}"
+                    class="inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold {{ $theme['cta_bg'] }} transition-all shadow-sm hover:shadow"
                 >
                     <span>{{ site_t('btn_learn_more', [], 'अधिक जाणून घ्या') }}</span>
-                    <i data-lucide="arrow-right" class="w-3.5 h-3.5 transform group-hover:translate-x-1 transition duration-200" aria-hidden="true"></i>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5" aria-hidden="true"></i>
                 </a>
             </div>
+
         </div>
     </div>
-
 </div>

@@ -7,19 +7,19 @@
         <div class="flex justify-between items-center h-[76px] gap-2">
             
             <!-- Brand Logo with Official Uploaded Image -->
-            <a href="{{ route('home') }}" class="flex items-center space-x-2.5 group py-1 shrink-0">
+            <a href="{{ route('home') }}" class="flex items-center space-x-2.5 sm:space-x-3 group py-1 shrink-0">
                 <img src="{{ asset('images/logo.png') }}" 
                      alt="Devansh Foundation" 
-                     class="h-14 sm:h-[60px] w-auto object-contain drop-shadow-sm group-hover:scale-105 transition duration-300">
-                <div class="hidden sm:flex flex-col text-left">
-                    <span class="text-lg xl:text-xl font-black tracking-tight text-[#073B63] leading-none">
-                        {{ site_t('org_name_first') }}
+                     class="h-12 sm:h-14 lg:h-[58px] w-auto object-contain drop-shadow-sm group-hover:scale-105 transition duration-300">
+                <div class="flex flex-col text-left">
+                    <span class="text-lg sm:text-xl lg:text-2xl font-black tracking-tight text-[#073B63] leading-none uppercase">
+                        DEVANSH
                     </span>
-                    <span class="text-xs xl:text-sm font-bold tracking-wider text-[#073B63] leading-tight">
-                        {{ site_t('org_name_second') }}
+                    <span class="text-[11px] sm:text-xs lg:text-[13px] font-black tracking-[0.24em] text-[#138A4B] leading-tight uppercase mt-0.5">
+                        FOUNDATION
                     </span>
-                    <span class="text-[9px] xl:text-[10px] font-semibold text-[#138A4B] leading-none mt-0.5">
-                        {{ site_t('tagline') }}
+                    <span class="text-[8px] sm:text-[9.5px] lg:text-[10px] font-semibold text-[#138A4B] leading-tight mt-0.5 whitespace-nowrap">
+                        Together for a Better Tomorrow
                     </span>
                 </div>
             </a>

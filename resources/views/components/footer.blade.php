@@ -17,14 +17,14 @@
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
                     <img src="{{ asset('images/logo.png') }}" alt="Devansh Foundation" class="h-14 w-auto object-contain rounded-full bg-white p-0.5 shadow">
                     <div class="flex flex-col">
-                        <span class="text-xl sm:text-2xl font-black tracking-tight text-white leading-none">
-                            {{ site_t('org_name_first') }}
+                        <span class="text-xl sm:text-2xl font-black tracking-tight text-white leading-none uppercase">
+                            DEVANSH
                         </span>
-                        <span class="text-xs sm:text-sm font-bold tracking-wider text-white leading-tight">
-                            {{ site_t('org_name_second') }}
+                        <span class="text-xs sm:text-sm font-black tracking-[0.22em] text-white leading-tight uppercase mt-0.5">
+                            FOUNDATION
                         </span>
-                        <span class="text-[10px] font-semibold text-gray-400 tracking-wide mt-0.5">
-                            {{ site_t('tagline') }}
+                        <span class="text-[10px] font-semibold text-emerald-400 tracking-wide mt-0.5">
+                            Together for a Better Tomorrow
                         </span>
                     </div>
                 </a>

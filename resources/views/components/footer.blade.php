@@ -16,14 +16,14 @@
             <div class="lg:col-span-3 space-y-4">
                 <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
                     <img src="{{ asset('images/logo.png') }}" alt="Devansh Foundation" class="h-14 w-auto object-contain rounded-full bg-white p-0.5 shadow">
-                    <div class="flex flex-col">
+                    <div class="flex flex-col text-left justify-center select-none">
                         <span class="text-xl sm:text-2xl font-black tracking-tight text-white leading-none uppercase">
                             DEVANSH
                         </span>
-                        <span class="text-xs sm:text-sm font-black tracking-[0.22em] text-white leading-tight uppercase mt-0.5">
+                        <span class="text-xs sm:text-[13.5px] font-black tracking-[0.24em] text-white leading-none uppercase mt-1">
                             FOUNDATION
                         </span>
-                        <span class="text-[10px] font-semibold text-emerald-400 tracking-wide mt-0.5">
+                        <span class="text-[8.5px] sm:text-[9.5px] font-semibold text-emerald-400 leading-none mt-1 tracking-normal whitespace-nowrap">
                             Together for a Better Tomorrow
                         </span>
                     </div>

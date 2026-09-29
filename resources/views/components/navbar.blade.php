@@ -11,14 +11,14 @@
                 <img src="{{ asset('images/logo.png') }}" 
                      alt="Devansh Foundation" 
                      class="h-12 sm:h-14 lg:h-[58px] w-auto object-contain drop-shadow-sm group-hover:scale-105 transition duration-300">
-                <div class="flex flex-col text-left">
-                    <span class="text-lg sm:text-xl lg:text-2xl font-black tracking-tight text-[#073B63] leading-none uppercase">
+                <div class="flex flex-col text-left justify-center select-none">
+                    <span class="text-xl sm:text-2xl lg:text-[27px] font-black tracking-tight text-[#073B63] leading-none uppercase">
                         DEVANSH
                     </span>
-                    <span class="text-[11px] sm:text-xs lg:text-[13px] font-black tracking-[0.24em] text-[#138A4B] leading-tight uppercase mt-0.5">
+                    <span class="text-[11px] sm:text-xs lg:text-[13.5px] font-black tracking-[0.24em] text-[#138A4B] leading-none uppercase mt-1">
                         FOUNDATION
                     </span>
-                    <span class="text-[8px] sm:text-[9.5px] lg:text-[10px] font-semibold text-[#138A4B] leading-tight mt-0.5 whitespace-nowrap">
+                    <span class="text-[7.5px] sm:text-[8.5px] lg:text-[9.5px] font-semibold text-[#073B63] leading-none mt-1 tracking-normal whitespace-nowrap">
                         Together for a Better Tomorrow
                     </span>
                 </div>

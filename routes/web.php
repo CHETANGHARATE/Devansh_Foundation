@@ -43,6 +43,8 @@ Route::get('/about', [AboutController::class, 'index'])->name('about');
 // Our Work & Focus Areas
 Route::get('/our-work', [FocusAreaController::class, 'index'])->name('our-work.index');
 Route::get('/our-work/{slug}', [FocusAreaController::class, 'show'])->name('our-work.show');
+Route::get('/focus-areas', [FocusAreaController::class, 'index'])->name('focus-areas.index');
+Route::get('/focus-areas/{slug}', [FocusAreaController::class, 'show'])->name('focus-areas.show');
 
 // Projects
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');

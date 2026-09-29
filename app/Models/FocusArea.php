@@ -13,6 +13,7 @@ class FocusArea extends Model
     protected $fillable = [
         'slug',
         'icon',
+        'color',
         'image',
         'order',
         'is_active',
@@ -26,6 +27,11 @@ class FocusArea extends Model
     public function translations(): HasMany
     {
         return $this->hasMany(FocusAreaTranslation::class);
+    }
+
+    public function initiatives(): HasMany
+    {
+        return $this->hasMany(FocusAreaInitiative::class)->orderBy('order');
     }
 
     public function projects(): HasMany

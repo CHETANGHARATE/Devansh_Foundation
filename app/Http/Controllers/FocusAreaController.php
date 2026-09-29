@@ -10,7 +10,7 @@ class FocusAreaController extends Controller
     public function index()
     {
         $focusAreas = FocusArea::where('is_active', true)
-            ->with(['translations', 'projects.translations'])
+            ->with(['translations', 'initiatives.translations', 'projects.translations'])
             ->orderBy('order')
             ->get();
 
@@ -21,7 +21,7 @@ class FocusAreaController extends Controller
     {
         $focusArea = FocusArea::where('slug', $slug)
             ->where('is_active', true)
-            ->with(['translations', 'projects.translations'])
+            ->with(['translations', 'initiatives.translations', 'projects.translations'])
             ->firstOrFail();
 
         $projects = Project::published()

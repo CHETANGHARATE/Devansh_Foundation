@@ -66,6 +66,15 @@ return [
     'focus_rural_sub' => 'Village Infrastructure',
     'focus_social' => 'Social Welfare',
     'focus_social_sub' => 'Community Aid',
+    'focus_divyang' => 'Divyang & Senior Welfare',
+    'focus_divyang_sub' => 'Care & Empowerment',
+    'focus_youth' => 'Youth & Employment',
+    'focus_youth_sub' => 'Skills & Guidance',
+    'focus_statement_mr' => 'समाजाच्या सर्वांगीण विकासासाठी आम्ही विविध क्षेत्रांमध्ये सातत्याने कार्यरत आहोत.',
+    'focus_statement_en' => 'We are continuously working across multiple areas for the holistic development of society.',
+    'focus_motto' => 'Together for a Better Tomorrow',
+    'focus_all_areas' => 'View All Focus Areas',
+    'focus_initiatives_title' => 'Key Initiatives & Programs',
 
     // Impact Section
     'impact_heading' => 'Our Impact',

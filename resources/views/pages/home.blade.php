@@ -75,125 +75,55 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Section Header with Green Decorative Line -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 gap-2">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 gap-3">
             <div class="flex items-center space-x-2.5">
                 <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
                 <h2 class="text-xl sm:text-2xl font-black text-[#073B63] tracking-tight">
                     {{ site_t('focus_heading') }}
                 </h2>
+                <span class="text-gray-300 font-light hidden sm:inline">|</span>
+                <span class="text-xs sm:text-sm font-bold text-gray-500 hidden sm:inline">
+                    {{ site_t('focus_tagline') }}
+                </span>
             </div>
-            <div class="text-xs sm:text-sm font-bold text-[#073B63] tracking-wide">
-                {{ site_t('focus_tagline') }}
-            </div>
+            <a href="{{ route('our-work.index') }}" class="inline-flex items-center space-x-1.5 text-xs sm:text-sm font-bold text-[#138A4B] hover:text-[#073B63] transition group">
+                <span>{{ site_t('focus_all_areas', [], 'सर्व कार्यक्षेत्रे पहा') }}</span>
+                <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
+            </a>
         </div>
 
-        <!-- 8 Focus Areas in a row on desktop -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
-            
-            <!-- 1. Education - Pink -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
-                <div class="w-12 h-12 rounded-full bg-[#E91E63] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
-                    <i data-lucide="book-open" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
-                    {{ site_t('focus_education') }}
-                </span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
-                    {{ site_t('focus_education_sub') }}
-                </span>
-            </a>
-
-            <!-- 2. Healthcare - Teal -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
-                <div class="w-12 h-12 rounded-full bg-[#00BFA5] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
-                    <i data-lucide="activity" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
-                    {{ site_t('focus_healthcare') }}
-                </span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
-                    {{ site_t('focus_healthcare_sub') }}
-                </span>
-            </a>
-
-            <!-- 3. Women Empowerment - Orange -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
-                <div class="w-12 h-12 rounded-full bg-[#FF6D00] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
-                    <i data-lucide="users" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
-                    {{ site_t('focus_women') }}
-                </span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
-                    {{ site_t('focus_women_sub') }}
-                </span>
-            </a>
-
-            <!-- 4. Child Welfare - Purple -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
-                <div class="w-12 h-12 rounded-full bg-[#8E24AA] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
-                    <i data-lucide="smile" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
-                    {{ site_t('focus_child') }}
-                </span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
-                    {{ site_t('focus_child_sub') }}
-                </span>
-            </a>
-
-            <!-- 5. Environment - Fresh Green -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
-                <div class="w-12 h-12 rounded-full bg-[#43A047] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
-                    <i data-lucide="sprout" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
-                    {{ site_t('focus_environment') }}
-                </span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
-                    {{ site_t('focus_environment_sub') }}
-                </span>
-            </a>
-
-            <!-- 6. Skill Development - Sky Blue -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
-                <div class="w-12 h-12 rounded-full bg-[#1E88E5] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
-                    <i data-lucide="settings" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
-                    {{ site_t('focus_skills') }}
-                </span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
-                    {{ site_t('focus_skills_sub') }}
-                </span>
-            </a>
-
-            <!-- 7. Rural Development - Gold/Amber -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
-                <div class="w-12 h-12 rounded-full bg-[#FFA000] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
-                    <i data-lucide="home" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
-                    {{ site_t('focus_rural') }}
-                </span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
-                    {{ site_t('focus_rural_sub') }}
-                </span>
-            </a>
-
-            <!-- 8. Social Welfare - Rose/Red -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
-                <div class="w-12 h-12 rounded-full bg-[#D81B60] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
-                    <i data-lucide="heart-handshake" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
-                    {{ site_t('focus_social') }}
-                </span>
-                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
-                    {{ site_t('focus_social_sub') }}
-                </span>
-            </a>
-
+        <!-- 9 Focus Areas in responsive grid -->
+        <div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2.5 sm:gap-3">
+            @foreach($focusAreas as $area)
+                @php
+                    $locale = app()->getLocale();
+                    $fTrans = $area->translation($locale) ?? $area->translation('mr') ?? $area->translation('en');
+                    $fTitle = $fTrans?->title ?? $area->slug;
+                    $fIcon = $area->icon ?: 'heart';
+                    $fColor = $area->color ?: 'emerald';
+                    
+                    $badgeColors = [
+                        'pink' => 'bg-[#E11D48] group-hover:bg-[#BE123C]',
+                        'teal' => 'bg-[#0D9488] group-hover:bg-[#0F766E]',
+                        'orange' => 'bg-[#EA580C] group-hover:bg-[#C2410C]',
+                        'purple' => 'bg-[#8B5CF6] group-hover:bg-[#6D28D9]',
+                        'green' => 'bg-[#16A34A] group-hover:bg-[#15803D]',
+                        'rose' => 'bg-[#E11D48] group-hover:bg-[#BE123C]',
+                        'blue' => 'bg-[#2563EB] group-hover:bg-[#1D4ED8]',
+                        'amber' => 'bg-[#EA580C] group-hover:bg-[#C2410C]',
+                        'yellow' => 'bg-[#D97706] group-hover:bg-[#B45309]',
+                    ];
+                    $bg = $badgeColors[$fColor] ?? 'bg-[#0D9488]';
+                @endphp
+                <a href="{{ route('our-work.show', $area->slug) }}" class="flex flex-col items-center text-center p-2.5 sm:p-3 rounded-2xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition-all group">
+                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full {{ $bg }} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform mb-2">
+                        <i data-lucide="{{ $fIcon }}" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+                    </div>
+                    <span class="text-[11px] sm:text-xs font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition-colors line-clamp-2">
+                        {{ $fTitle }}
+                    </span>
+                </a>
+            @endforeach
         </div>
     </div>
 </section>

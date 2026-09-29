@@ -64,8 +64,17 @@ return [
     'focus_skills_sub' => 'रोजगारक्षम प्रशिक्षण',
     'focus_rural' => 'ग्रामीण विकास',
     'focus_rural_sub' => 'मूलभूत पायाभूत सुविधा',
-    'focus_social' => 'सामाजिक कल्याण',
+    'focus_social' => 'सामाजिक सेवा',
     'focus_social_sub' => 'समुदाय साहाय्य',
+    'focus_divyang' => 'दिव्यांग व वृद्ध कल्याण',
+    'focus_divyang_sub' => 'साहाय्य व आधार',
+    'focus_youth' => 'युवक व रोजगार',
+    'focus_youth_sub' => 'कौशल्य व मार्गदर्शन',
+    'focus_statement_mr' => 'समाजाच्या सर्वांगीण विकासासाठी आम्ही विविध क्षेत्रांमध्ये सातत्याने कार्यरत आहोत.',
+    'focus_statement_en' => 'We are continuously working across multiple areas for the holistic development of society.',
+    'focus_motto' => 'Together for a Better Tomorrow',
+    'focus_all_areas' => 'सर्व कार्यक्षेत्रे पहा',
+    'focus_initiatives_title' => 'प्रमुख उपक्रम',
 
     // Impact Section
     'impact_heading' => 'आमच्या कार्याचा परिणाम',

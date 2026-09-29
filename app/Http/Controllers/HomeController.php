@@ -15,7 +15,7 @@ class HomeController extends Controller
     public function index()
     {
         $focusAreas = FocusArea::where('is_active', true)
-            ->with('translations')
+            ->with(['translations', 'initiatives.translations'])
             ->orderBy('order')
             ->get();
 

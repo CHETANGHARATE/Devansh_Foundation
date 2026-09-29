@@ -22,6 +22,11 @@ class FocusAreaInitiative extends Model
         'is_active' => 'boolean',
     ];
 
+    public function getNumberAttribute(): int
+    {
+        return $this->order;
+    }
+
     public function focusArea(): BelongsTo
     {
         return $this->belongsTo(FocusArea::class);

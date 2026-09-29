@@ -69,62 +69,62 @@
 
 
 <!-- ==========================================
-     2. OUR FOCUS AREAS
+     2. OUR FOCUS AREAS / आमची कार्यक्षेत्रे
+     Exact Reference Layout: 3x3 Cards Grid
 =========================================== -->
-<section class="py-10 bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<section class="py-12 sm:py-16 bg-[#F8FAFC] border-b border-gray-100 relative overflow-hidden">
+    
+    <!-- Subtle top right glow matching reference banner -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-emerald-100/30 via-blue-50/20 to-transparent rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <!-- Section Header with Green Decorative Line -->
-        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 gap-3">
-            <div class="flex items-center space-x-2.5">
-                <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
-                <h2 class="text-xl sm:text-2xl font-black text-[#073B63] tracking-tight">
-                    {{ site_t('focus_heading') }}
-                </h2>
-                <span class="text-gray-300 font-light hidden sm:inline">|</span>
-                <span class="text-xs sm:text-sm font-bold text-gray-500 hidden sm:inline">
-                    {{ site_t('focus_tagline') }}
-                </span>
+        <!-- Section Header (Exact Reference Match) -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-8 sm:pb-10 gap-6 border-b border-gray-200/70">
+            
+            <!-- Left Header Details -->
+            <div class="max-w-3xl">
+                <!-- Bar & Title -->
+                <div class="flex items-center space-x-3 mb-2">
+                    <span class="w-8 sm:w-10 h-1 sm:h-1.5 bg-[#16A34A] rounded-full inline-block flex-shrink-0"></span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B2545] tracking-tight flex items-center flex-wrap gap-2">
+                        <span>{{ site_t('focus_heading', [], 'आमची कार्यक्षेत्रे') }}</span>
+                        <span class="text-gray-300 font-light hidden sm:inline">|</span>
+                        <span class="text-lg sm:text-2xl font-bold text-[#073B63]">Our Focus Areas</span>
+                    </h2>
+                </div>
+
+                <!-- Subtitles in Marathi & English -->
+                <p class="text-sm sm:text-base font-semibold text-gray-800 leading-snug mt-1">
+                    {{ site_t('focus_statement_mr', [], 'समाजाच्या सर्वांगीण विकासासाठी आम्ही विविध क्षेत्रांमध्ये सातत्याने कार्यरत आहोत.') }}
+                </p>
+                <p class="text-xs sm:text-sm text-gray-500 font-normal mt-0.5">
+                    {{ site_t('focus_statement_en', [], 'We are continuously working across multiple areas for the holistic development of society.') }}
+                </p>
             </div>
-            <a href="{{ route('our-work.index') }}" class="inline-flex items-center space-x-1.5 text-xs sm:text-sm font-bold text-[#138A4B] hover:text-[#073B63] transition group">
-                <span>{{ site_t('focus_all_areas', [], 'सर्व कार्यक्षेत्रे पहा') }}</span>
-                <i data-lucide="arrow-right" class="w-4 h-4 transform group-hover:translate-x-1 transition-transform"></i>
-            </a>
+
+            <!-- Right Script Badge: Together for a Better Tomorrow -->
+            <div class="hidden sm:flex flex-col items-end text-right select-none pl-4 flex-shrink-0">
+                <div class="relative inline-block font-serif italic text-2xl lg:text-3xl font-bold text-[#073B63] leading-tight">
+                    <span class="block">Together</span>
+                    <span class="block text-lg lg:text-xl font-normal text-slate-600 font-sans tracking-wide">for a Better</span>
+                    <span class="block text-2xl lg:text-3xl font-black text-[#0B2545]">Tomorrow</span>
+                    <!-- Green flourish underline -->
+                    <svg class="w-28 sm:w-32 h-3.5 mt-1 text-[#16A34A] fill-none stroke-current" viewBox="0 0 120 16">
+                        <path d="M4 11 C 35 15, 80 12, 116 3" stroke-width="3.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+            </div>
+
         </div>
 
-        <!-- 9 Focus Areas in responsive grid -->
-        <div class="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-2.5 sm:gap-3">
+        <!-- 3-Column Focus Areas Grid (9 Authentic Large Cards) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6 pt-8 sm:pt-10">
             @foreach($focusAreas as $area)
-                @php
-                    $locale = app()->getLocale();
-                    $fTrans = $area->translation($locale) ?? $area->translation('mr') ?? $area->translation('en');
-                    $fTitle = $fTrans?->title ?? $area->slug;
-                    $fIcon = $area->icon ?: 'heart';
-                    $fColor = $area->color ?: 'emerald';
-                    
-                    $badgeColors = [
-                        'pink' => 'bg-[#E11D48] group-hover:bg-[#BE123C]',
-                        'teal' => 'bg-[#0D9488] group-hover:bg-[#0F766E]',
-                        'orange' => 'bg-[#EA580C] group-hover:bg-[#C2410C]',
-                        'purple' => 'bg-[#8B5CF6] group-hover:bg-[#6D28D9]',
-                        'green' => 'bg-[#16A34A] group-hover:bg-[#15803D]',
-                        'rose' => 'bg-[#E11D48] group-hover:bg-[#BE123C]',
-                        'blue' => 'bg-[#2563EB] group-hover:bg-[#1D4ED8]',
-                        'amber' => 'bg-[#EA580C] group-hover:bg-[#C2410C]',
-                        'yellow' => 'bg-[#D97706] group-hover:bg-[#B45309]',
-                    ];
-                    $bg = $badgeColors[$fColor] ?? 'bg-[#0D9488]';
-                @endphp
-                <a href="{{ route('our-work.show', $area->slug) }}" class="flex flex-col items-center text-center p-2.5 sm:p-3 rounded-2xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition-all group">
-                    <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-full {{ $bg }} text-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform mb-2">
-                        <i data-lucide="{{ $fIcon }}" class="w-5 h-5 sm:w-6 sm:h-6"></i>
-                    </div>
-                    <span class="text-[11px] sm:text-xs font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition-colors line-clamp-2">
-                        {{ $fTitle }}
-                    </span>
-                </a>
+                <x-focus-area-card :area="$area" />
             @endforeach
         </div>
+
     </div>
 </section>
 

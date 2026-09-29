@@ -16,42 +16,61 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         <!-- Section Header (Exact Reference Match) -->
-        <div class="flex flex-col lg:flex-row lg:items-center justify-between pb-8 sm:pb-10 gap-6 border-b border-gray-200/70">
-            
-            <!-- Left Header Details -->
-            <div class="max-w-3xl">
-                <!-- Bar & Title -->
-                <div class="flex items-center space-x-3 mb-2">
-                    <span class="w-8 sm:w-10 h-1 sm:h-1.5 bg-[#16A34A] rounded-full inline-block flex-shrink-0"></span>
-                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B2545] tracking-tight flex items-center flex-wrap gap-2">
-                        <span>{{ site_t('focus_heading', [], 'आमची कार्यक्षेत्रे') }}</span>
-                        <span class="text-gray-300 font-light hidden sm:inline">|</span>
-                        <span class="text-lg sm:text-2xl font-bold text-[#073B63]">Our Focus Areas</span>
-                    </h1>
-                </div>
-
-                <!-- Subtitles in Marathi & English -->
-                <p class="text-sm sm:text-base font-semibold text-gray-800 leading-snug mt-1">
-                    {{ site_t('focus_statement_mr', [], 'समाजाच्या सर्वांगीण विकासासाठी आम्ही विविध क्षेत्रांमध्ये सातत्याने कार्यरत आहोत.') }}
-                </p>
-                <p class="text-xs sm:text-sm text-gray-500 font-normal mt-0.5">
-                    {{ site_t('focus_statement_en', [], 'We are continuously working across multiple areas for the holistic development of society.') }}
-                </p>
+        <div class="relative rounded-2xl overflow-hidden mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-gray-200/70">
+            <!-- Background Banner Image on right side matching reference -->
+            <div class="absolute right-0 top-0 bottom-0 w-full sm:w-[50%] lg:w-[45%] pointer-events-none select-none overflow-hidden hidden sm:block">
+                <img 
+                    src="{{ asset('images/focus-areas/focus-header-banner.jpg') }}" 
+                    alt="Together for a Better Tomorrow" 
+                    class="w-full h-full object-cover object-center opacity-30 lg:opacity-40"
+                />
+                <!-- Gradient mask fading into background from left -->
+                <div class="absolute inset-0 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent"></div>
             </div>
 
-            <!-- Right Script Badge: Together for a Better Tomorrow -->
-            <div class="hidden sm:flex flex-col items-end text-right select-none pl-4 flex-shrink-0">
-                <div class="relative inline-block font-serif italic text-2xl lg:text-3xl font-bold text-[#073B63] leading-tight">
-                    <span class="block">Together</span>
-                    <span class="block text-lg lg:text-xl font-normal text-slate-600 font-sans tracking-wide">for a Better</span>
-                    <span class="block text-2xl lg:text-3xl font-black text-[#0B2545]">Tomorrow</span>
-                    <!-- Green flourish underline -->
-                    <svg class="w-28 sm:w-32 h-3.5 mt-1 text-[#16A34A] fill-none stroke-current" viewBox="0 0 120 16">
-                        <path d="M4 11 C 35 15, 80 12, 116 3" stroke-width="3.5" stroke-linecap="round"/>
-                    </svg>
+            <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+                <!-- Left Header Details -->
+                <div class="max-w-2xl">
+                    <!-- Bar & Title -->
+                    <div class="flex items-center space-x-3 mb-2">
+                        <span class="w-8 sm:w-10 h-1 sm:h-1.5 bg-[#16A34A] rounded-full inline-block flex-shrink-0"></span>
+                        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B2545] tracking-tight flex items-center flex-wrap gap-2">
+                            @if(app()->getLocale() === 'en')
+                                <span>Our Focus Areas</span>
+                            @elseif(app()->getLocale() === 'hi')
+                                <span>हमारे कार्यक्षेत्र</span>
+                                <span class="text-gray-300 font-light hidden sm:inline">|</span>
+                                <span class="text-lg sm:text-2xl font-bold text-[#073B63]">Our Focus Areas</span>
+                            @else
+                                <span>आमची कार्यक्षेत्रे</span>
+                                <span class="text-gray-300 font-light hidden sm:inline">|</span>
+                                <span class="text-lg sm:text-2xl font-bold text-[#073B63]">Our Focus Areas</span>
+                            @endif
+                        </h1>
+                    </div>
+
+                    <!-- Subtitles in Marathi & English -->
+                    <p class="text-sm sm:text-base font-semibold text-gray-800 leading-snug mt-1">
+                        {{ site_t('focus_statement_mr', [], 'समाजाच्या सर्वांगीण विकासासाठी आम्ही विविध क्षेत्रांमध्ये सातत्याने कार्यरत आहोत.') }}
+                    </p>
+                    <p class="text-xs sm:text-sm text-gray-500 font-normal mt-0.5">
+                        {{ site_t('focus_statement_en', [], 'We are continuously working across multiple areas for the holistic development of society.') }}
+                    </p>
+                </div>
+
+                <!-- Right Script Badge: Together for a Better Tomorrow -->
+                <div class="hidden sm:flex flex-col items-end text-right select-none pl-4 flex-shrink-0">
+                    <div class="relative inline-block font-serif italic text-2xl lg:text-3xl font-bold text-[#073B63] leading-tight">
+                        <span class="block text-slate-800">Together</span>
+                        <span class="block text-lg lg:text-xl font-normal text-slate-600 font-sans tracking-wide">for a Better</span>
+                        <span class="block text-2xl lg:text-3xl font-black text-[#0B2545]">Tomorrow</span>
+                        <!-- Green flourish underline -->
+                        <svg class="w-28 sm:w-32 h-3.5 mt-1 text-[#16A34A] fill-none stroke-current" viewBox="0 0 120 16">
+                            <path d="M4 11 C 35 15, 80 12, 116 3" stroke-width="3.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
-
         </div>
 
         <!-- 3-Column Focus Areas Grid (9 Authentic Cards) -->

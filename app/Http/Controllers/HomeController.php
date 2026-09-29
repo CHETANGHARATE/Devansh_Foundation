@@ -14,7 +14,17 @@ class HomeController extends Controller
 {
     public function index()
     {
+        if (FocusArea::where('is_active', true)->where('slug', '!=', 'skill-development')->count() < 9) {
+            try {
+                \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'FocusAreaSeeder', '--force' => true]);
+                FocusArea::where('slug', 'skill-development')->update(['is_active' => false]);
+            } catch (\Throwable $e) {
+                // Fail silently
+            }
+        }
+
         $focusAreas = FocusArea::where('is_active', true)
+            ->where('slug', '!=', 'skill-development')
             ->with(['translations', 'initiatives.translations'])
             ->orderBy('order')
             ->get();

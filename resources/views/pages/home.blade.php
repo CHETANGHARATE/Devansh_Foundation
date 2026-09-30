@@ -70,7 +70,137 @@
 
 
 <!-- ==========================================
-     2. OUR IMPACT
+     2. OUR FOCUS AREAS
+=========================================== -->
+<section class="py-10 bg-white border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header with Green Decorative Line -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 gap-2">
+            <div class="flex items-center space-x-2.5">
+                <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
+                <h2 class="text-xl sm:text-2xl font-black text-[#073B63] tracking-tight">
+                    {{ site_t('focus_heading') }}
+                </h2>
+            </div>
+            <div class="text-xs sm:text-sm font-bold text-[#073B63] tracking-wide">
+                {{ site_t('focus_tagline') }}
+            </div>
+        </div>
+
+        <!-- 8 Focus Areas in a row on desktop -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
+            
+            <!-- 1. Education - Pink -->
+            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+                <div class="w-12 h-12 rounded-full bg-[#E91E63] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
+                    <i data-lucide="book-open" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_education') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_education_sub') }}
+                </span>
+            </a>
+
+            <!-- 2. Healthcare - Teal -->
+            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+                <div class="w-12 h-12 rounded-full bg-[#00BFA5] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
+                    <i data-lucide="activity" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_healthcare') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_healthcare_sub') }}
+                </span>
+            </a>
+
+            <!-- 3. Women Empowerment - Orange -->
+            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+                <div class="w-12 h-12 rounded-full bg-[#FF6D00] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
+                    <i data-lucide="users" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_women') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_women_sub') }}
+                </span>
+            </a>
+
+            <!-- 4. Child Welfare - Purple -->
+            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+                <div class="w-12 h-12 rounded-full bg-[#8E24AA] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
+                    <i data-lucide="smile" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_child') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_child_sub') }}
+                </span>
+            </a>
+
+            <!-- 5. Environment - Fresh Green -->
+            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+                <div class="w-12 h-12 rounded-full bg-[#43A047] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
+                    <i data-lucide="sprout" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_environment') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_environment_sub') }}
+                </span>
+            </a>
+
+            <!-- 6. Skill Development - Sky Blue -->
+            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+                <div class="w-12 h-12 rounded-full bg-[#1E88E5] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
+                    <i data-lucide="settings" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_skills') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_skills_sub') }}
+                </span>
+            </a>
+
+            <!-- 7. Rural Development - Gold/Amber -->
+            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+                <div class="w-12 h-12 rounded-full bg-[#FFA000] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
+                    <i data-lucide="home" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_rural') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_rural_sub') }}
+                </span>
+            </a>
+
+            <!-- 8. Social Welfare - Rose/Red -->
+            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+                <div class="w-12 h-12 rounded-full bg-[#D81B60] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
+                    <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+                </div>
+                <span class="text-xs sm:text-sm font-bold text-[#073B63] leading-tight group-hover:text-[#138A4B] transition">
+                    {{ site_t('focus_social') }}
+                </span>
+                <span class="text-[10px] text-gray-500 font-medium mt-0.5">
+                    {{ site_t('focus_social_sub') }}
+                </span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- ==========================================
+     3. OUR IMPACT
 =========================================== -->
 <section class="relative py-12 bg-cover bg-center overflow-hidden" style="background-image: url('{{ asset('images/impact/landscape-bg.jpg') }}');">
     <!-- Gradient overlay for high legibility -->

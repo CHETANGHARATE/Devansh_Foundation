@@ -4,11 +4,11 @@
     $locale = app()->getLocale();
     $trans = $area->translation($locale) ?? $area->translation('mr') ?? $area->translation('en');
 
-    // ── Titles ──────────────────────────────────────────────
+    // ── Titles per locale ──────────────────────────────────
     $titles = [
         'mr' => [
-            'education'         => 'शिक्षण',
-            'healthcare'        => 'आरोग्य',
+            'education'         => 'शिक्षण क्षेत्रातील उपक्रम',
+            'healthcare'        => 'आरोग्य क्षेत्रातील उपक्रम',
             'women-empowerment' => 'महिला सक्षमीकरण',
             'child-welfare'     => 'बालकल्याण',
             'environment'       => 'पर्यावरण',
@@ -18,11 +18,11 @@
             'rural-development' => 'ग्रामीण विकास',
         ],
         'hi' => [
-            'education'         => 'शिक्षा',
-            'healthcare'        => 'स्वास्थ्य',
+            'education'         => 'शिक्षा क्षेत्र के उपक्रम',
+            'healthcare'        => 'स्वास्थ्य क्षेत्र के उपक्रम',
             'women-empowerment' => 'महिला सशक्तिकरण',
             'child-welfare'     => 'बाल कल्याण',
-            'environment'       => 'पर्यावरण',
+            'environment'       => 'पर्यावरण संरक्षण',
             'social-welfare'    => 'सामाजिक सेवा',
             'divyang-senior'    => 'दिव्यांग एवं वरिष्ठ कल्याण',
             'youth-employment'  => 'युवा एवं रोजगार',
@@ -43,18 +43,18 @@
     $enLabel = $titles['en'][$area->slug] ?? '';
     $title   = $titles[$locale][$area->slug] ?? $titles['mr'][$area->slug] ?? ($trans?->title ?: $area->name);
 
-    // ── Theme map ──────────────────────────────────────────
+    // ── Theme map (pastel — matching reference image) ─────
     $themeMap = [
-        'pink'    => ['accent' => '#E11D48', 'light' => '#FFF1F2', 'num_bg' => '#FFE4E6', 'num_text' => '#BE123C', 'border' => '#FECDD3'],
-        'green'   => ['accent' => '#16A34A', 'light' => '#F0FDF4', 'num_bg' => '#DCFCE7', 'num_text' => '#15803D', 'border' => '#BBF7D0'],
-        'teal'    => ['accent' => '#0D9488', 'light' => '#F0FDFA', 'num_bg' => '#CCFBF1', 'num_text' => '#0F766E', 'border' => '#99F6E4'],
-        'emerald' => ['accent' => '#059669', 'light' => '#ECFDF5', 'num_bg' => '#D1FAE5', 'num_text' => '#065F46', 'border' => '#A7F3D0'],
-        'orange'  => ['accent' => '#EA580C', 'light' => '#FFF7ED', 'num_bg' => '#FFEDD5', 'num_text' => '#C2410C', 'border' => '#FED7AA'],
-        'purple'  => ['accent' => '#7C3AED', 'light' => '#FAF5FF', 'num_bg' => '#EDE9FE', 'num_text' => '#6D28D9', 'border' => '#DDD6FE'],
-        'rose'    => ['accent' => '#E11D48', 'light' => '#FFF1F2', 'num_bg' => '#FFE4E6', 'num_text' => '#BE123C', 'border' => '#FECDD3'],
-        'blue'    => ['accent' => '#2563EB', 'light' => '#EFF6FF', 'num_bg' => '#DBEAFE', 'num_text' => '#1D4ED8', 'border' => '#BFDBFE'],
-        'amber'   => ['accent' => '#D97706', 'light' => '#FFFBEB', 'num_bg' => '#FEF3C7', 'num_text' => '#92400E', 'border' => '#FDE68A'],
-        'yellow'  => ['accent' => '#CA8A04', 'light' => '#FEFCE8', 'num_bg' => '#FEF9C3', 'num_text' => '#854D0E', 'border' => '#FEF08A'],
+        'pink'    => ['card'  => '#FFF5F7', 'border' => '#FFD6DC', 'circle' => '#E11D48', 'num_bg' => '#FFE4E6', 'num_text' => '#BE123C', 'pill_bg' => '#FFE4E6', 'pill_text' => '#BE123C'],
+        'green'   => ['card'  => '#F0FDF4', 'border' => '#BBFCD9', 'circle' => '#16A34A', 'num_bg' => '#DCFCE7', 'num_text' => '#15803D', 'pill_bg' => '#DCFCE7', 'pill_text' => '#15803D'],
+        'teal'    => ['card'  => '#F0FDFA', 'border' => '#CCFBF1', 'circle' => '#0D9488', 'num_bg' => '#CCFBF1', 'num_text' => '#0F766E', 'pill_bg' => '#CCFBF1', 'pill_text' => '#0F766E'],
+        'emerald' => ['card'  => '#ECFDF5', 'border' => '#A7F3D0', 'circle' => '#059669', 'num_bg' => '#D1FAE5', 'num_text' => '#065F46', 'pill_bg' => '#D1FAE5', 'pill_text' => '#065F46'],
+        'orange'  => ['card'  => '#FFF7ED', 'border' => '#FED7AA', 'circle' => '#EA580C', 'num_bg' => '#FFEDD5', 'num_text' => '#C2410C', 'pill_bg' => '#FFEDD5', 'pill_text' => '#C2410C'],
+        'purple'  => ['card'  => '#FAF5FF', 'border' => '#DDD6FE', 'circle' => '#7C3AED', 'num_bg' => '#EDE9FE', 'num_text' => '#6D28D9', 'pill_bg' => '#EDE9FE', 'pill_text' => '#6D28D9'],
+        'rose'    => ['card'  => '#FFF1F2', 'border' => '#FECDD3', 'circle' => '#E11D48', 'num_bg' => '#FFE4E6', 'num_text' => '#BE123C', 'pill_bg' => '#FFE4E6', 'pill_text' => '#BE123C'],
+        'blue'    => ['card'  => '#EFF6FF', 'border' => '#BFDBFE', 'circle' => '#2563EB', 'num_bg' => '#DBEAFE', 'num_text' => '#1D4ED8', 'pill_bg' => '#DBEAFE', 'pill_text' => '#1D4ED8'],
+        'amber'   => ['card'  => '#FFFBEB', 'border' => '#FDE68A', 'circle' => '#D97706', 'num_bg' => '#FEF3C7', 'num_text' => '#92400E', 'pill_bg' => '#FEF3C7', 'pill_text' => '#92400E'],
+        'yellow'  => ['card'  => '#FEFCE8', 'border' => '#FEF08A', 'circle' => '#CA8A04', 'num_bg' => '#FEF9C3', 'num_text' => '#854D0E', 'pill_bg' => '#FEF9C3', 'pill_text' => '#854D0E'],
     ];
     $color = $area->color ?: 'teal';
     $t = $themeMap[$color] ?? $themeMap['teal'];
@@ -73,7 +73,7 @@
     ];
     $icon = $iconMap[$area->slug] ?? 'heart';
 
-    // ── ALL Initiatives (complete list, no truncation) ─────
+    // ── ALL Initiatives (complete list per locale) ─────────
     $allInitiatives = [
         'education' => [
             'mr' => ['शालेय साहित्य वितरण','गरजू विद्यार्थ्यांना शैक्षणिक मदत','शिष्यवृत्ती सहाय्य','डिजिटल शिक्षण','करिअर मार्गदर्शन शिबिरे','स्पर्धा परीक्षा मार्गदर्शन','वाचनालय व अभ्यासिका सुविधा','गुणवंत विद्यार्थ्यांचा सत्कार','शाळाबाह्य मुलांना शिक्षणाशी जोडणे','डिजिटल साक्षरता अभियान'],
@@ -123,18 +123,17 @@
     ];
 
     // Prefer DB initiatives, fallback to canonical
-    $langKey      = in_array($locale, ['mr','hi','en']) ? $locale : 'mr';
-    $initiatives  = [];
+    $langKey     = in_array($locale, ['mr','hi','en']) ? $locale : 'mr';
+    $initiatives = [];
 
     if (!empty($area->initiatives) && $area->initiatives->count() > 0) {
         foreach ($area->initiatives as $init) {
-            $iTrans = $init->translation($locale) ?? $init->translation('mr') ?? $init->translation('en');
-            if ($iTrans?->title) {
-                $initiatives[] = ['n' => $init->order ?: (count($initiatives)+1), 'text' => $iTrans->title];
+            $iT = $init->translation($locale) ?? $init->translation('mr') ?? $init->translation('en');
+            if ($iT?->title) {
+                $initiatives[] = ['n' => $init->order ?: (count($initiatives)+1), 'text' => $iT->title];
             }
         }
     }
-
     if (empty($initiatives)) {
         $raw = $allInitiatives[$area->slug][$langKey] ?? $allInitiatives[$area->slug]['mr'] ?? [];
         foreach ($raw as $i => $text) {
@@ -148,86 +147,99 @@
     $col1  = array_slice($initiatives, 0, $half);
     $col2  = array_slice($initiatives, $half);
 
-    // Image
+    // Image URL
     $localPath = 'images/focus-areas/' . $area->slug . '.jpg';
     $imgUrl = file_exists(public_path($localPath))
         ? asset($localPath)
-        : 'https://images.unsplash.com/photo-1509099652299-30938b0aeb63?auto=format&fit=crop&w=800&q=80';
+        : 'https://images.unsplash.com/photo-1509099652299-30938b0aeb63?auto=format&fit=crop&w=600&q=80';
 @endphp
 
 {{--
-    FOCUS AREA CARD — Horizontal Layout
-    ┌──────────────────────────────────────────────────────────┐
-    │  [  PHOTO (40%)  ]  │  Title · Sub · Initiatives · CTA  │
-    └──────────────────────────────────────────────────────────┘
+    FOCUS AREA CARD — Exact match to reference image
+    ┌─────────────────────────────────────────────────────┐
+    │ [Photo] │ ○icon  Bold Title                         │
+    │  ~30%   │        English Subtitle                   │
+    │         │  ① item1    ⑥ item6                       │
+    │         │  ② item2    ⑦ item7                       │
+    │         │  ③ item3    ⑧ item8                       │
+    │         │  ④ item4    ⑨ item9                       │
+    │         │  ⑤ item5    ⑩ item10                      │
+    │         │  [ अधिक जाणून घ्या → ]                    │
+    └─────────────────────────────────────────────────────┘
 --}}
-<div class="group bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col sm:flex-row h-full">
-
-    {{-- ── LEFT: Photo with floating icon badge ── --}}
-    <div class="relative w-full sm:w-[40%] lg:w-[38%] flex-shrink-0 overflow-hidden" style="min-height: 240px;">
+<div
+    class="group rounded-[18px] border overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col sm:flex-row"
+    style="background-color: {{ $t['card'] }}; border-color: {{ $t['border'] }};"
+>
+    {{-- ── LEFT: Photo (30% width, full card height) ── --}}
+    <div class="relative w-full sm:w-[30%] flex-shrink-0 overflow-hidden" style="min-height: 180px;">
         <img
             src="{{ $imgUrl }}"
             alt="{{ $title }}"
             loading="lazy"
             class="absolute inset-0 w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509099652299-30938b0aeb63?auto=format&fit=crop&w=800&q=80';"
+            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1509099652299-30938b0aeb63?auto=format&fit=crop&w=600&q=80';"
         />
-
-        {{-- Subtle gradient on right edge to blend into content --}}
-        <div class="absolute inset-y-0 right-0 w-10 bg-gradient-to-r from-transparent to-white/10 pointer-events-none hidden sm:block"></div>
-
-        {{-- Icon badge — top-left ─────────────────────────── --}}
-        <div
-            class="absolute top-3 left-3 w-11 h-11 rounded-xl flex items-center justify-center shadow-lg ring-2 ring-white/50 z-10"
-            style="background-color: {{ $t['accent'] }};"
-            aria-hidden="true"
-        >
-            <i data-lucide="{{ $icon }}" class="w-5 h-5 text-white stroke-[2.2]"></i>
-        </div>
-
-        {{-- Title overlay on image bottom ───────────────────  --}}
-        <div class="absolute bottom-0 left-0 right-0 p-4 z-10" style="background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 100%);">
-            <h3 class="text-white font-black text-lg leading-tight">
-                <a href="{{ route('our-work.show', $area->slug) }}">{{ $title }}</a>
-            </h3>
-            @if($enLabel && $locale !== 'en')
-                <p class="text-white/65 text-[11px] font-semibold tracking-widest uppercase mt-0.5">{{ $enLabel }}</p>
-            @endif
-        </div>
     </div>
 
-    {{-- ── RIGHT: Content ── --}}
-    <div class="flex-1 flex flex-col p-4 sm:p-5" style="background-color: {{ $t['light'] }};">
+    {{-- ── RIGHT: Content (70% width) ── --}}
+    <div class="flex-1 flex flex-col p-3 sm:p-4">
 
-        {{-- Accent underline ──────────────────────────────── --}}
-        <div class="w-8 h-[3px] rounded-full mb-3 flex-shrink-0" style="background-color: {{ $t['accent'] }};"></div>
+        {{-- Header: Circular icon + Title + Subtitle ────── --}}
+        <div class="flex items-start gap-2.5 mb-2.5">
 
-        {{-- ALL Initiatives — 2-column numbered list ──────── --}}
+            {{-- Circular icon badge (matches reference exactly) --}}
+            <div
+                class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center shadow-md ring-2 ring-white"
+                style="background-color: {{ $t['circle'] }};"
+                aria-hidden="true"
+            >
+                <i data-lucide="{{ $icon }}" class="w-5 h-5 text-white stroke-[2.2]"></i>
+            </div>
+
+            <div class="flex-1 min-w-0">
+                <h3 class="text-[15px] sm:text-base font-black text-gray-900 leading-snug">
+                    <a href="{{ route('our-work.show', $area->slug) }}" class="hover:underline underline-offset-2">
+                        {{ $title }}
+                    </a>
+                </h3>
+                @if($enLabel && $locale !== 'en')
+                    <p class="text-[10px] font-semibold text-gray-400 tracking-widest uppercase mt-0.5">
+                        {{ $enLabel }}
+                    </p>
+                @endif
+            </div>
+        </div>
+
+        {{-- Divider ─────────────────────────────────────── --}}
+        <div class="w-full h-px mb-2.5" style="background-color: {{ $t['border'] }};"></div>
+
+        {{-- ALL Initiative Points — 2-column numbered list ─ --}}
         @if($total > 0)
-            <div class="grid grid-cols-2 gap-x-3 gap-y-1.5 mb-4 flex-1">
+            <div class="grid grid-cols-2 gap-x-2 gap-y-1 flex-1 mb-2.5">
 
-                {{-- Column 1 --}}
-                <div class="space-y-1.5">
+                {{-- Col 1 --}}
+                <div class="space-y-1">
                     @foreach($col1 as $item)
-                        <div class="flex items-start gap-1.5">
+                        <div class="flex items-start gap-1">
                             <span
-                                class="mt-0.5 w-[18px] h-[18px] min-w-[18px] rounded-full flex items-center justify-center text-[9px] font-black leading-none flex-shrink-0"
+                                class="mt-0.5 w-4 h-4 min-w-[16px] rounded-full flex items-center justify-center text-[8px] font-black leading-none flex-shrink-0"
                                 style="background-color: {{ $t['num_bg'] }}; color: {{ $t['num_text'] }};"
                             >{{ $item['n'] }}</span>
-                            <span class="text-[11.5px] font-medium text-gray-700 leading-snug">{{ $item['text'] }}</span>
+                            <span class="text-[10.5px] sm:text-[11px] font-medium text-gray-700 leading-snug">{{ $item['text'] }}</span>
                         </div>
                     @endforeach
                 </div>
 
-                {{-- Column 2 --}}
-                <div class="space-y-1.5">
+                {{-- Col 2 --}}
+                <div class="space-y-1">
                     @foreach($col2 as $item)
-                        <div class="flex items-start gap-1.5">
+                        <div class="flex items-start gap-1">
                             <span
-                                class="mt-0.5 w-[18px] h-[18px] min-w-[18px] rounded-full flex items-center justify-center text-[9px] font-black leading-none flex-shrink-0"
+                                class="mt-0.5 w-4 h-4 min-w-[16px] rounded-full flex items-center justify-center text-[8px] font-black leading-none flex-shrink-0"
                                 style="background-color: {{ $t['num_bg'] }}; color: {{ $t['num_text'] }};"
                             >{{ $item['n'] }}</span>
-                            <span class="text-[11.5px] font-medium text-gray-700 leading-snug">{{ $item['text'] }}</span>
+                            <span class="text-[10.5px] sm:text-[11px] font-medium text-gray-700 leading-snug">{{ $item['text'] }}</span>
                         </div>
                     @endforeach
                 </div>
@@ -235,15 +247,15 @@
             </div>
         @endif
 
-        {{-- CTA Button ────────────────────────────────────── --}}
-        <div class="pt-3 border-t flex-shrink-0" style="border-color: {{ $t['border'] }};">
+        {{-- CTA Pill (pastel, matches reference) ─────────── --}}
+        <div class="mt-auto pt-2 border-t" style="border-color: {{ $t['border'] }};">
             <a
                 href="{{ route('our-work.show', $area->slug) }}"
-                class="inline-flex items-center gap-2 px-5 py-2 rounded-full text-[12px] font-bold text-white transition-all shadow-sm hover:shadow-md hover:opacity-90"
-                style="background-color: {{ $t['accent'] }};"
+                class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11.5px] font-bold transition-all hover:opacity-80"
+                style="background-color: {{ $t['pill_bg'] }}; color: {{ $t['pill_text'] }};"
             >
                 {{ site_t('btn_learn_more', [], 'अधिक जाणून घ्या') }}
-                <i data-lucide="arrow-right" class="w-3.5 h-3.5" aria-hidden="true"></i>
+                <i data-lucide="arrow-right" class="w-3 h-3" aria-hidden="true"></i>
             </a>
         </div>
 

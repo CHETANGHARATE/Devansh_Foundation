@@ -70,82 +70,70 @@
 
 <!-- ==========================================
      2. OUR FOCUS AREAS / आमची कार्यक्षेत्रे
-     Professional 3×3 Grid — Vertical Cards
+     3×3 Horizontal Cards — Exact Reference Match
 =========================================== -->
-<section class="py-14 sm:py-20 bg-gradient-to-b from-[#EEF2F8] to-[#F7F9FC] border-b border-gray-200">
+<section class="py-10 sm:py-14 bg-white border-b border-gray-100">
 @php $locale = app()->getLocale(); @endphp
 
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-        <!-- ─── Section Header ─── -->
-        <div class="relative overflow-hidden rounded-3xl mb-10 sm:mb-14" style="background: linear-gradient(135deg, #0B2545 0%, #073B63 55%, #0D5C3A 100%);">
+        <!-- ─── Section Header — matches reference (light background) ─── -->
+        <div class="relative mb-8 sm:mb-10 pb-6 border-b border-gray-100 overflow-hidden">
 
-            <!-- Decorative circles -->
-            <div class="absolute -top-12 -right-12 w-56 h-56 rounded-full bg-white/5 pointer-events-none"></div>
-            <div class="absolute bottom-0 left-1/2 w-32 h-32 rounded-full bg-white/5 pointer-events-none"></div>
-
-            <!-- Header image on right -->
-            <div class="absolute right-0 top-0 bottom-0 w-[40%] hidden lg:block pointer-events-none overflow-hidden">
+            <!-- Right side: decorative photo, fades out -->
+            <div class="absolute right-0 top-0 bottom-0 w-[38%] hidden lg:block pointer-events-none overflow-hidden">
                 <img
                     src="{{ asset('images/focus-areas/focus-header-banner.jpg') }}"
                     alt=""
                     aria-hidden="true"
-                    class="w-full h-full object-cover object-center opacity-40"
+                    class="w-full h-full object-cover object-center opacity-80"
                 />
-                <div class="absolute inset-0" style="background: linear-gradient(to right, #0B2545, #073B6300);"></div>
+                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent"></div>
             </div>
 
-            <!-- Content -->
-            <div class="relative z-10 px-8 py-10 sm:px-12 sm:py-12 lg:w-[64%]">
-                <!-- Badge -->
-                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white/80 text-xs font-bold tracking-widest uppercase px-4 py-1.5 rounded-full mb-5">
-                    <span class="w-2 h-2 rounded-full bg-[#4ADE80] animate-pulse"></span>
-                    {{ $locale === 'en' ? 'Our Programs' : ($locale === 'hi' ? 'हमारे कार्यक्रम' : 'आमचे उपक्रम') }}
+            <!-- Left: Title + Subtitles -->
+            <div class="relative z-10 lg:w-[65%]">
+                <!-- Green bar + bilingual heading on one line -->
+                <div class="flex items-center gap-3 mb-2">
+                    <span class="w-8 h-1.5 bg-[#16A34A] rounded-full flex-shrink-0"></span>
+                    <h2 class="text-2xl sm:text-3xl lg:text-[34px] font-black text-[#0B2545] tracking-tight leading-tight flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                        @if($locale === 'en')
+                            <span>Our Focus Areas</span>
+                        @elseif($locale === 'hi')
+                            <span>हमारे कार्यक्षेत्र</span>
+                            <span class="text-gray-200 font-light">|</span>
+                            <span class="text-xl sm:text-2xl font-semibold text-gray-400">Our Focus Areas</span>
+                        @else
+                            <span>आमची कार्यक्षेत्रे</span>
+                            <span class="text-gray-200 font-light">|</span>
+                            <span class="text-xl sm:text-2xl font-semibold text-gray-400">Our Focus Areas</span>
+                        @endif
+                    </h2>
                 </div>
 
-                <!-- Title -->
-                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight tracking-tight mb-4">
-                    @if(app()->getLocale() === 'en')
-                        Our Focus Areas
-                    @elseif(app()->getLocale() === 'hi')
-                        हमारे कार्यक्षेत्र
-                        <span class="block text-white/50 text-2xl font-semibold mt-1">Our Focus Areas</span>
-                    @else
-                        आमची कार्यक्षेत्रे
-                        <span class="block text-white/50 text-2xl font-semibold mt-1">Our Focus Areas</span>
-                    @endif
-                </h2>
-
-                <!-- Subtitle -->
-                <p class="text-white/80 text-base sm:text-lg font-medium leading-relaxed max-w-xl">
+                <p class="text-sm sm:text-base font-semibold text-gray-700 leading-relaxed mt-1">
                     {{ site_t('focus_statement_mr', [], 'समाजाच्या सर्वांगीण विकासासाठी आम्ही विविध क्षेत्रांमध्ये सातत्याने कार्यरत आहोत.') }}
                 </p>
-                <p class="text-white/50 text-sm mt-1.5">
+                <p class="text-xs sm:text-sm text-gray-400 font-normal mt-0.5">
                     We are continuously working across multiple areas for the holistic development of society.
                 </p>
+            </div>
 
-                <!-- Stats row -->
-                <div class="flex flex-wrap gap-6 mt-8">
-                    <div>
-                        <div class="text-3xl font-black text-[#4ADE80]">9</div>
-                        <div class="text-white/60 text-xs font-semibold mt-0.5">{{ $locale === 'en' ? 'Focus Areas' : ($locale === 'hi' ? 'कार्यक्षेत्र' : 'कार्यक्षेत्रे') }}</div>
-                    </div>
-                    <div class="w-px bg-white/20 self-stretch"></div>
-                    <div>
-                        <div class="text-3xl font-black text-[#60A5FA]">79+</div>
-                        <div class="text-white/60 text-xs font-semibold mt-0.5">{{ $locale === 'en' ? 'Initiatives' : ($locale === 'hi' ? 'उपक्रम' : 'उपक्रम') }}</div>
-                    </div>
-                    <div class="w-px bg-white/20 self-stretch"></div>
-                    <div>
-                        <div class="text-3xl font-black text-[#F9A8D4]">10K+</div>
-                        <div class="text-white/60 text-xs font-semibold mt-0.5">{{ $locale === 'en' ? 'Beneficiaries' : ($locale === 'hi' ? 'लाभार्थी' : 'लाभार्थी') }}</div>
-                    </div>
+            <!-- Right: "Together for a Better Tomorrow" script (matches reference) -->
+            <div class="absolute right-[40%] top-1/2 -translate-y-1/2 hidden lg:block select-none z-10">
+                <div class="font-serif italic text-right leading-tight">
+                    <span class="block text-xl font-bold text-slate-700">Together</span>
+                    <span class="block text-sm font-normal text-slate-500 tracking-wide">for a Better</span>
+                    <span class="block text-xl font-black text-[#0B2545]">Tomorrow</span>
+                    <svg class="w-24 h-3 mt-1 text-[#16A34A] fill-none stroke-current ml-auto" viewBox="0 0 100 12">
+                        <path d="M2 9 C 28 12, 70 10, 98 2" stroke-width="3" stroke-linecap="round"/>
+                    </svg>
                 </div>
             </div>
         </div>
 
-        <!-- ─── Horizontal Card Grid: 1 col mobile → 2 col desktop ─── -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+        <!-- ─── 3-Column Grid (exact 3×3 like reference) ─── -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
             @foreach($focusAreas as $area)
                 <x-focus-area-card :area="$area" />
             @endforeach
@@ -153,7 +141,6 @@
 
     </div>
 </section>
-
 
 <!-- ==========================================
      3. OUR IMPACT

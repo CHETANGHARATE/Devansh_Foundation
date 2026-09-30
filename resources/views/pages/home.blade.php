@@ -144,8 +144,8 @@
             </div>
         </div>
 
-        <!-- ─── 3×3 Card Grid — equal height cards ─── -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 items-stretch">
+        <!-- ─── Horizontal Card Grid: 1 col mobile → 2 col desktop ─── -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
             @foreach($focusAreas as $area)
                 <x-focus-area-card :area="$area" />
             @endforeach

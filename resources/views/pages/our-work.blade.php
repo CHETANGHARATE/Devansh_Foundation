@@ -1,119 +1,87 @@
 @extends('layouts.app')
 
-@section('title', site_t('nav_our_work') . ' - ' . site_t('focus_heading') . ' | ' . config('app.name', 'Devansh Foundation'))
-
 @section('content')
 
-<!-- ==========================================
-     आमची कार्यक्षेत्रे / OUR FOCUS AREAS
-     Visual Layout Matched to Reference Image
-=========================================== -->
-<section class="py-10 sm:py-14 bg-[#F8FAFC] relative overflow-hidden border-b border-gray-100">
-    
-    <!-- Subtle background accent -->
-    <div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-emerald-100/40 via-blue-50/20 to-transparent rounded-full blur-3xl pointer-events-none"></div>
-
+<!-- Header Banner -->
+<section class="bg-gradient-to-r from-[#073B63] to-[#138A4B] text-white py-16 sm:py-20 relative overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        <!-- Section Header (Exact Reference Match) -->
-        <div class="relative rounded-2xl overflow-hidden mb-6 sm:mb-8 pb-6 sm:pb-8 border-b border-gray-200/70">
-            <!-- Background Banner Image on right side matching reference -->
-            <div class="absolute right-0 top-0 bottom-0 w-full sm:w-[50%] lg:w-[45%] pointer-events-none select-none overflow-hidden hidden sm:block">
-                <img 
-                    src="{{ asset('images/focus-areas/focus-header-banner.jpg') }}" 
-                    alt="Together for a Better Tomorrow" 
-                    class="w-full h-full object-cover object-center opacity-30 lg:opacity-40"
-                />
-                <!-- Gradient mask fading into background from left -->
-                <div class="absolute inset-0 bg-gradient-to-r from-[#F8FAFC] via-[#F8FAFC]/90 to-transparent"></div>
+        <div class="max-w-3xl">
+            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/15 text-white border border-white/20 mb-4">
+                <span>{{ site_t('nav_our_work') }}</span>
             </div>
-
-            <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
-                <!-- Left Header Details -->
-                <div class="max-w-2xl">
-                    <!-- Bar & Title -->
-                    <div class="flex items-center space-x-3 mb-2">
-                        <span class="w-8 sm:w-10 h-1 sm:h-1.5 bg-[#16A34A] rounded-full inline-block flex-shrink-0"></span>
-                        <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B2545] tracking-tight flex items-center flex-wrap gap-2">
-                            @if(app()->getLocale() === 'en')
-                                <span>Our Focus Areas</span>
-                            @elseif(app()->getLocale() === 'hi')
-                                <span>हमारे कार्यक्षेत्र</span>
-                                <span class="text-gray-300 font-light hidden sm:inline">|</span>
-                                <span class="text-lg sm:text-2xl font-bold text-[#073B63]">Our Focus Areas</span>
-                            @else
-                                <span>आमची कार्यक्षेत्रे</span>
-                                <span class="text-gray-300 font-light hidden sm:inline">|</span>
-                                <span class="text-lg sm:text-2xl font-bold text-[#073B63]">Our Focus Areas</span>
-                            @endif
-                        </h1>
-                    </div>
-
-                    <!-- Subtitles in Marathi & English -->
-                    <p class="text-sm sm:text-base font-semibold text-gray-800 leading-snug mt-1">
-                        {{ site_t('focus_statement_mr', [], 'समाजाच्या सर्वांगीण विकासासाठी आम्ही विविध क्षेत्रांमध्ये सातत्याने कार्यरत आहोत.') }}
-                    </p>
-                    <p class="text-xs sm:text-sm text-gray-500 font-normal mt-0.5">
-                        {{ site_t('focus_statement_en', [], 'We are continuously working across multiple areas for the holistic development of society.') }}
-                    </p>
-                </div>
-
-                <!-- Right Script Badge: Together for a Better Tomorrow -->
-                <div class="hidden sm:flex flex-col items-end text-right select-none pl-4 flex-shrink-0">
-                    <div class="relative inline-block font-serif italic text-2xl lg:text-3xl font-bold text-[#073B63] leading-tight">
-                        <span class="block text-slate-800">Together</span>
-                        <span class="block text-lg lg:text-xl font-normal text-slate-600 font-sans tracking-wide">for a Better</span>
-                        <span class="block text-2xl lg:text-3xl font-black text-[#0B2545]">Tomorrow</span>
-                        <!-- Green flourish underline -->
-                        <svg class="w-28 sm:w-32 h-3.5 mt-1 text-[#16A34A] fill-none stroke-current" viewBox="0 0 120 16">
-                            <path d="M4 11 C 35 15, 80 12, 116 3" stroke-width="3.5" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                </div>
-            </div>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-4">
+                {{ site_t('focus_heading') }}
+            </h1>
+            <p class="text-lg text-emerald-50 leading-relaxed">
+                {{ site_t('focus_subheading') }}
+            </p>
         </div>
-
-        <!-- 3-Column Focus Areas Grid (9 Authentic Cards) -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 pt-8 sm:pt-10">
-            @foreach($focusAreas as $area)
-                <x-focus-area-card :area="$area" />
-            @endforeach
-        </div>
-
     </div>
 </section>
 
-<!-- ==========================================
-     Support & Collaboration Call-to-Action
-=========================================== -->
-<section class="py-14 sm:py-16 bg-white">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-gradient-to-r from-[#073B63] via-[#0F4C81] to-[#138A4B] rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-8">
-            
-            <div class="max-w-2xl space-y-2">
-                <span class="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/20 text-white backdrop-blur-sm">
-                    {{ site_t('nav_get_involved') }}
-                </span>
-                <h2 class="text-2xl sm:text-3xl font-black tracking-tight">
-                    {{ site_t('hero_badge', [], 'लहान पावले, मोठा बदल') }}
-                </h2>
-                <p class="text-sm sm:text-base text-emerald-100 leading-relaxed">
-                    {{ site_t('focus_subheading') }}
-                </p>
-            </div>
+<!-- Focus Areas Detailed Grid -->
+<section class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        @foreach($focusAreas as $index => $area)
+            @php
+                $trans = $area->translation();
+                $title = $trans?->title ?? $area->slug;
+                $desc = $trans?->description ?? ($trans?->short_description ?? '');
+                $icon = $area->icon ?: 'heart';
+                $img = $area->image ?: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=800&q=80';
+                $isEven = $index % 2 === 1;
+            @endphp
 
-            <div class="flex flex-col sm:flex-row items-center gap-3 flex-shrink-0 w-full sm:w-auto">
-                <a href="{{ route('donate') }}" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3.5 rounded-xl bg-[#F58220] hover:bg-[#DC6F13] text-white font-bold text-sm shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">
-                    <i data-lucide="heart" class="w-4 h-4 fill-white"></i>
-                    <span>{{ site_t('btn_donate') }}</span>
-                </a>
-                <a href="{{ route('volunteer') }}" class="w-full sm:w-auto inline-flex items-center justify-center space-x-2 px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/30 text-white font-bold text-sm backdrop-blur-sm transition">
-                    <i data-lucide="users" class="w-4 h-4"></i>
-                    <span>{{ site_t('btn_volunteer') }}</span>
-                </a>
-            </div>
+            <div class="bg-white rounded-3xl border border-gray-100 p-8 sm:p-12 shadow-sm overflow-hidden">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center {{ $isEven ? 'lg:flex-row-reverse' : '' }}">
+                    
+                    <!-- Text side -->
+                    <div class="lg:col-span-7 space-y-5 {{ $isEven ? 'lg:order-2' : 'lg:order-1' }}">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-12 h-12 rounded-xl bg-[#EAF7EF] text-[#138A4B] flex items-center justify-center">
+                                <i data-lucide="{{ $icon }}" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-gray-400">{{ site_t('nav_our_work') }} #{{ $index + 1 }}</span>
+                        </div>
 
-        </div>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#073B63]">
+                            {{ $title }}
+                        </h2>
+
+                        <p class="text-base text-gray-600 leading-relaxed">
+                            {{ $desc }}
+                        </p>
+
+                        <!-- Key Pillars / Badges -->
+                        <div class="flex flex-wrap gap-2 pt-2">
+                            <span class="px-3 py-1 bg-[#EAF7EF] text-[#138A4B] rounded-full text-xs font-semibold">{{ site_t('about_trust_badge') }}</span>
+                            <span class="px-3 py-1 bg-[#EEF6FB] text-[#073B63] rounded-full text-xs font-semibold">{{ site_t('nav_impact') }}</span>
+                            <span class="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-xs font-semibold">{{ site_t('involve_volunteer') }}</span>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="pt-4 flex flex-wrap items-center gap-4">
+                            <a href="{{ route('our-work.show', $area->slug) }}" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-[#073B63] hover:bg-[#052a47] text-white font-bold text-sm shadow-sm transition">
+                                <span>{{ site_t('btn_learn_more') }}</span>
+                                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                            <a href="{{ route('donate') }}" class="inline-flex items-center space-x-1.5 px-5 py-3 rounded-xl bg-[#F58220] hover:bg-[#DC6F13] text-white font-bold text-sm transition">
+                                <i data-lucide="heart" class="w-4 h-4"></i>
+                                <span>{{ site_t('btn_donate') }}</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Image side -->
+                    <div class="lg:col-span-5 {{ $isEven ? 'lg:order-1' : 'lg:order-2' }}">
+                        <div class="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-md group">
+                            <img src="{{ $img }}" alt="{{ $title }}" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        @endforeach
     </div>
 </section>
 

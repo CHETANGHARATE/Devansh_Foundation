@@ -10,15 +10,15 @@
             <a href="{{ route('home') }}" class="flex items-center space-x-2.5 sm:space-x-3 group py-1 shrink-0">
                 <img src="{{ asset('images/logo.png') }}" 
                      alt="Devansh Foundation" 
-                     class="h-12 sm:h-14 lg:h-[58px] w-auto object-contain drop-shadow-sm group-hover:scale-105 transition duration-300">
-                <div class="flex flex-col text-left justify-center select-none">
-                    <span class="text-xl sm:text-2xl lg:text-[27px] font-black tracking-tight text-[#073B63] leading-none uppercase">
+                     class="h-12 sm:h-14 lg:h-[56px] w-auto object-contain drop-shadow-sm group-hover:scale-105 transition duration-300">
+                <div class="flex flex-col text-left justify-center select-none w-fit">
+                    <span class="text-[20px] sm:text-[23px] lg:text-[26px] font-black tracking-tight text-[#073B63] leading-none uppercase">
                         DEVANSH
                     </span>
-                    <span class="text-[11px] sm:text-xs lg:text-[13.5px] font-black tracking-[0.24em] text-[#138A4B] leading-none uppercase mt-1">
+                    <span class="text-[9.8px] sm:text-[11px] lg:text-[12px] font-black tracking-[0.26em] text-[#138A4B] leading-none uppercase mt-1">
                         FOUNDATION
                     </span>
-                    <span class="text-[7.5px] sm:text-[8.5px] lg:text-[9.5px] font-semibold text-[#073B63] leading-none mt-1 tracking-normal whitespace-nowrap">
+                    <span class="text-[6.8px] sm:text-[7.6px] lg:text-[8.2px] font-semibold text-[#073B63] leading-none mt-1 tracking-[0.015em] whitespace-nowrap">
                         Together for a Better Tomorrow
                     </span>
                 </div>

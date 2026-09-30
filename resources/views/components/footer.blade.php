@@ -14,18 +14,15 @@
             
             <!-- Column 1: Logo & Tagline (lg:col-span-3) -->
             <div class="lg:col-span-3 space-y-4">
-                <a href="{{ route('home') }}" class="flex items-center space-x-3 group">
-                    <img src="{{ asset('images/logo.png') }}" alt="Devansh Foundation" class="h-14 w-auto object-contain rounded-full bg-white p-0.5 shadow">
-                    <div class="flex flex-col text-left justify-center select-none w-fit">
-                        <span class="text-xl sm:text-2xl font-black tracking-tight text-white leading-none uppercase">
-                            DEVANSH
-                        </span>
-                        <span class="text-[9.8px] sm:text-[11.2px] font-black tracking-[0.26em] text-emerald-400 leading-none uppercase mt-1">
-                            FOUNDATION
-                        </span>
-                        <span class="text-[6.8px] sm:text-[7.8px] font-semibold text-gray-300 leading-none mt-1 tracking-[0.015em] whitespace-nowrap">
-                            Together for a Better Tomorrow
-                        </span>
+                <a href="{{ route('home') }}" class="flex items-center space-x-3 group" aria-label="Devansh Foundation - Together for a Better Tomorrow">
+                    <img src="{{ asset('images/logo.png') }}" alt="" class="h-14 w-auto object-contain rounded-full bg-white p-0.5 shadow shrink-0">
+                    <div class="flex flex-col text-left justify-center select-none shrink-0">
+                        <svg viewBox="0 0 160 58" class="h-11 sm:h-12 w-auto select-none overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                            <text x="0" y="24" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" fill="#FFFFFF" textLength="160" lengthAdjust="spacing">DEVANSH</text>
+                            <text x="0" y="42" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="800" font-size="14.5" fill="#22C55E" textLength="160" lengthAdjust="spacing">FOUNDATION</text>
+                            <text x="0" y="56" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="9.8" fill="#94A3B8" textLength="160" lengthAdjust="spacing">Together for a Better Tomorrow</text>
+                        </svg>
+                        <span class="sr-only">Devansh Foundation - Together for a Better Tomorrow</span>
                     </div>
                 </a>
                 <p class="text-xs text-gray-400 leading-relaxed pr-4">

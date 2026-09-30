@@ -38,6 +38,29 @@
                 <form action="{{ route('donate.store') }}" method="POST" class="space-y-6">
                     @csrf
 
+                    @if(isset($selectedCase) && $selectedCase)
+                        <input type="hidden" name="donation_case_id" value="{{ $selectedCase->id }}">
+                        <div class="p-4 rounded-2xl bg-[#E8F3EB] border border-[#CDE5D5] flex items-start space-x-3.5 shadow-sm">
+                            <div class="w-10 h-10 rounded-xl bg-white shadow-sm flex items-center justify-center shrink-0 text-[#1E653F]">
+                                <i data-lucide="heart" class="w-5 h-5 fill-[#1E653F]"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="text-[11px] font-bold uppercase tracking-wider text-[#1E653F]">
+                                    {{ site_t('help_us_now_label') }} • {{ $selectedCase->t('category_name') ?: $selectedCase->category }}
+                                </div>
+                                <div class="text-sm sm:text-base font-extrabold text-[#073B63] mt-0.5">
+                                    {{ $selectedCase->t('title') ?: $selectedCase->beneficiary_name }}
+                                </div>
+                                <div class="text-xs text-gray-600 mt-1 flex flex-wrap items-center gap-x-3 gap-y-1">
+                                    <span>Target: <strong class="text-gray-800">{{ $selectedCase->formatted_target_amount }}</strong></span>
+                                    <span>•</span>
+                                    <span>Raised: <strong class="text-[#138A4B]">{{ $selectedCase->formatted_collected_amount }}</strong> ({{ $selectedCase->progress_percentage }}%)</span>
+                                </div>
+                            </div>
+                            <a href="{{ route('donate') }}" title="Remove case selection" class="text-xs text-gray-400 hover:text-gray-600 font-bold ml-2">✕</a>
+                        </div>
+                    @endif
+
                     <!-- 1. Frequency Switcher -->
                     <div>
                         <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-2">{{ site_t('donate_step_frequency') }}</label>

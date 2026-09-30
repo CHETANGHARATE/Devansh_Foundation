@@ -3,6 +3,7 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\DonationCaseController as AdminDonationCaseController;
 use App\Http\Controllers\Admin\DonationController as AdminDonationController;
 use App\Http\Controllers\Admin\FocusAreaController as AdminFocusAreaController;
 use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
@@ -129,6 +130,9 @@ Route::middleware('admin')->prefix('admin')->as('admin.')->group(function () {
 
     // Stories CRUD
     Route::resource('stories', AdminStoryController::class);
+
+    // Help Us Now - Urgent Cases CRUD
+    Route::resource('donation-cases', AdminDonationCaseController::class);
 
     // News CRUD
     Route::resource('news', AdminNewsController::class);

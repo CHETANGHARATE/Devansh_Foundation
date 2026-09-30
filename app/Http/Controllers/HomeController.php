@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DonationCase;
 use App\Models\FocusArea;
 use App\Models\GalleryImage;
 use App\Models\ImpactStatistic;
@@ -31,6 +32,13 @@ class HomeController extends Controller
             ->take(5)
             ->get();
 
+        // 8 recent donation cases for "Help Us Now" section
+        $recentCases = DonationCase::active()
+            ->with('translations')
+            ->orderBy('order')
+            ->take(8)
+            ->get();
+
         $successStories = Story::published()
             ->with(['translations', 'project.translations'])
             ->orderBy('order')
@@ -51,6 +59,7 @@ class HomeController extends Controller
             'focusAreas',
             'impactStats',
             'featuredProjects',
+            'recentCases',
             'successStories',
             'latestNews',
             'galleryImages'

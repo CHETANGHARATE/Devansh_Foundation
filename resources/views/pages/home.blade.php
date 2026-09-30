@@ -448,7 +448,13 @@
 
 
 <!-- ==========================================
-     5. SUCCESS STORIES + SUPPORT OUR CAUSE (देणगी द्या)
+     5. HELP US NOW — RECENT CASES CAROUSEL
+=========================================== -->
+<x-recent-cases-section :recent-cases="$recentCases" />
+
+
+<!-- ==========================================
+     6. SUCCESS STORIES + SUPPORT OUR CAUSE (देणगी द्या)
 =========================================== -->
 <section class="py-10 bg-[#F9FBFA] border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

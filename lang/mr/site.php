@@ -291,4 +291,18 @@ return [
     'donors_tagline' => 'विश्वसनीय सहकार्य व सामाजिक पाठबळ',
     'donors_subheading' => 'समाजाच्या सर्वांगीण विकासासाठी आणि सकारात्मक बदलासाठी आमच्या कार्यात मोलाचा हातभार लावणारे सन्माननीय देणगीदार, CSR भागीदार व समर्थक.',
     'donors_become_partner' => 'देणगीदार / भागीदार व्हा',
+
+    // Help Us Now (Recent Cases) Section
+    'help_us_now_label' => 'आम्हाला आत्ताच मदत करा',
+    'recent_cases_heading' => 'अलीकडील मदतीची गरज असलेली प्रकरणे',
+    'help_us_now_subheading' => 'तुमचे एक लहानसे सहकार्य एखाद्या गरजवंताला आवश्यक असलेले उपचार, शिक्षण अथवा जीवनदान देऊ शकते.',
+    'btn_donate_now_heart' => 'आत्ताच देणगी द्या',
+    'cases_treatment_expense' => 'उपचार खर्च',
+    'cases_raised_of' => 'जमा / एकूण',
+    'cases_remaining' => 'शिल्लक',
+    'cases_goal_achieved' => 'ध्येय साध्य झाले',
+    'cases_no_cases' => 'सध्या कोणतीही प्रलंबित प्रकरणे उपलब्ध नाहीत.',
+    'cases_support_general' => 'आमच्या सर्वसाधारण निधीस मदत करा',
+    'cases_read_more' => 'अधिक वाचा',
+    'cases_view_all' => 'सर्व तातडीची प्रकरणे पहा',
 ];

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Donation;
+use App\Models\DonationCase;
 use App\Models\Project;
 use App\Models\Setting;
 use Illuminate\Http\Request;
@@ -16,6 +17,13 @@ class DonationController extends Controller
         $selectedProjectId = $request->query('project_id');
         $presetAmount = $request->query('amount', 1000);
 
+        $selectedCase = null;
+        if ($request->filled('case')) {
+            $selectedCase = DonationCase::active()->where('slug', $request->query('case'))->with('translations')->first();
+        } elseif ($request->filled('case_id')) {
+            $selectedCase = DonationCase::active()->where('id', $request->query('case_id'))->with('translations')->first();
+        }
+
         $upiId = Setting::get('donation_upi_id', 'devanshfoundation@upi');
         $bankName = Setting::get('donation_bank_name', 'State Bank of India');
         $accountHolder = Setting::get('donation_account_holder', 'Devansh Foundation');
@@ -28,6 +36,7 @@ class DonationController extends Controller
         return view('pages.donate', compact(
             'projects',
             'selectedProjectId',
+            'selectedCase',
             'presetAmount',
             'upiId',
             'bankName',
@@ -54,6 +63,7 @@ class DonationController extends Controller
             'donation_type' => 'required|in:one-time,monthly',
             'payment_method' => 'required|string|in:upi_qr,bank_transfer,gateway',
             'project_id' => 'nullable|exists:projects,id',
+            'donation_case_id' => 'nullable|exists:donation_cases,id',
             'transaction_id' => 'nullable|string|max:100',
             'notes' => 'nullable|string|max:500',
         ]);

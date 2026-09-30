@@ -291,4 +291,18 @@ return [
     'donors_tagline' => 'विश्वसनीय सहयोग एवं सामाजिक संबल',
     'donors_subheading' => 'समाज के समग्र विकास और सकारात्मक बदलाव के लिए हमारे सेवा कार्यों में महत्वपूर्ण योगदान देने वाले सम्मानित दानदाता, सीएसआर भागीदार व सहयोगी।',
     'donors_become_partner' => 'दानदाता / भागीदार बनें',
+
+    // Help Us Now (Recent Cases) Section
+    'help_us_now_label' => 'अभी हमारी मदद करें',
+    'recent_cases_heading' => 'हाल के सहायता प्रकरण',
+    'help_us_now_subheading' => 'आपका एक छोटा सा सहयोग किसी जरूरतमंद को आवश्यक इलाज, शिक्षा या नई ज़िंदगी दे सकता है.',
+    'btn_donate_now_heart' => 'अभी दान करें',
+    'cases_treatment_expense' => 'इलाज का खर्च',
+    'cases_raised_of' => 'एकत्रित / कुल',
+    'cases_remaining' => 'शेष',
+    'cases_goal_achieved' => 'लक्ष्य पूरा हुआ',
+    'cases_no_cases' => 'इस समय कोई सक्रिय प्रकरण उपलब्ध नहीं है.',
+    'cases_support_general' => 'हमारे सामान्य कोष में सहयोग करें',
+    'cases_read_more' => 'और पढ़ें',
+    'cases_view_all' => 'सभी तत्काल प्रकरण देखें',
 ];

@@ -19,6 +19,7 @@ class Donation extends Model
         'transaction_id',
         'payment_status',
         'project_id',
+        'donation_case_id',
         'receipt_number',
         'notes',
     ];
@@ -30,5 +31,10 @@ class Donation extends Model
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function donationCase(): BelongsTo
+    {
+        return $this->belongsTo(DonationCase::class, 'donation_case_id');
     }
 }

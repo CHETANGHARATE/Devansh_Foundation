@@ -291,4 +291,18 @@ return [
     'donors_tagline' => 'Trusted Support & Community Philanthropy',
     'donors_subheading' => 'Distinguished donors, CSR partners, and institutional patrons empowering our social initiatives for sustainable community transformation.',
     'donors_become_partner' => 'Partner With Us / Donate',
+
+    // Help Us Now (Recent Cases) Section
+    'help_us_now_label' => 'Help Us Now',
+    'recent_cases_heading' => 'Recent Cases',
+    'help_us_now_subheading' => 'Your support can help someone receive the care, education or assistance they urgently need.',
+    'btn_donate_now_heart' => 'Donate Now',
+    'cases_treatment_expense' => 'Treatment Expense',
+    'cases_raised_of' => 'raised of',
+    'cases_remaining' => 'Remaining',
+    'cases_goal_achieved' => 'Goal Achieved',
+    'cases_no_cases' => 'No active cases at the moment.',
+    'cases_support_general' => 'Support Our General Cause',
+    'cases_read_more' => 'Read More',
+    'cases_view_all' => 'View All Urgent Cases',
 ];

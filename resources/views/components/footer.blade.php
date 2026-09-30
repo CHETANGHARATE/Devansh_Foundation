@@ -22,7 +22,6 @@
                             <text x="0" y="42" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="800" font-size="14.5" fill="#22C55E" textLength="160" lengthAdjust="spacing">FOUNDATION</text>
                             <text x="0" y="56" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="9.8" fill="#94A3B8" textLength="160" lengthAdjust="spacing">Together for a Better Tomorrow</text>
                         </svg>
-                        <span class="sr-only">Devansh Foundation - Together for a Better Tomorrow</span>
                     </div>
                 </a>
                 <p class="text-xs text-gray-400 leading-relaxed pr-4">

@@ -43,18 +43,18 @@
     $enLabel = $titles['en'][$area->slug] ?? '';
     $title   = $titles[$locale][$area->slug] ?? $titles['mr'][$area->slug] ?? ($trans?->title ?: $area->name);
 
-    // ── Theme map (pastel — matching reference image) ─────
+    // ── Themes (pastel card backgrounds, matching reference) ──
     $themeMap = [
-        'pink'    => ['card'  => '#FFF5F7', 'border' => '#FFD6DC', 'circle' => '#E11D48', 'num_bg' => '#FFE4E6', 'num_text' => '#BE123C', 'pill_bg' => '#FFE4E6', 'pill_text' => '#BE123C'],
-        'green'   => ['card'  => '#F0FDF4', 'border' => '#BBFCD9', 'circle' => '#16A34A', 'num_bg' => '#DCFCE7', 'num_text' => '#15803D', 'pill_bg' => '#DCFCE7', 'pill_text' => '#15803D'],
-        'teal'    => ['card'  => '#F0FDFA', 'border' => '#CCFBF1', 'circle' => '#0D9488', 'num_bg' => '#CCFBF1', 'num_text' => '#0F766E', 'pill_bg' => '#CCFBF1', 'pill_text' => '#0F766E'],
-        'emerald' => ['card'  => '#ECFDF5', 'border' => '#A7F3D0', 'circle' => '#059669', 'num_bg' => '#D1FAE5', 'num_text' => '#065F46', 'pill_bg' => '#D1FAE5', 'pill_text' => '#065F46'],
-        'orange'  => ['card'  => '#FFF7ED', 'border' => '#FED7AA', 'circle' => '#EA580C', 'num_bg' => '#FFEDD5', 'num_text' => '#C2410C', 'pill_bg' => '#FFEDD5', 'pill_text' => '#C2410C'],
-        'purple'  => ['card'  => '#FAF5FF', 'border' => '#DDD6FE', 'circle' => '#7C3AED', 'num_bg' => '#EDE9FE', 'num_text' => '#6D28D9', 'pill_bg' => '#EDE9FE', 'pill_text' => '#6D28D9'],
-        'rose'    => ['card'  => '#FFF1F2', 'border' => '#FECDD3', 'circle' => '#E11D48', 'num_bg' => '#FFE4E6', 'num_text' => '#BE123C', 'pill_bg' => '#FFE4E6', 'pill_text' => '#BE123C'],
-        'blue'    => ['card'  => '#EFF6FF', 'border' => '#BFDBFE', 'circle' => '#2563EB', 'num_bg' => '#DBEAFE', 'num_text' => '#1D4ED8', 'pill_bg' => '#DBEAFE', 'pill_text' => '#1D4ED8'],
-        'amber'   => ['card'  => '#FFFBEB', 'border' => '#FDE68A', 'circle' => '#D97706', 'num_bg' => '#FEF3C7', 'num_text' => '#92400E', 'pill_bg' => '#FEF3C7', 'pill_text' => '#92400E'],
-        'yellow'  => ['card'  => '#FEFCE8', 'border' => '#FEF08A', 'circle' => '#CA8A04', 'num_bg' => '#FEF9C3', 'num_text' => '#854D0E', 'pill_bg' => '#FEF9C3', 'pill_text' => '#854D0E'],
+        'pink'    => ['card' => '#FFF5F7', 'border' => '#FECDD3', 'circle' => '#E11D48', 'num_bg' => '#FFE4E6', 'num_text' => '#BE123C', 'pill_bg' => '#FFE4E6', 'pill_text' => '#BE123C'],
+        'green'   => ['card' => '#F0FDF4', 'border' => '#BBF7D0', 'circle' => '#16A34A', 'num_bg' => '#DCFCE7', 'num_text' => '#15803D', 'pill_bg' => '#DCFCE7', 'pill_text' => '#15803D'],
+        'teal'    => ['card' => '#F0FDFA', 'border' => '#99F6E4', 'circle' => '#0D9488', 'num_bg' => '#CCFBF1', 'num_text' => '#0F766E', 'pill_bg' => '#CCFBF1', 'pill_text' => '#0F766E'],
+        'emerald' => ['card' => '#ECFDF5', 'border' => '#A7F3D0', 'circle' => '#059669', 'num_bg' => '#D1FAE5', 'num_text' => '#065F46', 'pill_bg' => '#D1FAE5', 'pill_text' => '#065F46'],
+        'orange'  => ['card' => '#FFF7ED', 'border' => '#FED7AA', 'circle' => '#EA580C', 'num_bg' => '#FFEDD5', 'num_text' => '#C2410C', 'pill_bg' => '#FFEDD5', 'pill_text' => '#C2410C'],
+        'purple'  => ['card' => '#FAF5FF', 'border' => '#DDD6FE', 'circle' => '#7C3AED', 'num_bg' => '#EDE9FE', 'num_text' => '#6D28D9', 'pill_bg' => '#EDE9FE', 'pill_text' => '#6D28D9'],
+        'rose'    => ['card' => '#FFF1F2', 'border' => '#FECDD3', 'circle' => '#E11D48', 'num_bg' => '#FFE4E6', 'num_text' => '#BE123C', 'pill_bg' => '#FFE4E6', 'pill_text' => '#BE123C'],
+        'blue'    => ['card' => '#EFF6FF', 'border' => '#BFDBFE', 'circle' => '#2563EB', 'num_bg' => '#DBEAFE', 'num_text' => '#1D4ED8', 'pill_bg' => '#DBEAFE', 'pill_text' => '#1D4ED8'],
+        'amber'   => ['card' => '#FFFBEB', 'border' => '#FDE68A', 'circle' => '#D97706', 'num_bg' => '#FEF3C7', 'num_text' => '#92400E', 'pill_bg' => '#FEF3C7', 'pill_text' => '#92400E'],
+        'yellow'  => ['card' => '#FEFCE8', 'border' => '#FEF08A', 'circle' => '#CA8A04', 'num_bg' => '#FEF9C3', 'num_text' => '#854D0E', 'pill_bg' => '#FEF9C3', 'pill_text' => '#854D0E'],
     ];
     $color = $area->color ?: 'teal';
     $t = $themeMap[$color] ?? $themeMap['teal'];
@@ -73,7 +73,7 @@
     ];
     $icon = $iconMap[$area->slug] ?? 'heart';
 
-    // ── ALL Initiatives (complete list per locale) ─────────
+    // ── ALL Initiatives (complete, per locale) ─────────────
     $allInitiatives = [
         'education' => [
             'mr' => ['शालेय साहित्य वितरण','गरजू विद्यार्थ्यांना शैक्षणिक मदत','शिष्यवृत्ती सहाय्य','डिजिटल शिक्षण','करिअर मार्गदर्शन शिबिरे','स्पर्धा परीक्षा मार्गदर्शन','वाचनालय व अभ्यासिका सुविधा','गुणवंत विद्यार्थ्यांचा सत्कार','शाळाबाह्य मुलांना शिक्षणाशी जोडणे','डिजिटल साक्षरता अभियान'],
@@ -122,7 +122,6 @@
         ],
     ];
 
-    // Prefer DB initiatives, fallback to canonical
     $langKey     = in_array($locale, ['mr','hi','en']) ? $locale : 'mr';
     $initiatives = [];
 
@@ -141,7 +140,6 @@
         }
     }
 
-    // Split into 2 columns
     $total = count($initiatives);
     $half  = (int) ceil($total / 2);
     $col1  = array_slice($initiatives, 0, $half);
@@ -155,24 +153,20 @@
 @endphp
 
 {{--
-    FOCUS AREA CARD — Exact match to reference image
-    ┌─────────────────────────────────────────────────────┐
-    │ [Photo] │ ○icon  Bold Title                         │
-    │  ~30%   │        English Subtitle                   │
-    │         │  ① item1    ⑥ item6                       │
-    │         │  ② item2    ⑦ item7                       │
-    │         │  ③ item3    ⑧ item8                       │
-    │         │  ④ item4    ⑨ item9                       │
-    │         │  ⑤ item5    ⑩ item10                      │
-    │         │  [ अधिक जाणून घ्या → ]                    │
-    └─────────────────────────────────────────────────────┘
+    FOCUS AREA CARD — Exact match to reference card image
+    • Pastel card background (no white)
+    • Image LEFT ~35%, no forced height (auto from content)
+    • Circular icon badge + Bold title + small English sub
+    • 2-col numbered initiative list (small text, all items)
+    • Light pastel pill CTA at bottom
 --}}
 <div
-    class="group rounded-[18px] border overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col sm:flex-row"
+    class="group rounded-2xl border overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-row"
     style="background-color: {{ $t['card'] }}; border-color: {{ $t['border'] }};"
 >
-    {{-- ── LEFT: Photo (30% width, full card height) ── --}}
-    <div class="relative w-full sm:w-[30%] flex-shrink-0 overflow-hidden" style="min-height: 180px;">
+
+    {{-- ── IMAGE: left column, auto height matches content ── --}}
+    <div class="relative flex-shrink-0 overflow-hidden" style="width: 35%;">
         <img
             src="{{ $imgUrl }}"
             alt="{{ $title }}"
@@ -182,76 +176,69 @@
         />
     </div>
 
-    {{-- ── RIGHT: Content (70% width) ── --}}
-    <div class="flex-1 flex flex-col p-3 sm:p-4">
+    {{-- ── CONTENT: right column ── --}}
+    <div class="flex-1 flex flex-col px-3 py-3 min-w-0">
 
-        {{-- Header: Circular icon + Title + Subtitle ────── --}}
-        <div class="flex items-start gap-2.5 mb-2.5">
-
-            {{-- Circular icon badge (matches reference exactly) --}}
+        {{-- Header: circular icon + title + subtitle ── --}}
+        <div class="flex items-start gap-2 mb-2">
+            {{-- Circular icon badge --}}
             <div
-                class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center shadow-md ring-2 ring-white"
+                class="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center shadow ring-2 ring-white"
                 style="background-color: {{ $t['circle'] }};"
                 aria-hidden="true"
             >
-                <i data-lucide="{{ $icon }}" class="w-5 h-5 text-white stroke-[2.2]"></i>
+                <i data-lucide="{{ $icon }}" class="w-[18px] h-[18px] text-white stroke-[2.2]"></i>
             </div>
 
-            <div class="flex-1 min-w-0">
-                <h3 class="text-[15px] sm:text-base font-black text-gray-900 leading-snug">
+            <div class="flex-1 min-w-0 pt-0.5">
+                <h3 class="text-[13.5px] font-black text-gray-900 leading-tight">
                     <a href="{{ route('our-work.show', $area->slug) }}" class="hover:underline underline-offset-2">
                         {{ $title }}
                     </a>
                 </h3>
                 @if($enLabel && $locale !== 'en')
-                    <p class="text-[10px] font-semibold text-gray-400 tracking-widest uppercase mt-0.5">
-                        {{ $enLabel }}
-                    </p>
+                    <p class="text-[10px] font-semibold text-gray-400 tracking-wide mt-0.5">{{ $enLabel }}</p>
                 @endif
             </div>
         </div>
 
-        {{-- Divider ─────────────────────────────────────── --}}
-        <div class="w-full h-px mb-2.5" style="background-color: {{ $t['border'] }};"></div>
-
-        {{-- ALL Initiative Points — 2-column numbered list ─ --}}
+        {{-- ALL Initiative Points — 2-col numbered list ── --}}
         @if($total > 0)
-            <div class="grid grid-cols-2 gap-x-2 gap-y-1 flex-1 mb-2.5">
+            <div class="grid grid-cols-2 gap-x-2 gap-y-[4px] flex-1 mb-2">
 
                 {{-- Col 1 --}}
-                <div class="space-y-1">
+                <div class="space-y-[4px]">
                     @foreach($col1 as $item)
                         <div class="flex items-start gap-1">
                             <span
-                                class="mt-0.5 w-4 h-4 min-w-[16px] rounded-full flex items-center justify-center text-[8px] font-black leading-none flex-shrink-0"
+                                class="mt-[2px] min-w-[15px] w-[15px] h-[15px] rounded-full flex items-center justify-center text-[8px] font-black leading-none flex-shrink-0"
                                 style="background-color: {{ $t['num_bg'] }}; color: {{ $t['num_text'] }};"
                             >{{ $item['n'] }}</span>
-                            <span class="text-[10.5px] sm:text-[11px] font-medium text-gray-700 leading-snug">{{ $item['text'] }}</span>
+                            <span class="text-[10px] font-medium text-gray-700 leading-snug">{{ $item['text'] }}</span>
                         </div>
                     @endforeach
                 </div>
 
                 {{-- Col 2 --}}
-                <div class="space-y-1">
+                <div class="space-y-[4px]">
                     @foreach($col2 as $item)
                         <div class="flex items-start gap-1">
                             <span
-                                class="mt-0.5 w-4 h-4 min-w-[16px] rounded-full flex items-center justify-center text-[8px] font-black leading-none flex-shrink-0"
+                                class="mt-[2px] min-w-[15px] w-[15px] h-[15px] rounded-full flex items-center justify-center text-[8px] font-black leading-none flex-shrink-0"
                                 style="background-color: {{ $t['num_bg'] }}; color: {{ $t['num_text'] }};"
                             >{{ $item['n'] }}</span>
-                            <span class="text-[10.5px] sm:text-[11px] font-medium text-gray-700 leading-snug">{{ $item['text'] }}</span>
+                            <span class="text-[10px] font-medium text-gray-700 leading-snug">{{ $item['text'] }}</span>
                         </div>
                     @endforeach
                 </div>
-
             </div>
         @endif
 
-        {{-- CTA Pill (pastel, matches reference) ─────────── --}}
-        <div class="mt-auto pt-2 border-t" style="border-color: {{ $t['border'] }};">
+        {{-- CTA Pill ── --}}
+        <div class="mt-auto">
             <a
                 href="{{ route('our-work.show', $area->slug) }}"
-                class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11.5px] font-bold transition-all hover:opacity-80"
+                class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[11px] font-bold transition-opacity hover:opacity-75"
                 style="background-color: {{ $t['pill_bg'] }}; color: {{ $t['pill_text'] }};"
             >
                 {{ site_t('btn_learn_more', [], 'अधिक जाणून घ्या') }}

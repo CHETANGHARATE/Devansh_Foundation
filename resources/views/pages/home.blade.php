@@ -857,4 +857,9 @@
     </div>
 </section>
 
+<!-- ==========================================
+     8. OUR DONORS & PARTNERS (Infinite Marquee)
+=========================================== -->
+<x-donors-marquee />
+
 @endsection

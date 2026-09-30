@@ -285,4 +285,10 @@ return [
     'form_campaign_details' => 'Campaign Plan & Details',
     'form_campaign_details_placeholder' => 'Describe your campaign idea and what support you would need from Devansh Foundation...',
     'btn_start_fundraiser' => 'Register Campaign',
+
+    // Our Donors Section
+    'donors_heading' => 'Our Donors',
+    'donors_tagline' => 'Trusted Support & Community Philanthropy',
+    'donors_subheading' => 'Distinguished donors, CSR partners, and institutional patrons empowering our social initiatives for sustainable community transformation.',
+    'donors_become_partner' => 'Partner With Us / Donate',
 ];

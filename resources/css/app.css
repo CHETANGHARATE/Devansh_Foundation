@@ -107,3 +107,24 @@ body {
     white-space: nowrap;
     border-width: 0;
 }
+
+/* Infinite Donor Logo Marquee (Right to Left) */
+@keyframes donorMarquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.animate-donor-marquee {
+    display: flex;
+    width: max-content;
+    animation: donorMarquee 35s linear infinite;
+    will-change: transform;
+}
+
+.animate-donor-marquee:hover {
+    animation-play-state: paused;
+}

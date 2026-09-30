@@ -102,6 +102,17 @@
                 </div>
             </div>
 
+            <!-- Demo / Real Switch -->
+            <div class="flex items-center space-x-3 p-3.5 bg-amber-50/70 border border-amber-200 rounded-2xl">
+                <input type="checkbox" name="is_demo" id="is_demo" value="1" {{ old('is_demo', false) ? 'checked' : '' }} class="w-4 h-4 rounded text-[#138A4B] focus:ring-[#138A4B]">
+                <div>
+                    <label for="is_demo" class="text-xs font-bold text-amber-900 cursor-pointer">
+                        Mark as Demo / Fictional Case (for UI testing & demonstration)
+                    </label>
+                    <p class="text-[11px] text-amber-700">Leave unchecked for genuine verified beneficiary fundraising cases.</p>
+                </div>
+            </div>
+
             <!-- Image Upload & Path -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 border-t border-gray-100">
                 <div>

@@ -21,6 +21,7 @@ class DonationCase extends Model
         'currency',
         'expense_label',
         'status',
+        'is_demo',
         'order',
         'start_date',
         'end_date',
@@ -28,6 +29,7 @@ class DonationCase extends Model
     ];
 
     protected $casts = [
+        'is_demo' => 'boolean',
         'target_amount' => 'decimal:2',
         'collected_amount' => 'decimal:2',
         'order' => 'integer',

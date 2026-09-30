@@ -26,27 +26,28 @@ class DonationCaseTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('help-us-now');
         $response->assertSee('Recent Cases');
-        $response->assertSee('Baby of Shaikh Irfan Moinuddin (Girl)');
+        $response->assertSee('Demo Case – Child Healthcare Support');
         $response->assertSee('Treatment Expense');
         $response->assertSee('2,80,000');
     }
 
     public function test_homepage_calculates_case_progress(): void
     {
-        $case = DonationCase::where('slug', 'baby-of-shaikh-irfan-moinuddin')->first();
+        $case = DonationCase::where('slug', 'demo-case-child-healthcare-support')->first();
         $this->assertNotNull($case);
         $this->assertEquals(280000, $case->target_amount);
         $this->assertEquals(165000, $case->collected_amount);
         $this->assertEquals(58.9, $case->progress_percentage);
+        $this->assertTrue($case->is_demo);
     }
 
     public function test_donate_page_prefills_selected_case(): void
     {
         app()->setLocale('en');
-        $response = $this->get('/donate?case=baby-of-shaikh-irfan-moinuddin');
+        $response = $this->get('/donate?case=demo-case-child-healthcare-support');
 
         $response->assertStatus(200);
-        $response->assertSee('Baby of Shaikh Irfan Moinuddin (Girl)');
+        $response->assertSee('Demo Case – Child Healthcare Support');
         $response->assertSee('donation_case_id');
     }
 
@@ -60,6 +61,7 @@ class DonationCaseTest extends TestCase
         $response = $this->actingAs($admin)->get('/admin/donation-cases');
         $response->assertStatus(200);
         $response->assertSee('Help Us Now');
-        $response->assertSee('Baby of Shaikh Irfan Moinuddin');
+        $response->assertSee('Demo Case – Child Healthcare Support');
+        $response->assertSee('DEMO');
     }
 }

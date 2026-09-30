@@ -73,15 +73,28 @@
                                 </span>
                             </td>
                             <td class="px-6 py-4">
-                                @if($case->status === 'active')
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700">Active</span>
-                                @elseif($case->status === 'completed')
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700">Completed</span>
-                                @elseif($case->status === 'paused')
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700">Paused</span>
-                                @else
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-gray-100 text-gray-600">Closed</span>
-                                @endif
+                                <div class="flex flex-col gap-1">
+                                    <div>
+                                        @if($case->status === 'active')
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700">Active</span>
+                                        @elseif($case->status === 'completed')
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-50 text-blue-700">Completed</span>
+                                        @elseif($case->status === 'paused')
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-amber-50 text-amber-700">Paused</span>
+                                        @else
+                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-gray-100 text-gray-600">Closed</span>
+                                        @endif
+                                    </div>
+                                    @if($case->is_demo)
+                                        <div>
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[9px] font-extrabold bg-amber-100 text-amber-800 tracking-wider">DEMO</span>
+                                        </div>
+                                    @else
+                                        <div>
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded-md text-[9px] font-extrabold bg-emerald-100 text-emerald-800 tracking-wider">LIVE</span>
+                                        </div>
+                                    @endif
+                                </div>
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <div class="flex items-center justify-end gap-2">

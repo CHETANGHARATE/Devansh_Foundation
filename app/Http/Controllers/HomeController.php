@@ -35,6 +35,7 @@ class HomeController extends Controller
         // 8 recent donation cases for "Help Us Now" section
         $recentCases = DonationCase::active()
             ->with('translations')
+            ->orderBy('is_demo')
             ->orderBy('order')
             ->take(8)
             ->get();

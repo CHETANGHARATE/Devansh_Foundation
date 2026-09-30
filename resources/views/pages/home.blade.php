@@ -68,82 +68,9 @@
 </section>
 
 
-<!-- ==========================================
-     2. OUR FOCUS AREAS / आमची कार्यक्षेत्रे
-     3×3 Horizontal Cards — Exact Reference Match
-=========================================== -->
-<section class="py-10 sm:py-14 bg-white border-b border-gray-100">
-@php $locale = app()->getLocale(); @endphp
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-        <!-- ─── Section Header — matches reference (light background) ─── -->
-        <div class="relative mb-8 sm:mb-10 pb-6 border-b border-gray-100 overflow-hidden">
-
-            <!-- Right side: decorative photo, fades out -->
-            <div class="absolute right-0 top-0 bottom-0 w-[38%] hidden lg:block pointer-events-none overflow-hidden">
-                <img
-                    src="{{ asset('images/focus-areas/focus-header-banner.jpg') }}"
-                    alt=""
-                    aria-hidden="true"
-                    class="w-full h-full object-cover object-center opacity-80"
-                />
-                <div class="absolute inset-0 bg-gradient-to-r from-white via-white/40 to-transparent"></div>
-            </div>
-
-            <!-- Left: Title + Subtitles -->
-            <div class="relative z-10 lg:w-[65%]">
-                <!-- Green bar + bilingual heading on one line -->
-                <div class="flex items-center gap-3 mb-2">
-                    <span class="w-8 h-1.5 bg-[#16A34A] rounded-full flex-shrink-0"></span>
-                    <h2 class="text-2xl sm:text-3xl lg:text-[34px] font-black text-[#0B2545] tracking-tight leading-tight flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                        @if($locale === 'en')
-                            <span>Our Focus Areas</span>
-                        @elseif($locale === 'hi')
-                            <span>हमारे कार्यक्षेत्र</span>
-                            <span class="text-gray-200 font-light">|</span>
-                            <span class="text-xl sm:text-2xl font-semibold text-gray-400">Our Focus Areas</span>
-                        @else
-                            <span>आमची कार्यक्षेत्रे</span>
-                            <span class="text-gray-200 font-light">|</span>
-                            <span class="text-xl sm:text-2xl font-semibold text-gray-400">Our Focus Areas</span>
-                        @endif
-                    </h2>
-                </div>
-
-                <p class="text-sm sm:text-base font-semibold text-gray-700 leading-relaxed mt-1">
-                    {{ site_t('focus_statement_mr', [], 'समाजाच्या सर्वांगीण विकासासाठी आम्ही विविध क्षेत्रांमध्ये सातत्याने कार्यरत आहोत.') }}
-                </p>
-                <p class="text-xs sm:text-sm text-gray-400 font-normal mt-0.5">
-                    We are continuously working across multiple areas for the holistic development of society.
-                </p>
-            </div>
-
-            <!-- Right: "Together for a Better Tomorrow" script (matches reference) -->
-            <div class="absolute right-[40%] top-1/2 -translate-y-1/2 hidden lg:block select-none z-10">
-                <div class="font-serif italic text-right leading-tight">
-                    <span class="block text-xl font-bold text-slate-700">Together</span>
-                    <span class="block text-sm font-normal text-slate-500 tracking-wide">for a Better</span>
-                    <span class="block text-xl font-black text-[#0B2545]">Tomorrow</span>
-                    <svg class="w-24 h-3 mt-1 text-[#16A34A] fill-none stroke-current ml-auto" viewBox="0 0 100 12">
-                        <path d="M2 9 C 28 12, 70 10, 98 2" stroke-width="3" stroke-linecap="round"/>
-                    </svg>
-                </div>
-            </div>
-        </div>
-
-        <!-- ─── 3-Column Grid (exact 3×3 like reference) ─── -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            @foreach($focusAreas as $area)
-                <x-focus-area-card :area="$area" />
-            @endforeach
-        </div>
-
-    </div>
-</section>
 
 <!-- ==========================================
-     3. OUR IMPACT
+     2. OUR IMPACT
 =========================================== -->
 <section class="relative py-12 bg-cover bg-center overflow-hidden" style="background-image: url('{{ asset('images/impact/landscape-bg.jpg') }}');">
     <!-- Gradient overlay for high legibility -->

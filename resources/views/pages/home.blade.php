@@ -780,7 +780,13 @@
 
 
 <!-- ==========================================
-     7. GET INVOLVED CTA STRIP (Deep Green & Orange Block)
+     7. OUR DONORS & PARTNERS (Infinite Marquee)
+=========================================== -->
+<x-donors-marquee />
+
+
+<!-- ==========================================
+     8. GET INVOLVED CTA STRIP (Deep Green & Orange Block)
 =========================================== -->
 <section class="bg-[#0A482D] text-white overflow-hidden">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -856,10 +862,5 @@
         </div>
     </div>
 </section>
-
-<!-- ==========================================
-     8. OUR DONORS & PARTNERS (Infinite Marquee)
-=========================================== -->
-<x-donors-marquee />
 
 @endsection

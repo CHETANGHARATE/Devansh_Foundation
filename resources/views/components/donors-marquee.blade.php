@@ -87,13 +87,11 @@
                 <div class="flex items-center space-x-2.5 mb-2">
                     <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
                     <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-[#073B63] tracking-tight">
-                        {{ site_t('donors_heading', [], 'आमचे देणगीदार') }}
-                        <span class="text-gray-300 font-light mx-2">|</span>
-                        <span class="text-base sm:text-xl font-bold text-gray-500">Our Donors</span>
+                        {{ site_t('donors_heading') }}
                     </h2>
                 </div>
                 <p class="text-xs sm:text-sm text-gray-600 max-w-2xl leading-relaxed">
-                    {{ site_t('donors_subheading', [], 'समाजाच्या सर्वांगीण विकासासाठी आमच्या कार्यात मोलाचा हातभार लावणारे सन्माननीय देणगीदार, CSR भागीदार व समर्थक.') }}
+                    {{ site_t('donors_subheading') }}
                 </p>
             </div>
 

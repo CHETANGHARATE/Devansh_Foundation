@@ -136,10 +136,20 @@ return [
     'donor_address' => 'पत्ता व शहर',
     'proceed_donation' => 'देणगीसह पुढे जा',
 
-    // Photo Gallery
-    'gallery_heading' => 'फोटो गॅलरी',
-    'gallery_subheading' => 'आमच्या उपक्रमांचे, समाजातील कामाचे आणि हसऱ्या चेहऱ्यांचे काही क्षणचित्रे',
-    'all_photos' => 'सर्व फोटो',
+    // Photo & Video Gallery
+    'gallery_heading' => 'छायाचित्रे व व्हिडिओ गॅलरी',
+    'gallery_subheading' => 'आमच्या उपक्रमांचे, समाजातील कामाचे आणि हसऱ्या चेहऱ्यांचे काही क्षणचित्रे व व्हिडिओ',
+    'all_photos' => 'सर्व मीडिया',
+    'tab_all' => 'सर्व',
+    'tab_photos' => 'छायाचित्रे',
+    'tab_videos' => 'व्हिडिओ',
+    'watch_video' => 'व्हिडिओ पहा',
+    'video_badge' => 'व्हिडिओ',
+    'photo_badge' => 'फोटो',
+    'close_modal' => 'बंद करा',
+    'no_media_found' => 'या श्रेणीमध्ये कोणतीही छायाचित्रे किंवा व्हिडिओ उपलब्ध नाहीत.',
+    'filter_by_type' => 'प्रकारानुसार फिल्टर करा',
+    'filter_by_category' => 'सर्व श्रेणी',
 
     // News & Updates
     'news_heading' => 'नवीन अपडेट्स',

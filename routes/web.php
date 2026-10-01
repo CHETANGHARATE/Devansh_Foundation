@@ -220,11 +220,8 @@ Route::middleware('admin')->prefix('admin')->as('admin.')->group(function () {
     // News CRUD
     Route::resource('news', AdminNewsController::class);
 
-    // Gallery
-    Route::get('gallery', [AdminGalleryController::class, 'index'])->name('gallery.index');
-    Route::get('gallery/create', [AdminGalleryController::class, 'create'])->name('gallery.create');
-    Route::post('gallery', [AdminGalleryController::class, 'store'])->name('gallery.store');
-    Route::delete('gallery/{image}', [AdminGalleryController::class, 'destroy'])->name('gallery.destroy');
+    // Gallery (Photos & Videos)
+    Route::resource('gallery', AdminGalleryController::class)->except(['show']);
 
     // Reports
     Route::resource('reports', AdminReportController::class)->except(['show']);

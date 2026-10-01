@@ -136,10 +136,20 @@ return [
     'donor_address' => 'पता व शहर',
     'proceed_donation' => 'दान के साथ आगे बढ़ें',
 
-    // Photo Gallery
-    'gallery_heading' => 'फोटो गैलरी',
-    'gallery_subheading' => 'हमारे सामाजिक कार्यों, अभियानों और मुस्कुराते चेहरों की कुछ यादगार झलकियां',
-    'all_photos' => 'सभी तस्वीरें',
+    // Photo & Video Gallery
+    'gallery_heading' => 'फोटो एवं वीडियो गैलरी',
+    'gallery_subheading' => 'हमारे सामाजिक कार्यों, अभियानों और मुस्कुराते चेहरों की यादगार झलकियां व वीडियो',
+    'all_photos' => 'सभी मीडिया',
+    'tab_all' => 'सभी',
+    'tab_photos' => 'तस्वीरें',
+    'tab_videos' => 'वीडियो',
+    'watch_video' => 'वीडियो देखें',
+    'video_badge' => 'वीडियो',
+    'photo_badge' => 'फोटो',
+    'close_modal' => 'बंद करें',
+    'no_media_found' => 'इस श्रेणी में कोई फोटो या वीडियो उपलब्ध नहीं है।',
+    'filter_by_type' => 'प्रकार से फ़िल्टर करें',
+    'filter_by_category' => 'सभी श्रेणियां',
 
     // News & Updates
     'news_heading' => 'नवीनतम अपडेट्स',

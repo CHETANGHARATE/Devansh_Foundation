@@ -854,5 +854,11 @@ class DatabaseSeeder extends Seeder
 
         // 15. About Us Subpages (Transparency, Team, Awards)
         $this->call(AboutUsDemoSeeder::class);
+
+        // 16. Success Stories (4 Stories)
+        $this->call(SuccessStoriesSeeder::class);
+
+        // 17. Gallery Videos
+        $this->call(GalleryVideoSeeder::class);
     }
 }

@@ -136,10 +136,20 @@ return [
     'donor_address' => 'Full Postal Address & City',
     'proceed_donation' => 'Proceed to Donate',
 
-    // Photo Gallery
-    'gallery_heading' => 'Photo Gallery',
+    // Photo & Video Gallery
+    'gallery_heading' => 'Photos & Videos Gallery',
     'gallery_subheading' => 'Glimpses of grassroots interventions, community joy, and on-ground transformations',
-    'all_photos' => 'All Photos',
+    'all_photos' => 'All Media',
+    'tab_all' => 'All',
+    'tab_photos' => 'Photos',
+    'tab_videos' => 'Videos',
+    'watch_video' => 'Watch Video',
+    'video_badge' => 'Video',
+    'photo_badge' => 'Photo',
+    'close_modal' => 'Close',
+    'no_media_found' => 'No photos or videos found in this category.',
+    'filter_by_type' => 'Filter by Media',
+    'filter_by_category' => 'All Categories',
 
     // News & Updates
     'news_heading' => 'News & Updates',

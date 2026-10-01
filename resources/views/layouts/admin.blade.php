@@ -98,8 +98,8 @@
                     </a>
 
                     <a href="{{ route('admin.gallery.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl transition {{ request()->routeIs('admin.gallery.*') ? 'bg-[#138A4B] text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white' }}">
-                        <i data-lucide="image" class="w-4 h-4"></i>
-                        <span>Photo Gallery</span>
+                        <i data-lucide="video" class="w-4 h-4"></i>
+                        <span>Gallery (Photos & Videos)</span>
                     </a>
 
                     <a href="{{ route('admin.reports.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl transition {{ request()->routeIs('admin.reports.*') ? 'bg-[#138A4B] text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white' }}">

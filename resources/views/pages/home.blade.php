@@ -448,7 +448,13 @@
 
 
 <!-- ==========================================
-     5. HELP US NOW — RECENT CASES CAROUSEL
+     5. FEATURED CAMPAIGNS (Active Major Fundraising Drives)
+=========================================== -->
+<x-featured-campaigns-section :featured-campaigns="$featuredCampaigns" />
+
+
+<!-- ==========================================
+     6. HELP US NOW — RECENT CASES CAROUSEL
 =========================================== -->
 <x-recent-cases-section :recent-cases="$recentCases" />
 

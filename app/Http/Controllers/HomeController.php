@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Campaign;
 use App\Models\DonationCase;
 use App\Models\FocusArea;
 use App\Models\GalleryImage;
@@ -28,6 +29,16 @@ class HomeController extends Controller
             Log::warning('Automatic case migration/seeder check: ' . $e->getMessage());
         }
 
+        // Ensure campaigns table exists and is populated if empty
+        try {
+            if (!Schema::hasTable('campaigns') || Campaign::count() === 0) {
+                Artisan::call('migrate', ['--force' => true]);
+                Artisan::call('db:seed', ['--class' => 'FeaturedCampaignSeeder', '--force' => true]);
+            }
+        } catch (\Throwable $e) {
+            Log::warning('Automatic campaign migration/seeder check: ' . $e->getMessage());
+        }
+
         $focusAreas = FocusArea::where('is_active', true)
             ->with(['translations'])
             ->orderBy('order')
@@ -43,6 +54,13 @@ class HomeController extends Controller
             ->with(['translations', 'focusArea.translations'])
             ->orderBy('order')
             ->take(5)
+            ->get();
+
+        // Featured fundraising campaigns
+        $featuredCampaigns = Campaign::active()
+            ->featured()
+            ->with(['translations', 'impacts.translations'])
+            ->orderBy('order')
             ->get();
 
         // 8 recent donation cases for "Help Us Now" section
@@ -73,6 +91,7 @@ class HomeController extends Controller
             'focusAreas',
             'impactStats',
             'featuredProjects',
+            'featuredCampaigns',
             'recentCases',
             'successStories',
             'latestNews',

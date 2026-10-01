@@ -310,4 +310,16 @@ return [
     'cases_read_more' => 'अधिक वाचा',
     'cases_show_less' => 'कमी दाखवा',
     'cases_view_all' => 'सर्व तातडीची प्रकरणे पहा',
+
+    // Featured Campaigns
+    'featured_campaign_badge' => 'विशेष मोहीम',
+    'featured_campaigns_heading' => 'विशेष मोहिमा',
+    'featured_campaigns_tagline' => 'सक्रिय उपक्रम व सामाजिक पाठबळ',
+    'featured_campaigns_subheading' => 'आरोग्य, शिक्षण, महिला स्वावलंबन व पर्यावरण संरक्षणासाठी आमच्या विशेष मोहिमांमध्ये सहभागी व्हा.',
+    'campaigns_raised_of' => 'जमा / एकूण',
+    'btn_donate_now' => 'आत्ताच देणगी द्या',
+    'btn_view_campaign_details' => 'मोहिमेचे तपशील पहा',
+    'btn_view_all_campaigns' => 'सर्व मोहिमा पहा',
+    'campaigns_no_active' => 'सध्या कोणतीही सक्रिय विशेष मोहीम उपलब्ध नाही.',
+    'campaign_goal_reached' => 'ध्येय साध्य झाले!',
 ];

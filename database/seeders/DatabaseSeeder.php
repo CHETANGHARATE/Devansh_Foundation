@@ -935,5 +935,8 @@ class DatabaseSeeder extends Seeder
 
         // 13. Help Us Now — Demo Donation Cases
         $this->call(DemoDonationCasesSeeder::class);
+
+        // 14. Featured Campaigns
+        $this->call(FeaturedCampaignSeeder::class);
     }
 }

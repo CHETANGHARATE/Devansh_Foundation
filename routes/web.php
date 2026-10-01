@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\CampaignController as AdminCampaignController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\DonationCaseController as AdminDonationCaseController;
 use App\Http\Controllers\Admin\DonationController as AdminDonationController;
@@ -14,6 +15,7 @@ use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\Admin\StoryController as AdminStoryController;
+use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FocusAreaController;
@@ -50,6 +52,10 @@ Route::get('/focus-areas/{slug}', [FocusAreaController::class, 'show'])->name('f
 // Projects
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projects.show');
+
+// Featured Campaigns
+Route::get('/campaigns', [CampaignController::class, 'index'])->name('campaigns.index');
+Route::get('/campaigns/{slug}', [CampaignController::class, 'show'])->name('campaigns.show');
 
 // Impact
 Route::get('/impact', [ImpactController::class, 'index'])->name('impact');
@@ -107,6 +113,26 @@ Route::get('/seed-demo-cases', function () {
     }
 });
 
+// Utility endpoint to seed featured campaigns on live/remote deployments
+Route::get('/seed-featured-campaigns', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'FeaturedCampaignSeeder', '--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+        $count = \App\Models\Campaign::count();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Successfully migrated and seeded featured campaigns',
+            'campaigns_count' => $count,
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => $e->getMessage(),
+        ], 500);
+    }
+});
+
 // Legal & Policies
 Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy-policy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
@@ -153,6 +179,9 @@ Route::middleware('admin')->prefix('admin')->as('admin.')->group(function () {
 
     // Help Us Now - Urgent Cases CRUD
     Route::resource('donation-cases', AdminDonationCaseController::class);
+
+    // Featured Campaigns CRUD
+    Route::resource('campaigns', AdminCampaignController::class);
 
     // News CRUD
     Route::resource('news', AdminNewsController::class);

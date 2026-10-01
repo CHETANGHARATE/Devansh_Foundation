@@ -310,4 +310,16 @@ return [
     'cases_read_more' => 'और पढ़ें',
     'cases_show_less' => 'कम दिखाएं',
     'cases_view_all' => 'सभी तत्काल प्रकरण देखें',
+
+    // Featured Campaigns
+    'featured_campaign_badge' => 'विशेष अभियान',
+    'featured_campaigns_heading' => 'विशेष अभियान',
+    'featured_campaigns_tagline' => 'सक्रिय जन-अभियान व सामाजिक सहयोग',
+    'featured_campaigns_subheading' => 'स्वास्थ्य, शिक्षा, महिला स्वावलंबन और पर्यावरण संरक्षण हेतु हमारे विशेष अभियानों से जुड़ें।',
+    'campaigns_raised_of' => 'एकत्रित / कुल',
+    'btn_donate_now' => 'अभी दान करें',
+    'btn_view_campaign_details' => 'अभियान का विवरण देखें',
+    'btn_view_all_campaigns' => 'सभी अभियान देखें',
+    'campaigns_no_active' => 'इस समय कोई सक्रिय विशेष अभियान उपलब्ध नहीं है.',
+    'campaign_goal_reached' => 'लक्ष्य पूरा हुआ!',
 ];

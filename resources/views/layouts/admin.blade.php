@@ -60,6 +60,11 @@
                         <span>Impact Statistics</span>
                     </a>
 
+                    <a href="{{ route('admin.campaigns.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl transition {{ request()->routeIs('admin.campaigns.*') ? 'bg-[#138A4B] text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white' }}">
+                        <i data-lucide="sparkles" class="w-4 h-4"></i>
+                        <span>Featured Campaigns</span>
+                    </a>
+
                     <a href="{{ route('admin.donation-cases.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl transition {{ request()->routeIs('admin.donation-cases.*') ? 'bg-[#138A4B] text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white' }}">
                         <i data-lucide="hand-heart" class="w-4 h-4"></i>
                         <span>Help Us Now (Cases)</span>

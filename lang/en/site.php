@@ -310,4 +310,16 @@ return [
     'cases_read_more' => 'Read More',
     'cases_show_less' => 'Show Less',
     'cases_view_all' => 'View All Urgent Cases',
+
+    // Featured Campaigns
+    'featured_campaign_badge' => 'FEATURED CAMPAIGN',
+    'featured_campaigns_heading' => 'Featured Campaigns',
+    'featured_campaigns_tagline' => 'Active Causes & Community Drives',
+    'featured_campaigns_subheading' => 'Join hands with our featured initiatives to transform communities through healthcare, education, livelihood, and clean water.',
+    'campaigns_raised_of' => 'raised of',
+    'btn_donate_now' => 'Donate Now',
+    'btn_view_campaign_details' => 'View Campaign Details',
+    'btn_view_all_campaigns' => 'View All Campaigns',
+    'campaigns_no_active' => 'No active featured campaigns at the moment.',
+    'campaign_goal_reached' => 'Goal Reached!',
 ];

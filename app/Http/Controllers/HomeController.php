@@ -10,11 +10,24 @@ use App\Models\NewsArticle;
 use App\Models\Project;
 use App\Models\Story;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Schema;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        // Ensure donation_cases table exists and is populated with demo cases if empty
+        try {
+            if (!Schema::hasTable('donation_cases') || DonationCase::count() === 0) {
+                Artisan::call('migrate', ['--force' => true]);
+                Artisan::call('db:seed', ['--class' => 'DemoDonationCasesSeeder', '--force' => true]);
+            }
+        } catch (\Throwable $e) {
+            Log::warning('Automatic case migration/seeder check: ' . $e->getMessage());
+        }
+
         $focusAreas = FocusArea::where('is_active', true)
             ->with(['translations'])
             ->orderBy('order')

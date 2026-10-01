@@ -87,6 +87,26 @@ Route::post('/contact', [ContactController::class, 'send'])->name('contact.send'
 Route::get('/search', [SearchController::class, 'index'])->name('search');
 Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
 
+// Utility endpoint to seed demo cases on live/remote deployments
+Route::get('/seed-demo-cases', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'DemoDonationCasesSeeder', '--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+        $count = \App\Models\DonationCase::count();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Successfully migrated and seeded 8 demo cases',
+            'cases_count' => $count,
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => $e->getMessage(),
+        ], 500);
+    }
+});
+
 // Legal & Policies
 Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy-policy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');

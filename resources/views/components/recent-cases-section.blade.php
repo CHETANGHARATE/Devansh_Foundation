@@ -4,18 +4,19 @@
 
 @php
     $totalCases = $recentCases->count();
-    $shouldClone = $totalCases > 3;
-    $leadingClones = $shouldClone ? $recentCases->slice(-3)->values() : collect();
-    $trailingClones = $shouldClone ? $recentCases->take(3)->values() : collect();
+    $shouldClone = $totalCases >= 4;
+    $leadingClones = $shouldClone ? $recentCases->slice(-4)->values() : collect();
+    $trailingClones = $shouldClone ? $recentCases->take(4)->values() : collect();
     $allDisplayCases = $shouldClone ? $leadingClones->concat($recentCases)->concat($trailingClones) : $recentCases;
 @endphp
 
 <!-- ==========================================
      HELP US NOW — RECENT CASES SECTION
      Multi-Card Auto-Sliding Carousel
-     - 3 cards simultaneously on Desktop
-     - 2 cards simultaneously on Tablet
-     - 1 card at a time on Mobile
+     - 4 cards simultaneously on 1440px+
+     - 3 cards simultaneously on 1200px - 1439px
+     - 2 cards simultaneously on 768px - 1199px
+     - 1 card at a time on mobile (< 768px)
      - Auto-slide every 4s with smooth transition & infinite looping
 =========================================== -->
 <section id="help-us-now" 
@@ -29,10 +30,10 @@
     <!-- Subtle Decorative Background Glow -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-[#FAF4E6]/60 via-transparent to-transparent blur-3xl pointer-events-none"></div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         <!-- ==========================================
-             SECTION HEADER (Centered with Controls)
+             SECTION HEADER (Centered)
         =========================================== -->
         <div class="text-center max-w-2xl mx-auto mb-10 sm:mb-12">
             
@@ -78,13 +79,13 @@
             <!-- ==========================================
                  MULTI-CARD CAROUSEL SLIDER (Alpine.js)
             =========================================== -->
-            <div class="relative px-2 sm:px-6 lg:px-8">
+            <div class="relative px-8 sm:px-10 lg:px-12">
 
                 <!-- Navigation Arrow: Previous -->
                 <button type="button" 
                         @click="prev()" 
                         aria-label="Previous Cases" 
-                        class="absolute -left-2 sm:-left-3 lg:-left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white text-[#1E653F] shadow-lg border border-gray-200/80 hover:bg-[#1E653F] hover:text-white flex items-center justify-center transition transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#1E653F]">
+                        class="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-[#1E653F] shadow-lg border border-gray-200/80 hover:bg-[#1E653F] hover:text-white flex items-center justify-center transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#1E653F]">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
                     </svg>
@@ -94,7 +95,7 @@
                 <button type="button" 
                         @click="next()" 
                         aria-label="Next Cases" 
-                        class="absolute -right-2 sm:-right-3 lg:-right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white text-[#1E653F] shadow-lg border border-gray-200/80 hover:bg-[#1E653F] hover:text-white flex items-center justify-center transition transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#1E653F]">
+                        class="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-20 w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white text-[#1E653F] shadow-lg border border-gray-200/80 hover:bg-[#1E653F] hover:text-white flex items-center justify-center transition transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#1E653F]">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
                     </svg>
@@ -102,6 +103,7 @@
 
                 <!-- Cards Carousel Outer Viewport -->
                 <div class="overflow-hidden py-2"
+                     x-ref="viewport"
                      @touchstart.passive="touchStart($event)"
                      @touchmove.passive="touchMove($event)"
                      @touchend.passive="touchEnd()"
@@ -115,12 +117,15 @@
                     <!-- Carousel Sliding Track -->
                     <div class="flex"
                          :class="{ 'transition-transform duration-600 ease-out': isTransitioning }"
-                         :style="`transform: translateX(${getTranslateX()}%);`"
+                         :style="{
+                             gap: gap + 'px',
+                             transform: 'translateX(' + getTranslateX() + 'px)'
+                         }"
                          @transitionend="handleTransitionEnd()">
 
                         @foreach($allDisplayCases as $loopIndex => $case)
                             @php
-                                $isClone = $shouldClone && ($loopIndex < 3 || $loopIndex >= ($totalCases + 3));
+                                $isClone = $shouldClone && ($loopIndex < 4 || $loopIndex >= ($totalCases + 4));
                                 $caseTitle = $case->t('title') ?: $case->beneficiary_name;
                                 $urgentMsg = $case->t('urgent_message') ?: $case->urgent_message;
                                 $caseDesc = $case->t('description') ?: $case->description;
@@ -129,15 +134,16 @@
                                 $pct = $case->progress_percentage;
                             @endphp
 
-                            <!-- Responsive Card Slide Container: 1 on mobile, 2 on tablet, 3 on desktop -->
-                            <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 px-2 sm:px-3 py-2 flex flex-col"
+                            <!-- Responsive Card Slide Container -->
+                            <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 flex flex-col"
+                                 :style="{ width: cardWidth ? (cardWidth + 'px') : '' }"
                                  @if($isClone) aria-hidden="true" @endif>
 
-                                <article class="bg-white rounded-3xl p-5 sm:p-6 shadow-[0_10px_35px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_45px_rgba(0,0,0,0.12)] border border-[#EFEBE4] flex flex-col justify-between h-full transition duration-300">
+                                <article class="bg-white rounded-3xl p-4 sm:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)] border border-[#EFEBE4] flex flex-col justify-between h-full transition duration-300 group">
                                     
-                                    <div>
-                                        <!-- 1. Large Case Image -->
-                                        <div class="w-full aspect-[16/10] sm:aspect-[16/9.5] rounded-2xl overflow-hidden bg-gray-100 shadow-inner relative group shrink-0">
+                                    <div class="flex flex-col flex-grow">
+                                        <!-- 1. Large Case Image with Category Tag -->
+                                        <div class="w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-gray-100 shadow-inner relative shrink-0">
                                             <img src="{{ asset($case->image ?: 'images/cases/case-1-baby-nicu.jpg') }}" 
                                                  alt="{{ $caseTitle }}" 
                                                  loading="lazy" 
@@ -145,14 +151,14 @@
                                             
                                             <!-- Category Tag Overlay -->
                                             @if($case->t('category_name'))
-                                                <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-white/95 backdrop-blur-sm text-[#1E653F] shadow-sm">
+                                                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-white/95 backdrop-blur-sm text-[#1E653F] shadow-sm">
                                                     {{ $case->t('category_name') }}
                                                 </span>
                                             @endif
                                         </div>
 
                                         <!-- 2. Beneficiary / Case Title Badge -->
-                                        <div class="mt-4 bg-[#E8F3EB] rounded-2xl px-3.5 py-2.5 flex items-center space-x-2.5 border border-[#D5EAD9]">
+                                        <div class="mt-3 bg-[#E8F3EB] rounded-2xl px-3 py-2 flex items-center space-x-2.5 border border-[#D5EAD9]">
                                             <!-- Category Icon Circle Badge -->
                                             <div class="w-7 h-7 rounded-full bg-[#D4E8DA] flex items-center justify-center shrink-0 text-[#1E653F]">
                                                 @if($case->category_icon === 'baby')
@@ -177,16 +183,16 @@
                                             </div>
 
                                             <!-- Case Title Text -->
-                                            <h3 class="text-xs sm:text-sm font-bold text-[#1E653F] leading-tight line-clamp-1">
+                                            <h3 class="text-xs sm:text-sm font-bold text-[#1E653F] leading-tight line-clamp-1 truncate">
                                                 {{ $caseTitle }}
                                             </h3>
                                         </div>
 
                                         <!-- 3. Progress Bar Track -->
-                                        <div class="mt-3.5">
+                                        <div class="mt-2.5">
                                             <div class="flex justify-between items-center text-xs font-semibold text-gray-500 mb-1 px-0.5">
-                                                <span class="text-[11px]">{{ site_t('cases_progress') }}</span>
-                                                <span class="text-xs font-black text-[#1E653F] bg-[#E8F3EB] px-2 py-0.5 rounded-full border border-[#D5EAD9]">
+                                                <span class="text-[10px] sm:text-[11px]">{{ site_t('cases_progress') }}</span>
+                                                <span class="text-[11px] sm:text-xs font-black text-[#1E653F] bg-[#E8F3EB] px-2 py-0.5 rounded-full border border-[#D5EAD9]">
                                                     {{ round($pct) }}%
                                                 </span>
                                             </div>
@@ -196,8 +202,8 @@
                                             </div>
                                         </div>
 
-                                        <!-- 4. Expense Strip -->
-                                        <div class="mt-3.5 bg-[#FBF8F2] border border-[#F2ECE0] rounded-2xl px-3.5 py-2.5 flex items-center justify-between">
+                                        <!-- 4. Expense Strip (Matching Reference) -->
+                                        <div class="mt-2.5 bg-[#FBF8F2] border border-[#F2ECE0] rounded-2xl px-3 py-2 flex items-center justify-between">
                                             <div class="flex items-center space-x-2">
                                                 <div class="w-7 h-7 rounded-full bg-[#F3E7CC] flex items-center justify-center text-[#9E6618] shrink-0 shadow-xs">
                                                     <svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
@@ -207,7 +213,7 @@
                                                         <circle cx="16" cy="15" r="3.5"/>
                                                     </svg>
                                                 </div>
-                                                <span class="text-[11px] sm:text-xs font-semibold text-gray-700 truncate">
+                                                <span class="text-xs font-semibold text-gray-700">
                                                     {{ $expenseLabel }}
                                                 </span>
                                             </div>
@@ -220,29 +226,29 @@
                                         </div>
 
                                         <!-- Goal, Collected & Remaining Metrics -->
-                                        <div class="mt-2.5 bg-[#FAF8F3] rounded-2xl p-2.5 border border-[#EFEBE4]">
+                                        <div class="mt-2 bg-[#FAF8F3] rounded-2xl p-2 sm:p-2.5 border border-[#EFEBE4]">
                                             <div class="grid grid-cols-3 gap-1 text-center">
                                                 <div class="px-0.5 border-r border-[#E8E2D5]">
-                                                    <div class="text-[9px] uppercase font-bold text-gray-500 tracking-wider truncate">
+                                                    <div class="text-[9px] uppercase font-bold text-gray-500 tracking-wider">
                                                         {{ site_t('cases_support_goal') }}
                                                     </div>
-                                                    <div class="text-[11px] sm:text-xs font-black text-gray-800 mt-0.5 truncate">
+                                                    <div class="text-xs sm:text-sm font-black text-gray-800 mt-0.5 truncate">
                                                         {{ $case->formatted_target_amount }}
                                                     </div>
                                                 </div>
                                                 <div class="px-0.5 border-r border-[#E8E2D5]">
-                                                    <div class="text-[9px] uppercase font-bold text-gray-500 tracking-wider truncate">
+                                                    <div class="text-[9px] uppercase font-bold text-gray-500 tracking-wider">
                                                         {{ site_t('cases_collected') }}
                                                     </div>
-                                                    <div class="text-[11px] sm:text-xs font-black text-[#138A4B] mt-0.5 truncate">
+                                                    <div class="text-xs sm:text-sm font-black text-[#138A4B] mt-0.5 truncate">
                                                         {{ $case->formatted_collected_amount }}
                                                     </div>
                                                 </div>
                                                 <div class="px-0.5">
-                                                    <div class="text-[9px] uppercase font-bold text-gray-500 tracking-wider truncate">
+                                                    <div class="text-[9px] uppercase font-bold text-gray-500 tracking-wider">
                                                         {{ site_t('cases_remaining_label') }}
                                                     </div>
-                                                    <div class="text-[11px] sm:text-xs font-black text-[#8C5824] mt-0.5 truncate">
+                                                    <div class="text-xs sm:text-sm font-black text-[#8C5824] mt-0.5 truncate">
                                                         {{ $case->formatted_remaining_amount }}
                                                     </div>
                                                 </div>
@@ -251,35 +257,25 @@
 
                                         <!-- 5. Urgent Support Headline -->
                                         @if($urgentMsg)
-                                            <h4 class="mt-3 text-xs sm:text-sm font-bold text-[#8C5824] leading-snug line-clamp-2">
+                                            <h4 class="mt-2.5 text-xs sm:text-sm font-bold text-[#8C5824] leading-snug line-clamp-1">
                                                  {{ $urgentMsg }}
                                             </h4>
                                         @endif
 
-                                        <!-- 6. Short Case Description with Read More toggle -->
+                                        <!-- 6. Short Case Description -->
                                         @if($caseDesc)
-                                            <div x-data="{ expanded: false }" class="mt-2 text-xs text-gray-600 leading-relaxed">
-                                                <p :class="expanded ? '' : 'line-clamp-2 sm:line-clamp-3'">
-                                                    {{ $caseDesc }}
-                                                </p>
-                                                @if(strlen($caseDesc) > 120)
-                                                    <button type="button" 
-                                                            @click="expanded = !expanded" 
-                                                            @if($isClone) tabindex="-1" @endif
-                                                            class="text-[11px] font-bold text-[#1E653F] hover:underline mt-0.5 inline-block">
-                                                        <span x-show="!expanded">{{ site_t('cases_read_more') }} ↓</span>
-                                                        <span x-show="expanded">{{ site_t('cases_show_less') }} ↑</span>
-                                                    </button>
-                                                @endif
-                                            </div>
+                                            <p class="mt-1 text-xs text-gray-600 leading-relaxed line-clamp-2">
+                                                {{ $caseDesc }}
+                                            </p>
                                         @endif
+
                                     </div>
 
                                     <!-- 7. Donate Now Button -->
-                                    <div class="mt-5 pt-2">
+                                    <div class="mt-3 pt-2.5 border-t border-[#EFEBE4] shrink-0">
                                         <a href="{{ $donateUrl }}" 
                                            @if($isClone) tabindex="-1" @endif
-                                           class="w-full py-3 px-4 rounded-full bg-[#1E653F] hover:bg-[#164E30] text-white font-extrabold text-xs sm:text-sm flex items-center justify-center space-x-2 shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-4 focus:ring-emerald-200">
+                                           class="w-full py-2.5 sm:py-3 px-4 rounded-full bg-[#1E653F] hover:bg-[#164E30] text-white font-extrabold text-xs sm:text-sm flex items-center justify-center space-x-1.5 shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-4 focus:ring-emerald-200">
                                             <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
                                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                                             </svg>
@@ -294,19 +290,19 @@
                     </div>
                 </div>
 
-                <!-- 8 Pagination Dots Indicator -->
+                <!-- Pagination Dots Indicator -->
                 <div class="flex items-center justify-center space-x-2 mt-6 sm:mt-8">
                     @for($i = 0; $i < $totalCases; $i++)
                         <button type="button" 
                                 @click="goTo({{ $i }})" 
                                 :class="activeDot === {{ $i }} ? 'w-8 bg-[#1E653F]' : 'w-2.5 bg-[#D9D3C7] hover:bg-[#B3A996]'"
-                                aria-label="Go to case slide {{ $i + 1 }}" 
+                                aria-label="Go to case {{ $i + 1 }}" 
                                 class="h-2.5 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#1E653F]"></button>
                     @endfor
                 </div>
 
-                <!-- Counter Info -->
-                <div class="text-center text-[11px] text-gray-500 font-semibold mt-2">
+                <!-- Mobile Counter Info -->
+                <div class="text-center text-[11px] text-gray-400 font-semibold mt-2">
                     <span x-text="activeDot + 1"></span> of <span>{{ $totalCases }}</span>
                 </div>
 
@@ -321,26 +317,48 @@ function recentCasesCarousel(totalCount, hasClones) {
     return {
         total: totalCount,
         hasClones: hasClones,
-        cloneOffset: hasClones ? 3 : 0,
+        cloneOffset: hasClones ? 4 : 0,
         currentIndex: 0,
-        visibleCount: 3,
+        visibleCount: 4,
+        viewportWidth: 0,
+        cardWidth: 0,
+        gap: 20,
         isTransitioning: true,
         isAnimating: false,
         autoplayTimer: null,
         interactionTimer: null,
+        animationTimer: null,
         isPaused: false,
         isInteracting: false,
         prefersReducedMotion: false,
         touchStartX: 0,
         touchStartY: 0,
         touchEndX: 0,
+        resizeObserver: null,
 
         get activeDot() {
             return ((this.currentIndex % this.total) + this.total) % this.total;
         },
 
         init() {
-            this.updateVisibleCount();
+            this.updateDimensions();
+
+            // Observe resize using ResizeObserver for precise container tracking
+            if (window.ResizeObserver && this.$refs.viewport) {
+                this.resizeObserver = new ResizeObserver(() => {
+                    this.updateDimensions();
+                });
+                this.resizeObserver.observe(this.$refs.viewport);
+            }
+
+            // Window resize fallback
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    this.updateDimensions();
+                }, 100);
+            });
 
             // Handle prefers-reduced-motion
             const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -360,41 +378,47 @@ function recentCasesCarousel(totalCount, hasClones) {
                 }
             });
 
-            // Handle responsive resize with debouncing
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    this.updateVisibleCount();
-                }, 100);
-            });
-
             this.startAutoplay();
 
             this.$nextTick(() => {
+                this.updateDimensions();
                 if (typeof lucide !== 'undefined') {
                     lucide.createIcons();
                 }
             });
         },
 
-        updateVisibleCount() {
-            const width = window.innerWidth;
-            if (width >= 1024) {
-                this.visibleCount = Math.min(3, this.total);
-            } else if (width >= 768) {
-                this.visibleCount = Math.min(2, this.total);
+        updateDimensions() {
+            const vp = this.$refs.viewport;
+            if (!vp) return;
+            const width = vp.clientWidth;
+            if (!width) return;
+            this.viewportWidth = width;
+
+            const windowW = window.innerWidth;
+            if (windowW >= 1440) {
+                this.visibleCount = 4;
+            } else if (windowW >= 1200) {
+                this.visibleCount = 3;
+            } else if (windowW >= 768) {
+                this.visibleCount = 2;
             } else {
                 this.visibleCount = 1;
             }
+
+            // Consistent gap: 20px on desktop/tablet, 16px on mobile
+            this.gap = windowW >= 768 ? 20 : 16;
+
+            const totalGaps = (this.visibleCount - 1) * this.gap;
+            this.cardWidth = Math.floor((this.viewportWidth - totalGaps) / this.visibleCount);
         },
 
         getTranslateX() {
-            const stepPercent = 100 / this.visibleCount;
+            if (!this.cardWidth) return 0;
             const targetPos = this.hasClones 
                 ? (this.currentIndex + this.cloneOffset) 
                 : this.currentIndex;
-            return -(targetPos * stepPercent);
+            return -(targetPos * (this.cardWidth + this.gap));
         },
 
         startAutoplay() {
@@ -441,6 +465,13 @@ function recentCasesCarousel(totalCount, hasClones) {
             this.currentIndex++;
             this.pauseTemporarily();
             this.refreshIcons();
+
+            clearTimeout(this.animationTimer);
+            this.animationTimer = setTimeout(() => {
+                if (this.isAnimating) {
+                    this.handleTransitionEnd();
+                }
+            }, 700);
         },
 
         prev() {
@@ -450,6 +481,13 @@ function recentCasesCarousel(totalCount, hasClones) {
             this.currentIndex--;
             this.pauseTemporarily();
             this.refreshIcons();
+
+            clearTimeout(this.animationTimer);
+            this.animationTimer = setTimeout(() => {
+                if (this.isAnimating) {
+                    this.handleTransitionEnd();
+                }
+            }, 700);
         },
 
         goTo(index) {
@@ -459,6 +497,13 @@ function recentCasesCarousel(totalCount, hasClones) {
             this.currentIndex = index;
             this.pauseTemporarily();
             this.refreshIcons();
+
+            clearTimeout(this.animationTimer);
+            this.animationTimer = setTimeout(() => {
+                if (this.isAnimating) {
+                    this.handleTransitionEnd();
+                }
+            }, 700);
         },
 
         handleTransitionEnd() {
@@ -478,7 +523,7 @@ function recentCasesCarousel(totalCount, hasClones) {
             // When user slides before first item into leading clones
             else if (this.currentIndex < 0) {
                 this.isTransitioning = false;
-                this.currentIndex = this.total + this.currentIndex;
+                this.currentIndex = this.total + (this.currentIndex % this.total);
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
                         this.isTransitioning = true;

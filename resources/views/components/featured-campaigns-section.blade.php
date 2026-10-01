@@ -3,9 +3,9 @@
 @if(isset($featuredCampaigns) && $featuredCampaigns->count() > 0)
 @php
     $totalCampaigns = $featuredCampaigns->count();
-    $shouldClone = $totalCampaigns > 3;
-    $leadingClones = $shouldClone ? $featuredCampaigns->slice(-3)->values() : collect();
-    $trailingClones = $shouldClone ? $featuredCampaigns->take(3)->values() : collect();
+    $shouldClone = $totalCampaigns >= 4;
+    $leadingClones = $shouldClone ? $featuredCampaigns->slice(-4)->values() : collect();
+    $trailingClones = $shouldClone ? $featuredCampaigns->take(4)->values() : collect();
     $allDisplayCampaigns = $shouldClone ? $leadingClones->concat($featuredCampaigns)->concat($trailingClones) : $featuredCampaigns;
 @endphp
 
@@ -17,7 +17,7 @@
          @mouseleave="resumeAutoplay()"
          aria-label="{{ site_t('featured_campaigns_heading') }}">
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative">
 
         <!-- Top Section Header -->
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">
@@ -61,6 +61,7 @@
 
         <!-- Carousel Outer Viewport -->
         <div class="relative overflow-hidden py-2"
+             x-ref="viewport"
              @touchstart.passive="touchStart($event)"
              @touchmove.passive="touchMove($event)"
              @touchend.passive="touchEnd()"
@@ -74,12 +75,15 @@
             <!-- Carousel Sliding Track -->
             <div class="flex"
                  :class="{ 'transition-transform duration-600 ease-out': isTransitioning }"
-                 :style="`transform: translateX(${getTranslateX()}%);`"
+                 :style="{
+                     gap: gap + 'px',
+                     transform: 'translateX(' + getTranslateX() + 'px)'
+                 }"
                  @transitionend="handleTransitionEnd()">
 
                 @foreach($allDisplayCampaigns as $loopIndex => $campaign)
                     @php
-                        $isClone = $shouldClone && ($loopIndex < 3 || $loopIndex >= ($totalCampaigns + 3));
+                        $isClone = $shouldClone && ($loopIndex < 4 || $loopIndex >= ($totalCampaigns + 4));
                         $highlightText = $campaign->title_highlight;
                         $titleText = $campaign->title;
                         if ($highlightText && str_contains($titleText, $highlightText)) {
@@ -93,27 +97,28 @@
                         $detailsUrl = route('campaigns.show', $campaign->slug);
                     @endphp
 
-                    <!-- Card Slide Container (1 on mobile, 2 on tablet, 3 on desktop) -->
-                    <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 px-2 sm:px-3 py-2 flex flex-col"
+                    <!-- Card Slide Container: Responsive width via calculated cardWidth -->
+                    <div class="w-full md:w-1/2 lg:w-1/3 shrink-0 flex flex-col"
+                         :style="{ width: cardWidth ? (cardWidth + 'px') : '' }"
                          @if($isClone) aria-hidden="true" @endif>
 
-                        <!-- Card Body -->
-                        <div class="bg-white rounded-3xl border border-gray-100 shadow-[0_10px_35px_rgba(0,0,0,0.06)] hover:shadow-[0_18px_45px_rgba(0,0,0,0.1)] p-5 sm:p-6 relative overflow-hidden transition-all duration-300 flex flex-col justify-between h-full group">
+                        <!-- Card Body: Preserves original styling & proportions -->
+                        <div class="bg-white rounded-3xl border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] p-4 sm:p-5 relative overflow-hidden transition-all duration-300 flex flex-col justify-between h-full group">
                             
                             <!-- Organic Background Tint -->
                             <div class="absolute -top-12 -right-12 w-40 h-40 bg-[#EAF7EF]/70 rounded-full pointer-events-none -z-0"></div>
 
-                            <div class="relative z-10 flex flex-col flex-1">
+                            <div class="relative z-10 flex flex-col flex-grow">
                                 
                                 <!-- 1. Campaign Photograph with Badge Overlay -->
-                                <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-gray-100 border border-gray-100 shadow-sm relative group mb-4 shrink-0">
+                                <div class="w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-gray-100 border border-gray-100 shadow-sm relative group mb-3.5 shrink-0">
                                     <img src="{{ asset(ltrim($campaign->featured_image, '/')) }}" 
                                          alt="{{ $campaign->title }}" 
                                          loading="lazy" 
                                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
                                     
                                     <!-- Badge: FEATURED CAMPAIGN -->
-                                    <span class="absolute top-3 left-3 inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#FA5A3A] text-white text-[10px] font-black uppercase tracking-wider shadow-sm">
+                                    <span class="absolute top-3 left-3 inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-[#FA5A3A] text-white text-[10px] font-black uppercase tracking-wider shadow-sm">
                                         <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
                                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                                         </svg>
@@ -122,40 +127,40 @@
                                 </div>
 
                                 <!-- 2. Campaign Title with Highlight -->
-                                <h3 class="text-base sm:text-lg font-black text-gray-900 leading-snug tracking-tight line-clamp-2 min-h-[2.8rem] mb-2">
+                                <h3 class="text-base sm:text-lg font-black text-gray-900 leading-snug tracking-tight line-clamp-2 min-h-[2.75rem] mb-1.5">
                                     {!! $formattedTitle !!}
                                 </h3>
 
                                 <!-- 3. Short Description -->
-                                <p class="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed line-clamp-2 mb-4">
+                                <p class="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed line-clamp-2 mb-3">
                                     {{ $campaign->short_description }}
                                 </p>
 
                                 <!-- 4. Raised Amount & Target -->
                                 <div class="mb-2">
                                     <div class="flex items-baseline justify-between gap-2">
-                                        <span class="text-xl sm:text-2xl font-black text-[#138A4B] tracking-tight">
+                                        <span class="text-lg sm:text-xl font-black text-[#138A4B] tracking-tight">
                                             {{ $campaign->formatted_raised_amount }}
                                         </span>
-                                        <span class="text-xs sm:text-sm font-bold text-gray-600">
+                                        <span class="text-xs font-bold text-gray-600">
                                             {{ site_t('campaigns_raised_of') }} {{ $campaign->formatted_target_amount }}
                                         </span>
                                     </div>
                                 </div>
 
                                 <!-- 5. Progress Bar + Percentage -->
-                                <div class="flex items-center space-x-3 mb-4">
-                                    <div class="flex-grow h-2.5 sm:h-3 bg-gray-200/80 rounded-full overflow-hidden p-0.5">
+                                <div class="flex items-center space-x-2.5 mb-3">
+                                    <div class="flex-grow h-2.5 bg-gray-200/80 rounded-full overflow-hidden p-0.5">
                                         <div class="h-full bg-[#138A4B] rounded-full transition-all duration-700" 
                                              style="width: {{ $campaign->progress_percentage }}%"></div>
                                     </div>
-                                    <span class="text-xs sm:text-sm font-black text-[#073B63] shrink-0">
+                                    <span class="text-xs font-black text-[#073B63] shrink-0">
                                         {{ $campaign->progress_display }}%
                                     </span>
                                 </div>
 
                                 <!-- 6. 4 Supporting Information / Impact Boxes (2x2 Grid) -->
-                                <div class="grid grid-cols-2 gap-2 my-2 pt-3 border-t border-gray-100 mt-auto">
+                                <div class="grid grid-cols-2 gap-2 my-2 pt-2.5 border-t border-gray-100 mt-auto">
                                     @foreach($impacts->take(4) as $impact)
                                     @php
                                         $palette = match($loop->index % 4) {
@@ -188,9 +193,9 @@
                                         };
                                     @endphp
 
-                                    <div class="rounded-xl p-2 sm:p-2.5 border border-gray-100 bg-[#F9FBFA] flex items-center space-x-2 text-left">
-                                        <div class="w-8 h-8 rounded-full {{ $palette['bg'] }} {{ $palette['text'] }} flex items-center justify-center shrink-0">
-                                            <i data-lucide="{{ $lucideIcon }}" class="w-4 h-4"></i>
+                                    <div class="rounded-xl p-2 border border-gray-100 bg-[#F9FBFA] flex items-center space-x-2 text-left">
+                                        <div class="w-7 h-7 rounded-full {{ $palette['bg'] }} {{ $palette['text'] }} flex items-center justify-center shrink-0">
+                                            <i data-lucide="{{ $lucideIcon }}" class="w-3.5 h-3.5"></i>
                                         </div>
                                         <div class="min-w-0 flex-1">
                                             @if($impact->is_primary && $impact->metric_value)
@@ -207,11 +212,12 @@
                             </div>
 
                             <!-- 7. Action Buttons -->
-                            <div class="mt-4 pt-3 border-t border-gray-100 flex flex-col sm:flex-row items-center gap-2 relative z-10">
+                            <div class="mt-3 pt-3 border-t border-gray-100 flex flex-col sm:flex-row items-center gap-2 relative z-10 shrink-0">
                                 <!-- Primary: Donate Now -->
                                 <a href="{{ $donateUrl }}" 
                                    @if($isClone) tabindex="-1" @endif
-                                   class="w-full sm:flex-1 inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-white font-bold bg-[#0D7340] hover:bg-[#0A5C33] shadow-sm hover:shadow transition-all text-xs group">
+                                   class="w-full sm:flex-1 inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-white font-bold bg-[#138A4B] hover:bg-[#0E6C3A] shadow-sm hover:shadow transition-all text-xs group"
+                                   style="background-color: #138A4B;">
                                     <svg class="w-3.5 h-3.5 fill-white group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
                                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                                     </svg>
@@ -221,7 +227,7 @@
                                 <!-- Secondary: View Campaign Details -->
                                 <a href="{{ $detailsUrl }}" 
                                    @if($isClone) tabindex="-1" @endif
-                                   class="w-full sm:flex-1 inline-flex items-center justify-center space-x-1 py-2.5 px-2.5 rounded-xl text-[#073B63] font-bold bg-white border border-[#073B63]/30 hover:bg-gray-50 transition-all text-xs text-center truncate">
+                                   class="w-full sm:flex-1 inline-flex items-center justify-center space-x-1 py-2.5 px-2 rounded-xl text-[#073B63] font-bold bg-white border border-[#073B63]/30 hover:bg-gray-50 transition-all text-xs text-center truncate">
                                     <span>{{ site_t('btn_view_campaign_details') }} →</span>
                                 </a>
                             </div>
@@ -255,26 +261,48 @@ function featuredCampaignsCarousel(totalCount, hasClones) {
     return {
         total: totalCount,
         hasClones: hasClones,
-        cloneOffset: hasClones ? 3 : 0,
+        cloneOffset: hasClones ? 4 : 0,
         currentIndex: 0,
-        visibleCount: 3,
+        visibleCount: 4,
+        viewportWidth: 0,
+        cardWidth: 0,
+        gap: 20,
         isTransitioning: true,
         isAnimating: false,
         autoplayTimer: null,
         interactionTimer: null,
+        animationTimer: null,
         isPaused: false,
         isInteracting: false,
         prefersReducedMotion: false,
         touchStartX: 0,
         touchStartY: 0,
         touchEndX: 0,
+        resizeObserver: null,
 
         get activeDot() {
             return ((this.currentIndex % this.total) + this.total) % this.total;
         },
 
         init() {
-            this.updateVisibleCount();
+            this.updateDimensions();
+
+            // Observe resize using ResizeObserver for precise container tracking
+            if (window.ResizeObserver && this.$refs.viewport) {
+                this.resizeObserver = new ResizeObserver(() => {
+                    this.updateDimensions();
+                });
+                this.resizeObserver.observe(this.$refs.viewport);
+            }
+
+            // Window resize fallback
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    this.updateDimensions();
+                }, 100);
+            });
 
             // Handle prefers-reduced-motion
             const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -294,41 +322,47 @@ function featuredCampaignsCarousel(totalCount, hasClones) {
                 }
             });
 
-            // Handle responsive resize with debouncing
-            let resizeTimeout;
-            window.addEventListener('resize', () => {
-                clearTimeout(resizeTimeout);
-                resizeTimeout = setTimeout(() => {
-                    this.updateVisibleCount();
-                }, 100);
-            });
-
             this.startAutoplay();
 
             this.$nextTick(() => {
+                this.updateDimensions();
                 if (typeof lucide !== 'undefined') {
                     lucide.createIcons();
                 }
             });
         },
 
-        updateVisibleCount() {
-            const width = window.innerWidth;
-            if (width >= 1024) {
-                this.visibleCount = Math.min(3, this.total);
-            } else if (width >= 768) {
-                this.visibleCount = Math.min(2, this.total);
+        updateDimensions() {
+            const vp = this.$refs.viewport;
+            if (!vp) return;
+            const width = vp.clientWidth;
+            if (!width) return;
+            this.viewportWidth = width;
+
+            const windowW = window.innerWidth;
+            if (windowW >= 1440) {
+                this.visibleCount = 4;
+            } else if (windowW >= 1200) {
+                this.visibleCount = 3;
+            } else if (windowW >= 768) {
+                this.visibleCount = 2;
             } else {
                 this.visibleCount = 1;
             }
+
+            // Consistent gap: 20px on desktop/tablet, 16px on mobile
+            this.gap = windowW >= 768 ? 20 : 16;
+
+            const totalGaps = (this.visibleCount - 1) * this.gap;
+            this.cardWidth = Math.floor((this.viewportWidth - totalGaps) / this.visibleCount);
         },
 
         getTranslateX() {
-            const stepPercent = 100 / this.visibleCount;
+            if (!this.cardWidth) return 0;
             const targetPos = this.hasClones 
                 ? (this.currentIndex + this.cloneOffset) 
                 : this.currentIndex;
-            return -(targetPos * stepPercent);
+            return -(targetPos * (this.cardWidth + this.gap));
         },
 
         startAutoplay() {
@@ -375,6 +409,13 @@ function featuredCampaignsCarousel(totalCount, hasClones) {
             this.currentIndex++;
             this.pauseTemporarily();
             this.refreshIcons();
+
+            clearTimeout(this.animationTimer);
+            this.animationTimer = setTimeout(() => {
+                if (this.isAnimating) {
+                    this.handleTransitionEnd();
+                }
+            }, 700);
         },
 
         prev() {
@@ -384,6 +425,13 @@ function featuredCampaignsCarousel(totalCount, hasClones) {
             this.currentIndex--;
             this.pauseTemporarily();
             this.refreshIcons();
+
+            clearTimeout(this.animationTimer);
+            this.animationTimer = setTimeout(() => {
+                if (this.isAnimating) {
+                    this.handleTransitionEnd();
+                }
+            }, 700);
         },
 
         goTo(index) {
@@ -393,6 +441,13 @@ function featuredCampaignsCarousel(totalCount, hasClones) {
             this.currentIndex = index;
             this.pauseTemporarily();
             this.refreshIcons();
+
+            clearTimeout(this.animationTimer);
+            this.animationTimer = setTimeout(() => {
+                if (this.isAnimating) {
+                    this.handleTransitionEnd();
+                }
+            }, 700);
         },
 
         handleTransitionEnd() {
@@ -412,7 +467,7 @@ function featuredCampaignsCarousel(totalCount, hasClones) {
             // When user slides before first item into leading clones
             else if (this.currentIndex < 0) {
                 this.isTransitioning = false;
-                this.currentIndex = this.total + this.currentIndex;
+                this.currentIndex = this.total + (this.currentIndex % this.total);
                 requestAnimationFrame(() => {
                     requestAnimationFrame(() => {
                         this.isTransitioning = true;

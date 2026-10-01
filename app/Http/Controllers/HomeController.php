@@ -39,6 +39,16 @@ class HomeController extends Controller
             Log::warning('Automatic campaign migration/seeder check: ' . $e->getMessage());
         }
 
+        // Ensure success stories table exists and at least 4 are populated
+        try {
+            if (!Schema::hasTable('stories') || Story::count() < 4) {
+                Artisan::call('migrate', ['--force' => true]);
+                Artisan::call('db:seed', ['--class' => 'SuccessStoriesSeeder', '--force' => true]);
+            }
+        } catch (\Throwable $e) {
+            Log::warning('Automatic stories migration/seeder check: ' . $e->getMessage());
+        }
+
         $focusAreas = FocusArea::where('is_active', true)
             ->with(['translations'])
             ->orderBy('order')

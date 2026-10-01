@@ -112,6 +112,7 @@ return [
     'stories_subheading' => 'Inspiring real-life journeys of resilience and hope made possible with your continued support',
     'story_quote_sample' => '“With the support of Devansh Foundation, I discovered a new path in my education. Today, I am moving towards my dreams with confidence.”',
     'story_author_sample' => '— Arya Patil, Beneficiary',
+    'beneficiary' => 'Beneficiary',
 
     // Donation Section
     'donate_heading' => 'Support Our Cause',

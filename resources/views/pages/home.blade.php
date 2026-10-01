@@ -467,7 +467,19 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             
             <!-- LEFT COLUMN: Success Stories (lg:col-span-6) -->
-            <div class="lg:col-span-6 space-y-4">
+            <div id="success-stories-carousel"
+                 class="lg:col-span-6 space-y-4" 
+                 x-data="successStoriesCarousel({{ $successStories->count() }})"
+                 x-init="init()"
+                 @mouseenter="pause()" 
+                 @mouseleave="resume()"
+                 @keydown.right.prevent="manualNext()"
+                 @keydown.left.prevent="manualPrev()"
+                 tabindex="0"
+                 role="region"
+                 aria-roledescription="carousel"
+                 aria-label="{{ site_t('stories_heading') }}">
+                
                 <!-- Header -->
                 <div class="flex items-center space-x-2.5">
                     <span class="w-7 h-[3.5px] bg-[#138A4B] rounded-full inline-block"></span>
@@ -476,45 +488,102 @@
                     </h2>
                 </div>
 
-                <!-- Featured Story Card matching reference -->
-                <div class="bg-white rounded-2xl p-5 border border-gray-200 shadow-sm relative flex flex-col sm:flex-row items-center gap-5">
+                <!-- Carousel Card Container -->
+                <div class="relative"
+                     @touchstart.passive="touchStart($event)" 
+                     @touchend.passive="touchEnd($event)">
+                    
                     <!-- Left Arrow Button -->
-                    <button class="hidden sm:flex absolute -left-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border border-gray-200 shadow-sm items-center justify-center text-gray-600 hover:bg-gray-50 transition" aria-label="Previous story">
-                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                    <button type="button"
+                            @click="manualPrev()"
+                            class="flex absolute -left-3 sm:-left-3.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-gray-200 shadow-md items-center justify-center text-gray-600 hover:text-[#073B63] hover:bg-gray-50 hover:shadow-lg transition z-20 focus:outline-none focus:ring-2 focus:ring-[#073B63]"
+                            aria-label="Previous story">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                        </svg>
                     </button>
 
-                    <!-- Portrait with Circular/Rounded Framing -->
-                    <div class="w-36 h-36 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-100 shrink-0">
-                        <img src="{{ asset('images/stories/arya-patil.jpg') }}" alt="Devansh Foundation Success Story" class="w-full h-full object-cover">
-                    </div>
+                    <!-- Viewport Clipping Track -->
+                    <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden">
+                        <div class="flex transition-transform duration-500 ease-in-out"
+                             :style="'transform: translateX(-' + (active * 100) + '%)'">
+                            @forelse($successStories as $story)
+                                @php
+                                    $rawQuote = $story->t('quote') ?: ($story->quote ?: site_t('story_quote_sample'));
+                                    $cleanQuote = trim(trim($rawQuote), '“”"');
+                                    $storyRole = $story->person_role_or_location === 'Beneficiary' 
+                                        ? site_t('beneficiary') 
+                                        : ($story->person_role_or_location ?: site_t('beneficiary'));
+                                @endphp
+                                <div class="w-full shrink-0 p-5 sm:p-6 lg:p-7 flex flex-col sm:flex-row items-center gap-5 sm:gap-6 min-h-[220px] box-border">
+                                    <!-- Beneficiary Portrait -->
+                                    <div class="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-100 shrink-0">
+                                        <img src="{{ asset($story->image ?: 'images/stories/arya-patil.jpg') }}" 
+                                             alt="{{ $story->person_name }}" 
+                                             class="w-full h-full object-cover">
+                                    </div>
 
-                    <!-- Testimonial Content -->
-                    <div class="space-y-3 text-left">
-                        <div class="text-xs sm:text-sm text-gray-700 leading-relaxed italic font-medium">
-                            {{ site_t('story_quote_sample') }}
-                        </div>
-                        <div class="text-xs sm:text-sm font-bold text-[#073B63]">
-                            {{ site_t('story_author_sample') }}
-                        </div>
-                        <div class="pt-1">
-                            <a href="{{ route('stories.index') }}" class="inline-flex items-center space-x-1 px-4 py-2 rounded-md bg-[#F58220] hover:bg-[#DC6F13] text-white text-xs font-bold shadow-sm transition">
-                                <span>{{ site_t('btn_read_story') }} →</span>
-                            </a>
+                                    <!-- Testimonial Content -->
+                                    <div class="space-y-3 text-center sm:text-left flex-1 min-w-0">
+                                        <p class="text-xs sm:text-sm md:text-[15px] text-gray-700 leading-relaxed italic font-medium">
+                                            “{{ $cleanQuote }}”
+                                        </p>
+                                        <div class="text-xs sm:text-sm font-bold text-[#073B63]">
+                                            — {{ $story->person_name }}, {{ $storyRole }}
+                                        </div>
+                                        <div class="pt-1">
+                                            <a href="{{ route('stories.show', $story->slug) }}" 
+                                               class="inline-flex items-center space-x-1.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-[#F58220] hover:bg-[#DC6F13] text-white text-xs sm:text-sm font-bold shadow-sm transition transform hover:scale-[1.02] active:scale-[0.98]">
+                                                <span>{{ site_t('btn_read_story') }} →</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="w-full shrink-0 p-5 sm:p-6 lg:p-7 flex flex-col sm:flex-row items-center gap-5 sm:gap-6 min-h-[220px]">
+                                    <div class="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-white shadow-md bg-gray-100 shrink-0">
+                                        <img src="{{ asset('images/stories/arya-patil.jpg') }}" alt="Arya Patil" class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="space-y-3 text-center sm:text-left flex-1 min-w-0">
+                                        <p class="text-xs sm:text-sm md:text-[15px] text-gray-700 leading-relaxed italic font-medium">
+                                            {{ site_t('story_quote_sample') }}
+                                        </p>
+                                        <div class="text-xs sm:text-sm font-bold text-[#073B63]">
+                                            {{ site_t('story_author_sample') }}
+                                        </div>
+                                        <div class="pt-1">
+                                            <a href="{{ route('stories.index') }}" 
+                                               class="inline-flex items-center space-x-1.5 px-4 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-[#F58220] hover:bg-[#DC6F13] text-white text-xs sm:text-sm font-bold shadow-sm transition">
+                                                <span>{{ site_t('btn_read_story') }} →</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforelse
                         </div>
                     </div>
 
                     <!-- Right Arrow Button -->
-                    <button class="hidden sm:flex absolute -right-3.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-white border border-gray-200 shadow-sm items-center justify-center text-gray-600 hover:bg-gray-50 transition" aria-label="Next story">
-                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                    <button type="button"
+                            @click="manualNext()"
+                            class="flex absolute -right-3 sm:-right-3.5 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white border border-gray-200 shadow-md items-center justify-center text-gray-600 hover:text-[#073B63] hover:bg-gray-50 hover:shadow-lg transition z-20 focus:outline-none focus:ring-2 focus:ring-[#073B63]"
+                            aria-label="Next story">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                        </svg>
                     </button>
                 </div>
 
                 <!-- Carousel Dots Indicator -->
-                <div class="flex justify-center space-x-1.5 pt-1">
-                    <span class="w-2.5 h-2.5 rounded-full bg-[#073B63]"></span>
-                    <span class="w-2 h-2 rounded-full bg-gray-300"></span>
-                    <span class="w-2 h-2 rounded-full bg-gray-300"></span>
-                    <span class="w-2 h-2 rounded-full bg-gray-300"></span>
+                <div class="flex justify-center items-center space-x-2 pt-2">
+                    @foreach($successStories as $index => $story)
+                        <button type="button"
+                                @click="goTo({{ $index }})"
+                                class="transition-all duration-300 rounded-full focus:outline-none"
+                                :class="active === {{ $index }} ? 'w-3 h-3 bg-[#073B63]' : 'w-2 h-2 bg-gray-300 hover:bg-gray-400'"
+                                aria-label="Story {{ $index + 1 }}">
+                        </button>
+                    @endforeach
                 </div>
             </div>
 
@@ -641,6 +710,92 @@
         </div>
     </div>
 </section>
+
+<script>
+function successStoriesCarousel(total) {
+    return {
+        active: 0,
+        total: total || 1,
+        timer: null,
+        isPaused: false,
+        touchStartX: 0,
+        touchEndX: 0,
+        init() {
+            this.start();
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    this.stop();
+                } else {
+                    this.start();
+                }
+            });
+        },
+        start() {
+            if (this.total <= 1) return;
+            this.stop();
+            this.timer = setInterval(() => {
+                if (!this.isPaused) {
+                    this.next();
+                }
+            }, 4500);
+        },
+        stop() {
+            if (this.timer) {
+                clearInterval(this.timer);
+                this.timer = null;
+            }
+        },
+        pause() {
+            this.isPaused = true;
+        },
+        resume() {
+            this.isPaused = false;
+        },
+        next() {
+            if (this.total <= 1) return;
+            this.active = (this.active + 1) % this.total;
+        },
+        prev() {
+            if (this.total <= 1) return;
+            this.active = (this.active - 1 + this.total) % this.total;
+        },
+        goTo(idx) {
+            this.active = idx;
+            this.restart();
+        },
+        manualNext() {
+            this.next();
+            this.restart();
+        },
+        manualPrev() {
+            this.prev();
+            this.restart();
+        },
+        restart() {
+            this.stop();
+            this.start();
+        },
+        touchStart(e) {
+            if (e.touches && e.touches[0]) {
+                this.touchStartX = e.touches[0].screenX;
+            }
+        },
+        touchEnd(e) {
+            if (e.changedTouches && e.changedTouches[0]) {
+                this.touchEndX = e.changedTouches[0].screenX;
+                const diff = this.touchStartX - this.touchEndX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) {
+                        this.manualNext();
+                    } else {
+                        this.manualPrev();
+                    }
+                }
+            }
+        }
+    };
+}
+</script>
 
 
 <!-- ==========================================

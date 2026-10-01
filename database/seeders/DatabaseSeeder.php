@@ -932,5 +932,8 @@ class DatabaseSeeder extends Seeder
             'message' => 'Greetings! I am a general physician in Nashik and would be honored to volunteer my services in your upcoming rural medical camps.',
             'is_read' => false,
         ]);
+
+        // 13. Help Us Now — Demo Donation Cases
+        $this->call(DemoDonationCasesSeeder::class);
     }
 }

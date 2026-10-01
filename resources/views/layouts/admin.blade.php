@@ -60,6 +60,23 @@
                         <span>Impact Statistics</span>
                     </a>
 
+                    <div class="text-[10px] uppercase tracking-wider text-gray-400 px-3 pt-4 pb-2">About Us Subpages</div>
+
+                    <a href="{{ route('admin.transparency.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl transition {{ request()->routeIs('admin.transparency.*') ? 'bg-[#138A4B] text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white' }}">
+                        <i data-lucide="file-check" class="w-4 h-4"></i>
+                        <span>Transparency & Docs</span>
+                    </a>
+
+                    <a href="{{ route('admin.team.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl transition {{ request()->routeIs('admin.team.*') ? 'bg-[#138A4B] text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white' }}">
+                        <i data-lucide="users" class="w-4 h-4"></i>
+                        <span>Our Team</span>
+                    </a>
+
+                    <a href="{{ route('admin.awards.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl transition {{ request()->routeIs('admin.awards.*') ? 'bg-[#138A4B] text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white' }}">
+                        <i data-lucide="award" class="w-4 h-4"></i>
+                        <span>Awards & Recognition</span>
+                    </a>
+
                     <a href="{{ route('admin.campaigns.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl transition {{ request()->routeIs('admin.campaigns.*') ? 'bg-[#138A4B] text-white' : 'text-gray-300 hover:bg-white/10 hover:text-white' }}">
                         <i data-lucide="sparkles" class="w-4 h-4"></i>
                         <span>Featured Campaigns</span>

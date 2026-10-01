@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\AwardController as AdminAwardController;
 use App\Http\Controllers\Admin\CampaignController as AdminCampaignController;
 use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\DonationCaseController as AdminDonationCaseController;
@@ -15,6 +16,8 @@ use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\Admin\ReportController as AdminReportController;
 use App\Http\Controllers\Admin\SettingController as AdminSettingController;
 use App\Http\Controllers\Admin\StoryController as AdminStoryController;
+use App\Http\Controllers\Admin\TeamController as AdminTeamController;
+use App\Http\Controllers\Admin\TransparencyController as AdminTransparencyController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\DonationController;
@@ -41,7 +44,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+// About Us & Submenu Routes
 Route::get('/about', [AboutController::class, 'index'])->name('about');
+Route::get('/about/transparency', [AboutController::class, 'transparency'])->name('about.transparency');
+Route::get('/about/team', [AboutController::class, 'team'])->name('about.team');
+Route::get('/about/awards', [AboutController::class, 'awards'])->name('about.awards');
 
 // Our Work & Focus Areas
 Route::get('/our-work', [FocusAreaController::class, 'index'])->name('our-work.index');
@@ -133,6 +141,27 @@ Route::get('/seed-featured-campaigns', function () {
     }
 });
 
+// Utility endpoint to seed about demo data on live/remote deployments
+Route::get('/seed-about-demo', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--class' => 'AboutUsDemoSeeder', '--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Successfully migrated and seeded About Us demo data',
+            'documents_count' => \App\Models\TransparencyDocument::count(),
+            'team_count' => \App\Models\TeamMember::count(),
+            'awards_count' => \App\Models\Award::count(),
+        ]);
+    } catch (\Throwable $e) {
+        return response()->json([
+            'status' => 'error',
+            'message' => $e->getMessage(),
+        ], 500);
+    }
+});
+
 // Legal & Policies
 Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('privacy-policy');
 Route::get('/terms', [PageController::class, 'terms'])->name('terms');
@@ -182,6 +211,11 @@ Route::middleware('admin')->prefix('admin')->as('admin.')->group(function () {
 
     // Featured Campaigns CRUD
     Route::resource('campaigns', AdminCampaignController::class);
+
+    // About Us Subpages Management (Transparency, Team, Awards)
+    Route::resource('transparency', AdminTransparencyController::class)->parameters(['transparency' => 'transparency']);
+    Route::resource('team', AdminTeamController::class);
+    Route::resource('awards', AdminAwardController::class);
 
     // News CRUD
     Route::resource('news', AdminNewsController::class);

@@ -938,5 +938,8 @@ class DatabaseSeeder extends Seeder
 
         // 14. Featured Campaigns
         $this->call(FeaturedCampaignSeeder::class);
+
+        // 15. About Us Subpages (Transparency, Team, Awards)
+        $this->call(AboutUsDemoSeeder::class);
     }
 }

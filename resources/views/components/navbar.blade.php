@@ -31,13 +31,42 @@
                     @endif
                 </a>
 
-                <a href="{{ route('about') }}" 
-                   class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('about') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
-                    {{ site_t('nav_about') }}
-                    @if(request()->routeIs('about'))
-                        <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
-                    @endif
-                </a>
+                <!-- About Us Dropdown -->
+                <div class="relative" x-data="{ open: false }" @mouseleave="open = false">
+                    <button @click="open = !open" 
+                            @mouseover="open = true" 
+                            class="whitespace-nowrap inline-flex items-center space-x-1 px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('about*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                        <span>{{ site_t('nav_about') }}</span>
+                        <svg class="w-3 h-3 transition-transform duration-200" :class="{ 'rotate-180': open }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                        @if(request()->routeIs('about*'))
+                            <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
+                        @endif
+                    </button>
+                    <div x-show="open" 
+                         x-transition:enter="transition ease-out duration-150"
+                         x-transition:enter-start="opacity-0 translate-y-1"
+                         x-transition:enter-end="opacity-100 translate-y-0"
+                         x-transition:leave="transition ease-in duration-100"
+                         x-transition:leave-start="opacity-100 translate-y-0"
+                         x-transition:leave-end="opacity-0 translate-y-1"
+                         class="absolute left-0 mt-1 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-1.5 z-50"
+                         style="display: none;">
+                        <a href="{{ route('about') }}" class="flex items-center px-4 py-2 text-xs font-semibold {{ request()->routeIs('about') && !request()->routeIs('about.*') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-[#EAF7EF] hover:text-[#138A4B]' }}">
+                            {{ site_t('nav_about_main') }}
+                        </a>
+                        <a href="{{ route('about.transparency') }}" class="flex items-center px-4 py-2 text-xs font-semibold {{ request()->routeIs('about.transparency') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-[#EAF7EF] hover:text-[#138A4B]' }}">
+                            {{ site_t('nav_about_transparency') }}
+                        </a>
+                        <a href="{{ route('about.team') }}" class="flex items-center px-4 py-2 text-xs font-semibold {{ request()->routeIs('about.team') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-[#EAF7EF] hover:text-[#138A4B]' }}">
+                            {{ site_t('nav_about_team') }}
+                        </a>
+                        <a href="{{ route('about.awards') }}" class="flex items-center px-4 py-2 text-xs font-semibold {{ request()->routeIs('about.awards') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-[#EAF7EF] hover:text-[#138A4B]' }}">
+                            {{ site_t('nav_about_awards') }}
+                        </a>
+                    </div>
+                </div>
 
                 <a href="{{ route('our-work.index') }}" 
                    class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('our-work.*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
@@ -181,9 +210,28 @@
             </div>
         </div>
 
-        <a href="{{ route('home') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('home') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_home') }}</a>
-        <a href="{{ route('about') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('about') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_about') }}</a>
-        <a href="{{ route('our-work.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('our-work.*') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_our_work') }}</a>
+        <div x-data="{ aboutMenuOpen: {{ request()->routeIs('about*') ? 'true' : 'false' }} }">
+            <button @click="aboutMenuOpen = !aboutMenuOpen" class="w-full flex items-center justify-between px-3 py-2 rounded-md font-semibold text-gray-700 hover:bg-gray-50 {{ request()->routeIs('about*') ? 'bg-[#EAF7EF] text-[#138A4B]' : '' }}">
+                <span>{{ site_t('nav_about') }}</span>
+                <svg class="w-4 h-4 transition-transform duration-200" :class="{ 'rotate-180': aboutMenuOpen }" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+            </button>
+            <div x-show="aboutMenuOpen" class="pl-4 pr-2 py-1 space-y-1 bg-gray-50/70 rounded-md mt-1" style="display: none;">
+                <a href="{{ route('about') }}" class="block px-3 py-1.5 rounded-md text-xs font-semibold {{ request()->routeIs('about') && !request()->routeIs('about.*') ? 'bg-[#138A4B] text-white' : 'text-gray-600 hover:text-[#138A4B]' }}">
+                    {{ site_t('nav_about_main') }}
+                </a>
+                <a href="{{ route('about.transparency') }}" class="block px-3 py-1.5 rounded-md text-xs font-semibold {{ request()->routeIs('about.transparency') ? 'bg-[#138A4B] text-white' : 'text-gray-600 hover:text-[#138A4B]' }}">
+                    {{ site_t('nav_about_transparency') }}
+                </a>
+                <a href="{{ route('about.team') }}" class="block px-3 py-1.5 rounded-md text-xs font-semibold {{ request()->routeIs('about.team') ? 'bg-[#138A4B] text-white' : 'text-gray-600 hover:text-[#138A4B]' }}">
+                    {{ site_t('nav_about_team') }}
+                </a>
+                <a href="{{ route('about.awards') }}" class="block px-3 py-1.5 rounded-md text-xs font-semibold {{ request()->routeIs('about.awards') ? 'bg-[#138A4B] text-white' : 'text-gray-600 hover:text-[#138A4B]' }}">
+                    {{ site_t('nav_about_awards') }}
+                </a>
+            </div>
+        </div>
         <a href="{{ route('projects.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('projects.*') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_projects') }}</a>
         <a href="{{ route('impact') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('impact') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_impact') }}</a>
         <a href="{{ route('stories.index') }}" class="block px-3 py-2 rounded-md font-semibold {{ request()->routeIs('stories.*') ? 'bg-[#EAF7EF] text-[#138A4B]' : 'text-gray-700 hover:bg-gray-50' }}">{{ site_t('nav_stories') }}</a>

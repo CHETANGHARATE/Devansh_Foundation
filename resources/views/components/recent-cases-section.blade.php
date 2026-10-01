@@ -217,8 +217,14 @@
 
                                     <!-- 3. Progress Bar Track -->
                                     <div class="mt-3.5 sm:mt-4">
+                                        <div class="flex justify-between items-center text-xs font-semibold text-gray-500 mb-1.5 px-0.5">
+                                            <span class="text-[11px]">{{ site_t('cases_progress') }}</span>
+                                            <span class="text-xs font-black text-[#1E653F] bg-[#E8F3EB] px-2 py-0.5 rounded-full border border-[#D5EAD9]">
+                                                {{ round($pct) }}%
+                                            </span>
+                                        </div>
                                         <div class="h-2 sm:h-2.5 w-full bg-[#ECE7DD] rounded-full overflow-hidden" role="progressbar" aria-valuenow="{{ (int)$pct }}" aria-valuemin="0" aria-valuemax="100">
-                                            <div class="h-full bg-[#1E653F] rounded-full transition-all duration-700 ease-out" 
+                                            <div class="h-full bg-gradient-to-r from-[#138A4B] to-[#1E653F] rounded-full transition-all duration-700 ease-out" 
                                                  style="width: {{ $pct }}%;"></div>
                                         </div>
                                     </div>
@@ -248,20 +254,40 @@
                                         </div>
                                     </div>
 
-                                    <!-- Raised vs Goal Small Metric -->
-                                    <div class="flex justify-between items-center text-[11px] text-gray-500 font-semibold px-2 pt-1.5">
-                                        <span>
-                                            <strong class="text-[#138A4B]">{{ $case->formatted_collected_amount }}</strong> {{ site_t('cases_raised_of') }} {{ $case->formatted_target_amount }}
-                                        </span>
-                                        <span class="text-gray-600 font-bold bg-[#F4F1EA] px-2 py-0.5 rounded-full">
-                                            {{ $pct }}%
-                                        </span>
+                                    <!-- Goal, Collected & Remaining Metrics -->
+                                    <div class="mt-3 bg-[#FAF8F3] rounded-2xl p-2.5 sm:p-3 border border-[#EFEBE4]">
+                                        <div class="grid grid-cols-3 gap-1.5 sm:gap-2 text-center">
+                                            <div class="px-1 border-r border-[#E8E2D5]">
+                                                <div class="text-[10px] uppercase font-bold text-gray-500 tracking-wider">
+                                                    {{ site_t('cases_support_goal') }}
+                                                </div>
+                                                <div class="text-xs sm:text-sm font-black text-gray-800 mt-0.5">
+                                                    {{ $case->formatted_target_amount }}
+                                                </div>
+                                            </div>
+                                            <div class="px-1 border-r border-[#E8E2D5]">
+                                                <div class="text-[10px] uppercase font-bold text-gray-500 tracking-wider">
+                                                    {{ site_t('cases_collected') }}
+                                                </div>
+                                                <div class="text-xs sm:text-sm font-black text-[#138A4B] mt-0.5">
+                                                    {{ $case->formatted_collected_amount }}
+                                                </div>
+                                            </div>
+                                            <div class="px-1">
+                                                <div class="text-[10px] uppercase font-bold text-gray-500 tracking-wider">
+                                                    {{ site_t('cases_remaining_label') }}
+                                                </div>
+                                                <div class="text-xs sm:text-sm font-black text-[#8C5824] mt-0.5">
+                                                    {{ $case->formatted_remaining_amount }}
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <!-- 5. Urgent Support Headline -->
                                     @if($urgentMsg)
                                         <h4 class="mt-4 sm:mt-5 text-sm sm:text-base font-bold text-[#8C5824] leading-snug">
-                                            {{ $urgentMsg }}
+                                             {{ $urgentMsg }}
                                         </h4>
                                     @endif
 
@@ -276,7 +302,7 @@
                                                         @click="expanded = !expanded" 
                                                         class="text-[11px] font-bold text-[#1E653F] hover:underline mt-1 inline-block">
                                                     <span x-show="!expanded">{{ site_t('cases_read_more') }} ↓</span>
-                                                    <span x-show="expanded">Show less ↑</span>
+                                                    <span x-show="expanded">{{ site_t('cases_show_less') }} ↑</span>
                                                 </button>
                                             @endif
                                         </div>

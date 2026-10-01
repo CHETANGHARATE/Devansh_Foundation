@@ -103,7 +103,7 @@ class DonationCase extends Model
 
     public function getFormattedTargetAmountAttribute(): string
     {
-        return 'Rs. ' . self::formatInr($this->target_amount);
+        return '₹' . self::formatInr($this->target_amount);
     }
 
     public function getFormattedTargetAmountSymbolAttribute(): string

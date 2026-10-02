@@ -117,19 +117,19 @@
                          fetchpriority="{{ $index === 0 ? 'high' : 'auto' }}">
                     <!-- Soft gradient on the left for maximum text contrast and legibility -->
                     <div class="absolute inset-0 bg-white/45 sm:bg-transparent"></div>
-                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent sm:via-white/82 lg:via-white/60 w-full sm:w-[82%] lg:w-[58%]"></div>
+                    <div class="absolute inset-0 bg-gradient-to-r from-white via-white/95 to-transparent sm:via-white/85 lg:via-white/60 w-full sm:w-[85%] lg:w-[62%]"></div>
                 </div>
 
-                <!-- Handwritten Chalk Message positioned top-right -->
-                <div class="absolute top-8 right-[18%] sm:right-[20%] lg:right-[22%] z-10 pointer-events-none transform -rotate-3 text-center hidden md:block select-none">
+                <!-- Handwritten Chalk Message positioned top-right away from subject faces -->
+                <div class="absolute top-6 sm:top-8 md:top-10 right-6 sm:right-10 md:right-12 lg:right-16 xl:right-20 z-10 pointer-events-none transform -rotate-2 text-right hidden md:block select-none max-w-xs lg:max-w-sm">
                     <div class="handwritten-font text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight tracking-wide whitespace-pre-line">
                         {{ $slide['chalk'] }}
                     </div>
                 </div>
 
-                <!-- Live Localized Text & CTA Buttons (Left Column) -->
-                <div class="max-w-7xl mx-auto px-12 sm:px-6 lg:px-8 py-10 lg:py-16 relative z-10 w-full">
-                    <div class="max-w-xl lg:max-w-lg space-y-4 text-left">
+                <!-- Live Localized Text & CTA Buttons (Moved further left with responsive container) -->
+                <div class="max-w-[1440px] mx-auto px-12 sm:px-10 lg:px-14 xl:px-16 py-10 lg:py-16 relative z-10 w-full">
+                    <div class="max-w-xl lg:max-w-xl space-y-4 text-left">
                         
                         <!-- Kicker Badge with Green Left Pipe -->
                         <div class="inline-flex items-center space-x-2 text-xs font-black uppercase tracking-wider text-[#073B63]">

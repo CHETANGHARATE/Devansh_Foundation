@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\TeamController as AdminTeamController;
 use App\Http\Controllers\Admin\TransparencyController as AdminTransparencyController;
 use App\Http\Controllers\CampaignController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\DonationCaseController;
 use App\Http\Controllers\DonationController;
 use App\Http\Controllers\FocusAreaController;
 use App\Http\Controllers\GalleryController;
@@ -64,6 +65,9 @@ Route::get('/projects/{slug}', [ProjectController::class, 'show'])->name('projec
 // Featured Campaigns
 Route::get('/campaigns', [CampaignController::class, 'index'])->name('campaigns.index');
 Route::get('/campaigns/{slug}', [CampaignController::class, 'show'])->name('campaigns.show');
+
+// Recent Cases (Public Details)
+Route::get('/cases/{slug}', [DonationCaseController::class, 'show'])->name('cases.show');
 
 // Impact
 Route::get('/impact', [ImpactController::class, 'index'])->name('impact');

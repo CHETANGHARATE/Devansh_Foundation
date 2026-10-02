@@ -139,11 +139,11 @@
                                  :style="{ width: cardWidth ? (cardWidth + 'px') : '' }"
                                  @if($isClone) aria-hidden="true" @endif>
 
-                                <article class="bg-white rounded-3xl p-4 sm:p-5 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)] border border-[#EFEBE4] flex flex-col justify-between h-full transition duration-300 group">
+                                <article class="bg-white rounded-3xl p-3.5 sm:p-4 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.12)] border border-[#EFEBE4] flex flex-col justify-between h-full transition duration-300 group">
                                     
                                     <div class="flex flex-col flex-grow">
                                         <!-- 1. Large Case Image with Category Tag -->
-                                        <div class="w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-gray-100 shadow-inner relative shrink-0">
+                                        <div class="w-full h-36 sm:h-40 rounded-xl overflow-hidden bg-gray-100 shadow-inner relative shrink-0">
                                             <img src="{{ asset($case->image ?: 'images/cases/case-1-baby-nicu.jpg') }}" 
                                                  alt="{{ $caseTitle }}" 
                                                  loading="lazy" 
@@ -151,18 +151,18 @@
                                             
                                             <!-- Category Tag Overlay -->
                                             @if($case->t('category_name'))
-                                                <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] sm:text-[11px] font-bold bg-white/95 backdrop-blur-sm text-[#1E653F] shadow-sm">
+                                                <span class="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[9.5px] sm:text-[10px] font-bold bg-white/95 backdrop-blur-sm text-[#1E653F] shadow-xs">
                                                     {{ $case->t('category_name') }}
                                                 </span>
                                             @endif
                                         </div>
 
                                         <!-- 2. Beneficiary / Case Title Badge -->
-                                        <div class="mt-3 bg-[#E8F3EB] rounded-2xl px-3 py-2 flex items-center space-x-2.5 border border-[#D5EAD9]">
+                                        <div class="mt-2.5 bg-[#E8F3EB] rounded-xl px-2.5 py-1.5 flex items-center space-x-2 border border-[#D5EAD9]">
                                             <!-- Category Icon Circle Badge -->
-                                            <div class="w-7 h-7 rounded-full bg-[#D4E8DA] flex items-center justify-center shrink-0 text-[#1E653F]">
+                                            <div class="w-6 h-6 rounded-full bg-[#D4E8DA] flex items-center justify-center shrink-0 text-[#1E653F]">
                                                 @if($case->category_icon === 'baby')
-                                                    <svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                                                    <svg class="w-3 h-3 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
                                                         <circle cx="12" cy="12" r="9"/>
                                                         <circle cx="9" cy="10" r="1" fill="currentColor"/>
                                                         <circle cx="15" cy="10" r="1" fill="currentColor"/>
@@ -170,85 +170,85 @@
                                                         <path d="M12 3v2" stroke-linecap="round"/>
                                                     </svg>
                                                 @elseif($case->category_icon === 'heart-pulse')
-                                                    <i data-lucide="heart-pulse" class="w-3.5 h-3.5"></i>
+                                                    <i data-lucide="heart-pulse" class="w-3 h-3"></i>
                                                 @elseif($case->category_icon === 'book-open')
-                                                    <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                                                    <i data-lucide="book-open" class="w-3 h-3"></i>
                                                 @elseif($case->category_icon === 'accessibility')
-                                                    <i data-lucide="accessibility" class="w-3.5 h-3.5"></i>
+                                                    <i data-lucide="accessibility" class="w-3 h-3"></i>
                                                 @elseif($case->category_icon === 'flame')
-                                                    <i data-lucide="flame" class="w-3.5 h-3.5"></i>
+                                                    <i data-lucide="flame" class="w-3 h-3"></i>
                                                 @else
-                                                    <i data-lucide="heart" class="w-3.5 h-3.5"></i>
+                                                    <i data-lucide="heart" class="w-3 h-3"></i>
                                                 @endif
                                             </div>
 
                                             <!-- Case Title Text -->
-                                            <h3 class="text-xs sm:text-sm font-bold text-[#1E653F] leading-tight line-clamp-1 truncate">
+                                            <h3 class="text-xs sm:text-[13px] font-bold text-[#1E653F] leading-tight line-clamp-1 truncate">
                                                 {{ $caseTitle }}
                                             </h3>
                                         </div>
 
                                         <!-- 3. Progress Bar Track -->
-                                        <div class="mt-2.5">
-                                            <div class="flex justify-between items-center text-xs font-semibold text-gray-500 mb-1 px-0.5">
-                                                <span class="text-[10px] sm:text-[11px]">{{ site_t('cases_progress') }}</span>
-                                                <span class="text-[11px] sm:text-xs font-black text-[#1E653F] bg-[#E8F3EB] px-2 py-0.5 rounded-full border border-[#D5EAD9]">
+                                        <div class="mt-2">
+                                            <div class="flex justify-between items-center text-[10px] font-semibold text-gray-500 mb-1 px-0.5">
+                                                <span>{{ site_t('cases_progress') }}</span>
+                                                <span class="text-[10px] sm:text-[11px] font-black text-[#1E653F] bg-[#E8F3EB] px-2 py-0.5 rounded-full border border-[#D5EAD9]">
                                                     {{ round($pct) }}%
                                                 </span>
                                             </div>
-                                            <div class="h-2 w-full bg-[#ECE7DD] rounded-full overflow-hidden" role="progressbar" aria-valuenow="{{ (int)$pct }}" aria-valuemin="0" aria-valuemax="100">
+                                            <div class="h-1.5 w-full bg-[#ECE7DD] rounded-full overflow-hidden" role="progressbar" aria-valuenow="{{ (int)$pct }}" aria-valuemin="0" aria-valuemax="100">
                                                 <div class="h-full bg-gradient-to-r from-[#138A4B] to-[#1E653F] rounded-full transition-all duration-700 ease-out" 
                                                      style="width: {{ $pct }}%;"></div>
                                             </div>
                                         </div>
 
                                         <!-- 4. Expense Strip (Matching Reference) -->
-                                        <div class="mt-2.5 bg-[#FBF8F2] border border-[#F2ECE0] rounded-2xl px-3 py-2 flex items-center justify-between">
-                                            <div class="flex items-center space-x-2">
-                                                <div class="w-7 h-7 rounded-full bg-[#F3E7CC] flex items-center justify-center text-[#9E6618] shrink-0 shadow-xs">
-                                                    <svg class="w-3.5 h-3.5 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
+                                        <div class="mt-2 bg-[#FBF8F2] border border-[#F2ECE0] rounded-xl px-2.5 py-1.5 flex items-center justify-between">
+                                            <div class="flex items-center space-x-1.5">
+                                                <div class="w-6 h-6 rounded-full bg-[#F3E7CC] flex items-center justify-center text-[#9E6618] shrink-0 shadow-xs">
+                                                    <svg class="w-3 h-3 fill-none stroke-current stroke-2" viewBox="0 0 24 24">
                                                         <circle cx="9" cy="7" r="4"/>
                                                         <path d="M5 11c0 2 1.8 3.6 4 3.6s4-1.6 4-3.6"/>
                                                         <path d="M5 15c0 2 1.8 3.6 4 3.6s4-1.6 4-3.6"/>
                                                         <circle cx="16" cy="15" r="3.5"/>
                                                     </svg>
                                                 </div>
-                                                <span class="text-xs font-semibold text-gray-700">
+                                                <span class="text-[11px] font-semibold text-gray-700">
                                                     {{ $expenseLabel }}
                                                 </span>
                                             </div>
 
                                             <div class="text-right">
-                                                <div class="text-base sm:text-lg font-black text-[#1E653F] tracking-tight">
+                                                <div class="text-sm sm:text-base font-black text-[#1E653F] tracking-tight">
                                                     {{ $case->formatted_target_amount }}
                                                 </div>
                                             </div>
                                         </div>
 
                                         <!-- Goal, Collected & Remaining Metrics -->
-                                        <div class="mt-2 bg-[#FAF8F3] rounded-2xl p-2 sm:p-2.5 border border-[#EFEBE4]">
+                                        <div class="mt-1.5 bg-[#FAF8F3] rounded-xl p-1.5 sm:p-2 border border-[#EFEBE4]">
                                             <div class="grid grid-cols-3 gap-1 text-center">
                                                 <div class="px-0.5 border-r border-[#E8E2D5]">
-                                                    <div class="text-[9px] uppercase font-bold text-gray-500 tracking-wider">
+                                                    <div class="text-[8.5px] uppercase font-bold text-gray-500 tracking-wider">
                                                         {{ site_t('cases_support_goal') }}
                                                     </div>
-                                                    <div class="text-xs sm:text-sm font-black text-gray-800 mt-0.5 truncate">
+                                                    <div class="text-[11px] sm:text-xs font-black text-gray-800 mt-0.5 truncate">
                                                         {{ $case->formatted_target_amount }}
                                                     </div>
                                                 </div>
                                                 <div class="px-0.5 border-r border-[#E8E2D5]">
-                                                    <div class="text-[9px] uppercase font-bold text-gray-500 tracking-wider">
+                                                    <div class="text-[8.5px] uppercase font-bold text-gray-500 tracking-wider">
                                                         {{ site_t('cases_collected') }}
                                                     </div>
-                                                    <div class="text-xs sm:text-sm font-black text-[#138A4B] mt-0.5 truncate">
+                                                    <div class="text-[11px] sm:text-xs font-black text-[#138A4B] mt-0.5 truncate">
                                                         {{ $case->formatted_collected_amount }}
                                                     </div>
                                                 </div>
                                                 <div class="px-0.5">
-                                                    <div class="text-[9px] uppercase font-bold text-gray-500 tracking-wider">
+                                                    <div class="text-[8.5px] uppercase font-bold text-gray-500 tracking-wider">
                                                         {{ site_t('cases_remaining_label') }}
                                                     </div>
-                                                    <div class="text-xs sm:text-sm font-black text-[#8C5824] mt-0.5 truncate">
+                                                    <div class="text-[11px] sm:text-xs font-black text-[#8C5824] mt-0.5 truncate">
                                                         {{ $case->formatted_remaining_amount }}
                                                     </div>
                                                 </div>
@@ -257,29 +257,37 @@
 
                                         <!-- 5. Urgent Support Headline -->
                                         @if($urgentMsg)
-                                            <h4 class="mt-2.5 text-xs sm:text-sm font-bold text-[#8C5824] leading-snug line-clamp-1">
+                                            <h4 class="mt-2 text-xs font-bold text-[#8C5824] leading-snug line-clamp-1">
                                                  {{ $urgentMsg }}
                                             </h4>
                                         @endif
 
                                         <!-- 6. Short Case Description -->
                                         @if($caseDesc)
-                                            <p class="mt-1 text-xs text-gray-600 leading-relaxed line-clamp-2">
+                                            <p class="mt-0.5 text-[11px] text-gray-600 leading-relaxed line-clamp-2">
                                                 {{ $caseDesc }}
                                             </p>
                                         @endif
 
                                     </div>
 
-                                    <!-- 7. Donate Now Button -->
-                                    <div class="mt-3 pt-2.5 border-t border-[#EFEBE4] shrink-0">
+                                    <!-- 7. Action Buttons (Donate Now + View Details Side-by-Side) -->
+                                    <div class="grid grid-cols-2 gap-1.5 sm:gap-2 mt-2.5 pt-2.5 border-t border-[#EFEBE4] shrink-0">
+                                        <!-- Primary: Donate Now -->
                                         <a href="{{ $donateUrl }}" 
                                            @if($isClone) tabindex="-1" @endif
-                                           class="w-full py-2.5 sm:py-3 px-4 rounded-full bg-[#1E653F] hover:bg-[#164E30] text-white font-extrabold text-xs sm:text-sm flex items-center justify-center space-x-1.5 shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-4 focus:ring-emerald-200">
-                                            <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
+                                           class="w-full py-2 px-1.5 sm:px-2 rounded-xl bg-[#1E653F] hover:bg-[#164E30] text-white font-extrabold text-[11px] sm:text-xs flex items-center justify-center space-x-1 shadow-xs hover:shadow transition text-center min-h-[38px] group">
+                                            <svg class="w-3 h-3 fill-white shrink-0 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
                                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                                             </svg>
-                                            <span>{{ site_t('btn_donate_now_heart') }}</span>
+                                            <span class="leading-tight">{{ site_t('btn_donate_now_heart') }}</span>
+                                        </a>
+
+                                        <!-- Secondary: View Details -->
+                                        <a href="{{ route('cases.show', $case->slug) }}" 
+                                           @if($isClone) tabindex="-1" @endif
+                                           class="w-full py-2 px-1.5 sm:px-2 rounded-xl bg-white border border-[#1E653F]/40 hover:bg-[#E8F3EB] text-[#1E653F] font-bold text-[11px] sm:text-xs flex items-center justify-center space-x-1 transition text-center min-h-[38px] leading-tight">
+                                            <span>{{ site_t('btn_view_details') }} →</span>
                                         </a>
                                     </div>
 

@@ -102,24 +102,24 @@
                          :style="{ width: cardWidth ? (cardWidth + 'px') : '' }"
                          @if($isClone) aria-hidden="true" @endif>
 
-                        <!-- Card Body: Preserves original styling & proportions -->
-                        <div class="bg-white rounded-3xl border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] p-4 sm:p-5 relative overflow-hidden transition-all duration-300 flex flex-col justify-between h-full group">
+                        <!-- Card Body: Compact, balanced proportions with consistent height -->
+                        <div class="bg-white rounded-3xl border border-gray-100 shadow-[0_8px_30px_rgba(0,0,0,0.06)] hover:shadow-[0_16px_40px_rgba(0,0,0,0.1)] p-3.5 sm:p-4 relative overflow-hidden transition-all duration-300 flex flex-col justify-between h-full group">
                             
                             <!-- Organic Background Tint -->
-                            <div class="absolute -top-12 -right-12 w-40 h-40 bg-[#EAF7EF]/70 rounded-full pointer-events-none -z-0"></div>
+                            <div class="absolute -top-12 -right-12 w-36 h-36 bg-[#EAF7EF]/70 rounded-full pointer-events-none -z-0"></div>
 
                             <div class="relative z-10 flex flex-col flex-grow">
                                 
                                 <!-- 1. Campaign Photograph with Badge Overlay -->
-                                <div class="w-full h-44 sm:h-48 rounded-2xl overflow-hidden bg-gray-100 border border-gray-100 shadow-sm relative group mb-3.5 shrink-0">
+                                <div class="w-full h-36 sm:h-40 rounded-xl overflow-hidden bg-gray-100 border border-gray-100 shadow-xs relative group mb-2.5 shrink-0">
                                     <img src="{{ asset(ltrim($campaign->featured_image, '/')) }}" 
                                          alt="{{ $campaign->title }}" 
                                          loading="lazy" 
                                          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out">
                                     
                                     <!-- Badge: FEATURED CAMPAIGN -->
-                                    <span class="absolute top-3 left-3 inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-[#FA5A3A] text-white text-[10px] font-black uppercase tracking-wider shadow-sm">
-                                        <svg class="w-3 h-3 fill-current" viewBox="0 0 24 24">
+                                    <span class="absolute top-2.5 left-2.5 inline-flex items-center space-x-1 px-2 py-0.5 rounded-full bg-[#FA5A3A] text-white text-[9.5px] font-black uppercase tracking-wider shadow-xs">
+                                        <svg class="w-2.5 h-2.5 fill-current" viewBox="0 0 24 24">
                                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                                         </svg>
                                         <span>{{ site_t('featured_campaign_badge') }}</span>
@@ -127,30 +127,30 @@
                                 </div>
 
                                 <!-- 2. Campaign Title with Highlight -->
-                                <h3 class="text-base sm:text-lg font-black text-gray-900 leading-snug tracking-tight line-clamp-2 min-h-[2.75rem] mb-1.5">
+                                <h3 class="text-sm sm:text-base font-black text-gray-900 leading-snug tracking-tight line-clamp-2 min-h-[2.5rem] mb-1">
                                     {!! $formattedTitle !!}
                                 </h3>
 
                                 <!-- 3. Short Description -->
-                                <p class="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed line-clamp-2 mb-3">
+                                <p class="text-xs text-gray-600 font-medium leading-relaxed line-clamp-2 mb-2">
                                     {{ $campaign->short_description }}
                                 </p>
 
                                 <!-- 4. Raised Amount & Target -->
-                                <div class="mb-2">
-                                    <div class="flex items-baseline justify-between gap-2">
-                                        <span class="text-lg sm:text-xl font-black text-[#138A4B] tracking-tight">
+                                <div class="mb-1.5">
+                                    <div class="flex items-baseline justify-between gap-1.5">
+                                        <span class="text-base sm:text-lg font-black text-[#138A4B] tracking-tight">
                                             {{ $campaign->formatted_raised_amount }}
                                         </span>
-                                        <span class="text-xs font-bold text-gray-600">
+                                        <span class="text-[11px] sm:text-xs font-bold text-gray-600">
                                             {{ site_t('campaigns_raised_of') }} {{ $campaign->formatted_target_amount }}
                                         </span>
                                     </div>
                                 </div>
 
                                 <!-- 5. Progress Bar + Percentage -->
-                                <div class="flex items-center space-x-2.5 mb-3">
-                                    <div class="flex-grow h-2.5 bg-gray-200/80 rounded-full overflow-hidden p-0.5">
+                                <div class="flex items-center space-x-2 mb-2">
+                                    <div class="flex-grow h-2 bg-gray-200/80 rounded-full overflow-hidden p-0.5">
                                         <div class="h-full bg-[#138A4B] rounded-full transition-all duration-700" 
                                              style="width: {{ $campaign->progress_percentage }}%"></div>
                                     </div>
@@ -160,7 +160,7 @@
                                 </div>
 
                                 <!-- 6. 4 Supporting Information / Impact Boxes (2x2 Grid) -->
-                                <div class="grid grid-cols-2 gap-2 my-2 pt-2.5 border-t border-gray-100 mt-auto">
+                                <div class="grid grid-cols-2 gap-1.5 my-1.5 pt-2 border-t border-gray-100 mt-auto">
                                     @foreach($impacts->take(4) as $impact)
                                     @php
                                         $palette = match($loop->index % 4) {
@@ -193,16 +193,16 @@
                                         };
                                     @endphp
 
-                                    <div class="rounded-xl p-2 border border-gray-100 bg-[#F9FBFA] flex items-center space-x-2 text-left">
-                                        <div class="w-7 h-7 rounded-full {{ $palette['bg'] }} {{ $palette['text'] }} flex items-center justify-center shrink-0">
-                                            <i data-lucide="{{ $lucideIcon }}" class="w-3.5 h-3.5"></i>
+                                    <div class="rounded-xl p-1.5 border border-gray-100 bg-[#F9FBFA] flex items-center space-x-1.5 text-left">
+                                        <div class="w-6 h-6 rounded-full {{ $palette['bg'] }} {{ $palette['text'] }} flex items-center justify-center shrink-0">
+                                            <i data-lucide="{{ $lucideIcon }}" class="w-3 h-3"></i>
                                         </div>
                                         <div class="min-w-0 flex-1">
                                             @if($impact->is_primary && $impact->metric_value)
-                                                <div class="text-xs font-black text-[#073B63] leading-none truncate">{{ $impact->metric_value }}</div>
-                                                <div class="text-[10px] text-gray-500 font-semibold truncate mt-0.5">{{ $impact->label }}</div>
+                                                <div class="text-[11px] font-black text-[#073B63] leading-none truncate">{{ $impact->metric_value }}</div>
+                                                <div class="text-[9.5px] text-gray-500 font-semibold truncate mt-0.5">{{ $impact->label }}</div>
                                             @else
-                                                <div class="text-[11px] font-bold text-[#073B63] leading-tight line-clamp-2">{{ $impact->label }}</div>
+                                                <div class="text-[10px] font-bold text-[#073B63] leading-tight line-clamp-2">{{ $impact->label }}</div>
                                             @endif
                                         </div>
                                     </div>
@@ -211,23 +211,23 @@
 
                             </div>
 
-                            <!-- 7. Action Buttons -->
-                            <div class="mt-3 pt-3 border-t border-gray-100 flex flex-col sm:flex-row items-center gap-2 relative z-10 shrink-0">
+                            <!-- 7. Action Buttons (Clean 2-Column Grid, No Text Overflow / Clipping) -->
+                            <div class="grid grid-cols-2 gap-1.5 sm:gap-2 mt-2.5 pt-2.5 border-t border-gray-100 relative z-10 shrink-0">
                                 <!-- Primary: Donate Now -->
                                 <a href="{{ $donateUrl }}" 
                                    @if($isClone) tabindex="-1" @endif
-                                   class="w-full sm:flex-1 inline-flex items-center justify-center space-x-1.5 py-2.5 px-3 rounded-xl text-white font-bold bg-[#138A4B] hover:bg-[#0E6C3A] shadow-sm hover:shadow transition-all text-xs group"
+                                   class="w-full inline-flex items-center justify-center space-x-1 py-2 px-1.5 sm:px-2 rounded-xl text-white font-extrabold bg-[#138A4B] hover:bg-[#0E6C3A] shadow-xs hover:shadow transition-all text-[11px] sm:text-xs text-center min-h-[38px] group"
                                    style="background-color: #138A4B;">
-                                    <svg class="w-3.5 h-3.5 fill-white group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
+                                    <svg class="w-3 h-3 fill-white shrink-0 group-hover:scale-110 transition-transform" viewBox="0 0 24 24">
                                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
                                     </svg>
-                                    <span>{{ site_t('btn_donate_now') }} →</span>
+                                    <span class="leading-tight">{{ site_t('btn_donate_now') }} →</span>
                                 </a>
 
                                 <!-- Secondary: View Campaign Details -->
                                 <a href="{{ $detailsUrl }}" 
                                    @if($isClone) tabindex="-1" @endif
-                                   class="w-full sm:flex-1 inline-flex items-center justify-center space-x-1 py-2.5 px-2 rounded-xl text-[#073B63] font-bold bg-white border border-[#073B63]/30 hover:bg-gray-50 transition-all text-xs text-center truncate">
+                                   class="w-full inline-flex items-center justify-center py-2 px-1.5 sm:px-2 rounded-xl text-[#073B63] font-bold bg-white border border-[#073B63]/30 hover:bg-gray-50 transition-all text-[11px] sm:text-xs text-center min-h-[38px] leading-tight">
                                     <span>{{ site_t('btn_view_campaign_details') }} →</span>
                                 </a>
                             </div>

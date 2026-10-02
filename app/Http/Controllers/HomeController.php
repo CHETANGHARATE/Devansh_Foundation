@@ -93,8 +93,9 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        $galleryImages = GalleryImage::orderBy('order')
-            ->take(6)
+        $galleryImages = GalleryImage::where('is_active', true)
+            ->orderBy('order')
+            ->take(16)
             ->get();
 
         return view('pages.home', compact(

@@ -124,4 +124,32 @@ class UiImprovementsAndResponsiveFixesTest extends TestCase
         $this->assertStringContainsString('transition-opacity duration-1000 ease-in-out', $content);
         $this->assertStringNotContainsString('carousel-track', $content);
     }
+
+    public function test_four_homepage_sections_have_matched_card_heights(): void
+    {
+        $response = $this->withSession(['locale' => 'en'])->get('/');
+        $response->assertStatus(200);
+
+        $content = $response->getContent();
+
+        // 1. Success Stories card has lg:h-[285px]
+        $this->assertStringContainsString('bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden min-h-[260px] lg:h-[285px]', $content);
+
+        // 2. Support Our Cause card has lg:h-[285px]
+        $this->assertStringContainsString('bg-white rounded-2xl p-5 border border-gray-200 shadow-sm grid grid-cols-1 md:grid-cols-12 gap-5 lg:h-[285px]', $content);
+
+        // 3. Row 1 headers both have aligned height (lg:h-[76px])
+        $this->assertEquals(2, substr_count($content, 'space-y-1 lg:h-[76px] flex flex-col justify-start'));
+
+        // 4. Photos & Videos Gallery card has lg:h-[285px] with 2-row grid
+        $this->assertStringContainsString('bg-white rounded-2xl p-3 border border-gray-200 shadow-sm min-h-[260px] lg:h-[285px] overflow-hidden', $content);
+        $this->assertStringContainsString('grid-cols-4 grid-rows-2', $content);
+
+        // 5. News & Updates cards have lg:h-[285px]
+        $this->assertStringContainsString('flex flex-col h-[285px] group', $content);
+
+        // 6. Section IDs exist
+        $this->assertStringContainsString('id="stories-donate-section"', $content);
+        $this->assertStringContainsString('id="gallery-news-section"', $content);
+    }
 }

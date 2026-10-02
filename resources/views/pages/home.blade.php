@@ -3,69 +3,9 @@
 @section('content')
 
 <!-- ==========================================
-     1. HERO SECTION (Using uploaded banner image)
+     1. HERO SECTION (Auto-crossfading carousel with 4 banners)
 =========================================== -->
-<section class="relative overflow-hidden bg-[#F3F9F5] border-b border-gray-100 min-h-[460px] lg:min-h-[500px] flex items-center">
-    <!-- Full-width Panoramic Hero Graphic matching reference -->
-    <div class="absolute inset-0 z-0">
-        <img src="{{ asset('images/hero/hero-banner.png') }}" 
-             alt="Devansh Foundation" 
-             class="w-full h-full object-cover object-right lg:object-center">
-        <!-- Soft gradient on the left for maximum text contrast and legibility -->
-        <div class="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-transparent sm:via-white/75 lg:via-white/60 w-full sm:w-[80%] lg:w-[58%]"></div>
-    </div>
-
-    <!-- Handwritten Chalk Message positioned above the child -->
-    <div class="absolute top-8 right-[24%] sm:right-[26%] lg:right-[25%] z-10 pointer-events-none transform -rotate-3 text-center hidden md:block">
-        <div class="handwritten-font text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight tracking-wide whitespace-pre-line">
-            {{ site_t('hero_handwritten') }}
-        </div>
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 relative z-10 w-full">
-        <div class="max-w-xl lg:max-w-lg space-y-5 text-left">
-            
-            <!-- Main Headline -->
-            <h1 class="text-4xl sm:text-5xl lg:text-[54px] font-black tracking-tight leading-[1.12]">
-                <span class="block text-[#073B63]">{{ site_t('hero_title_line1') }}</span>
-                <span class="block text-[#138A4B]">{{ site_t('hero_title_line2') }}</span>
-                <span class="inline-flex items-center text-[#F58220]">
-                    {{ site_t('hero_title_line3') }}
-                    <!-- Small Green Leaf SVG Icon -->
-                    <svg class="w-8 h-8 ml-2 inline-block text-[#138A4B] fill-current" viewBox="0 0 24 24">
-                        <path d="M17 8C8 10 5.9 16.17 3.82 21.34L5.71 22l1-2.3A4.49 4.49 0 0 0 8 20C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/>
-                    </svg>
-                </span>
-            </h1>
-
-            <!-- Supporting Description -->
-            <div class="space-y-1 text-sm sm:text-base text-gray-800 leading-relaxed font-semibold">
-                <p>{{ site_t('hero_subtitle_1') }}</p>
-                <p>{{ site_t('hero_subtitle_2') }}</p>
-                <p>{{ site_t('hero_subtitle_3') }}</p>
-            </div>
-
-            <!-- Tagline -->
-            <div class="text-xs sm:text-sm font-bold text-[#073B63] tracking-wide pt-1">
-                {{ site_t('tagline') }}
-            </div>
-
-            <!-- CTA Buttons -->
-            <div class="pt-2 flex flex-wrap items-center gap-3.5">
-                <a href="{{ route('donate') }}" class="inline-flex items-center justify-center space-x-2 px-6 py-3 rounded-md text-white font-bold bg-[#F58220] hover:bg-[#DC6F13] shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 text-sm">
-                    <i data-lucide="heart" class="w-4 h-4 fill-white"></i>
-                    <span>{{ site_t('btn_donate') }} →</span>
-                </a>
-
-                <a href="{{ route('volunteer') }}" class="inline-flex items-center justify-center space-x-2 px-5 py-3 rounded-md text-white font-bold bg-[#0D5C3A] hover:bg-[#09452B] shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5 text-sm">
-                    <i data-lucide="users" class="w-4 h-4"></i>
-                    <span>{{ site_t('btn_volunteer') }} →</span>
-                </a>
-            </div>
-
-        </div>
-    </div>
-</section>
+<x-hero-carousel />
 
 
 

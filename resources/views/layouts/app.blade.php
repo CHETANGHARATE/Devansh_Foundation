@@ -21,6 +21,14 @@
     <link rel="alternate" hreflang="x-default" href="{{ url()->current() }}" />
     <link rel="canonical" href="{{ url()->current() }}" />
 
+    @if(request()->routeIs('home'))
+        <!-- Preload Hero Banner Images for instant, flicker-free crossfades -->
+        <link rel="preload" as="image" href="{{ asset('images/hero/hero-slide-education.jpg') }}" fetchpriority="high">
+        <link rel="preload" as="image" href="{{ asset('images/hero/hero-slide-healthcare.jpg') }}">
+        <link rel="preload" as="image" href="{{ asset('images/hero/hero-slide-environment.jpg') }}">
+        <link rel="preload" as="image" href="{{ asset('images/hero/hero-slide-women.jpg') }}">
+    @endif
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">

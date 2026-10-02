@@ -50,6 +50,46 @@ return [
     'hero_handwritten' => "Small\nSteps\nBig\nChanges",
     'hero_badge' => 'Small Steps, Big Changes',
 
+    // Hero Banner Carousel (4 Banners)
+    // Banner 1: Education
+    'hero_b1_kicker' => 'QUALITY EDUCATION FOR BRIGHTER FUTURES',
+    'hero_b1_title_1' => 'Educating Today',
+    'hero_b1_title_2' => 'Empowering Tomorrow',
+    'hero_b1_desc' => 'We provide access to quality education, learning resources and skill development opportunities for underprivileged children.',
+    'hero_b1_chalk' => "Small\nSteps\nBig\nChanges",
+    'hero_b1_btn_primary' => 'Donate Now',
+    'hero_b1_btn_secondary' => 'Support Education',
+
+    // Banner 2: Healthcare
+    'hero_b2_kicker' => 'HEALTHY COMMUNITIES, STRONGER TOMORROWS',
+    'hero_b2_title_1' => 'Healthcare for',
+    'hero_b2_title_2' => 'Every Life',
+    'hero_b2_desc' => 'We support medical check-ups, essential treatments and health awareness programs for underserved communities.',
+    'hero_b2_chalk' => "Better\nHealth\nStronger\nCommunities",
+    'hero_b2_btn_primary' => 'Donate Now',
+    'hero_b2_btn_secondary' => 'Support Healthcare',
+
+    // Banner 3: Environment & Clean Water
+    'hero_b3_kicker' => 'GREENER ENVIRONMENTS, BRIGHTER GENERATIONS',
+    'hero_b3_title_1' => 'A Cleaner Environment',
+    'hero_b3_title_2' => 'for Healthier Lives',
+    'hero_b3_desc' => 'We promote tree plantation, clean water initiatives and community action for a greener, healthier and more sustainable future.',
+    'hero_b3_chalk' => "Green\nToday\nHealthier\nTomorrow",
+    'hero_b3_btn_primary' => 'Donate Now',
+    'hero_b3_btn_secondary' => 'Support Environment',
+
+    // Banner 4: Women Empowerment
+    'hero_b4_kicker' => 'EMPOWERING WOMEN, TRANSFORMING FAMILIES',
+    'hero_b4_title_1' => 'Empowering Women,',
+    'hero_b4_title_2' => 'Building Futures',
+    'hero_b4_desc' => 'We provide vocational training, self-help support, and financial independence for women in rural and semi-urban communities.',
+    'hero_b4_chalk' => "Empowered\nWomen\nStronger\nNation",
+    'hero_b4_btn_primary' => 'Donate Now',
+    'hero_b4_btn_secondary' => 'Support Women',
+    'hero_carousel_prev' => 'Previous Banner',
+    'hero_carousel_next' => 'Next Banner',
+    'hero_carousel_slide' => 'Go to slide',
+
     // Focus Areas Section
     'focus_heading' => 'Our Focus Areas',
     'focus_subheading' => 'Dedicated humanitarian initiatives driving sustainable progress for underserved and disadvantaged communities',

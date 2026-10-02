@@ -30,7 +30,7 @@
     <!-- Subtle Decorative Background Glow -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[350px] bg-gradient-to-b from-[#FAF4E6]/60 via-transparent to-transparent blur-3xl pointer-events-none"></div>
 
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <div class="site-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         <!-- ==========================================
              SECTION HEADER (Centered)

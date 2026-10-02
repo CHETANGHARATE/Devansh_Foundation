@@ -71,6 +71,55 @@ body {
     font-family: 'Caveat', 'Segoe Script', cursive, sans-serif;
 }
 
+/* Hero banner initial render safety: prevent overlapping text before JS hydration */
+.hero-crossfade-slide {
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.hero-crossfade-slide:first-child {
+    opacity: 1;
+    pointer-events: auto;
+    z-index: 10;
+}
+
+.hero-crossfade-slide.opacity-100,
+.hero-crossfade-slide.\!opacity-100 {
+    opacity: 1 !important;
+}
+
+.hero-crossfade-slide.opacity-0,
+.hero-crossfade-slide.\!opacity-0 {
+    opacity: 0 !important;
+}
+
+
+/* Standardized Site Container System */
+.site-container {
+    width: 100%;
+    max-width: 80rem; /* 1280px, identical to max-w-7xl */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .site-container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .site-container {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+
 /* Card hover elevations */
 .ngo-card {
     transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);

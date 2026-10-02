@@ -9,8 +9,8 @@
     $currLocale = current_locale();
 @endphp
 
-<div class="bg-[#061A2B] text-white text-xs py-2 px-4 border-b border-white/10 hidden md:block">
-    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-4">
+<div class="bg-[#061A2B] text-white text-xs py-2 border-b border-white/10 hidden md:block">
+    <div class="site-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between items-center gap-4">
         <!-- Contact & Location Info -->
         <div class="flex items-center space-x-6 text-gray-200">
             <a href="tel:{{ preg_replace('/\s+/', '', $phone) }}" class="flex items-center space-x-1.5 hover:text-white transition">

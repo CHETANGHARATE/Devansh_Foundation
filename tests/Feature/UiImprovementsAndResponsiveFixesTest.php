@@ -114,8 +114,8 @@ class UiImprovementsAndResponsiveFixesTest extends TestCase
 
         $content = $response->getContent();
 
-        // Left-side content moved further left with max-w-[1440px] and lg:px-14 xl:px-16
-        $this->assertStringContainsString('max-w-[1440px] mx-auto px-12 sm:px-10 lg:px-14 xl:px-16 py-10 lg:py-16 relative z-10 w-full', $content);
+        // Left-side content aligns with site-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8
+        $this->assertStringContainsString('site-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 relative z-10 w-full', $content);
 
         // Right-side chalk text moved towards right edge away from subject faces
         $this->assertStringContainsString('top-6 sm:top-8 md:top-10 right-6 sm:right-10 md:right-12 lg:right-16 xl:right-20 z-10 pointer-events-none transform -rotate-2 text-right hidden md:block select-none', $content);

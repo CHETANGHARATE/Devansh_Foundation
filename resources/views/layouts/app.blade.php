@@ -23,7 +23,8 @@
 
     @if(request()->routeIs('home'))
         <!-- Preload Hero Banner Images for instant, flicker-free crossfades -->
-        <link rel="preload" as="image" href="{{ asset('images/hero/hero-slide-education.jpg') }}" fetchpriority="high">
+        <link rel="preload" as="image" href="{{ asset('images/hero/hero-banner.png') }}" fetchpriority="high">
+        <link rel="preload" as="image" href="{{ asset('images/hero/hero-slide-education.jpg') }}">
         <link rel="preload" as="image" href="{{ asset('images/hero/hero-slide-healthcare.jpg') }}">
         <link rel="preload" as="image" href="{{ asset('images/hero/hero-slide-environment.jpg') }}">
         <link rel="preload" as="image" href="{{ asset('images/hero/hero-slide-women.jpg') }}">

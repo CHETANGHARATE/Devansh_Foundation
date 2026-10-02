@@ -26,7 +26,9 @@ class HeroBannerFadeCarouselTest extends TestCase
         $response->assertSee('heroBannerFadeCarousel()', false);
         $response->assertSee('transition-opacity duration-1000', false);
 
-        // 4 Banner Slides present in markup
+        // 5 Banner Slides present in markup (Slide 0 is primary foundation banner)
+        $response->assertSeeText('Together');
+        $response->assertSeeText('For a Better Tomorrow!');
         $response->assertSeeText('Educating Today');
         $response->assertSeeText('Empowering Tomorrow');
         $response->assertSeeText('Healthcare for');
@@ -40,9 +42,10 @@ class HeroBannerFadeCarouselTest extends TestCase
         $response->assertSee('Previous Banner');
         $response->assertSee('Next Banner');
         $response->assertSee('Go to slide 1');
-        $response->assertSee('Go to slide 4');
+        $response->assertSee('Go to slide 5');
 
         // Preload tags in head
+        $response->assertSee('hero-banner.png');
         $response->assertSee('hero-slide-education.jpg');
         $response->assertSee('hero-slide-healthcare.jpg');
         $response->assertSee('hero-slide-environment.jpg');
@@ -54,6 +57,9 @@ class HeroBannerFadeCarouselTest extends TestCase
         $response = $this->withSession(['locale' => 'mr'])->get(route('home'));
         $response->assertStatus(200);
 
+        $response->assertSeeText('लहान पावले, मोठा बदल');
+        $response->assertSeeText('समाजाच्या');
+        $response->assertSeeText('उज्ज्वल भविष्यासाठी एकत्र !');
         $response->assertSeeText('गुणवत्तापूर्ण शिक्षण, उज्ज्वल भविष्य');
         $response->assertSeeText('आजचे शिक्षण');
         $response->assertSeeText('उद्याचे सक्षमीकरण');
@@ -72,6 +78,9 @@ class HeroBannerFadeCarouselTest extends TestCase
         $response = $this->withSession(['locale' => 'hi'])->get(route('home'));
         $response->assertStatus(200);
 
+        $response->assertSeeText('छोटे कदम, बड़ा बदलाव');
+        $response->assertSeeText('समाज के');
+        $response->assertSeeText('उज्ज्वल भविष्य के लिए एकजुट !');
         $response->assertSeeText('गुणवत्तापूर्ण शिक्षा, उज्ज्वल भविष्य');
         $response->assertSeeText('आज की शिक्षा');
         $response->assertSeeText('कल का सशक्तिकरण');

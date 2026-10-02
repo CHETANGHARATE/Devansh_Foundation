@@ -1,6 +1,23 @@
 @php
     $slides = [
         [
+            'name' => 'Main',
+            'image' => asset('images/hero/hero-banner.png'),
+            'alt' => 'Devansh Foundation - Together for a Better Tomorrow',
+            'kicker' => site_t('hero_badge'),
+            'title_1' => site_t('hero_title_line1'),
+            'title_2' => site_t('hero_title_line2') . ' ' . site_t('hero_title_line3'),
+            'icon' => 'leaf',
+            'desc' => site_t('hero_subtitle_1') . ' ' . site_t('hero_subtitle_2') . ' ' . site_t('hero_subtitle_3'),
+            'chalk' => site_t('hero_handwritten'),
+            'chalk_class' => 'top-6 sm:top-8 md:top-10 right-6 sm:right-10 md:right-14 lg:right-20 xl:right-24',
+            'btn_primary_text' => site_t('btn_donate'),
+            'btn_primary_link' => route('donate'),
+            'btn_secondary_text' => site_t('btn_volunteer'),
+            'btn_secondary_link' => route('volunteer'),
+            'btn_secondary_icon' => 'users',
+        ],
+        [
             'name' => 'Education',
             'image' => asset('images/hero/hero-slide-education.jpg'),
             'alt' => 'Devansh Foundation - Quality Education for Children',
@@ -10,6 +27,7 @@
             'icon' => 'leaf',
             'desc' => site_t('hero_b1_desc'),
             'chalk' => site_t('hero_b1_chalk'),
+            'chalk_class' => 'top-6 sm:top-8 md:top-10 right-6 sm:right-10 md:right-12 lg:right-16 xl:right-20',
             'btn_primary_text' => site_t('hero_b1_btn_primary'),
             'btn_primary_link' => route('donate'),
             'btn_secondary_text' => site_t('hero_b1_btn_secondary'),
@@ -26,6 +44,7 @@
             'icon' => 'heart-pulse',
             'desc' => site_t('hero_b2_desc'),
             'chalk' => site_t('hero_b2_chalk'),
+            'chalk_class' => 'top-6 sm:top-8 md:top-10 right-6 sm:right-10 md:right-12 lg:right-16 xl:right-20',
             'btn_primary_text' => site_t('hero_b2_btn_primary'),
             'btn_primary_link' => route('donate'),
             'btn_secondary_text' => site_t('hero_b2_btn_secondary'),
@@ -42,6 +61,7 @@
             'icon' => 'leaf',
             'desc' => site_t('hero_b3_desc'),
             'chalk' => site_t('hero_b3_chalk'),
+            'chalk_class' => 'top-6 sm:top-8 md:top-10 right-6 sm:right-10 md:right-12 lg:right-16 xl:right-20',
             'btn_primary_text' => site_t('hero_b3_btn_primary'),
             'btn_primary_link' => route('donate'),
             'btn_secondary_text' => site_t('hero_b3_btn_secondary'),
@@ -58,6 +78,7 @@
             'icon' => 'sparkles',
             'desc' => site_t('hero_b4_desc'),
             'chalk' => site_t('hero_b4_chalk'),
+            'chalk_class' => 'top-6 sm:top-8 md:top-10 right-6 sm:right-10 md:right-12 lg:right-16 xl:right-20',
             'btn_primary_text' => site_t('hero_b4_btn_primary'),
             'btn_primary_link' => route('donate'),
             'btn_secondary_text' => site_t('hero_b4_btn_secondary'),
@@ -101,12 +122,16 @@
     <!-- Layered Slides Container (All slides absolutely stacked at same dimensions) -->
     <div class="absolute inset-0 w-full h-full overflow-hidden">
         @foreach($slides as $index => $slide)
-            <div class="hero-crossfade-slide absolute inset-0 w-full h-full flex items-center transition-opacity duration-1000 ease-in-out"
-                 :class="active === {{ $index }} ? 'opacity-100 z-10 pointer-events-auto' : (prevActive === {{ $index }} ? 'opacity-0 z-5 pointer-events-none' : 'opacity-0 z-0 pointer-events-none')"
+            <div class="hero-crossfade-slide absolute inset-0 w-full h-full flex items-center transition-opacity duration-1000 ease-in-out {{ $index === 0 ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none' }}"
+                 :class="{
+                     '!opacity-100 !z-10 !pointer-events-auto': active === {{ $index }},
+                     '!opacity-0 !z-5 !pointer-events-none': prevActive === {{ $index }} && active !== {{ $index }},
+                     '!opacity-0 !z-0 !pointer-events-none': active !== {{ $index }} && prevActive !== {{ $index }}
+                 }"
                  :aria-hidden="active !== {{ $index }}"
                  role="group"
                  aria-roledescription="slide"
-                 aria-label="{{ $index + 1 }} of 4: {{ $slide['name'] }}">
+                 aria-label="{{ $index + 1 }} of {{ count($slides) }}: {{ $slide['name'] }}">
 
                 <!-- Full-width Panoramic Graphic -->
                 <div class="absolute inset-0 z-0">
@@ -121,14 +146,14 @@
                 </div>
 
                 <!-- Handwritten Chalk Message positioned top-right away from subject faces -->
-                <div class="absolute top-6 sm:top-8 md:top-10 right-6 sm:right-10 md:right-12 lg:right-16 xl:right-20 z-10 pointer-events-none transform -rotate-2 text-right hidden md:block select-none max-w-xs lg:max-w-sm">
+                <div class="absolute {{ $slide['chalk_class'] ?? 'top-6 sm:top-8 md:top-10 right-6 sm:right-10 md:right-12 lg:right-16 xl:right-20' }} z-10 pointer-events-none transform -rotate-2 text-right hidden md:block select-none max-w-xs lg:max-w-sm">
                     <div class="handwritten-font text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)] text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight tracking-wide whitespace-pre-line">
                         {{ $slide['chalk'] }}
                     </div>
                 </div>
 
-                <!-- Live Localized Text & CTA Buttons (Moved further left with responsive container) -->
-                <div class="max-w-[1440px] mx-auto px-12 sm:px-10 lg:px-14 xl:px-16 py-10 lg:py-16 relative z-10 w-full">
+                <!-- Live Localized Text & CTA Buttons (Standardized container matching all site sections) -->
+                <div class="site-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16 relative z-10 w-full">
                     <div class="max-w-xl lg:max-w-xl space-y-4 text-left">
                         
                         <!-- Kicker Badge with Green Left Pipe -->
@@ -207,9 +232,9 @@
         </svg>
     </button>
 
-    <!-- 4 Indicator Dots (Bottom Centered) -->
+    <!-- {{ count($slides) }} Indicator Dots (Bottom Centered) -->
     <div class="absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex items-center space-x-2 bg-black/25 backdrop-blur-xs px-3.5 py-1.5 rounded-full border border-white/20">
-        @for($i = 0; $i < 4; $i++)
+        @for($i = 0; $i < count($slides); $i++)
             <button type="button"
                     @click="goTo({{ $i }})"
                     class="transition-all duration-300 rounded-full focus:outline-hidden cursor-pointer"
@@ -228,7 +253,7 @@
         return {
             active: 0,
             prevActive: 0,
-            total: 4,
+            total: {{ count($slides) }},
             duration: 5000,
             autoplayTimer: null,
             transitionTimer: null,

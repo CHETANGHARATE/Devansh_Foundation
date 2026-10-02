@@ -3,16 +3,16 @@
 @endphp
 
 <header x-data="{ mobileMenuOpen: false, getInvolvedOpen: false }" class="sticky top-0 z-50 bg-white shadow-sm border-b border-gray-100 transition-all">
-    <div class="max-w-[1380px] mx-auto px-4 sm:px-6">
+    <div class="site-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-[76px] gap-2">
             
             <!-- Brand Logo with Official Uploaded Image -->
-            <a href="{{ route('home') }}" class="flex items-center space-x-2.5 sm:space-x-3 group py-1 shrink-0" aria-label="Devansh Foundation - Together for a Better Tomorrow">
+            <a href="{{ route('home') }}" class="flex items-center space-x-2 sm:space-x-2.5 group py-1 shrink-0" aria-label="Devansh Foundation - Together for a Better Tomorrow">
                 <img src="{{ asset('images/logo.png') }}" 
                      alt="" 
-                     class="h-12 sm:h-14 lg:h-[56px] w-auto object-contain drop-shadow-sm group-hover:scale-105 transition duration-300">
+                     class="h-10 sm:h-12 xl:h-[46px] w-auto object-contain drop-shadow-sm group-hover:scale-105 transition duration-300">
                 <div class="flex flex-col text-left justify-center select-none shrink-0">
-                    <svg viewBox="0 0 160 58" class="h-10 sm:h-12 lg:h-[50px] w-auto select-none overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <svg viewBox="0 0 160 58" class="h-9 sm:h-10 xl:h-[42px] w-auto select-none overflow-visible" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <text x="0" y="24" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="900" font-size="28" fill="#073B63" textLength="160" lengthAdjust="spacing">DEVANSH</text>
                         <text x="0" y="42" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="800" font-size="14.5" fill="#138A4B" textLength="160" lengthAdjust="spacing">FOUNDATION</text>
                         <text x="0" y="56" font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif" font-weight="600" font-size="9.8" fill="#073B63" textLength="160" lengthAdjust="spacing">Together for a Better Tomorrow</text>
@@ -21,10 +21,10 @@
             </a>
 
             <!-- Desktop Navigation Menu — ALL in ONE line with equal margins and no wrapping -->
-            <nav class="hidden lg:flex items-center space-x-0.5 xl:space-x-1.5 text-[13px] xl:text-[14px] font-semibold text-[#17324D] shrink-0">
+            <nav class="hidden xl:flex items-center gap-0.5 xl:gap-1 text-[12.5px] xl:text-[13px] font-semibold text-[#17324D] shrink-0">
                 
                 <a href="{{ route('home') }}" 
-                   class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('home') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                   class="whitespace-nowrap px-1.5 xl:px-2 py-1.5 transition relative {{ request()->routeIs('home') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
                     {{ site_t('nav_home') }}
                     @if(request()->routeIs('home'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
@@ -35,7 +35,7 @@
                 <div class="relative" x-data="{ open: false }" @mouseleave="open = false">
                     <button @click="open = !open" 
                             @mouseover="open = true" 
-                            class="whitespace-nowrap inline-flex items-center space-x-1 px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('about*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                            class="whitespace-nowrap inline-flex items-center space-x-1 px-1.5 xl:px-2 py-1.5 transition relative {{ request()->routeIs('about*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
                         <span>{{ site_t('nav_about') }}</span>
                         <svg class="w-3 h-3 transition-transform duration-200" :class="{ 'rotate-180': open }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -69,7 +69,7 @@
                 </div>
 
                 <a href="{{ route('our-work.index') }}" 
-                   class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('our-work.*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                   class="whitespace-nowrap px-1.5 xl:px-2 py-1.5 transition relative {{ request()->routeIs('our-work.*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
                     {{ site_t('nav_our_work') }}
                     @if(request()->routeIs('our-work.*'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
@@ -77,7 +77,7 @@
                 </a>
 
                 <a href="{{ route('projects.index') }}" 
-                   class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('projects.*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                   class="whitespace-nowrap px-1.5 xl:px-2 py-1.5 transition relative {{ request()->routeIs('projects.*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
                     {{ site_t('nav_projects') }}
                     @if(request()->routeIs('projects.*'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
@@ -85,7 +85,7 @@
                 </a>
 
                 <a href="{{ route('impact') }}" 
-                   class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('impact') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                   class="whitespace-nowrap px-1.5 xl:px-2 py-1.5 transition relative {{ request()->routeIs('impact') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
                     {{ site_t('nav_impact') }}
                     @if(request()->routeIs('impact'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
@@ -93,7 +93,7 @@
                 </a>
 
                 <a href="{{ route('stories.index') }}" 
-                   class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('stories.*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                   class="whitespace-nowrap px-1.5 xl:px-2 py-1.5 transition relative {{ request()->routeIs('stories.*') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
                     {{ site_t('nav_stories') }}
                     @if(request()->routeIs('stories.*'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
@@ -101,7 +101,7 @@
                 </a>
 
                 <a href="{{ route('gallery') }}" 
-                   class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('gallery') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                   class="whitespace-nowrap px-1.5 xl:px-2 py-1.5 transition relative {{ request()->routeIs('gallery') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
                     {{ site_t('nav_gallery') }}
                     @if(request()->routeIs('gallery'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
@@ -109,7 +109,7 @@
                 </a>
 
                 <a href="{{ route('reports') }}" 
-                   class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('reports') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                   class="whitespace-nowrap px-1.5 xl:px-2 py-1.5 transition relative {{ request()->routeIs('reports') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
                     {{ site_t('nav_reports') }}
                     @if(request()->routeIs('reports'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
@@ -120,7 +120,7 @@
                 <div class="relative" x-data="{ open: false }" @mouseleave="open = false">
                     <button @click="open = !open" 
                             @mouseover="open = true" 
-                            class="whitespace-nowrap inline-flex items-center space-x-1 px-2 xl:px-2.5 py-1.5 transition {{ request()->routeIs('get-involved*') || request()->routeIs('volunteer') || request()->routeIs('partner') || request()->routeIs('csr') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                            class="whitespace-nowrap inline-flex items-center space-x-1 px-1.5 xl:px-2 py-1.5 transition {{ request()->routeIs('get-involved*') || request()->routeIs('volunteer') || request()->routeIs('partner') || request()->routeIs('csr') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
                         <span>{{ site_t('nav_get_involved') }}</span>
                         <svg class="w-3 h-3 transition-transform duration-200" :class="{ 'rotate-180': open }" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                             <polyline points="6 9 12 15 18 9"></polyline>
@@ -154,7 +154,7 @@
                 </div>
 
                 <a href="{{ route('contact') }}" 
-                   class="whitespace-nowrap px-2 xl:px-2.5 py-1.5 transition relative {{ request()->routeIs('contact') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
+                   class="whitespace-nowrap px-1.5 xl:px-2 py-1.5 transition relative {{ request()->routeIs('contact') ? 'text-[#138A4B] font-bold' : 'hover:text-[#138A4B]' }}">
                     {{ site_t('nav_contact') }}
                     @if(request()->routeIs('contact'))
                         <span class="absolute bottom-0 left-2 right-2 h-[2.5px] bg-[#138A4B] rounded-full"></span>
@@ -164,7 +164,7 @@
             </nav>
 
             <!-- Action Donate CTA & Mobile Hamburger -->
-            <div class="flex items-center space-x-2 shrink-0">
+            <div class="flex items-center gap-2 shrink-0">
                 <a href="{{ route('donate') }}" class="whitespace-nowrap inline-flex items-center justify-center space-x-1.5 px-3.5 xl:px-4 py-2 rounded-md text-white text-xs xl:text-sm font-bold bg-[#F58220] hover:bg-[#DC6F13] shadow-sm hover:shadow transition transform hover:-translate-y-0.5">
                     <svg class="w-3.5 h-3.5 fill-white" viewBox="0 0 24 24">
                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -173,7 +173,7 @@
                 </a>
 
                 <!-- Mobile menu button -->
-                <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="lg:hidden p-2 rounded-md text-gray-700 hover:text-[#138A4B] hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation">
+                <button @click="mobileMenuOpen = !mobileMenuOpen" type="button" class="xl:hidden p-2 rounded-md text-gray-700 hover:text-[#138A4B] hover:bg-gray-100 focus:outline-none" aria-label="Toggle navigation">
                     <svg class="w-6 h-6" x-show="!mobileMenuOpen" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
                         <line x1="3" y1="12" x2="21" y2="12"></line>
                         <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -197,7 +197,7 @@
          x-transition:leave="transition ease-in duration-150"
          x-transition:leave-start="opacity-100 translate-y-0"
          x-transition:leave-end="opacity-0 -translate-y-2"
-         class="lg:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-2 shadow-lg" 
+         class="xl:hidden bg-white border-b border-gray-200 px-4 pt-3 pb-6 space-y-2 shadow-lg" 
          style="display: none;">
         
         <!-- Mobile Language Switcher -->

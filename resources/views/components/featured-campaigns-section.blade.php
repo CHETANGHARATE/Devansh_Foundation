@@ -17,7 +17,7 @@
          @mouseleave="resumeAutoplay()"
          aria-label="{{ site_t('featured_campaigns_heading') }}">
 
-    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="site-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
 
         <!-- Top Section Header -->
         <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 sm:mb-10 gap-4">

@@ -13,7 +13,7 @@
      2. OUR FOCUS AREAS
 =========================================== -->
 <section class="py-10 bg-white border-b border-gray-100">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="site-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <!-- Section Header with Green Decorative Line -->
         <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 gap-2">
@@ -32,7 +32,9 @@
         <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4">
             
             <!-- 1. Education - Pink -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+            <a href="{{ route('our-work.show', 'education') }}" 
+               class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/40 shadow-xs hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#138A4B] focus-visible:ring-offset-2"
+               aria-label="{{ site_t('focus_education') }}">
                 <div class="w-12 h-12 rounded-full bg-[#E91E63] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="book-open" class="w-6 h-6"></i>
                 </div>
@@ -45,7 +47,9 @@
             </a>
 
             <!-- 2. Healthcare - Teal -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+            <a href="{{ route('our-work.show', 'healthcare') }}" 
+               class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/40 shadow-xs hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#138A4B] focus-visible:ring-offset-2"
+               aria-label="{{ site_t('focus_healthcare') }}">
                 <div class="w-12 h-12 rounded-full bg-[#00BFA5] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="activity" class="w-6 h-6"></i>
                 </div>
@@ -58,7 +62,9 @@
             </a>
 
             <!-- 3. Women Empowerment - Orange -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+            <a href="{{ route('our-work.show', 'women-empowerment') }}" 
+               class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/40 shadow-xs hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#138A4B] focus-visible:ring-offset-2"
+               aria-label="{{ site_t('focus_women') }}">
                 <div class="w-12 h-12 rounded-full bg-[#FF6D00] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="users" class="w-6 h-6"></i>
                 </div>
@@ -71,7 +77,9 @@
             </a>
 
             <!-- 4. Child Welfare - Purple -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+            <a href="{{ route('our-work.show', 'child-welfare') }}" 
+               class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/40 shadow-xs hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#138A4B] focus-visible:ring-offset-2"
+               aria-label="{{ site_t('focus_child') }}">
                 <div class="w-12 h-12 rounded-full bg-[#8E24AA] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="smile" class="w-6 h-6"></i>
                 </div>
@@ -84,7 +92,9 @@
             </a>
 
             <!-- 5. Environment - Fresh Green -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+            <a href="{{ route('our-work.show', 'environment') }}" 
+               class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/40 shadow-xs hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#138A4B] focus-visible:ring-offset-2"
+               aria-label="{{ site_t('focus_environment') }}">
                 <div class="w-12 h-12 rounded-full bg-[#43A047] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="sprout" class="w-6 h-6"></i>
                 </div>
@@ -97,7 +107,9 @@
             </a>
 
             <!-- 6. Skill Development - Sky Blue -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+            <a href="{{ route('our-work.show', 'skill-development') }}" 
+               class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/40 shadow-xs hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#138A4B] focus-visible:ring-offset-2"
+               aria-label="{{ site_t('focus_skills') }}">
                 <div class="w-12 h-12 rounded-full bg-[#1E88E5] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="settings" class="w-6 h-6"></i>
                 </div>
@@ -110,7 +122,9 @@
             </a>
 
             <!-- 7. Rural Development - Gold/Amber -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+            <a href="{{ route('our-work.show', 'rural-development') }}" 
+               class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/40 shadow-xs hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#138A4B] focus-visible:ring-offset-2"
+               aria-label="{{ site_t('focus_rural') }}">
                 <div class="w-12 h-12 rounded-full bg-[#FFA000] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="home" class="w-6 h-6"></i>
                 </div>
@@ -123,7 +137,9 @@
             </a>
 
             <!-- 8. Social Welfare - Rose/Red -->
-            <a href="{{ route('our-work.index') }}" class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/30 hover:shadow-md transition group">
+            <a href="{{ route('our-work.show', 'social-welfare') }}" 
+               class="flex flex-col items-center text-center p-3 rounded-xl bg-gray-50/70 hover:bg-[#EAF7EF] border border-gray-100 hover:border-[#138A4B]/40 shadow-xs hover:shadow-md transition-all duration-300 transform hover:-translate-y-1 group cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-[#138A4B] focus-visible:ring-offset-2"
+               aria-label="{{ site_t('focus_social') }}">
                 <div class="w-12 h-12 rounded-full bg-[#D81B60] text-white flex items-center justify-center shadow-md group-hover:scale-110 transition mb-2">
                     <i data-lucide="heart-handshake" class="w-6 h-6"></i>
                 </div>

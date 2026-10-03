@@ -5,29 +5,44 @@
     $title = $trans?->title ?? $focusArea->slug;
     $desc = $trans?->description ?? $trans?->short_description;
     $icon = $focusArea->icon ?: 'heart';
-    $img = $focusArea->image ?: 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80';
+    
+    // Resolve image URL (handle full URL, local storage, or fallback)
+    $rawImg = $focusArea->image;
+    if ($rawImg && (str_starts_with($rawImg, 'http://') || str_starts_with($rawImg, 'https://'))) {
+        $img = $rawImg;
+    } elseif ($rawImg && file_exists(public_path($rawImg))) {
+        $img = asset($rawImg);
+    } else {
+        $localPath = 'images/focus-areas/' . $focusArea->slug . '.jpg';
+        $img = file_exists(public_path($localPath)) ? asset($localPath) : 'https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=1200&q=80';
+    }
 @endphp
+
+@section('title', $title . ' — ' . config('app.name', 'Devansh Foundation'))
 
 @section('content')
 
-<!-- Header Banner -->
-<section class="bg-gradient-to-r from-[#073B63] to-[#138A4B] text-white py-16 relative overflow-hidden">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+<!-- Header Banner (Rich brand green matching design reference) -->
+<section class="bg-gradient-to-r from-[#0D5C3A] via-[#107044] to-[#138A4B] text-white py-14 sm:py-16 relative overflow-hidden">
+    <div class="site-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="max-w-3xl">
-            <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/15 text-white mb-4">
+            <!-- Breadcrumb Pill -->
+            <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/15 text-white mb-4 backdrop-blur-xs">
                 <a href="{{ route('our-work.index') }}" class="hover:underline">{{ site_t('nav_our_work') }}</a>
                 <span>/</span>
                 <span>{{ $title }}</span>
             </div>
-            <div class="flex items-center space-x-4 mb-4">
-                <div class="w-14 h-14 rounded-2xl bg-white/20 flex items-center justify-center text-emerald-300">
-                    <i data-lucide="{{ $icon }}" class="w-8 h-8"></i>
+            <!-- Title & Icon -->
+            <div class="flex items-center space-x-3.5 sm:space-x-4 mb-3 sm:mb-4">
+                <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/20 flex items-center justify-center text-white shrink-0 shadow-inner">
+                    <i data-lucide="{{ $icon }}" class="w-7 h-7 sm:w-8 sm:h-8"></i>
                 </div>
-                <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
                     {{ $title }}
                 </h1>
             </div>
-            <p class="text-lg text-gray-100 leading-relaxed">
+            <!-- Subtitle -->
+            <p class="text-base sm:text-lg text-emerald-50/95 leading-relaxed">
                 {{ $trans?->short_description }}
             </p>
         </div>
@@ -35,13 +50,13 @@
 </section>
 
 <!-- Focus Area Details & Projects -->
-<section class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+<section class="py-14 sm:py-16 bg-white">
+    <div class="site-container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12">
             
             <!-- Main Content -->
             <div class="lg:col-span-8 space-y-8">
-                <div class="rounded-3xl overflow-hidden aspect-[16/9] shadow-md">
+                <div class="rounded-3xl overflow-hidden aspect-[16/9] shadow-md border border-gray-100">
                     <img src="{{ $img }}" alt="{{ $title }}" class="w-full h-full object-cover">
                 </div>
 

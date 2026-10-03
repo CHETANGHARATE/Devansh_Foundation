@@ -274,6 +274,7 @@ class DatabaseSeeder extends Seeder
         foreach ($focusAreas as $faData) {
             $translations = $faData['translations'];
             unset($faData['translations']);
+            $faData['is_active'] = true;
 
             $fa = FocusArea::updateOrCreate(['slug' => $faData['slug']], $faData);
 
@@ -350,12 +351,15 @@ class DatabaseSeeder extends Seeder
             }
         }
 
-        // 5. Featured Projects (5 projects requested)
+        // 5. Featured Projects
         $educationArea = FocusArea::where('slug', 'education')->first();
         $healthArea = FocusArea::where('slug', 'healthcare')->first();
         $womenArea = FocusArea::where('slug', 'women-empowerment')->first();
         $envArea = FocusArea::where('slug', 'environment')->first();
         $ruralArea = FocusArea::where('slug', 'rural-development')->first();
+        $childArea = FocusArea::where('slug', 'child-welfare')->first();
+        $skillArea = FocusArea::where('slug', 'skill-development')->first();
+        $socialArea = FocusArea::where('slug', 'social-welfare')->first();
 
         $projects = [
             [
@@ -555,6 +559,126 @@ class DatabaseSeeder extends Seeder
                         'problem_statement' => 'Acute summer drinking water scarcity forced families into miles-long treks for brackish water.',
                         'solution' => 'Desilting streams, constructing check-dams, and installing solar-powered community purification stations.',
                         'impact_text' => 'Delivered dependable clean drinking water access and recharge storage for 12 rural villages.',
+                    ],
+                ],
+            ],
+            [
+                'focus_area_id' => $childArea?->id,
+                'slug' => 'child-nutrition-learning',
+                'featured_image' => 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&w=800&q=80',
+                'location' => 'Malegaon & Surgana, Nashik',
+                'start_date' => '2024-05-01',
+                'beneficiaries_count' => '1,200+ Children',
+                'target_amount' => 350000,
+                'raised_amount' => 275000,
+                'status' => 'ongoing',
+                'is_featured' => false,
+                'is_published' => true,
+                'order' => 6,
+                'translations' => [
+                    'mr' => [
+                        'title' => 'बाल पोषण व प्राथमिक शिक्षण सहाय्य',
+                        'short_description' => 'गरजू बालकांसाठी पौष्टिक आहार, आरोग्य तपासणी व प्राथमिक शैक्षणिक मदत.',
+                        'description' => 'कुपोषण मुक्ती आणि प्रत्येक बालकाला आरोग्यदायी बालपण व प्राथमिक शिक्षण उपलब्ध करून देण्यासाठी विशेष प्रकल्प.',
+                        'problem_statement' => 'दुर्गम आदिवासी वाड्यांमधील बालकांमध्ये कुपोषणाची समस्या आणि प्राथमिक शिक्षणातील अनियमितता.',
+                        'solution' => 'नियमित पौष्टिक पूरक आहार, बालरोगतज्ज्ञांमार्फत आरोग्य तपासणी आणि शालेय अध्ययन किट वितरण.',
+                        'impact_text' => '1,200 हून अधिक बालकांना नियमित पोषण आहार व आरोग्य सुरक्षितता पुरवली.',
+                    ],
+                    'hi' => [
+                        'title' => 'बाल पोषण एवं प्राथमिक शिक्षा अभियान',
+                        'short_description' => 'जरूरतमंद बच्चों के लिए पौष्टिक आहार, स्वास्थ्य जांच एवं बाल शिक्षा सहायता।',
+                        'description' => 'कुपोषण निवारण और प्रत्येक बच्चे को सुरक्षित एवं स्वस्थ वातावरण प्रदान करने हेतु समर्पित अभियान।',
+                        'problem_statement' => 'वंचित बस्तियों में बच्चों का कुपोषण और नियमित विद्यालय न जा पाने की चुनौती।',
+                        'solution' => 'संतुलित पोषण आहार, नियमित स्वास्थ्य परीक्षण और बुनियादी शिक्षण सामग्री का वितरण।',
+                        'impact_text' => '1,200 से अधिक बच्चों के पोषण स्तर में सुधार और प्राथमिक शिक्षा से जुड़ाव।',
+                    ],
+                    'en' => [
+                        'title' => 'Child Nutrition & Early Learning Project',
+                        'short_description' => 'Supplementary nutrition meals, pediatric health monitoring, and early learning aid.',
+                        'description' => 'Eradicating malnutrition and nurturing vulnerable children through wholesome nutrition, regular pediatric monitoring, and foundational learning resources.',
+                        'problem_statement' => 'Vulnerable tribal hamlets faced severe child malnutrition and irregular early schooling attendance.',
+                        'solution' => 'Providing daily supplementary nutritional meals, pediatric screenings, and back-to-school starter kits.',
+                        'impact_text' => 'Sustained measurable health improvement and active preschool/primary schooling for 1,200+ children.',
+                    ],
+                ],
+            ],
+            [
+                'focus_area_id' => $skillArea?->id,
+                'slug' => 'youth-vocational-skills',
+                'featured_image' => 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80',
+                'location' => 'Nashik City & Dindori, Maharashtra',
+                'start_date' => '2024-06-01',
+                'beneficiaries_count' => '850+ Youths',
+                'target_amount' => 450000,
+                'raised_amount' => 340000,
+                'status' => 'ongoing',
+                'is_featured' => false,
+                'is_published' => true,
+                'order' => 7,
+                'translations' => [
+                    'mr' => [
+                        'title' => 'युवक व्यावसायिक व तांत्रिक कौशल्य विकास',
+                        'short_description' => 'ग्रामीण तरुणांना संगणक साक्षरता, तांत्रिक कौशल्ये व रोजगार मार्गदर्शन.',
+                        'description' => 'तरुणांना रोजगाराभिमुख बनवून त्यांना आत्मनिर्भर बनवण्यासाठी मोफत तांत्रिक कौशल्य प्रशिक्षण व जॉब प्लेसमेंट सहाय्य.',
+                        'problem_statement' => 'ग्रामीण व दुर्गम भागातील तरुणांकडे आधुनिक कौशल्यांचा अभाव असल्याने बेरोजगारीची समस्या.',
+                        'solution' => 'संगणकीय, तांत्रिक व डिजिटल मार्केटिंग कौशल्ये मोफत शिकवून थेट रोजगार संधी उपलब्ध करून देणे.',
+                        'impact_text' => '850 हून अधिक तरुणांना प्रमाणित प्रशिक्षण देऊन 500+ तरुणांना नोकरी किंवा स्वयंरोजगार मिळवून दिला.',
+                    ],
+                    'hi' => [
+                        'title' => 'युवा व्यावसायिक कौशल विकास अभियान',
+                        'short_description' => 'ग्रामीण युवाओं को कंप्यूटर साक्षरता, तकनीकी कौशल और रोजगार मार्गदर्शन।',
+                        'description' => 'युवाओं को बाजारोन्मुख कौशल प्रदान कर उन्हें सम्मानजनक रोजगार व स्वरोजगार के अवसर उपलब्ध कराना।',
+                        'problem_statement' => 'व्यावसायिक कौशल और मार्गदर्शन की कमी से ग्रामीण युवाओं में बढ़ती बेरोजगारी।',
+                        'solution' => 'उद्योग-आधारित कंप्यूटर प्रशिक्षण, सॉफ्ट स्किल्स कार्यशालाएं और रोजगार मेला आयोजन।',
+                        'impact_text' => '850 से अधिक युवाओं को प्रशिक्षण और सैकड़ों युवाओं को सम्मानजनक आजीविका के साधन।',
+                    ],
+                    'en' => [
+                        'title' => 'Youth Technical & Vocational Skills Program',
+                        'short_description' => 'IT skills, workplace readiness, hardware training, and job placement assistance.',
+                        'description' => 'Empowering underprivileged youth with certified industry-aligned vocational skills, digital tools, and direct placement linkages.',
+                        'problem_statement' => 'Young job-seekers from semi-rural areas lacked modern technical certifications and workplace readiness.',
+                        'solution' => 'Free computer literacy courses, certified vocational training tracks, and localized placement job fairs.',
+                        'impact_text' => 'Trained 850+ youth with 500+ candidates successfully securing private sector jobs or apprenticeships.',
+                    ],
+                ],
+            ],
+            [
+                'focus_area_id' => $socialArea?->id,
+                'slug' => 'community-relief-support',
+                'featured_image' => 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?auto=format&fit=crop&w=800&q=80',
+                'location' => 'Nashik & Rural Hamlets, Maharashtra',
+                'start_date' => '2024-03-01',
+                'beneficiaries_count' => '3,000+ Beneficiaries',
+                'target_amount' => 300000,
+                'raised_amount' => 240000,
+                'status' => 'ongoing',
+                'is_featured' => false,
+                'is_published' => true,
+                'order' => 8,
+                'translations' => [
+                    'mr' => [
+                        'title' => 'सामाजिक सहाय्य व ज्येष्ठ नागरिक सेवा',
+                        'short_description' => 'अन्नदान, वस्त्रदान, आपत्ती निवारण आणि ज्येष्ठ नागरिकांना सन्मानजनक आधार.',
+                        'description' => 'समाजातील अत्यंत दुर्बल, निराधार व ज्येष्ठ नागरिकांना आवश्यक अन्न, औषधे, वस्त्र आणि सामाजिक सुरक्षितता पुरवणे.',
+                        'problem_statement' => 'निराधार वृद्ध, दिव्यांग आणि संकटग्रस्त कुटुंबांना तातडीच्या सामाजिक संरक्षणाचा अभाव.',
+                        'solution' => 'नियमित अन्नछत्र, हिवाळी ब्लँकेट्स, आपत्ती मदत किट्स आणि वृद्धाश्रम सहकार्य उपक्रम.',
+                        'impact_text' => '3,000 हून अधिक निराधार व्यक्ती व कुटुंबांना थेट मदत पुरवून सन्मानाचे जीवन दिले.',
+                    ],
+                    'hi' => [
+                        'title' => 'सामुदायिक राहत एवं वरिष्ठ नागरिक सेवा',
+                        'short_description' => 'अन्नदान, वस्त्रदान, आपदा राहत और निराश्रितों को गरिमापूर्ण सामाजिक सहारा।',
+                        'description' => 'संकटग्रस्त परिवारों और वरिष्ठ नागरिकों तक जीवन रक्षक आवश्यक सामग्री एवं भावनात्मक संबल पहुंचाना।',
+                        'problem_statement' => 'बेसहारा बुजुर्गों और निर्धन परिवारों के लिए आपातकालीन सामाजिक सुरक्षा की कमी।',
+                        'solution' => 'नि:शुल्क राशन किट, शीतकालीन कंबल वितरण और वरिष्ठ नागरिकों के लिए चिकित्सा सहायता।',
+                        'impact_text' => '3,000 से अधिक जरूरतमंदों तक राहत सामग्री और आवश्यक सुरक्षा संबल पहुंचाया गया।',
+                    ],
+                    'en' => [
+                        'title' => 'Community Relief & Destitute Care Project',
+                        'short_description' => 'Emergency food kits, seasonal clothing, geriatric aid, and disaster response.',
+                        'description' => 'Providing a compassionate safety net for destitute individuals, elderly citizens, and impoverished families in times of seasonal or medical distress.',
+                        'problem_statement' => 'Marginalized elderly and indigent families faced extreme vulnerability during winter and monsoon hardships.',
+                        'solution' => 'Emergency food rations, warm blanket distribution, disaster assistance kits, and regular eldercare check-ins.',
+                        'impact_text' => 'Directly sheltered and provided dignity to over 3,000 destitute and vulnerable beneficiaries.',
                     ],
                 ],
             ],
